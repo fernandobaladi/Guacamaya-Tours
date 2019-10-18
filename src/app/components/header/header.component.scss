@@ -1,0 +1,25 @@
+@import "../../../styles/sass/lib/variables";
+
+.gt-navbar{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr 1fr;
+    grid-template-rows: 68px;
+    align-items: flex-start;
+    justify-items: center;
+    padding: 1rem;
+    background: linear-gradient(180deg, $color-primary 50%, white 50%);
+    
+    .gt-navbar-icon-wrapper{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
