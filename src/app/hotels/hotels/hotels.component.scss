@@ -1,0 +1,154 @@
+@import "../../../styles/sass/lib/variables";
+
+.filtration {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    padding: 1em;
+    padding-top: 2em;
+    grid-column-gap: 1em;
+    //justify-items: start;
+}
+
+.filtration-name {
+    align-self: start;
+    display: grid;
+    margin-left: 0px;
+    grid-template-columns: 20% 20% 60%;
+    height: 50px;
+    
+}
+.filtration-name img{
+   margin-right:0px; 
+}
+
+.filtration-stars {
+    align-self: center;
+    height: 50px;
+}
+
+.filtration-cities {
+    align-self: end;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    height: 50px;
+}
+
+.separatorLine {
+    background-color: green;
+    height: 10px;
+}
+
+
+.hotelList {
+    margin: auto;
+    width: 55%;
+    border: 1px solid #C1B6B6;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.bottomLine {
+    background-color:#C1B6B6;
+    height: 1px;
+}
+
+
+.content {
+    display: grid;
+    grid-template-columns: 22% 41% 1% 36%;
+    height: 120px;
+    max-height: 120px;
+    background: $color-gradient;
+}
+
+.image {
+    //height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.info {
+    //display: grid;
+    //grid-template-rows: 25% 25% 25% 25%;
+    //grid-auto-rows: minmax(150px, auto);
+    padding: 0.5em;
+    max-height: 120px;
+    margin-left: 25px;
+    line-height:4px;
+    
+    
+}
+
+.separator {
+    background-color: #C1B6B6;
+    //height: 150px;
+    width: 1px;
+}
+
+.price {
+    display: grid;
+    grid-template-rows: 60% 33%;
+    justify-content: center;
+    align-items: center;
+}
+
+// .price p{
+//     text-align: center;
+//     padding: 5px;
+// }
+
+#button{
+    width: 90px;
+    height: 40px;
+}
+
+.buttonDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+   font-size: 20px;
+}
+
+#menu {
+    background-color: purple;
+    height: 120px;
+    display: none;
+}
+
+.menuBar {
+    background-color: green;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+
+
+
+// <div class="info">
+//                 <div class="info-grid"></div>
+//                     <div class="title"> <h2>Sunsol</h2> </div> 
+//                     <div class="stars"> <p>Estrellas...</p> </div>
+//                     <div class="city"> <h4>Nueva Esparta</h4> </div>
+//                     <div class="state"> <h4>Margarita</h4> </div>
+//                 </div>
+//             </div>
+
+
+// <h2>Sunsol</h2> 
+//                     <p>Estrellas...</p>
+//                      <h4>Nueva Esparta</h4> 
+//                     <h4>Margarita</h4> 
+
+// <div class="title"> <p>Sunsol</p> </div> 
+//                     <div class="stars"> <p>Estrellas...</p> </div>
+//                     <div class="city"> <p>Nueva Esparta</p> </div>
+//                     <div class="state"> <p>Margarita</p> </div>

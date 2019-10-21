@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonNavigationComponent } from './navigation/common-navigation/common-navigation.component';
 import { HeaderComponent } from './components/header/header.component';
+import { HotelsModule } from './hotels/hotels.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HotelsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
