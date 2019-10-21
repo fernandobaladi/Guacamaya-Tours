@@ -1,7 +1,7 @@
 export class Service {
 
     description: string;
-    image: File;
+    image: string;
 
     // Las variables de imágenes puede que varíen
     // Por la forma en la que se añadan.
