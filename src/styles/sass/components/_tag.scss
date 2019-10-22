@@ -1,0 +1,16 @@
+.gt-tag{
+
+    height: $tag-height;
+    min-width: $tag-min-width;
+    background-color: $color-secondary;
+    font-size: 2rem;
+    font-family: $font-family-primary;
+    box-shadow: $box-shadow;
+    text-align: start;
+    
+    //alinean en y
+    vertical-align: middle;
+    line-height: $tag-height;  
+    padding-left: 3rem;
+
+}

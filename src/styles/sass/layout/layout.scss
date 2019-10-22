@@ -1,5 +1,5 @@
 .gt-navbar{
-    height: 120px;
+    height: 100px;
 }
 .gt-body{
     min-height: calc(100vh - 100px);
@@ -9,4 +9,16 @@
 
 section.gt-section{
     min-height: calc(100vh);
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+
+    &.gt-section--full{
+        max-width: initial;
+    }
+
+    &.gt-section--slider{
+        min-height: calc(100vh - 100px - 1rem);
+        max-width: initial;
+    }
 }

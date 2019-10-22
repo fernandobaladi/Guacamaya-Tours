@@ -1,4 +1,7 @@
-.body{
-    padding: 0;
-    margin: 0;
+@import "../../../../styles/sass/lib/variables";
+
+.gt-tag{
+    width: $tag-min-width;
 }
+
+

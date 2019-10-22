@@ -1,43 +1,64 @@
-<div class="gt-navbar">
-    <div class="gt-navbar-icon-wrapper">
-        <img src="../../../assets/img/business-center.png">
-        <div class="navbar-icon-title">
-           <p>Hoteles</p>
-        </div>
-    </div>
-    <div class="gt-navbar-icon-wrapper">
-        <img src="../../../assets/img/placeholder.png">
-        <div class="navbar-icon-title">
-            <p>Destinos</p>
-        </div>
-    </div>
-    <div class="gt-navbar-icon-wrapper">
-        <img src="../../../assets/img/calendar.png">
-        <div class="navbar-icon-title">
-            <p>Planea tu viaje</p>
-        </div>
-    </div>
-    <div class="logo">
-        <img src="../../../assets/img/guaca logo.png">
+<!-- en gt navbar
+    [ngStyle]="{'background':'linear-gradient(180deg, '+headerColor+' 70%, white 30%)'} -->
 
-    </div>
-    <div class="gt-navbar-icon-wrapper">
-        <img src="../../../assets/img/list.png">
-        <div class="navbar-icon-title">
-            <p>Itinerario</p>
+    <!-- en navbar-img
+    (mouseenter)="changeHeader(1)" (mouseleave)="changeHeader(0) -->
+
+<div class="gt-navbar">
+    <div class="gt-navbar-grid">
+
+        <div class="gt-navbar-icon-wrapper">
+            <div class="navbar-img">
+                <img src="../../../assets/img/business-center.png">
+            </div>
+            <div class="navbar-icon-title">
+               <span>Hoteles</span>
+            </div>
         </div>
-    </div>
-    <div class="gt-navbar-icon-wrapper">
-        <img src="../../../assets/img/telephone.png">
-        <div class="navbar-icon-title">
-            <p>Contáctanos</p>
+        <div class="gt-navbar-icon-wrapper">
+            <div class="navbar-img">
+                <img src="../../../assets/img/placeholder.png">
+            </div>
+            <div class="navbar-icon-title">
+                <span>Destinos</span>
+            </div>
         </div>
-    </div>
-    <div class="gt-navbar-icon-wrapper">
-        <img src="../../../assets/img/user.png">
-        <div class="navbar-icon-title">
-            <p>Conócenos</p>
+        <div class="gt-navbar-icon-wrapper">
+            <div class="navbar-img">
+                <img src="../../../assets/img/calendar.png">
+            </div>
+            <div class="navbar-icon-title">
+                <span>Planea tu viaje</span>
+            </div>
         </div>
-    </div>
+        <div class="logo">
+            <img src="../../../assets/img/guaca logo.png" routerLink="/home">
     
+        </div>
+        <div class="gt-navbar-icon-wrapper">
+            <div class="navbar-img">
+                <img src="../../../assets/img/list.png">
+            </div>
+            <div class="navbar-icon-title">
+                <span>Itinerario</span>
+            </div>
+        </div>
+        <div class="gt-navbar-icon-wrapper">
+            <div class="navbar-img">
+                <img src="../../../assets/img/telephone.png">
+            </div>
+            <div class="navbar-icon-title">
+                <span>Contáctanos</span>
+            </div>
+        </div>
+        <div class="gt-navbar-icon-wrapper">
+            <div class="navbar-img">
+                <img src="../../../assets/img/user.png">
+            </div>
+            <div class="navbar-icon-title">
+                <span>Conócenos</span>
+            </div>
+        </div>
+        
+    </div>
 </div>

@@ -1,8 +1,11 @@
+@import "../../../../styles/sass/lib/variables";
+
 div.slider-wrapper{
     width: 100%;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 100px - 1rem);
     position: relative;
     overflow: hidden;
+    box-shadow: $box-shadow;
     
     div.slider-img-wrapper{
         position: absolute;
@@ -49,20 +52,21 @@ div.slider-wrapper{
         z-index: 1;
 
         .slider-action-right{
-            height: 50px;
-            width: 50px;
-
+            height: 70px;
+            width: 70px;
+            
             img{
                 width: 100%;
             }
         }
         .slider-action-left{
-            height: 50px;
-            width: 50px;
+            height: 70px;
+            width: 70px;
+            
 
             img{
                 width: 100%;
-                transform: rotate(180deg)
+                transform: rotate(180deg);
             }
         }
     }

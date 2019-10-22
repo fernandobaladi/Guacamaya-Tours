@@ -15,19 +15,19 @@ export class SliderComponent implements OnInit {
 
   slider: Slide[] = [ 
     {
-      img:"http://wowslider.com/sliders/demo-51/data1/images/car.jpg",
+      img:"https://companerodeviaje.com/wp-content/uploads/s3_noticias/POST%20PROMO%20PB.jpg",
       isAct:true,
       isPrev:false,
       isNext:false
   },
     {
-      img:"http://wowslider.com/sliders/demo-23/data1/images/landscape1344620.jpg",
+      img:"http://www.crucerosporelcaribe.com.ve/promo2015-2016/descuento_unik.jpg",
       isAct:false,
       isPrev:false,
       isNext:true
   },
     {
-      img:"https://www.jssor.com/demos/img/gallery/980x380/001.jpg",
+      img:"http://www.margaritawings.com.ve/promo2015-2016/oferta-de-paquetes-en-margarita.jpg",
       isAct:false,
       isPrev:true,
       isNext:false
