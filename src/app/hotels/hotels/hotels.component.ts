@@ -40,11 +40,6 @@ export class HotelsComponent implements OnInit {
     } else {
       x.style.display = "block";
     }
-    // if (y.style.display === "none") {
-    //   y.style.display = "block";
-    // } else {
-    //   y.style.display = "none";
-    // }
   }
 
 
@@ -84,5 +79,35 @@ export class HotelsComponent implements OnInit {
   clickPromociones() {
     this.funcionAyuda("menuPromociones", "menuGeneral", "menuComodidades", "menuHabitaciones");
   }
+
+
+  clickStar1() {
+      //document.getElementById("star1").src = "../../../assets/img/star-amarilla.png";
+      //var imagen = document.getElementById("star1");
+      
+      //imagen.style.src = "";
+      //aqui intente cambiar la imagen de la estrella a la imagen de la estrella amarilla, pero 
+      //por alguna razon no me reconoce el .src para cambiarla
+  }
+
+  clickStar2() {
+    
+  }
+
+  clickStar3() {
+    
+  }
+
+  clickStar4() {
+    
+  }
+
+  clickStar5() {
+    
+  }
+
+
+
+
 
 }

@@ -12,25 +12,62 @@
 .filtration-name {
     align-self: start;
     display: grid;
-    margin-left: 0px;
     grid-template-columns: 20% 20% 60%;
     height: 50px;
-    
+    align-items: center;
+    justify-content: center;
+
 }
-.filtration-name img{
-   margin-right:0px; 
+.filtration-name p {
+    margin-left: -18px;;
+}
+.filtration-name img {
+    height: 30px;
+    width: 30px;
+}
+.filtration-name input {
+    height: 40px;
+    background-color: $color-secondary;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 33px;
+    text-align: center;
+    
 }
 
 .filtration-stars {
-    align-self: center;
+    display: grid;
     height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+.filtration-stars img {
+    height: 30px;
+    width: 30px;
+    padding: 3px;
 }
 
 .filtration-cities {
     align-self: end;
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 12% 80%;
     height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+.filtration-cities img {
+    height: 30px;
+    width: 30px;
+}
+.filtration-cities input {
+    height: 40px;
+    background-color: $color-secondary;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 33px;
+    text-align: center;
 }
 
 #titulo-principal {
@@ -209,25 +246,3 @@
     display: none;
 }
 
-
-
-
-// <div class="info">
-//                 <div class="info-grid"></div>
-//                     <div class="title"> <h2>Sunsol</h2> </div> 
-//                     <div class="stars"> <p>Estrellas...</p> </div>
-//                     <div class="city"> <h4>Nueva Esparta</h4> </div>
-//                     <div class="state"> <h4>Margarita</h4> </div>
-//                 </div>
-//             </div>
-
-
-// <h2>Sunsol</h2> 
-//                     <p>Estrellas...</p>
-//                      <h4>Nueva Esparta</h4> 
-//                     <h4>Margarita</h4> 
-
-// <div class="title"> <p>Sunsol</p> </div> 
-//                     <div class="stars"> <p>Estrellas...</p> </div>
-//                     <div class="city"> <p>Nueva Esparta</p> </div>
-//                     <div class="state"> <p>Margarita</p> </div>
