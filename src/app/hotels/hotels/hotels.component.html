@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<p style="margin-left: 10px; font-size: 30px;">Todos los hoteles</p>
+<p id="titulo-principal" style="margin-left: 10px; font-size: 30px;">Todos los hoteles</p>
 
 
 <div class="separatorLine">
@@ -54,17 +54,81 @@
         
 
 
-        <div id="menu">
+        <div id="menuGeneral">
             <div class="menuBar">
-                <div class="menuElements">General</div>
-                <div class="menuElements">Comodidades</div>
-                <div class="menuElements">Habitaciones</div>
-                <div class="menuElements">Promociones</div>
+                <div class="menuElements" ><p (click)="clickGeneral()"> General</p></div>
+                <div class="menuElements" ><p (click)="clickComodidades()">Comodidades</p></div>
+                <div class="menuElements" ><p (click)="clickHabitaciones()">Habitaciones</p></div>
+                <div class="menuElements" ><p (click)="clickPromociones()">Promociones</p></div>
+            </div>
+
+            <div class="titulo">
+                <p>Ubicación</p>
+            </div>
+
+        </div>
+
+        <div id="menuComodidades">
+            <div class="menuBar">
+                <div class="menuElements" (click)="clickGeneral()">General</div>
+                <div class="menuElements" (click)="clickComodidades()">Comodidades</div>
+                <div class="menuElements" (click)="clickHabitaciones()">Habitaciones</div>
+                <div class="menuElements" (click)="clickPromociones()">Promociones</div>
+            </div>
+
+            <div class="fotos">
+                <img style="height: 120px; width: 200px;">
+                <img style="height: 120px; width: 200px;">
+                <img style="height: 120px; width: 200px;">
+            </div>
+
+            <div class="iconos1">
+                <p>Piscina</p>
+                <p>Bar de hotel</p>
+                <p>Wifi (vestíbulo)</p>
+            </div>
+
+            <div class="iconos2">
+                <p>Lavandería</p>
+                <p>Restaurante</p>
+            </div>
+
+        </div>
+
+
+        <div id="menuHabitaciones">
+            <div class="menuBar">
+                <div class="menuElements" (click)="clickGeneral()">General</div>
+                <div class="menuElements" (click)="clickComodidades()">Comodidades</div>
+                <div class="menuElements" (click)="clickHabitaciones()">Habitaciones</div>
+                <div class="menuElements" (click)="clickPromociones()">Promociones</div>
+            </div>
+
+            <div class="habitaciones">
+                <img>
+                <img>
+            </div>
+
+        </div>
+
+        <div id="menuPromociones">
+            <div class="menuBar">
+                <div class="menuElements" (click)="clickGeneral()">General</div>
+                <div class="menuElements" (click)="clickComodidades()">Comodidades</div>
+                <div class="menuElements" (click)="clickHabitaciones()">Habitaciones</div>
+                <div class="menuElements" (click)="clickPromociones()">Promociones</div>
             </div>
         </div>
 
+
+
         <div class="bottomLine"></div>
     </div>
+
+
+
+
+
 
 
     <div class="hotel">

@@ -6,7 +6,7 @@
     padding: 1em;
     padding-top: 2em;
     grid-column-gap: 1em;
-    //justify-items: start;
+    font-family: $font-family-primary;
 }
 
 .filtration-name {
@@ -33,8 +33,12 @@
     height: 50px;
 }
 
+#titulo-principal {
+    font-family: $font-family-primary;
+}
+
 .separatorLine {
-    background-color: green;
+    background-color: #62D2BE;
     height: 10px;
 }
 
@@ -71,16 +75,17 @@
 
 
 .info {
-    //display: grid;
-    //grid-template-rows: 25% 25% 25% 25%;
-    //grid-auto-rows: minmax(150px, auto);
     padding: 0.5em;
     max-height: 120px;
     margin-left: 25px;
-    line-height:4px;
-    
-    
+    line-height:5px;
+    font-family: $font-family-primary;
 }
+.info  p {
+    line-height: 7px;
+    margin-top: 15px;
+}
+
 
 .separator {
     background-color: #C1B6B6;
@@ -90,19 +95,20 @@
 
 .price {
     display: grid;
-    grid-template-rows: 60% 33%;
+    grid-template-rows: 60% 25%;
     justify-content: center;
     align-items: center;
+    font-family: $font-family-primary;
 }
 
-// .price p{
-//     text-align: center;
-//     padding: 5px;
-// }
 
 #button{
-    width: 90px;
-    height: 40px;
+    width: 80px;
+    height: 35px;
+    background-color: $button-color;
+    font-family: $font-family-primary;
+    font-size: 15px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 .buttonDiv {
@@ -115,20 +121,93 @@
    font-size: 20px;
 }
 
-#menu {
-    background-color: purple;
-    height: 120px;
-    display: none;
-}
 
 .menuBar {
-    background-color: green;
-    height: 30px;
+    background-color: $button-color;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    font-family: $font-family-primary;
 }
 
+
+
+#menuGeneral {
+    height: 250px;
+    display: none;
+}
+
+.titulo {
+    background-color: white;
+    height: 40px;
+    font-family: $font-family-primary;
+    padding-left: 15px;
+}
+.titulo p {
+    font-size: 20px;
+}
+
+#menuComodidades {
+    background: $color-gradient;
+    height: 360px;
+    display: none;
+    font-family: $font-family-primary;
+}
+
+.fotos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1em;
+    padding-top: 1em;
+    grid-column-gap: 1em;
+    margin-left: 1em;
+}
+.fotos img {
+    background-color: orange;
+}
+
+.iconos1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1em;
+    grid-column-gap: 1em;
+    margin-left: 1em;
+    text-align: center;
+}
+.iconos2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1em;
+    grid-column-gap: 1em;
+    margin-left: 1em;
+    text-align: center;
+}
+
+#menuHabitaciones {
+    background-color: white;
+    height: 230px;
+    display: none;
+}
+
+.habitaciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1em;
+    grid-column-gap: 1em;
+    margin-left: 1em;
+}
+.habitaciones img {
+    background-color: green;
+    width: 300px;
+    height: 150px;
+}
+
+#menuPromociones {
+    background-color: red;
+    height: 250px;
+    display: none;
+}
 
 
 
