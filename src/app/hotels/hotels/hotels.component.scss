@@ -1,0 +1,236 @@
+@import "../../../styles/sass/lib/variables";
+
+.filtration {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    padding: 1em;
+    padding-top: 2em;
+    grid-column-gap: 1em;
+    font-family: $font-family-primary;
+}
+
+.filtration-name {
+    align-self: start;
+    display: grid;
+    margin-left: 0px;
+    grid-template-columns: 20% 20% 60%;
+    height: 50px;
+    
+}
+.filtration-name img{
+   margin-right:0px; 
+}
+
+.filtration-stars {
+    align-self: center;
+    height: 50px;
+}
+
+.filtration-cities {
+    align-self: end;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    height: 50px;
+}
+
+#titulo-principal {
+    font-family: $font-family-primary;
+}
+
+.separatorLine {
+    background-color: #62D2BE;
+    height: 10px;
+}
+
+
+.hotelList {
+    margin: auto;
+    width: 55%;
+    border: 1px solid #C1B6B6;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.bottomLine {
+    background-color:#C1B6B6;
+    height: 1px;
+}
+
+
+.content {
+    display: grid;
+    grid-template-columns: 22% 41% 1% 36%;
+    height: 120px;
+    max-height: 120px;
+    background: $color-gradient;
+}
+
+.image {
+    //height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.info {
+    padding: 0.5em;
+    max-height: 120px;
+    margin-left: 25px;
+    line-height:5px;
+    font-family: $font-family-primary;
+}
+.info  p {
+    line-height: 7px;
+    margin-top: 15px;
+}
+
+
+.separator {
+    background-color: #C1B6B6;
+    //height: 150px;
+    width: 1px;
+}
+
+.price {
+    display: grid;
+    grid-template-rows: 60% 25%;
+    justify-content: center;
+    align-items: center;
+    font-family: $font-family-primary;
+}
+
+
+#button{
+    width: 80px;
+    height: 35px;
+    background-color: $button-color;
+    font-family: $font-family-primary;
+    font-size: 15px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+.buttonDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+   font-size: 20px;
+}
+
+
+.menuBar {
+    background-color: $button-color;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: $font-family-primary;
+}
+
+
+
+#menuGeneral {
+    height: 250px;
+    display: none;
+}
+
+.titulo {
+    background-color: white;
+    height: 40px;
+    font-family: $font-family-primary;
+    padding-left: 15px;
+}
+.titulo p {
+    font-size: 20px;
+}
+
+#menuComodidades {
+    background: $color-gradient;
+    height: 360px;
+    display: none;
+    font-family: $font-family-primary;
+}
+
+.fotos {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    padding: 1em;
+    padding-top: 1em;
+    grid-column-gap: 1em;
+    margin-left: 1em;
+    justify-content: center;
+}
+.fotos img {
+    background-color: orange;
+    width: 120px;
+    height: 90px;
+}
+
+.iconos1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1em;
+    grid-column-gap: 1em;
+    margin-left: 1em;
+    text-align: center;
+}
+.iconos2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1em;
+    grid-column-gap: 1em;
+    margin-left: 1em;
+    text-align: center;
+}
+
+#menuHabitaciones {
+    background-color: white;
+    height: 230px;
+    display: none;
+}
+
+.habitaciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1em;
+    grid-column-gap: 1em;
+    margin-left: 1em;
+}
+.habitaciones img {
+    background-color: green;
+    width: 300px;
+    height: 150px;
+}
+
+#menuPromociones {
+    background-color: red;
+    height: 250px;
+    display: none;
+}
+
+
+
+
+// <div class="info">
+//                 <div class="info-grid"></div>
+//                     <div class="title"> <h2>Sunsol</h2> </div> 
+//                     <div class="stars"> <p>Estrellas...</p> </div>
+//                     <div class="city"> <h4>Nueva Esparta</h4> </div>
+//                     <div class="state"> <h4>Margarita</h4> </div>
+//                 </div>
+//             </div>
+
+
+// <h2>Sunsol</h2> 
+//                     <p>Estrellas...</p>
+//                      <h4>Nueva Esparta</h4> 
+//                     <h4>Margarita</h4> 
+
+// <div class="title"> <p>Sunsol</p> </div> 
+//                     <div class="stars"> <p>Estrellas...</p> </div>
+//                     <div class="city"> <p>Nueva Esparta</p> </div>
+//                     <div class="state"> <p>Margarita</p> </div>

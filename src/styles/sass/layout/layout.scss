@@ -1,0 +1,12 @@
+.gt-navbar{
+    height: 120px;
+}
+.gt-body{
+    min-height: calc(100vh - 100px);
+    display: block;
+    padding-top: 1rem;
+}
+
+section.gt-section{
+    min-height: calc(100vh);
+}

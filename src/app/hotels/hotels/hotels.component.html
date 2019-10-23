@@ -1,0 +1,127 @@
+
+
+<div class="filtration">
+
+    <div class="filtration-name">
+        <img style="background-color: red; height: 50px; width: 50px;">
+        <p >Filtrar por</p>
+        <input placeholder="Ejemplo">
+    </div>
+
+    <div class="filtration-stars">
+        <p style="text-align: center;">Stars</p>
+    </div>
+
+    <div class="filtration-cities">
+        <img style="background-color: red; height: 50px; width: 50px;">
+        <input placeholder="Estado/Ciudad/Nombre">
+    </div>
+</div>
+
+<p id="titulo-principal" style="margin-left: 10px; font-size: 30px;">Todos los hoteles</p>
+
+
+<div class="separatorLine">
+</div>
+
+
+<div class="hotelList">
+
+    <div class="hotel" *ngFor="let hotel of hotels">
+        <div class="content">
+            <div class="image"> <img src="{{hotel.images[0]}}" width="90px" height="90px"> </div>
+
+            <div class="info">
+                
+                    <p class="title">{{hotel.name}}</p> 
+                    <p>Estrellas...</p>
+                    <p>{{hotel.state}}</p> 
+                    <p>{{hotel.city}}</p> 
+                
+            </div>
+        
+            <div class="separator"></div>
+            
+            <div class="price">
+                <p>Desde 100 USD por noche</p> 
+                <div class="buttonDiv">
+                    <button id="button" (click)="funcionBoton()">Info</button>
+                </div>
+                
+            </div>
+        
+        </div>
+        
+
+
+        <div id="menuGeneral">
+            <div class="menuBar">
+                <div class="menuElements" ><p (click)="clickGeneral()"> General</p></div>
+                <div class="menuElements" ><p (click)="clickComodidades()">Comodidades</p></div>
+                <div class="menuElements" ><p (click)="clickHabitaciones()">Habitaciones</p></div>
+                <div class="menuElements" ><p (click)="clickPromociones()">Promociones</p></div>
+            </div>
+
+            <div class="titulo">
+                <p>Ubicación</p>
+            </div>
+
+        </div>
+
+        <div id="menuComodidades">
+            <div class="menuBar">
+                <div class="menuElements" (click)="clickGeneral()">General</div>
+                <div class="menuElements" (click)="clickComodidades()">Comodidades</div>
+                <div class="menuElements" (click)="clickHabitaciones()">Habitaciones</div>
+                <div class="menuElements" (click)="clickPromociones()">Promociones</div>
+            </div>
+
+            <div class="fotos">
+                <img src="{{hotel.images[0]}}">
+                <img src="{{hotel.images[1]}}">
+                <img src="{{hotel.images[2]}}">
+            </div>
+
+            <div class="iconos1">
+                <p>Piscina</p>
+                <p>Bar de hotel</p>
+                <p>Wifi (vestíbulo)</p>
+            </div>
+
+            <div class="iconos2">
+                <p>Lavandería</p>
+                <p>Restaurante</p>
+            </div>
+
+        </div>
+
+
+        <div id="menuHabitaciones">
+            <div class="menuBar">
+                <div class="menuElements" (click)="clickGeneral()">General</div>
+                <div class="menuElements" (click)="clickComodidades()">Comodidades</div>
+                <div class="menuElements" (click)="clickHabitaciones()">Habitaciones</div>
+                <div class="menuElements" (click)="clickPromociones()">Promociones</div>
+            </div>
+
+            <div class="habitaciones">
+                <img>
+                <img>
+            </div>
+
+        </div>
+
+        <div id="menuPromociones">
+            <div class="menuBar">
+                <div class="menuElements" (click)="clickGeneral()">General</div>
+                <div class="menuElements" (click)="clickComodidades()">Comodidades</div>
+                <div class="menuElements" (click)="clickHabitaciones()">Habitaciones</div>
+                <div class="menuElements" (click)="clickPromociones()">Promociones</div>
+            </div>
+        </div>
+
+
+
+        <div class="bottomLine"></div>
+    </div>
+</div>
