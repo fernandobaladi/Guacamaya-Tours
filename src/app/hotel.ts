@@ -1,3 +1,4 @@
+import { Room } from './room';
 
 export class Hotel {
 
@@ -9,7 +10,8 @@ export class Hotel {
     direction: string;
     state: string;
     city: string;
-    images: [];
+    images: string[];
     fulldayAvailable: boolean;
     fulldayPrice?: number;
+    rooms: Room[];
 }
