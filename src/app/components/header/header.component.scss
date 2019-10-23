@@ -5,6 +5,8 @@
   box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.25);;
   z-index: 1;
   transition: .3s;
+  // position: fixed;
+  // z-index: 1;
 
   .gt-navbar-grid {
     max-width: 1200px;
@@ -25,19 +27,24 @@
       flex-direction: column;
 
       .navbar-img {
-        transition: 1s;
+        transition: .5s;
         cursor: pointer;
         flex-basis: 70px;
         display: flex;
         align-items: center;
+        &:focus {
+          outline: none;
+        }
       }
 
       img {
         height: 40px;
         width: 40px;
+        
       }
       .navbar-img:hover {
         transform: scale(1.2);
+        
       }
 
       .navbar-img:hover ~ .navbar-icon-title {
@@ -53,7 +60,7 @@
         text-align: center;
         opacity: 0;
         visibility: hidden;
-        transition: 1s;
+        transition: .5s;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -64,7 +71,7 @@
       width: 100px;
       height: 100px;
       cursor: pointer;
-      transition: 1s;
+      transition: .5s;
 
       img {
         height: 100%;

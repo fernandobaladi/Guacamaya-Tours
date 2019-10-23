@@ -2,13 +2,13 @@
     height: 100px;
 }
 .gt-body{
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px - 50px);
     display: block;
     padding-top: 1rem;
 }
 
 section.gt-section{
-    min-height: calc(100vh);
+    min-height: 100vh;
     max-width: 1200px;
     margin: 0 auto;
     margin-bottom: 1rem;
@@ -20,5 +20,9 @@ section.gt-section{
     &.gt-section--slider{
         min-height: calc(100vh - 100px - 1rem);
         max-width: initial;
+    }
+    &.gt-section--fullHeight{
+        min-height: calc(100vh - 100px - 50px - 2rem);
+        height: calc(100vh - 100px - 50px - 2rem);
     }
 }

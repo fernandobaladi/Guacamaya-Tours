@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     },
     {
       img: "../../../../assets/img/eurobuilding.jpg",
-      name: "Hilton",
+      name: "Eurobuilding",
       rate: 4
     },
     {
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     },
     {
       img: "../../../../assets/img/eurobuilding.jpg",
-      name: "Hilton",
+      name: "Eurobuilding",
       rate: 3
     },
   ]
