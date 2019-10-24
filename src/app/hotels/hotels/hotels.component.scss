@@ -19,6 +19,8 @@
 }
 .filtration-name img{
    margin-right:0px; 
+   height: 50px;
+    width: 50px;
 }
 
 .filtration-stars {
@@ -31,6 +33,11 @@
     display: grid;
     grid-template-columns: 20% 80%;
     height: 50px;
+}
+
+.filtration-cities img{
+    height: 50px; 
+    width: 50px;
 }
 
 #titulo-principal {
@@ -135,6 +142,7 @@
 
 .menuGeneral {
     height: 250px;
+    max-height: 250px;;
     display: none;
 }
 
@@ -166,8 +174,8 @@
 }
 .fotos img {
     background-color: orange;
-    width: 120px;
-    height: 90px;
+    width: 150px;
+    height: 150px;
 }
 
 .iconos1 {
@@ -188,8 +196,7 @@
 }
 
 .menuHabitaciones {
-    background-color: white;
-    height: 230px;
+    background: $color-gradient;
     display: none;
 }
 
@@ -211,26 +218,51 @@
     height: 250px;
     display: none;
 }
+.titulo{
+    display: flex;
+    justify-content: center;
+}
+.titulo img{
+
+    height: 200px;
+    width: 400px;
+}
+
+.promociones-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+}
+
+.promociones-grid img{
+    background-color: orange;
+    height: 210px;
+    width: 350px;
+}
+
+.promociones-info {
+    display: grid;
+    grid-template-rows: 30% 30% 50%;
+    max-height: 210px; 
+    font-family: $font-family-primary;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: $color-gradient;
+}
+// .promociones-info img {
+//     background-color: blue;
+//     height: 50px;
+//     width: 50px;
+// }
+.promo1 {
+    font-size: 30px;
+}
+.promo2 {
+    font-size: 70px;
+}
+.promo3 {
+    font-size: 15px;
+}
 
 
-
-
-// <div class="info">
-//                 <div class="info-grid"></div>
-//                     <div class="title"> <h2>Sunsol</h2> </div> 
-//                     <div class="stars"> <p>Estrellas...</p> </div>
-//                     <div class="city"> <h4>Nueva Esparta</h4> </div>
-//                     <div class="state"> <h4>Margarita</h4> </div>
-//                 </div>
-//             </div>
-
-
-// <h2>Sunsol</h2> 
-//                     <p>Estrellas...</p>
-//                      <h4>Nueva Esparta</h4> 
-//                     <h4>Margarita</h4> 
-
-// <div class="title"> <p>Sunsol</p> </div> 
-//                     <div class="stars"> <p>Estrellas...</p> </div>
-//                     <div class="city"> <p>Nueva Esparta</p> </div>
-//                     <div class="state"> <p>Margarita</p> </div>

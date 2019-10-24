@@ -14,4 +14,5 @@ export class Hotel {
     fulldayAvailable: boolean;
     fulldayPrice?: number;
     rooms: Room[];
+    map?: string;
 }

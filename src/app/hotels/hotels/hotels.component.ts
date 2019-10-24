@@ -10,10 +10,60 @@ export class HotelsComponent implements OnInit {
 
   constructor() { }
 
-  hotels = HOTELS;
+  filter = 'Ejemplo';
 
+  hotels = HOTELS;
+  hotelsAux = this.hotels;
   ngOnInit() {
   }
+  functionDefault() {
+
+      console.log('No hay match');
+      this.hotels = this.hotelsAux;
+  }
+  nameFunction() {
+
+    // tslint:disable-next-line: only-arrow-functions
+    this.hotels.sort( function(a, b) {
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+  }
+  stateFunction() {
+
+    // tslint:disable-next-line: only-arrow-functions
+    this.hotels.sort( function(a, b) {
+      if (a.state > b.state) {
+        return 1;
+      }
+      if (a.state < b.state) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+  }
+  cityFunction() {
+
+    // tslint:disable-next-line: only-arrow-functions
+    this.hotels.sort( function(a, b) {
+      if (a.city > b.city) {
+        return 1;
+      }
+      if (a.city < b.city) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+  }
+  
   funcionBoton(id: string) {
     const x = document.getElementById('menuGeneral' + id);
     const y = document.getElementById('menuComodidades' + id);

@@ -3,9 +3,9 @@
 <div class="filtration">
 
     <div class="filtration-name">
-        <img style="background-color: red; height: 50px; width: 50px;">
+        <img src="../../../assets/img/filter.png">
         <p >Filtrar por</p>
-        <input placeholder="Ejemplo">
+        <input type="text" [(ngModel)]="filter">
     </div>
 
     <div class="filtration-stars">
@@ -13,7 +13,7 @@
     </div>
 
     <div class="filtration-cities">
-        <img style="background-color: red; height: 50px; width: 50px;">
+        <img src="../../../assets/img/loupe.png">
         <input placeholder="Estado/Ciudad/Nombre">
     </div>
 </div>
@@ -21,7 +21,11 @@
 <p id="titulo-principal" style="margin-left: 10px; font-size: 30px;">Todos los hoteles</p>
 
 
-<div class="separatorLine">
+<div class="separatorLine" [ngSwitch]="filter">
+        <div *ngSwitchCase="'Nombre'">{{nameFunction()}}</div>
+        <div *ngSwitchCase="'Estado'">{{stateFunction()}}</div>
+        <div *ngSwitchCase="'Ciudad'">{{cityFunction()}}</div>
+        <div *ngSwitchDefault>{{functionDefault()}}</div>
 </div>
 
 
@@ -43,7 +47,8 @@
             <div class="separator"></div>
             
             <div class="price">
-                <p>Desde 100 USD por noche</p> 
+                <p>Desde {{hotel.rooms[0].price}} USD por noche</p> 
+                
                 <div class="buttonDiv">
                     <button id="button" (click)="funcionBoton(hotel.id)">Info</button>
                 </div>
@@ -63,7 +68,7 @@
             </div>
 
             <div class="titulo">
-                <p>Ubicación</p>
+                <img src="{{hotel.map}}">
             </div>
 
         </div>
@@ -105,8 +110,8 @@
             </div>
 
             <div class="habitaciones">
-                <img>
-                <img>
+                <img src="{{hotel.rooms[0].images[0]}}">
+                <img src="{{hotel.rooms[1].images[0]}}">
             </div>
 
         </div>
@@ -118,9 +123,17 @@
                 <div class="menuElements" (click)="clickHabitaciones(hotel.id)">Habitaciones</div>
                 <div class="menuElements" (click)="clickPromociones(hotel.id)">Promociones</div>
             </div>
+            <div class="promociones-grid">
+                <img src="{{hotel.images[0]}}">
+                <div class="promociones-info">
+                    <p class="promo1">Ahorra hasta un</p>
+                    <p class="promo2">40%</p>
+                    <p class="promo3">Con nuestra promoción de 2x1 ahorraras hasta un 40% de descuento del costo final</p>
+                </div>
+            </div>
+    
         </div>
-
-
+        
 
         <div class="bottomLine"></div>
     </div>
