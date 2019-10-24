@@ -241,8 +241,43 @@
 }
 
 #menuPromociones {
-    background-color: red;
     height: 250px;
     display: none;
 }
 
+.promociones-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+}
+
+.promociones-grid img{
+    background-color: orange;
+    height: 210px;
+    width: 350px;
+}
+
+.promociones-info {
+    display: grid;
+    grid-template-rows: 30% 30% 50%;
+    max-height: 210px; 
+    font-family: $font-family-primary;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: $color-gradient;
+}
+// .promociones-info img {
+//     background-color: blue;
+//     height: 50px;
+//     width: 50px;
+// }
+.promo1 {
+    font-size: 30px;
+}
+.promo2 {
+    font-size: 70px;
+}
+.promo3 {
+    font-size: 15px;
+}

@@ -82,12 +82,11 @@ export class HotelsComponent implements OnInit {
 
 
   clickStar1() {
-      //document.getElementById("star1").src = "../../../assets/img/star-amarilla.png";
-      //var imagen = document.getElementById("star1");
-      
-      //imagen.style.src = "";
-      //aqui intente cambiar la imagen de la estrella a la imagen de la estrella amarilla, pero 
-      //por alguna razon no me reconoce el .src para cambiarla
+      // document.getElementById("star1").src = "../../../assets/img/star-amarilla.png";
+      // var imagen = document.getElementById("star1");
+      // imagen.style.src = "";
+      // //aqui intente cambiar la imagen de la estrella a la imagen de la estrella amarilla, pero 
+      // //por alguna razon no me reconoce el .src
   }
 
   clickStar2() {
