@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { CommonNavigationComponent } from './navigation/common-navigation/common-navigation.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ServicesComponent } from './services/services.component';
+import { HotelsModule } from './hotels/hotels.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     CommonNavigationComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HotelsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
