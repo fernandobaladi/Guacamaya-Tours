@@ -15,13 +15,13 @@ export class SliderComponent implements OnInit {
 
   slider: Slide[] = [ 
     {
-      img:"https://companerodeviaje.com/wp-content/uploads/s3_noticias/POST%20PROMO%20PB.jpg",
+      img:"http://www.crucerosporelcaribe.com.ve/promo2015-2016/descuento_unik.jpg",
       isAct:true,
       isPrev:false,
       isNext:false
-  },
+    },
     {
-      img:"http://www.crucerosporelcaribe.com.ve/promo2015-2016/descuento_unik.jpg",
+      img:"https://companerodeviaje.com/wp-content/uploads/s3_noticias/POST%20PROMO%20PB.jpg",
       isAct:false,
       isPrev:false,
       isNext:true

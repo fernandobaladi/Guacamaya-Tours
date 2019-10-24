@@ -25,4 +25,7 @@ section.gt-section{
         min-height: calc(100vh - 100px - 50px - 2rem);
         height: calc(100vh - 100px - 50px - 2rem);
     }
+    &.gt-section--heightAuto{
+        min-height: auto;
+    }
 }

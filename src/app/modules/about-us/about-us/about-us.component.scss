@@ -1,0 +1,88 @@
+@import "../../../../styles/sass/lib/variables";
+
+.aboutUs-box-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    .aboutUs-wrapper{
+
+        height: 100%;
+        width: 100%;
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+
+        .aboutUs-box{
+
+            background-color: $color-secondary;
+            height: 80%;
+            width: 50%;
+            max-width: 500px;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+            font-family: $font-family-primary;
+            font-size: 2rem;
+            transition: .5s;
+            cursor: pointer;
+
+            .aboutUs-box-info{
+                transform: translateY(50vh);
+                position: absolute;
+                font-size: 1.3rem;
+                transition: 1.5s;
+            }
+
+            .aboutUs-box-title {
+                position: absolute;
+                transition: .5s;
+            }
+
+            &:hover{
+                background-color: $color-terciary;
+                color: white;
+
+            }
+
+            &.isActive{
+                .aboutUs-box-title {
+                    transform: translateY(-320%);
+                }
+                .aboutUs-box-info{
+                    transform: translateY(-270%);
+                }
+            }
+
+        }
+
+        .aboutUs-guacamaya {
+            height: 200px;
+            width: 300px;
+            position: absolute;
+            bottom: 36px;
+            left: calc(50% - 145px); 
+            z-index: 1;
+            transition: 1s;
+    
+            img {
+                height: 100%;
+                width: 100%;
+            }
+
+            &.transitionLeft{
+                transform: scale(0.7) translateX(-239%) translateY(20%);
+            }
+            &.transitionRight{
+                transform: scale(0.7) translateX(234%) translateY(20%) rotateY(180deg);
+                
+            }
+          }
+
+    }
+}
