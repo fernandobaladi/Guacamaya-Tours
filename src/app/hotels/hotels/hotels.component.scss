@@ -133,7 +133,7 @@
 
 
 
-#menuGeneral {
+.menuGeneral {
     height: 250px;
     display: none;
 }
@@ -148,7 +148,7 @@
     font-size: 20px;
 }
 
-#menuComodidades {
+.menuComodidades {
     background: $color-gradient;
     height: 360px;
     display: none;
@@ -187,7 +187,7 @@
     text-align: center;
 }
 
-#menuHabitaciones {
+.menuHabitaciones {
     background-color: white;
     height: 230px;
     display: none;
@@ -206,7 +206,7 @@
     height: 150px;
 }
 
-#menuPromociones {
+.menuPromociones {
     background-color: red;
     height: 250px;
     display: none;

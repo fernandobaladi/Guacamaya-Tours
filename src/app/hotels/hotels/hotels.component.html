@@ -45,7 +45,7 @@
             <div class="price">
                 <p>Desde 100 USD por noche</p> 
                 <div class="buttonDiv">
-                    <button id="button" (click)="funcionBoton()">Info</button>
+                    <button id="button" (click)="funcionBoton(hotel.id)">Info</button>
                 </div>
                 
             </div>
@@ -54,12 +54,12 @@
         
 
 
-        <div id="menuGeneral">
+        <div id="menuGeneral{{hotel.id}}" class="menuGeneral" >
             <div class="menuBar">
-                <div class="menuElements" ><p (click)="clickGeneral()"> General</p></div>
-                <div class="menuElements" ><p (click)="clickComodidades()">Comodidades</p></div>
-                <div class="menuElements" ><p (click)="clickHabitaciones()">Habitaciones</p></div>
-                <div class="menuElements" ><p (click)="clickPromociones()">Promociones</p></div>
+                <div class="menuElements" ><p (click)="clickGeneral(hotel.id)"> General</p></div>
+                <div class="menuElements" ><p (click)="clickComodidades(hotel.id)">Comodidades</p></div>
+                <div class="menuElements" ><p (click)="clickHabitaciones(hotel.id)">Habitaciones</p></div>
+                <div class="menuElements" ><p (click)="clickPromociones(hotel.id)">Promociones</p></div>
             </div>
 
             <div class="titulo">
@@ -68,12 +68,12 @@
 
         </div>
 
-        <div id="menuComodidades">
+        <div id="menuComodidades{{hotel.id}}" class="menuComodidades">
             <div class="menuBar">
-                <div class="menuElements" (click)="clickGeneral()">General</div>
-                <div class="menuElements" (click)="clickComodidades()">Comodidades</div>
-                <div class="menuElements" (click)="clickHabitaciones()">Habitaciones</div>
-                <div class="menuElements" (click)="clickPromociones()">Promociones</div>
+                <div class="menuElements" (click)="clickGeneral(hotel.id)">General</div>
+                <div class="menuElements" (click)="clickComodidades(hotel.id)">Comodidades</div>
+                <div class="menuElements" (click)="clickHabitaciones(hotel.id)">Habitaciones</div>
+                <div class="menuElements" (click)="clickPromociones(hotel.id)">Promociones</div>
             </div>
 
             <div class="fotos">
@@ -96,12 +96,12 @@
         </div>
 
 
-        <div id="menuHabitaciones">
+        <div id="menuHabitaciones{{hotel.id}}" class="menuHabitaciones">
             <div class="menuBar">
-                <div class="menuElements" (click)="clickGeneral()">General</div>
-                <div class="menuElements" (click)="clickComodidades()">Comodidades</div>
-                <div class="menuElements" (click)="clickHabitaciones()">Habitaciones</div>
-                <div class="menuElements" (click)="clickPromociones()">Promociones</div>
+                <div class="menuElements" (click)="clickGeneral(hotel.id)">General</div>
+                <div class="menuElements" (click)="clickComodidades(hotel.id)">Comodidades</div>
+                <div class="menuElements" (click)="clickHabitaciones(hotel.id)">Habitaciones</div>
+                <div class="menuElements" (click)="clickPromociones(hotel.id)">Promociones</div>
             </div>
 
             <div class="habitaciones">
@@ -111,12 +111,12 @@
 
         </div>
 
-        <div id="menuPromociones">
-            <div class="menuBar">
-                <div class="menuElements" (click)="clickGeneral()">General</div>
-                <div class="menuElements" (click)="clickComodidades()">Comodidades</div>
-                <div class="menuElements" (click)="clickHabitaciones()">Habitaciones</div>
-                <div class="menuElements" (click)="clickPromociones()">Promociones</div>
+        <div id="menuPromociones{{hotel.id}}" class="menuPromociones">
+            <div class="menuBar"> 
+                <div class="menuElements" (click)="clickGeneral(hotel.id)">General</div>
+                <div class="menuElements" (click)="clickComodidades(hotel.id)">Comodidades</div>
+                <div class="menuElements" (click)="clickHabitaciones(hotel.id)">Habitaciones</div>
+                <div class="menuElements" (click)="clickPromociones(hotel.id)">Promociones</div>
             </div>
         </div>
 

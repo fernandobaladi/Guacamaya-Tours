@@ -14,12 +14,11 @@ export class HotelsComponent implements OnInit {
 
   ngOnInit() {
   }
-  funcionBoton() {
-
-    const x = document.getElementById('menuGeneral');
-    const y = document.getElementById('menuComodidades');
-    const z = document.getElementById('menuHabitaciones');
-    const w = document.getElementById('menuPromociones');
+  funcionBoton(id: string) {
+    const x = document.getElementById('menuGeneral' + id);
+    const y = document.getElementById('menuComodidades' + id);
+    const z = document.getElementById('menuHabitaciones' + id);
+    const w = document.getElementById('menuPromociones' + id);
 
     if (x.style.display === 'block' || y.style.display === 'block' || z.style.display === 'block' || w.style.display === 'block') {
 
@@ -58,20 +57,20 @@ export class HotelsComponent implements OnInit {
   }
 
 
-  clickGeneral() {
-    this.funcionAyuda('menuGeneral', 'menuComodidades', 'menuHabitaciones', 'menuPromociones');
+  clickGeneral(id: string) {
+    this.funcionAyuda('menuGeneral'  + id, 'menuComodidades' + id, 'menuHabitaciones' + id, 'menuPromociones' + id);
   }
 
-  clickComodidades() {
-    this.funcionAyuda('menuComodidades', 'menuGeneral', 'menuHabitaciones', 'menuPromociones');
+  clickComodidades(id: string) {
+    this.funcionAyuda('menuComodidades' + id, 'menuGeneral' + id, 'menuHabitaciones' + id, 'menuPromociones' + id);
   }
 
-  clickHabitaciones() {
-    this.funcionAyuda('menuHabitaciones', 'menuGeneral', 'menuComodidades', 'menuPromociones');
+  clickHabitaciones(id: string) {
+    this.funcionAyuda('menuHabitaciones' + id, 'menuGeneral' + id, 'menuComodidades' + id, 'menuPromociones' + id);
   }
 
-  clickPromociones() {
-    this.funcionAyuda('menuPromociones', 'menuGeneral', 'menuComodidades', 'menuHabitaciones');
+  clickPromociones(id: string) {
+    this.funcionAyuda('menuPromociones' + id, 'menuGeneral' + id, 'menuComodidades' + id, 'menuHabitaciones' + id);
   }
 
 }
