@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HOTELS } from '../../../mock-hotels';
+
 @Component({
   selector: 'app-hotels',
   templateUrl: './hotels.component.html',
   styleUrls: ['./hotels.component.scss']
 })
+
 export class HotelsComponent implements OnInit {
 
   constructor() { }

@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { HotelsRoutingModule } from './hotels-routing.module';
 import { HotelsComponent } from './hotels/hotels.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [HotelsComponent],
   imports: [
     CommonModule,
-    HotelsRoutingModule
+    HotelsRoutingModule,
+    SharedModule
   ]
 })
 export class HotelsModule { }
