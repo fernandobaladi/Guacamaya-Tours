@@ -1,8 +1,9 @@
 button.gt-btn{
     height: $btn-height;
     min-width: $btn-min-width;
-    box-shadow: $box-shadow;
+    box-shadow: $button-shadow;
     font-size: 1rem;
+    font-family: $font-family-primary;
 
     &.gt-btn--primary{
         background-color: $color-terciary;
