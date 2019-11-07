@@ -8,10 +8,11 @@
                 <span>¿Quiéres chequear tu itinerario?</span>
                 <div class="journey-form-box">
                     <label for="journeyLocator">Introduce tu localizador:</label>
-                    <input type="locator" class="journey-form" id="journeyLocator" placeholder="Ej: AA4523">
+                    <input type="text" class="journey-form" placeholder="Ej: AA4523" 
+                    [(ngModel)]="locator">
                 </div>
             </div>
-            <button class="gt-btn gt-btn--primary">
+            <button class="btn btn-block gt-btn gt-btn--primary">
                 Siguiente
             </button>
         </div>
