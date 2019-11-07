@@ -9,10 +9,10 @@
                 <div class="journey-form-box">
                     <label for="journeyLocator">Introduce tu localizador:</label>
                     <input type="text" class="journey-form" placeholder="Ej: AA4523" 
-                    [(ngModel)]="locator">
+                    [(ngModel)]="locator"  (ngModelChange)="locator = $event.toUpperCase()">
                 </div>
             </div>
-            <button class="btn btn-block gt-btn gt-btn--primary">
+            <button class="btn gt-btn gt-btn--primary" (click)="validator()">
                 Siguiente
             </button>
         </div>
