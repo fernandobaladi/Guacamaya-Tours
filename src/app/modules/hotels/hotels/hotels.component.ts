@@ -65,7 +65,12 @@ export class HotelsComponent implements OnInit {
     });
   }
   
+
+  public shouldDisplay = false;
+
+  
   funcionBoton(id: string) {
+
     const x = document.getElementById('menuGeneral' + id);
     const y = document.getElementById('menuComodidades' + id);
     const z = document.getElementById('menuHabitaciones' + id);
