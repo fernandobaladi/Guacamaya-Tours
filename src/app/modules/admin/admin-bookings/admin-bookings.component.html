@@ -6,7 +6,16 @@
             </div>
             <div class="row bookings-pipes">
                 <div class="col-12 col-md-6 col-lg-6">
-                    <!-- aqui va el que ordenadará la cosa que aun no lo hago-->
+                    <div class="bookings-filter-wrapper">
+                        <img src="../../../../assets/img/filter.png">
+                        <select formControlName="filter" class="form-control">
+                                <option selected value=''> Filtrar por: </option>
+                                <option value="1"> Nombre </option>
+                                <option value="2"> Fecha </option>
+                                <option value="3"> Status </option>
+                                <option value="4"> Monto </option>
+                        </select>
+                    </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6">
                     <div class=" bookings-pipe-wrapper">
