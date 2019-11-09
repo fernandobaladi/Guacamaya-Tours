@@ -51,6 +51,8 @@
             }
 
             &.isActive{
+                background-color: $color-terciary;
+                color: white;
                 .aboutUs-box-title {
                     transform: translateY(-320%);
                 }
@@ -65,7 +67,7 @@
             height: 200px;
             width: 300px;
             position: absolute;
-            bottom: 36px;
+            bottom: 40px;
             left: calc(50% - 145px); 
             z-index: 1;
             transition: 1s;
@@ -76,10 +78,10 @@
             }
 
             &.transitionLeft{
-                transform: scale(0.7) translateX(-239%) translateY(20%);
+                transform: scale(0.7) translateX(-238%) translateY(17%);
             }
             &.transitionRight{
-                transform: scale(0.7) translateX(234%) translateY(20%) rotateY(180deg);
+                transform: scale(0.7) translateX(233%) translateY(17%) rotateY(180deg);
                 
             }
           }

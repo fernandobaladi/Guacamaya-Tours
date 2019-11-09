@@ -1,0 +1,74 @@
+<section class="gt-section gt-section--full">
+    <div class="bookings">
+        <div class="container-fluid bookings-wrapper">
+            <div class="side-bar-btn" (click)=toggleSideBar()>
+                <img src="https://icon-library.net/images/navbar-icon/navbar-icon-2.jpg">
+            </div>
+            <div class="row bookings-pipes">
+                <div class="col-12 col-md-6 col-lg-6">
+                    <!-- aqui va el que ordenadará la cosa que aun no lo hago-->
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 bookings-pipe-wrapper">
+                    <img src="../../../../assets/img/loupe.png">
+                    <input class="form-control" placeholder="Nombre/Fecha/Status" />
+                    <!-- <input class="form-control" placeholder="Nombre/Fecha/Status" [(ngModel)]="search"  /> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class=" gt-tag-table">
+                        <span> 
+                            Reservaciones
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table bookings-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Localizador</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Status</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr *ngFor="let book of bookings">
+                            <th scope="row">holi</th>
+                            <td>holi</td>
+                            <td>holi</td>
+                            <td>holi</td>
+                            <td>holi</td>
+                            <td>holi</td>
+                        </tr> -->
+                        <!-- cuando vayas a hacerlo con firebase descomenta lo de arriba 
+                        y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
+                    cualquier cosa me preguntas  -->
+                        <tr class="book">
+                            <th scope="row">fsa</th>
+                            <td>holi</td>
+                            <td>asd</td>
+                            <td>dfd</td>
+                            <td>dgf</td>
+                            <td>fgfd</td>
+                        </tr>
+                        <tr class="book">
+                            <th scope="row">fsa</th>
+                            <td>holi</td>
+                            <td>asd</td>
+                            <td>dfd</td>
+                            <td>dgf</td>
+                            <td>fgfd</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</section>

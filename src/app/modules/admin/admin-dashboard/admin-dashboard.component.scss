@@ -1,0 +1,58 @@
+@import "../../../../styles/sass/lib/variables";
+@import "../../../../styles/sass/lib/mixings";
+
+.gt-section {
+  margin-bottom: 0;
+
+  .dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    // font-family: $font-family-primary;
+
+    .dashboard-wrapper {
+      background-color: $color-terciary;
+      color: white;
+      padding: 2rem;
+      position: relative;
+      min-height: 100vh;
+
+      .option-box-wrapper {
+        padding: 1rem;
+        min-height: 200px;
+        color: black;
+
+        .option-box {
+          background-color: $color-secondary;
+          height: 100%;
+          width: auto;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          font-size: 2rem;
+          cursor: pointer;
+
+          &:focus {
+            outline: none;
+          }
+
+          &:hover {
+            background-color: $color-primary;
+
+            .title{
+              color: white;
+            }
+          }
+
+          .underline {
+            height: 10px;
+            width: 140px;
+            background-color: $color-primary;
+          }
+        }
+      }
+    }
+  }
+}

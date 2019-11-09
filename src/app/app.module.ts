@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { CommonNavigationComponent } from './navigation/common-navigation/common-navigation.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ServicesComponent } from './services/services.component';
+import { AdminNavigationComponent } from './navigation/admin-navigation/admin-navigation.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,14 @@ import { ServicesComponent } from './services/services.component';
     CommonNavigationComponent,
     HeaderComponent,
     FooterComponent,
-    ServicesComponent
+    AdminNavigationComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

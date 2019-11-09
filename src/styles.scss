@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import './styles/sass/lib/mixings';
 @import './styles/sass/lib/variables';
 @import './styles/sass/layout/layout.scss';
 
@@ -8,6 +9,8 @@
 @import './styles/sass/components/header';
 @import './styles/sass/components/tag';
 @import './styles/sass/components/thumbnail';
+@import './styles/sass/components/sideBar';
+@import './styles/sass/components/sideBar-button';
 
 
 body,ul,ol,html,figure{
