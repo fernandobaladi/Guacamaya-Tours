@@ -21,11 +21,17 @@
     background-color: $color-primary;
     font-size: 2rem;
     font-family: $font-family-primary;
-    color: black;
+    color: white;
     box-shadow: $box-shadow;
     text-align: start;
     margin-bottom: 1rem;
+    padding-left: 3rem;
+
+    @include phone{
+        text-align: center;
+        padding-left: 0;
+    }
     // margin-left: 1rem;
     // margin-right: 1rem;
-    padding-left: 3rem;
+    // padding-left: 2rem;
 }
