@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { CommonNavigationComponent } from './navigation/common-navigation/common-navigation.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,9 +20,10 @@ import { FooterComponent } from './components/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
