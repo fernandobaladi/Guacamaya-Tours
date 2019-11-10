@@ -49,7 +49,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="book" *ngFor="let book of bookings  | sortBookings: filter | searchBooking: search">
+                        <tr class="book" *ngFor="let book of bookings  | sortBookings: filter | filter: search">
                             <th scope="row">{{book.data.date}}</th>
                             <td>{{book.data.name}}</td>
                             <td>{{book.data.locator}}</td>
