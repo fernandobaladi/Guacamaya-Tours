@@ -8,20 +8,20 @@
                 <div class="col-12 col-md-6 col-lg-6">
                     <div class="bookings-sort-wrapper">
                         <img src="../../../../assets/img/filter.png">
-                        <select [(ngModel)]="bookingsSort" class="form-control">
-                                <option selected value=''> Filtrar por: </option>
-                                <option value="1"> Nombre </option>
-                                <option value="2"> Fecha </option>
-                                <option value="3"> Status </option>
-                                <option value="4"> Monto </option>
+                        <select [(ngModel)]="filter" class="form-control" >
+                            <option selected value=''> Ordenar por: </option>
+                            <option value="1"> Nombre </option>
+                            <option value="2"> Fecha </option>
+                            <option value="3"> Status </option>
+                            <option value="4"> Monto </option>
                         </select>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6">
                     <div class=" bookings-pipe-wrapper">
                         <img src="../../../../assets/img/loupe.png">
-                        <input class="form-control" placeholder="Nombre/Fecha/Status" />
-                        <!-- <input class="form-control" placeholder="Nombre/Fecha/Status" [(ngModel)]="search"  /> -->
+                        <!-- <input class="form-control" placeholder="Nombre/Fecha/Status" /> -->
+                        <input class="form-control" placeholder="Nombre/Fecha/Status" [(ngModel)]="search"  />
                     </div>
                 </div>
             </div>
@@ -49,33 +49,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr *ngFor="let book of bookings">
-                            <th scope="row">holi</th>
-                            <td>holi</td>
-                            <td>holi</td>
-                            <td>holi</td>
-                            <td>holi</td>
-                            <td>holi</td>
-                        </tr> -->
+                        <tr class="book" *ngFor="let book of bookings  | sortBookings: filter | filter: search">
+                            <th scope="row">{{book.data.date}}</th>
+                            <td>{{book.data.name}}</td>
+                            <td>{{book.data.locator}}</td>
+                            <td>{{book.data.amount}}</td>
+                            <td>{{book.data.phoneNumber}}</td>
+                            <td>{{book.data.status}}</td>
+                        </tr>
                         <!-- cuando vayas a hacerlo con firebase descomenta lo de arriba 
                         y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
                     cualquier cosa me preguntas  -->
-                        <tr class="book">
-                            <th scope="row">fsa</th>
-                            <td>holi</td>
-                            <td>asd</td>
-                            <td>dfd</td>
-                            <td>dgf</td>
-                            <td>fgfd</td>
-                        </tr>
-                        <tr class="book">
-                            <th scope="row">fsa</th>
-                            <td>holi</td>
-                            <td>asd</td>
-                            <td>dfd</td>
-                            <td>dgf</td>
-                            <td>fgfd</td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>

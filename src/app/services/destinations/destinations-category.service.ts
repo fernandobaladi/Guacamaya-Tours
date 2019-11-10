@@ -1,0 +1,27 @@
+import { Injectable } from '@angular/core';
+import { FirestoreService } from '../firestore/firestore.service';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DestinationsCategoryService {
+
+  collectionPath = 'destinations-category';
+  constructor(
+    private firestoreSV: FirestoreService
+  ) { }
+  
+  public create(data){
+    return this.firestoreSV.create(this.collectionPath, data);
+  }
+
+  public getAll(){
+    return this.firestoreSV.getAll(this.collectionPath);
+  }
+
+  public getBooking(destinationCategoryId: string){
+    return this.firestoreSV.getDoc(this.collectionPath, destinationCategoryId);
+  }
+  
+}

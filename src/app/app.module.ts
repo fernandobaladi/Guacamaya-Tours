@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { CommonNavigationComponent } from './navigation/common-navigation/common-navigation.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 import { AdminNavigationComponent } from './navigation/admin-navigation/admin-navigation.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 
@@ -23,8 +26,9 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Hotel } from './hotel';
+import { Hotel } from './models/hotel';
 
 export const HOTELS: Hotel[] = [
 
