@@ -6,9 +6,9 @@
             </div>
             <div class="row bookings-pipes">
                 <div class="col-12 col-md-6 col-lg-6">
-                    <div class="bookings-filter-wrapper">
+                    <div class="bookings-sort-wrapper">
                         <img src="../../../../assets/img/filter.png">
-                        <select formControlName="filter" class="form-control">
+                        <select [(ngModel)]="bookingsSort" class="form-control">
                                 <option selected value=''> Filtrar por: </option>
                                 <option value="1"> Nombre </option>
                                 <option value="2"> Fecha </option>

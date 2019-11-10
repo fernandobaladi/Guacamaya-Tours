@@ -1,0 +1,139 @@
+<section class="gt-section gt-section--full">
+    <div class="states">
+        <div class="container-fluid states-wrapper">
+            <div class="side-bar-btn" (click)=toggleSideBar()>
+                <img src="https://icon-library.net/images/navbar-icon/navbar-icon-2.jpg">
+            </div>
+            <div class="row states-pipes">
+                <div class="col-12 col-md-4 col-lg-4">
+                    <div class="states-sort-wrapper">
+                        <img src="../../../../assets/img/filter.png">
+                        <select [(ngModel)]="stateSort" class="form-control">
+                            <option selected value=''> Filtrar por: </option>
+                            <option value="1"> Nombre </option>
+                            <option value="2"> Status </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                    <div class=" states-pipe-wrapper">
+                        <img src="../../../../assets/img/loupe.png">
+                        <input class="form-control" placeholder="Nombre" />
+                        <!-- <input class="form-control" placeholder="Nombre" [(ngModel)]="searchName"  /> -->
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                    <div class=" states-add-btn">
+                        <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="toggleModalStatus()">
+                            Añadir +
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class=" gt-tag-table">
+                        <span>
+                            Estados
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table states-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Status</th>
+                            <th scope="col"> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr *ngFor="let state of states">
+                                <th scope="row">holi</th>
+                                <td>holi</td>
+                                <button class="btn gt-btn gt-btn--secondary" type="menu"
+                                        (click)="toggleModalStatus()">
+                                        Editar
+                                </button>
+                            </tr> -->
+                        <!-- cuando vayas a hacerlo con firebase descomenta lo de arriba 
+                            y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
+                        cualquier cosa me preguntas  -->
+                        <tr class="state">
+                            <th scope="row">fsa</th>
+                            <td>holi</td>
+                            <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---edit" type="menu"
+                                (click)="toggleModalStatus()">
+                                Editar
+                            </button>
+
+                        </tr>
+                        <tr class="state">
+                            <th scope="row">fsa</th>
+                            <td>holi</td>
+                            <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---edit" type="menu"
+                                (click)="toggleModalStatus()">
+                                Editar
+                            </button>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- comienzo del modal -->
+<section class="overlay-modal-wrapper" [ngClass]="{'show': modalStatus|async}">
+    <div class="overlay-modal" [ngClass]="{'show': modalStatus|async}">
+    </div>
+    <div class="modal-wrapper" [ngClass]="{'show': modalStatus|async}">
+        <div class="gt-admin-modal">
+            <div class="row">
+                <div class="col-12 title">
+                    <h1>
+                        Estado
+                    </h1>
+                </div>
+            </div>
+            <div class="row form">
+                <div class="col-12">
+                    <form [formGroup]="stateForm">
+                        <div class="form-row">
+                            <div class="col-12 col-md-6 form-group">
+                                <label>
+                                    Nombre
+                                </label>
+                                <input type="text" class="form-control" formControlName="name">
+                            </div>
+                            <div class="col-12 col-md-6 checkbox-wrapper">
+                                <div class="col-4 col-md-2">Status</div>
+                                <div class="col-8 col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" formControlName="enabled">
+                                        <label class="form-check-label" for="enabled">
+                                            Habilitado
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-12 buttons">
+                            <button class="btn gt-btn gt-btn--secondary" type="submit" [disabled]="stateForm.invalid"
+                                (click)="saveChanges()">
+                                Guardar
+                            </button>
+                            <button class="btn gt-btn gt-btn--secondary" type="button" (click)="toggleModalStatus()">
+                                Cancelar
+                            </button>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

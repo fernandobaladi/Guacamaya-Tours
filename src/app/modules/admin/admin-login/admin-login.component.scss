@@ -1,0 +1,49 @@
+@import "../../../../styles/sass/lib/variables";
+@import "../../../../styles/sass/lib/mixings";
+@import "../../../../styles/sass/components/tag";
+
+.gt-section {
+  margin-bottom: 0;
+
+  .login {
+    min-height: 100vh;
+
+    .login-wrapper {
+      color: white;
+      padding: 2rem;
+      position: relative;
+      min-height: 100vh;
+      background-color: $color-primary;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .login-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .title {
+          font-family: $font-family-secondary;
+          font-size: 2rem;
+          text-align: center;
+
+          .title-yellow {
+            color: yellow;
+            margin-right: -0.5rem;
+          }
+          .title-blue {
+            color: blue;
+            margin-right: -0.5rem;
+          }
+          .title-red {
+            color: red;
+          }
+        }
+      }
+      .form-control{
+        background-color: $color-secondary;
+      }
+    }
+  }
+}

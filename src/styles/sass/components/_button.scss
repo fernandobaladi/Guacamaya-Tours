@@ -4,13 +4,20 @@ button.gt-btn{
     box-shadow: $button-shadow;
     font-size: 1rem;
     font-family: $font-family-primary;
+    color: white;
+    text-align: center;
 
     &.gt-btn--primary{
         background-color: $color-terciary;
-        color: white;
+        
     }
     &.gt-btn--secondary{
         background-color: $color-primary;
+
+        &.gt-btn--secondary---edit{
+            min-width: 60px;
+            margin-top: 0.3rem;
+        }
     }
 
 }
