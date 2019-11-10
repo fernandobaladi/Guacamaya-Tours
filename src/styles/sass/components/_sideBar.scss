@@ -62,6 +62,7 @@
   transition: .5s;
   z-index: 120;
   box-shadow: $box-shadow;
+  overflow: auto;
 
     &.show {
       // transform: translateX(-100%);

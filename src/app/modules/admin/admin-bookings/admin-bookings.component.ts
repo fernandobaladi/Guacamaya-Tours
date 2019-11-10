@@ -8,6 +8,8 @@ import { SidebarService } from 'src/app/services/sidebar-service/sidebar-service
 })
 export class AdminBookingsComponent implements OnInit {
 
+  bookingsSort = ""
+
   constructor(private sideBarSV: SidebarService) { }
 
   ngOnInit() {
