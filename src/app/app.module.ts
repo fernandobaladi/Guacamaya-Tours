@@ -9,12 +9,17 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { AdminNavigationComponent } from './navigation/admin-navigation/admin-navigation.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     CommonNavigationComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AdminNavigationComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,

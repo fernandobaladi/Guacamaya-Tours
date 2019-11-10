@@ -11,15 +11,15 @@ export class BookingsService {
     private firestoreSV: FirestoreService
   ) {}
 
-  public create(data){
+  public createBooking(data) {
     return this.firestoreSV.create(this.collectionPath, data);
   }
 
-  public getAll(){
+  public getAllBookings() {
     return this.firestoreSV.getAll(this.collectionPath);
   }
 
-  public getBooking(bookingId: string){
+  public getBooking(bookingId: string) {
     return this.firestoreSV.getDoc(this.collectionPath, bookingId);
   }
 

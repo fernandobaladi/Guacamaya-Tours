@@ -1,0 +1,70 @@
+<section class="gt-section gt-section--full">
+    <div class="bookings">
+        <div class="container-fluid bookings-wrapper">
+            <div class="side-bar-btn" (click)=toggleSideBar()>
+                <img src="https://icon-library.net/images/navbar-icon/navbar-icon-2.jpg">
+            </div>
+            <div class="row bookings-pipes">
+                <div class="col-12 col-md-6 col-lg-6">
+                    <div class="bookings-filter-wrapper">
+                        <img src="../../../../assets/img/filter.png">
+                        <select [(ngModel)]="filter" class="form-control" >
+                            <option selected value=''> Ordenar por: </option>
+                            <option value="1"> Nombre </option>
+                            <option value="2"> Fecha </option>
+                            <option value="3"> Status </option>
+                            <option value="4"> Monto </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6">
+                    <div class=" bookings-pipe-wrapper">
+                        <img src="../../../../assets/img/loupe.png">
+                        <!-- <input class="form-control" placeholder="Nombre/Fecha/Status" /> -->
+                        <input class="form-control" placeholder="Nombre/Fecha/Status" [(ngModel)]="search"  />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class=" gt-tag-table">
+                        <span> 
+                            Reservaciones
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table bookings-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Localizador</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Status</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="book" *ngFor="let book of bookings  | sortBookings: filter | searchBooking: search">
+                            <th scope="row">{{book.data.date}}</th>
+                            <td>{{book.data.name}}</td>
+                            <td>{{book.data.locator}}</td>
+                            <td>{{book.data.amount}}</td>
+                            <td>{{book.data.phoneNumber}}</td>
+                            <td>{{book.data.status}}</td>
+                        </tr>
+                        <!-- cuando vayas a hacerlo con firebase descomenta lo de arriba 
+                        y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
+                    cualquier cosa me preguntas  -->
+                        
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</section>

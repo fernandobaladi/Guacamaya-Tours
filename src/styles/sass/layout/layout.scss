@@ -5,6 +5,12 @@
     min-height: calc(100vh - 100px - 50px);
     display: block;
     padding-top: 1rem;
+    font-family: $font-family-primary;
+}
+.gt-body-admin{
+    min-height: 100vh;
+    display: block;
+    font-family: $font-family-primary;
 }
 
 section.gt-section{

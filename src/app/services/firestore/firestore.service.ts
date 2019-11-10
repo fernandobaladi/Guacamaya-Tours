@@ -15,7 +15,7 @@ export class FirestoreService {
       this.firestore
         .collection(collection)
         .add(data)
-        .then(res => { resolve(true) } , err => reject(err));
+        .then(res => { resolve(true); } , err => reject(err));
     });
   }
 
@@ -23,7 +23,7 @@ export class FirestoreService {
     return this.firestore.collection(collection).doc(documentId).snapshotChanges();
   }
 
-  getAll(collection){
+  getAll(collection) {
     return this.firestore.collection(collection).snapshotChanges();
   }
 

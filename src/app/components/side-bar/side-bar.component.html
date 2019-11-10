@@ -1,0 +1,52 @@
+<section class="overlay-wrapper" [ngClass]="{'show': status}">
+    <div class="overlay" [ngClass]="{'show': status}" (click)='toggleSideBar()' >
+        <div class="close-btn">
+            <img src="https://static.thenounproject.com/png/26894-200.png">
+        </div>
+    </div>
+    <div class="side-bar-wrapper" [ngClass]="{'show': status}">
+        <div class="logo-box">
+            <img src="../../../assets/img/guaca-logo-admin.png">
+        </div>
+        <div class="text-box">
+            <span class="title-clickeable" routerLink="/admin/bookings" routerLinkActive="activeLink"
+            (click)='toggleSideBar()'>
+                Reservas
+            </span>
+            <span class="title">
+                Destinos
+            </span>
+            <span class="subtitle" routerLink="/admin/categories" routerLinkActive="activeLink"
+            (click)='toggleSideBar()'>
+                Categorías
+            </span>
+            <span class="subtitle" routerLink="/admin/destinations" routerLinkActive="activeLink"
+            (click)='toggleSideBar()'>
+                Destinos
+            </span>
+            <span class="title">
+                Hoteles
+            </span>
+            <span class="subtitle" routerLink="/admin/services" routerLinkActive="activeLink"
+            (click)='toggleSideBar()'>
+                Servicios
+            </span>
+            <span class="subtitle" routerLink="/admin/hotels" routerLinkActive="activeLink"
+            (click)='toggleSideBar()'>
+                Hoteles
+            </span>
+            <span class="title">
+                Estados
+            </span>
+            <span class="subtitle" routerLink="/admin/states" routerLinkActive="activeLink"
+            (click)='toggleSideBar()'>
+                Estados
+            </span>
+            <span class="title-clickeable" routerLink="/admin/dashboard" routerLinkActive="activeLink"
+            (click)='toggleSideBar()'>
+                Dashboard
+            </span>
+        </div>
+    </div>
+</section>
+
