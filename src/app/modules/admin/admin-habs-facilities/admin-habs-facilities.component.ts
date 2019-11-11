@@ -1,29 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { SidebarService } from 'src/app/services/sidebar-service/sidebar-service.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SidebarService } from 'src/app/services/sidebar-service/sidebar-service.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-states',
-  templateUrl: './admin-states.component.html',
-  styleUrls: ['./admin-states.component.scss']
+  selector: 'app-admin-habs-facilities',
+  templateUrl: './admin-habs-facilities.component.html',
+  styleUrls: ['./admin-habs-facilities.component.scss']
 })
-export class AdminStatesComponent implements OnInit {
-  stateSort = '';
+export class AdminHabsFacilitiesComponent implements OnInit {
+
+  
+  facilitySort = '';
   modalStatus = new BehaviorSubject (false);
-  public stateForm: FormGroup;
+  public facilityForm: FormGroup;
 
   constructor(private sideBarSV: SidebarService, private fb: FormBuilder, private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-    this.createStateForm();
+    this.createFacilityForm();
   }
 
-  createStateForm() {
-    this.stateForm = this.fb.group({
+  createFacilityForm() {
+    this.facilityForm = this.fb.group({
       name: ['', Validators.required],
       enabled: ['', ],
       image: ['', Validators.required],
@@ -42,12 +43,12 @@ export class AdminStatesComponent implements OnInit {
 
   toggleModalStatus(){
     this.modalStatus.next(!this.modalStatus.value);
-    this.createStateForm();
+    this.createFacilityForm();
   }
 
   modifyInfo(){
     // getData();
-    this.stateForm = this.fb.group({
+    this.facilityForm = this.fb.group({
       name: ['hola', Validators.required],
       enabled: ['true', ],
       image: ['', Validators.required],

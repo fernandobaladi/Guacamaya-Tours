@@ -1,33 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from 'src/app/services/sidebar-service/sidebar-service.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
+export interface state {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
-  selector: 'app-admin-states',
-  templateUrl: './admin-states.component.html',
-  styleUrls: ['./admin-states.component.scss']
+  selector: 'app-admin-cities',
+  templateUrl: './admin-cities.component.html',
+  styleUrls: ['./admin-cities.component.scss']
 })
-export class AdminStatesComponent implements OnInit {
-  stateSort = '';
+
+export class AdminCitiesComponent implements OnInit {
+  citySort = '';
+  stateSelect = '';
   modalStatus = new BehaviorSubject (false);
-  public stateForm: FormGroup;
+  public cityForm: FormGroup;
+
+  states: state[] = [
+    { value: 'por-0', viewValue: 'Portuguesa' },
+    { value: 'zulia-1', viewValue: 'Zulia' },
+  ];
 
   constructor(private sideBarSV: SidebarService, private fb: FormBuilder, private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-    this.createStateForm();
+ 
+    this.createCityForm();
   }
 
-  createStateForm() {
-    this.stateForm = this.fb.group({
+  createCityForm() {
+    this.cityForm = this.fb.group({
       name: ['', Validators.required],
+      state: ['', Validators.required],
       enabled: ['', ],
       image: ['', Validators.required],
-
     })
   }
 
@@ -42,16 +54,16 @@ export class AdminStatesComponent implements OnInit {
 
   toggleModalStatus(){
     this.modalStatus.next(!this.modalStatus.value);
-    this.createStateForm();
+    this.createCityForm();
   }
 
   modifyInfo(){
     // getData();
-    this.stateForm = this.fb.group({
+    this.cityForm = this.fb.group({
       name: ['hola', Validators.required],
+      state: ['por-0', Validators.required],
       enabled: ['true', ],
       image: ['', Validators.required],
-
     })
     this.modalStatus.next(!this.modalStatus.value);
   }
@@ -62,3 +74,4 @@ export class AdminStatesComponent implements OnInit {
   }
 
 }
+

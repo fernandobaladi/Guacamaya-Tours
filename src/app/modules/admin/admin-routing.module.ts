@@ -5,6 +5,11 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminBookingsComponent } from './admin-bookings/admin-bookings.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminStatesComponent } from './admin-states/admin-states.component';
+import { AdminCitiesComponent } from './admin-cities/admin-cities.component';
+import { AdminDestinationCategoriesComponent } from './admin-destination-categories/admin-destination-categories.component';
+import { AdminHotelServicesComponent } from './admin-hotel-services/admin-hotel-services.component';
+import { AdminHabsFacilitiesComponent } from './admin-habs-facilities/admin-habs-facilities.component';
+import { AdminDestinationsComponent } from './admin-destinations/admin-destinations.component';
 
 
 const routes: Routes = [
@@ -31,6 +36,26 @@ const routes: Routes = [
       {
         path: 'states',
         component: AdminStatesComponent
+      },
+      {
+        path: 'cities',
+        component: AdminCitiesComponent
+      },
+      {
+        path: 'categories',
+        component: AdminDestinationCategoriesComponent
+      },
+      {
+        path: 'services',
+        component: AdminHotelServicesComponent
+      },
+      {
+        path: 'facilities',
+        component: AdminHabsFacilitiesComponent
+      },
+      {
+        path: 'destinations',
+        component: AdminDestinationsComponent
       },
     ]
   },

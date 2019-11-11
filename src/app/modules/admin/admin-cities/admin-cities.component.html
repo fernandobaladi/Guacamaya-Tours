@@ -1,30 +1,30 @@
 <section class="gt-section gt-section--full">
-    <div class="states">
-        <div class="container-fluid states-wrapper">
+    <div class="cities">
+        <div class="container-fluid cities-wrapper">
             <div class="side-bar-btn" (click)=toggleSideBar()>
                 <img src="https://icon-library.net/images/navbar-icon/navbar-icon-2.jpg">
             </div>
-            <div class="row states-pipes">
+            <div class="row cities-pipes">
                 <div class="col-12 col-md-4 col-lg-4">
-                    <div class="states-sort-wrapper">
+                    <div class="cities-sort-wrapper">
                         <img src="../../../../assets/img/filter.png">
-                        <select [(ngModel)]="stateSort" class="form-control">
+                        <select [(ngModel)]="citySort" class="form-control">
                             <option selected value=''> Filtrar por: </option>
                             <option value="1"> Nombre </option>
-                            <option value="2"> Status </option>
+                            <option value="2"> Estado </option>
+                            <option value="3"> Status </option>
                         </select>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 col-lg-4">
-                    <div class=" states-pipe-wrapper">
+                    <div class=" cities-pipe-wrapper">
                         <img src="../../../../assets/img/loupe.png">
-                        <input class="form-control" placeholder="Nombre" />
-                        <!-- <input class="form-control" placeholder="Nombre" [(ngModel)]="searchName"  /> -->
+                        <input class="form-control" placeholder="Nombre/Estado" />
+                        <!-- <input class="form-control" placeholder="Nombre/Estado" [(ngModel)]="searchName"  /> -->
                     </div>
-
                 </div>
                 <div class="col-12 col-md-4 col-lg-4">
-                    <div class=" states-add-btn">
+                    <div class=" cities-add-btn">
                         <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="toggleModalStatus()">
                             Añadir +
                         </button>
@@ -35,35 +35,38 @@
                 <div class="col-12">
                     <div class=" gt-tag-table">
                         <span>
-                            Estados
+                            Ciudades
                         </span>
                     </div>
                 </div>
 
             </div>
             <div class="table-responsive">
-                <table class="table states-table">
+                <table class="table cities-table">
                     <thead>
                         <tr>
                             <th scope="col">Nombre</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Status</th>
                             <th scope="col"> </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr *ngFor="let state of states">
-                                <th scope="row">holi</th>
-                                <td>holi</td>
-                                <button class="btn gt-btn gt-btn--secondary" type="menu"
-                                        (click)="modifyInfo()">
-                                        Editar
-                                </button>
-                            </tr> -->
+                        <!-- <tr class="city" *ngFor="let city of cities">
+                                    <th scope="row">holi</th>
+                                    <td>ccs</td>
+                                    <td>holi</td>
+                                    <button class="btn gt-btn gt-btn--secondary" type="menu"
+                                            (click)="modifyInfo()">
+                                            Editar
+                                    </button>
+                                </tr> -->
                         <!-- cuando vayas a hacerlo con firebase descomenta lo de arriba 
-                            y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
-                        cualquier cosa me preguntas  -->
-                        <tr class="state">
+                                y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
+                            cualquier cosa me preguntas  -->
+                        <tr class="city">
                             <th scope="row">fsa</th>
+                            <td>ccs</td>
                             <td>holi</td>
                             <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---edit" type="menu"
                                 (click)="modifyInfo()">
@@ -71,8 +74,9 @@
                             </button>
 
                         </tr>
-                        <tr class="state">
+                        <tr class="city">
                             <th scope="row">fsa</th>
+                            <td>ccs</td>
                             <td>holi</td>
                             <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---edit" type="menu"
                                 (click)="modifyInfo()">
@@ -97,19 +101,29 @@
             <div class="row">
                 <div class="col-12 title">
                     <h1>
-                        Estado
+                        Ciudad
                     </h1>
                 </div>
             </div>
             <div class="row form">
                 <div class="col-12">
-                    <form [formGroup]="stateForm">
+                    <form [formGroup]="cityForm">
                         <div class="form-row">
                             <div class="col-12 col-md-6 form-group">
                                 <label>
                                     Nombre
                                 </label>
                                 <input type="text" class="form-control" formControlName="name">
+                            </div>
+                            <div class="col-12 col-md-6 form-group">
+                                <label>
+                                    Estado
+                                </label>
+                                <select [(ngModel)]="stateSelect" class="form-control">
+                                    <option selected value=''> Seleccione </option>
+                                    <option *ngFor="let state of states" [value]="state.value"> {{state.viewValue}}
+                                    </option>
+                                </select>
                             </div>
                             <div class="col-12 col-md-6 checkbox-wrapper">
                                 <div class="col-4 col-md-2">Status</div>
@@ -127,8 +141,8 @@
                                 <input type="file" class="form-control-file" formControlName="image">
                             </div>
                             <div class="col-12 buttons">
-                                <button class="btn gt-btn gt-btn--secondary" type="submit"
-                                    [disabled]="stateForm.invalid" (click)="saveChanges()">
+                                <button class="btn gt-btn gt-btn--secondary" type="submit" [disabled]="cityForm.invalid"
+                                    (click)="saveChanges()">
                                     Guardar
                                 </button>
                                 <button class="btn gt-btn gt-btn--secondary" type="button"

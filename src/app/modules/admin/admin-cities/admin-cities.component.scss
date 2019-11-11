@@ -1,0 +1,76 @@
+@import "../../../../styles/sass/lib/variables";
+@import "../../../../styles/sass/lib/mixings";
+@import "../../../../styles/sass/components/tag";
+@import "../../../../styles/sass/components/button";
+@import "../../../../styles/sass/components/modal";
+
+.gt-section {
+  margin-bottom: 0;
+
+  .cities {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    .cities-wrapper {
+      color: white;
+      padding: 2rem;
+      position: relative;
+      min-height: 100vh;
+
+      .table-title {
+        color: black;
+        background-color: $color-primary;
+      }
+
+      .cities-sort-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        img {
+          height: 30px;
+          width: 30px;
+          margin-right: 0.5rem;
+        }
+        select.form-control {
+          background-color: $color-secondary;
+          width: 250px;
+        }
+      }
+      .cities-pipe-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        img {
+          height: 30px;
+          width: 30px;
+          margin-right: 0.5rem;
+        }
+        input.form-control {
+          background-color: $color-secondary;
+          width: 250px;
+        }
+      }
+      .cities-add-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+
+      .cities-table {
+        background-color: $color-terciary;
+
+        .city {
+          background-color: $color-secondary;
+          color: black;
+        }
+      }
+    }
+  }
+}

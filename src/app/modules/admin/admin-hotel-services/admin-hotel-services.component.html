@@ -1,14 +1,14 @@
 <section class="gt-section gt-section--full">
-    <div class="states">
-        <div class="container-fluid states-wrapper">
+    <div class="hotel-services">
+        <div class="container-fluid hotel-services-wrapper">
             <div class="side-bar-btn" (click)=toggleSideBar()>
                 <img src="https://icon-library.net/images/navbar-icon/navbar-icon-2.jpg">
             </div>
-            <div class="row states-pipes">
+            <div class="row hotel-services-pipes">
                 <div class="col-12 col-md-4 col-lg-4">
-                    <div class="states-sort-wrapper">
+                    <div class="hotel-services-sort-wrapper">
                         <img src="../../../../assets/img/filter.png">
-                        <select [(ngModel)]="stateSort" class="form-control">
+                        <select [(ngModel)]="hotelServiceSort" class="form-control">
                             <option selected value=''> Filtrar por: </option>
                             <option value="1"> Nombre </option>
                             <option value="2"> Status </option>
@@ -16,15 +16,14 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-4 col-lg-4">
-                    <div class=" states-pipe-wrapper">
+                    <div class=" hotel-services-pipe-wrapper">
                         <img src="../../../../assets/img/loupe.png">
                         <input class="form-control" placeholder="Nombre" />
                         <!-- <input class="form-control" placeholder="Nombre" [(ngModel)]="searchName"  /> -->
                     </div>
-
                 </div>
                 <div class="col-12 col-md-4 col-lg-4">
-                    <div class=" states-add-btn">
+                    <div class=" hotel-services-add-btn">
                         <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="toggleModalStatus()">
                             Añadir +
                         </button>
@@ -35,14 +34,14 @@
                 <div class="col-12">
                     <div class=" gt-tag-table">
                         <span>
-                            Estados
+                            Servicios del Hotel
                         </span>
                     </div>
                 </div>
 
             </div>
             <div class="table-responsive">
-                <table class="table states-table">
+                <table class="table hotel-services-table">
                     <thead>
                         <tr>
                             <th scope="col">Nombre</th>
@@ -51,18 +50,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr *ngFor="let state of states">
-                                <th scope="row">holi</th>
-                                <td>holi</td>
-                                <button class="btn gt-btn gt-btn--secondary" type="menu"
-                                        (click)="modifyInfo()">
-                                        Editar
-                                </button>
-                            </tr> -->
+                        <!-- <tr class="hotel-service" *ngFor="let hotelService of hotelServices">
+                                            <th scope="row">holi</th>
+                                            <td>holi</td>
+                                            <button class="btn gt-btn gt-btn--secondary" type="menu"
+                                                    (click)="modifyInfo()">
+                                                    Editar
+                                            </button>
+                                        </tr> -->
                         <!-- cuando vayas a hacerlo con firebase descomenta lo de arriba 
-                            y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
-                        cualquier cosa me preguntas  -->
-                        <tr class="state">
+                                        y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
+                                    cualquier cosa me preguntas  -->
+                        <tr class="hotel-service">
                             <th scope="row">fsa</th>
                             <td>holi</td>
                             <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---edit" type="menu"
@@ -71,7 +70,7 @@
                             </button>
 
                         </tr>
-                        <tr class="state">
+                        <tr class="hotel-service">
                             <th scope="row">fsa</th>
                             <td>holi</td>
                             <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---edit" type="menu"
@@ -97,13 +96,13 @@
             <div class="row">
                 <div class="col-12 title">
                     <h1>
-                        Estado
+                        Servicio
                     </h1>
                 </div>
             </div>
             <div class="row form">
                 <div class="col-12">
-                    <form [formGroup]="stateForm">
+                    <form [formGroup]="hotelServiceForm">
                         <div class="form-row">
                             <div class="col-12 col-md-6 form-group">
                                 <label>
@@ -128,7 +127,7 @@
                             </div>
                             <div class="col-12 buttons">
                                 <button class="btn gt-btn gt-btn--secondary" type="submit"
-                                    [disabled]="stateForm.invalid" (click)="saveChanges()">
+                                    [disabled]="hotelServiceForm.invalid" (click)="saveChanges()">
                                     Guardar
                                 </button>
                                 <button class="btn gt-btn gt-btn--secondary" type="button"

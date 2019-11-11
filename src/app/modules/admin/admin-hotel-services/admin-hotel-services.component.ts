@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from 'src/app/services/sidebar-service/sidebar-service.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'app-admin-states',
-  templateUrl: './admin-states.component.html',
-  styleUrls: ['./admin-states.component.scss']
+  selector: 'app-admin-hotel-services',
+  templateUrl: './admin-hotel-services.component.html',
+  styleUrls: ['./admin-hotel-services.component.scss']
 })
-export class AdminStatesComponent implements OnInit {
-  stateSort = '';
+export class AdminHotelServicesComponent implements OnInit {
+
+  hotelServiceSort = '';
   modalStatus = new BehaviorSubject (false);
-  public stateForm: FormGroup;
+  public hotelServiceForm: FormGroup;
 
   constructor(private sideBarSV: SidebarService, private fb: FormBuilder, private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-    this.createStateForm();
+    this.createHotelServiceForm();
   }
 
-  createStateForm() {
-    this.stateForm = this.fb.group({
+  createHotelServiceForm() {
+    this.hotelServiceForm = this.fb.group({
       name: ['', Validators.required],
       enabled: ['', ],
       image: ['', Validators.required],
@@ -42,12 +42,12 @@ export class AdminStatesComponent implements OnInit {
 
   toggleModalStatus(){
     this.modalStatus.next(!this.modalStatus.value);
-    this.createStateForm();
+    this.createHotelServiceForm();
   }
 
   modifyInfo(){
     // getData();
-    this.stateForm = this.fb.group({
+    this.hotelServiceForm = this.fb.group({
       name: ['hola', Validators.required],
       enabled: ['true', ],
       image: ['', Validators.required],
