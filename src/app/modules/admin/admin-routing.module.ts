@@ -10,6 +10,7 @@ import { AdminDestinationCategoriesComponent } from './admin-destination-categor
 import { AdminHotelServicesComponent } from './admin-hotel-services/admin-hotel-services.component';
 import { AdminHabsFacilitiesComponent } from './admin-habs-facilities/admin-habs-facilities.component';
 import { AdminDestinationsComponent } from './admin-destinations/admin-destinations.component';
+import { AdminHotelsComponent } from './admin-hotels/admin-hotels.component';
 
 
 const routes: Routes = [
@@ -56,6 +57,10 @@ const routes: Routes = [
       {
         path: 'destinations',
         component: AdminDestinationsComponent
+      },
+      {
+        path: 'hotels',
+        component: AdminHotelsComponent
       },
     ]
   },

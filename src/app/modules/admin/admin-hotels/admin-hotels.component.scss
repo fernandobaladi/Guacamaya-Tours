@@ -7,13 +7,13 @@
 .gt-section {
   margin-bottom: 0;
 
-  .destinations {
+  .hotels {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 
-    .destinations-wrapper {
+    .hotels-wrapper {
       color: white;
       padding: 2rem;
       position: relative;
@@ -24,7 +24,7 @@
         background-color: $color-primary;
       }
 
-      .destinations-sort-wrapper {
+      .hotels-sort-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -40,7 +40,7 @@
           width: 250px;
         }
       }
-      .destinations-pipe-wrapper {
+      .hotels-pipe-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -56,17 +56,17 @@
           width: 250px;
         }
       }
-      .destinations-add-btn {
+      .hotels-add-btn {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-bottom: 2rem;
       }
 
-      .destinations-table {
+      .hotels-table {
         background-color: $color-terciary;
 
-        .destination {
+        .hotel {
           background-color: $color-secondary;
           color: black;
         }
@@ -75,10 +75,7 @@
   }
 }
 .input-service-box{
-  display: flex;
-  
-}
-.input-activity-box{
-  display: flex;
-  
+
+    display: flex;
+    justify-content: space-between;
 }

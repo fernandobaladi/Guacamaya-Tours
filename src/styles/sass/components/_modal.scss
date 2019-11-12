@@ -43,7 +43,7 @@
 
     .gt-admin-modal {
       width: 700px;
-      min-height: auto;
+      // min-height: auto;
      
 
       @include big-phone {
@@ -51,7 +51,7 @@
       }
 
       .form-box{
-        max-height: 90vh;
+        max-height: 85vh;
         overflow: auto;
       }
 

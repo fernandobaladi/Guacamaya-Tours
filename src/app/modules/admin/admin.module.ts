@@ -15,6 +15,7 @@ import { AdminDestinationCategoriesComponent } from './admin-destination-categor
 import { AdminHotelServicesComponent } from './admin-hotel-services/admin-hotel-services.component';
 import { AdminHabsFacilitiesComponent } from './admin-habs-facilities/admin-habs-facilities.component';
 import { AdminDestinationsComponent } from './admin-destinations/admin-destinations.component';
+import { AdminHotelsComponent } from './admin-hotels/admin-hotels.component';
 
 @NgModule({
   declarations: [AdminDashboardComponent,
@@ -27,7 +28,8 @@ import { AdminDestinationsComponent } from './admin-destinations/admin-destinati
     AdminDestinationCategoriesComponent,
     AdminHotelServicesComponent,
     AdminHabsFacilitiesComponent,
-    AdminDestinationsComponent
+    AdminDestinationsComponent,
+    AdminHotelsComponent
   ],
   imports: [
     CommonModule,
