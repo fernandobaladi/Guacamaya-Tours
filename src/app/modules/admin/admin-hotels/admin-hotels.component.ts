@@ -15,6 +15,12 @@ export interface city {
   viewValue: string;
 }
 
+export interface service {
+  value: string;
+  viewValue: string;
+  active: boolean;
+}
+
 @Component({
   selector: 'app-admin-hotels',
   templateUrl: './admin-hotels.component.html',
@@ -41,7 +47,14 @@ export class AdminHotelsComponent implements OnInit {
     { value: 'lara-1', viewValue: 'Lara' },
   ];
 
-  services=[  ]
+  services: service[] = [
+    { value: 'airC-0', viewValue: 'Aire acondicionado', active: false },
+    { value: 'pis-1', viewValue: 'Piscina', active: false  },
+    { value: 'spa-2', viewValue: 'Spa', active: false  },
+    { value: 'parque-3', viewValue: 'Parque' , active: false  },
+  ];
+
+  // services=[  ]
 
 
 
@@ -69,7 +82,7 @@ export class AdminHotelsComponent implements OnInit {
       address: ['', Validators.required],
       fullDay: ['',],
       price: ['', Validators.required],
-      service: ['',],
+      service: ['',Validators.required],
       image: ['', Validators.required],
       enabled: ['', ],
 

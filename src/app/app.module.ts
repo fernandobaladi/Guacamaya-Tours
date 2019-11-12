@@ -11,6 +11,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AdminNavigationComponent } from './navigation/admin-navigation/admin-navigation.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    CarouselModule.forRoot()
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]

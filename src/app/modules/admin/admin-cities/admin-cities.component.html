@@ -119,7 +119,7 @@
                                 <label>
                                     Estado
                                 </label>
-                                <select [(ngModel)]="stateSelect" class="form-control">
+                                <select formControlName="state" class="form-control">
                                     <option selected value=''> Seleccione </option>
                                     <option *ngFor="let state of states" [value]="state.value"> {{state.viewValue}}
                                     </option>
