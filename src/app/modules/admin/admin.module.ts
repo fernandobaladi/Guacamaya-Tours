@@ -10,14 +10,15 @@ import { AdminStatesComponent } from './admin-states/admin-states.component';
 import { SortBookingsPipe } from '../../pipes/sort-bookings.pipe';
 import { SearchBookingPipe } from '../../pipes/search-booking.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { SortStatesPipe} from '../../pipes/sort-states.pipe';
 @NgModule({
   declarations: [AdminDashboardComponent,
     AdminLoginComponent, 
     AdminStatesComponent,
     AdminBookingsComponent,
     SortBookingsPipe,
-    SearchBookingPipe
+    SearchBookingPipe,
+    SortStatesPipe
   ],
   imports: [
     CommonModule,

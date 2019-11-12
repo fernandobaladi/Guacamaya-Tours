@@ -15,7 +15,7 @@ export class SortBookingsPipe implements PipeTransform {
           if (a.data.name < b.data.name) {
             return -1;
           }
-            // a must be equal to b
+            // Si a === b
           return 0;
         });
 
@@ -27,7 +27,7 @@ export class SortBookingsPipe implements PipeTransform {
             if (a.data.date < b.data.date) {
               return -1;
             }
-              // a must be equal to b
+              // Si a === b
             return 0;
           });
       
@@ -39,7 +39,7 @@ export class SortBookingsPipe implements PipeTransform {
             if (a.data.status < b.data.status) {
               return -1;
             }
-              // a must be equal to b
+              // Si a === b
             return 0;
           });
     
@@ -51,7 +51,7 @@ export class SortBookingsPipe implements PipeTransform {
             if (a.data.amount < b.data.amount) {
               return 1;
             }
-              // a must be equal to b
+              // Si a === b
             return 0;
           });
     }

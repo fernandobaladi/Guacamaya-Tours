@@ -10,9 +10,10 @@ import { BookingsService } from 'src/app/services/bookings/bookings.service';
 export class AdminBookingsComponent implements OnInit {
 
   bookings;
-  filter: string = "";
+  optionSort = '';
   search: string;
-  constructor(private sideBarSV: SidebarService, private bookingsService: BookingsService) {
+  constructor(private sideBarSV: SidebarService,
+              private bookingsService: BookingsService) {
   }
 
   ngOnInit() {
@@ -30,6 +31,5 @@ export class AdminBookingsComponent implements OnInit {
 
   toggleSideBar() {
     this.sideBarSV.toggleStatus();
-    console.log(this.bookings[0].data.name)
   }
 }

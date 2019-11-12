@@ -8,7 +8,7 @@
                 <div class="col-12 col-md-4 col-lg-4">
                     <div class="states-sort-wrapper">
                         <img src="../../../../assets/img/filter.png">
-                        <select [(ngModel)]="stateSort" class="form-control">
+                        <select [(ngModel)]="optionSort" class="form-control">
                             <option selected value=''> Filtrar por: </option>
                             <option value="1"> Nombre </option>
                             <option value="2"> Status </option>
@@ -18,14 +18,14 @@
                 <div class="col-12 col-md-4 col-lg-4">
                     <div class=" states-pipe-wrapper">
                         <img src="../../../../assets/img/loupe.png">
-                        <input class="form-control" placeholder="Nombre" />
+                        <input class="form-control" placeholder="Nombre" [(ngModel)]="search"/>
                         <!-- <input class="form-control" placeholder="Nombre" [(ngModel)]="searchName"  /> -->
                     </div>
 
                 </div>
                 <div class="col-12 col-md-4 col-lg-4">
-                    <div class=" states-add-btn">
-                        <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="toggleModalStatus()">
+                    <div class="states-add-btn">
+                        <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="openModal()">
                             Añadir +
                         </button>
                     </div>
@@ -51,34 +51,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr *ngFor="let state of states">
-                                <th scope="row">holi</th>
-                                <td>holi</td>
+                        <tr class="state" *ngFor="let state of states | sortStates: optionSort | filter: search">
+                                <th scope="row">{{state?.data?.name}}</th>
+                                <td>{{state?.data?.status?"Habilitado": "Deshabilitado"}}</td>
                                 <button class="btn gt-btn gt-btn--secondary" type="menu"
-                                        (click)="toggleModalStatus()">
+                                        (click)="openModal(state)">
                                         Editar
                                 </button>
-                            </tr> -->
+                            </tr>
                         <!-- cuando vayas a hacerlo con firebase descomenta lo de arriba 
                             y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
                         cualquier cosa me preguntas  -->
-                        <tr class="state">
-                            <th scope="row">fsa</th>
-                            <td>holi</td>
-                            <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---edit" type="menu"
-                                (click)="toggleModalStatus()">
-                                Editar
-                            </button>
-
-                        </tr>
-                        <tr class="state">
-                            <th scope="row">fsa</th>
-                            <td>holi</td>
-                            <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---edit" type="menu"
-                                (click)="toggleModalStatus()">
-                                Editar
-                            </button>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -114,8 +97,8 @@
                                 <div class="col-4 col-md-2">Status</div>
                                 <div class="col-8 col-md-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" formControlName="enabled">
-                                        <label class="form-check-label" for="enabled">
+                                        <input class="form-check-input" type="checkbox" formControlName="status">
+                                        <label class="form-check-label" for="status">
                                             Habilitado
                                         </label>
                                     </div>
@@ -130,7 +113,7 @@
                                 Cancelar
                             </button>
                         </div>
-                </div>
+                    </div>
                 </form>
             </div>
         </div>
