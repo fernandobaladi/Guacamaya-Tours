@@ -26,7 +26,7 @@ export class AdminCitiesComponent implements OnInit {
   states;
   cities;
   public stateForm: FormGroup;
-
+  stateSelectedByUser;
   constructor(private sideBarSV: SidebarService,
               private fb: FormBuilder,
               private router: Router,
@@ -61,7 +61,11 @@ export class AdminCitiesComponent implements OnInit {
   createCityForm() {
     this.cityForm = this.fb.group({
       name: ['', Validators.required],
-      state: ['', Validators.required],
+      state: {
+        name:[''],
+        status: [''],
+        id:['']
+      },
       status: ['', ],
       id: [''],
       image: [''],
@@ -86,6 +90,13 @@ export class AdminCitiesComponent implements OnInit {
     this.createCityForm();
   }
 
+  findStateSelected(id) {
+    this.states.forEach(element => {
+      if (id === element.id) {
+        this.stateSelectedByUser = element;
+      }
+    });
+  }
   openModal(city?) {
     if (city) {
       this.cityForm.controls.name.setValue(city.data.name);
@@ -98,7 +109,7 @@ export class AdminCitiesComponent implements OnInit {
     this.modalStatus.next(!this.modalStatus.value);
   }
 
-  async saveChanges() {
+  saveChanges() {
     this.loading = true;
 
     if (!this.cityForm.controls.status.value) {
@@ -106,21 +117,27 @@ export class AdminCitiesComponent implements OnInit {
     }
     this.createStateForm();
     console.log(this.cityForm.controls.state.value);
-    let sId;
-    let stateSelected = this.statesService.getState(this.cityForm.controls.state.value).subscribe((stateSnapshot) => {
-      sId = this.cityForm.controls.state.value;
-      this.stateForm.setValue({
-        id: this.cityForm.controls.state.value,
-        data: stateSnapshot.payload.data()
-      });
-    });
-    let info = this.stateForm.controls.data;
+    // let sId;
+    // let stateSelected = this.statesService.getState(this.cityForm.controls.state.value).subscribe((stateSnapshot) => {
+    //   sId = this.cityForm.controls.state.value;
+    //   this.stateForm.setValue({
+    //     id: this.cityForm.controls.state.value,
+    //     data: stateSnapshot.payload.data()
+    //   });
+    // });
+    this.findStateSelected(this.cityForm.controls.state.value);
+    // let info = this.stateForm.controls.data;
+    let info = this.stateSelectedByUser;
     console.log(info);
 
     const data = {
       name: this.cityForm.controls.name.value,
       status: this.cityForm.controls.status.value,
-      state: stateSelected};
+      state: {
+        name: this.stateSelectedByUser.data.name,
+        status: this.stateSelectedByUser.data.status,
+        id: this.stateSelectedByUser.id
+      }};
 
     if (!this.cityForm.controls.id.value) {
 

@@ -18,10 +18,11 @@ import { AdminHabsFacilitiesComponent } from './admin-habs-facilities/admin-habs
 import { AdminDestinationsComponent } from './admin-destinations/admin-destinations.component';
 import { AdminHotelsComponent } from './admin-hotels/admin-hotels.component';
 import { StatusFilterStatesPipe } from 'src/app/pipes/status-filter-states.pipe';
+import { CitiesSortPipe } from '../../pipes/cities/cities-sort.pipe';
 
 @NgModule({
   declarations: [AdminDashboardComponent,
-    AdminLoginComponent, 
+    AdminLoginComponent,
     AdminStatesComponent,
     AdminBookingsComponent,
     SortBookingsPipe,
@@ -33,7 +34,8 @@ import { StatusFilterStatesPipe } from 'src/app/pipes/status-filter-states.pipe'
     AdminHabsFacilitiesComponent,
     AdminDestinationsComponent,
     AdminHotelsComponent,
-    StatusFilterStatesPipe
+    StatusFilterStatesPipe,
+    CitiesSortPipe
   ],
   imports: [
     CommonModule,

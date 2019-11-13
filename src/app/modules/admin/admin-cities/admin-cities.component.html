@@ -8,7 +8,7 @@
                 <div class="col-12 col-md-4 col-lg-4">
                     <div class="cities-sort-wrapper">
                         <img src="../../../../assets/img/filter.png">
-                        <select [(ngModel)]="citySort" class="form-control">
+                        <select [(ngModel)]="optionSort" class="form-control">
                             <option selected value=''> Ordenar por: </option>
                             <option value="1"> Nombre </option>
                             <option value="2"> Estado </option>
@@ -52,9 +52,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="city" *ngFor="let city of cities | filter: search">
+                        <tr class="city" *ngFor="let city of cities | citiesSort: optionSort | filter: search">
                                     <th scope="row">{{city.data.name}}</th>
-                                    <td>{{city.data.state}}</td>
+                                    <td>{{city.data.state.name}}</td>
                                     <td>{{city.data.status?"Habilitado": "Deshabilitado"}}</td>
                                     <button class="btn gt-btn gt-btn--secondary" type="menu"
                                             (click)="openModal(city)">

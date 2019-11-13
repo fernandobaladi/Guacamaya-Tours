@@ -30,7 +30,6 @@ export class SortBookingsPipe implements PipeTransform {
               // Si a === b
             return 0;
           });
-      
       case '3':
           return bookings.sort( function(a, b) {
             if (a.data.status > b.data.status) {
