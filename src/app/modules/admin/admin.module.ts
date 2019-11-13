@@ -11,6 +11,14 @@ import { SortBookingsPipe } from '../../pipes/sort-bookings.pipe';
 import { SearchBookingPipe } from '../../pipes/search-booking.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SortStatesPipe} from '../../pipes/sort-states.pipe';
+import { AdminCitiesComponent } from './admin-cities/admin-cities.component';
+import { AdminDestinationCategoriesComponent } from './admin-destination-categories/admin-destination-categories.component';
+import { AdminHotelServicesComponent } from './admin-hotel-services/admin-hotel-services.component';
+import { AdminHabsFacilitiesComponent } from './admin-habs-facilities/admin-habs-facilities.component';
+import { AdminDestinationsComponent } from './admin-destinations/admin-destinations.component';
+import { AdminHotelsComponent } from './admin-hotels/admin-hotels.component';
+import { StatusFilterStatesPipe } from 'src/app/pipes/status-filter-states.pipe';
+
 @NgModule({
   declarations: [AdminDashboardComponent,
     AdminLoginComponent, 
@@ -18,7 +26,14 @@ import { SortStatesPipe} from '../../pipes/sort-states.pipe';
     AdminBookingsComponent,
     SortBookingsPipe,
     SearchBookingPipe,
-    SortStatesPipe
+    SortStatesPipe,
+    AdminCitiesComponent,
+    AdminDestinationCategoriesComponent,
+    AdminHotelServicesComponent,
+    AdminHabsFacilitiesComponent,
+    AdminDestinationsComponent,
+    AdminHotelsComponent,
+    StatusFilterStatesPipe
   ],
   imports: [
     CommonModule,

@@ -1,94 +1,102 @@
-
-// modal para los cruds de admin 
+// modal para los cruds de admin
 .overlay-modal-wrapper {
-    position: fixed;
-    min-width: 100vw;
+  position: fixed;
+  min-width: 100vw;
+  min-height: 100vh;
+  top: 0;
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .overlay-modal {
+    background: rgba(0, 0, 0, 0.6);
     min-height: 100vh;
-    top: 0;
-    z-index: 100;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.3s;
+    min-width: 100vw;
+    position: fixed;
 
     &.show {
       visibility: visible;
       opacity: 1;
     }
+  }
 
-    .overlay-modal {
-      background: rgba(0, 0, 0, 0.6);
-      min-height: 100vh;
-      min-width: 100vw;
-      position: fixed;
+  .modal-wrapper {
+    min-width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    transition: 0.3s;
+    z-index: 140;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-
-      &.show {
-        visibility: visible;
-        opacity: 1;
-      }
+    &.show {
+      opacity: 1;
+      visibility: visible;
     }
 
-    .modal-wrapper {
-      min-width: 100vw;
-      min-height: 100vh;
-      position: fixed;
-      transition: 0.3s;
-      z-index: 140;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .gt-admin-modal {
+      width: 700px;
+      // min-height: auto;
+     
 
-
-      &.show {
-        opacity: 1;
-        visibility: visible;
+      @include big-phone {
+        width: 80vw;
       }
 
-      .gt-admin-modal {
-        width: 700px;
-        min-height: auto;
+      .form-box{
+        max-height: 85vh;
+        overflow: auto;
+      }
 
-        @include big-phone {
-          width: 80vw;
+      .title {
+        margin-top: 1rem;
+        position: relative;
+        background-color: $color-primary;
+        width: 100%;
+        text-align: center;
+        color: white;
+      }
+
+      .checkbox-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 0.5rem;
+      }
+
+      .form {
+        color: white;
+        font-size: 1rem;
+        background-color: $color-terciary;
+        padding: 1rem 0;
+
+        .buttons {
+          display: flex;
+          justify-content: space-between;
         }
 
-        .title {
-          margin-top: 1rem;
-          position: relative;
-          background-color: $color-primary;
-          width: 100%;
-          text-align: center;
-          color: white;
+        input.form-control {
+          color: black;
+          background-color: $color-secondary;
         }
 
-        .checkbox-wrapper{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-bottom: 0.5rem ;
+        select.form-control {
+          color: black;
+          background-color: $color-secondary;
         }
 
-        .form {
-          color: white;
-          font-size: 1rem;
-          background-color: $color-terciary;
-          padding: 1rem 0;
-
-          .buttons{
-              display: flex;
-              justify-content: space-between;
-          }
-
-          input.form-control {
-            color: black;
-            background-color: $color-secondary;
-          }
-
-          select.form-control {
-            color: black;
-            background-color: $color-secondary;
-          }
+        textarea.form-control {
+          color: black;
+          background-color: $color-secondary;
         }
       }
     }
   }
+}

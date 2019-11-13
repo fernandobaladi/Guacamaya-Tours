@@ -65,8 +65,6 @@ export class AdminStatesComponent implements OnInit {
   }
   openModal(state?) {
     if (state) {
-      console.log(state);
-      console.log(this.stateForm);
       this.stateForm.controls.name.setValue(state.data.name);
       this.stateForm.controls.status.setValue(state.data.status);
       this.stateForm.controls.id.setValue(state.id);
@@ -78,6 +76,9 @@ export class AdminStatesComponent implements OnInit {
   saveChanges() {
     this.loading = true;
 
+    if(!this.stateForm.controls.status.value){
+      this.stateForm.controls.status.setValue(false);
+    }
     let data = {
       name: this.stateForm.controls.name.value,
       status: this.stateForm.controls.status.value
