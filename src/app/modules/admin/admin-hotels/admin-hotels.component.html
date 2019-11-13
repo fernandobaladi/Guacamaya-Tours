@@ -130,7 +130,7 @@
                                 </label>
                                 <input type="text" class="form-control" formControlName="name">
                             </div>
-                            <div class="col-12 col-md-4 form-group">
+                            <div class="col-6 col-md-3 form-group">
                                 <label>
                                     Estrellas
                                 </label>
@@ -142,6 +142,16 @@
                                     <option value="4"> 4 </option>
                                     <option value="5"> 5 </option>
                                 </select>
+                            </div>
+                            <div class="col-6 col-md-3 checkbox-wrapper">
+                                <div class="col-12 col-md-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" formControlName="enabled">
+                                        <label class="form-check-label" for="enabled">
+                                            Habilitado
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12 col-md-6 form-group">
                                 <label>
@@ -184,7 +194,8 @@
                             <div class="col-5 col-md-4 checkbox-wrapper">
                                 <div class="col-12 col-md-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" formControlName="fullDay">
+                                        <input class="form-check-input" type="checkbox" (change)="fullDayChange()"
+                                            formControlName="fullDay">
                                         <label class="form-check-label" for="fullDay">
                                             Full Day
                                         </label>
@@ -193,49 +204,121 @@
                             </div>
                             <div class="col-7 col-md-8 form-group">
                                 <label>
-                                    Costo por persona
+                                    Costo por persona (solo si hay fullDay)
                                 </label>
-                                <input type="text" class="form-control" formControlName="price">
+                                <input type="text" class="form-control" formControlName="fullDayPrice">
                             </div>
                             <div class="col-12 col-md-6 form-group">
-                                <label>
-                                    Servicios: <br>
-                                    <span *ngFor='let service of services'>
-                                        {{service}} -
-                                    </span>
-                                </label>
-                                <div class="input-service-box">
-                                    <input type="text" class="form-control" formControlName="service">
-                                    <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---add"
-                                        (click)="addService()"> + </button>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-8 form-group">
-                                <label for="image">Imagen</label>
-                                <input type="file" class="form-control-file" formControlName="image">
-                            </div>
-                            <div class="col-12 col-md-4 checkbox-wrapper">
-                                <div class="col-12 col-md-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" formControlName="enabled">
-                                        <label class="form-check-label" for="enabled">
-                                            Habilitado
-                                        </label>
+                                <label for="service">Servicios del hotel</label>
+                                <div class="multiselect-wrapper">
+                                    <div *ngFor='let service of services' class="multiselect-option">
+                                        <div>
+                                            <img [src]="service.active? 'https://img.icons8.com/metro/452/checked-checkbox.png':'http://icons.iconarchive.com/icons/icons8/windows-8/256/User-Interface-Unchecked-Checkbox-icon.png'"
+                                                (click)="toggleService(service)">
+                                        </div>
+                                        <div>
+                                            {{service.viewValue}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 buttons">
-                                <button class="btn gt-btn gt-btn--secondary " type="submit"
-                                    [disabled]="hotelForm.invalid" (click)="saveChanges()">
-                                    Guardar
-                                </button>
-                                <button class="btn gt-btn gt-btn--secondary" type="button"
-                                    (click)="toggleModalStatus()">
-                                    Cancelar
-                                </button>
+                            <div class="col-12 col-md-8 form-group">
+                                <label for="imagePricipal">Imagen principal</label>
+                                <input type="file" class="form-control-file" formControlName="imagePricipal">
+                            </div>
+                            <div class="col-12 col-md-8 form-group">
+                                <label for="imageAdditional">Imágenes adicionales </label>
+                                <div class="multiadd-box">
+                                    <img *ngFor='let imageAdditional of imagesAdditionals' [src]="imageAdditional">
+                                </div>
+                                <div class="input-box">
+                                    <input type="file" class="form-control-file input-bar"
+                                        formControlName="imageAdditional">
+                                    <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---add"
+                                        (click)="addImage()"> + </button>
+                                </div>
+                                <!-- <input type="file" class="form-control-file" formControlName="imageAdditional"> -->
                             </div>
                         </div>
                     </form>
+                </div>
+
+                 <!-- comienzo del segundo modal (habitaciones) -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class=" gt-tag-table">
+                            <span>
+                                Habitaciones
+                            </span>
+                            <div class=" habs-add-btn">
+                                <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="toggleModalStatus()">
+                                    Añadir +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table habs-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Vista</th>
+                                <th scope="col">Max. personas</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">¿Disponible?</th>
+                                <th scope="col"> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr class="hab" *ngFor="let hab of habs">
+                                            <th scope="row">holi</th>
+                                            <td>holi</td>
+                                            <td>holi</td>
+                                            <td>holi</td>
+                                            <td>holi</td>
+                                            <button class="btn gt-btn gt-btn--secondary" type="menu"
+                                                    (click)="modifyInfoHab()">
+                                                    Editar
+                                            </button>
+                                        </tr> -->
+                            <!-- cuando vayas a hacerlo con firebase descomenta lo de arriba 
+                                        y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
+                                    cualquier cosa me preguntas  -->
+                            <tr class="hab">
+                                <th scope="row">fsa</th>
+                                <td>holi</td>
+                                <td>holi</td>
+                                <td>holi</td>
+                                <td>holi</td>
+                                <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---edit" type="menu"
+                                    (click)="modifyInfoHab()">
+                                    Editar
+                                </button>
+
+                            </tr>
+                            <tr class="hab">
+                                <th scope="row">fsa</th>
+                                <td>holi</td>
+                                <td>holi</td>
+                                <td>holi</td>
+                                <td>holi</td>
+                                <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---edit" type="menu"
+                                    (click)="modifyInfoHab()">
+                                    Editar
+                                </button>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="col-12 buttons">
+                        <button class="btn gt-btn gt-btn--secondary " type="submit" [disabled]="hotelForm.invalid"
+                            (click)="saveChanges()">
+                            Guardar
+                        </button>
+                        <button class="btn gt-btn gt-btn--secondary" type="button" (click)="toggleModalStatus()">
+                            Cancelar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

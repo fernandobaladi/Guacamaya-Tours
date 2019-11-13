@@ -26,6 +26,8 @@
     }
   }
 
+  //modal que contiene un formulario (admin)
+
   .modal-wrapper {
     min-width: 100vw;
     min-height: 100vh;
@@ -96,7 +98,60 @@
           color: black;
           background-color: $color-secondary;
         }
+
+        // wrapper que contiene las opciones y sus respectivos cuadritos de seleccionado o no 
+        .multiselect-wrapper{
+          max-height: 100px;
+          overflow: auto;
+          min-width: 100px;
+
+          .multiselect-option{
+            display: flex;
+            justify-content: flex-start;
+
+            img{
+              height: 20px;
+              width: 20px;
+              margin-right: 1rem;
+              filter: invert(1);
+            }
+          }
+        }
+
+        //Componentes que sirven para que el usuario pueda agregar varias cosas. 
+        //ej: varios servicios a un destino o varias img a un hotel
+
+        //caja donde se colocaran los servicios/actividades u otros que añada el usuario
+        .multiadd-box{
+          height: 100px;
+          max-width: 100%;
+          overflow: auto;
+          border-radius: 0.25rem;
+          margin-bottom: 0.75rem;
+          // min-width: 70%;
+          background-color: $color-secondary;
+          color: black;
+
+          img{
+            width: 60px;
+            height: 60px;
+          }
+        }
+
+        //Caja que incluye la barra del input o de seleccion de imagen y el boton de agregar (+)
+        .input-box{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        
+          .input-bar{
+            max-width: 85%;
+          }
+          
+        }
       }
     }
   }
 }
+
+

@@ -29,8 +29,9 @@ export interface service {
 export class AdminHotelsComponent implements OnInit {
 
   hotelSort = '';
-  modalStatus = new BehaviorSubject (false);
+  modalStatus = new BehaviorSubject(false);
   public hotelForm: FormGroup;
+  public habForm: FormGroup;
 
 
   states: state[] = [
@@ -49,12 +50,14 @@ export class AdminHotelsComponent implements OnInit {
 
   services: service[] = [
     { value: 'airC-0', viewValue: 'Aire acondicionado', active: false },
-    { value: 'pis-1', viewValue: 'Piscina', active: false  },
-    { value: 'spa-2', viewValue: 'Spa', active: false  },
-    { value: 'parque-3', viewValue: 'Parque' , active: false  },
+    { value: 'pis-1', viewValue: 'Piscina', active: false },
+    { value: 'spa-2', viewValue: 'Spa', active: false },
+    { value: 'parque-3', viewValue: 'Parque', active: false },
   ];
 
   // services=[  ]
+  imagesAdditionals = [];
+  fullDayAvailable = false;
 
 
 
@@ -63,11 +66,23 @@ export class AdminHotelsComponent implements OnInit {
 
   ngOnInit() {
     this.createHotelForm();
+
+    this.hotelForm.controls.fullDay.valueChanges.subscribe(e => {
+      console.log(e);
+
+      this.fullDayAvailable = e;
+      console.log("esto es", this.fullDayAvailable);
+    })
+
+
   }
 
-  addService(){
-    this.services.push(this.hotelForm.controls.service.value);
-    this.hotelForm.controls.service.setValue('');
+  addImage() {
+    //aca hay q arreglar esto xq hay que montar la imagen a firestore, se guarda alla y
+    // se devuelve el link q el te da que es lo que muestra la imagen que es lo que se va a mandar al array como tal,
+    // es decir eso iria justo aca antes del .push y el push tambien habria q cambiarle lo q esta dentro del ()
+    this.imagesAdditionals.push(this.hotelForm.controls.imageAdditional.value);
+    this.hotelForm.controls.imageAdditional.setValue('');
   }
 
 
@@ -75,56 +90,107 @@ export class AdminHotelsComponent implements OnInit {
     this.hotelForm = this.fb.group({
       name: ['', Validators.required],
       stars: ['', Validators.required],
+      enabled: ['',],
       state: ['', Validators.required],
       city: ['', Validators.required],
       lat: ['', Validators.required],
       lon: ['', Validators.required],
       address: ['', Validators.required],
       fullDay: ['',],
-      price: ['', Validators.required],
-      service: ['',Validators.required],
-      image: ['', Validators.required],
-      enabled: ['', ],
+      fullDayPrice: [{ value: '', disabled: true }],
+      // service: ['',Validators.required],
+      imagePricipal: ['', Validators.required],
+      imageAdditional: ['',],
 
     })
   }
 
-  toggleSideBar(){
+  createHabForm() {
+    this.habForm = this.fb.group({
+      habName: ['', Validators.required],
+      habPeopleQuantity: ['', Validators.required],
+      habEnabled: ['', Validators.required],
+      habView: ['',],
+      habPrice: ['', Validators.required],
+      habFacilities: ['', Validators.required],
+      habQuantity: ['', Validators.required],
+      imagePricipal: ['', Validators.required],
+      imageAdditional: ['',],
+
+    })
+  }
+
+  fullDayChange() {
+    if (!this.hotelForm.controls.fullDay.value) {
+      this.hotelForm.controls.fullDayPrice.disable();
+    } else {
+      this.hotelForm.controls.fullDayPrice.enable();
+    }
+  }
+
+  toggleService(service) {
+    service.active = !service.active;
+  }
+
+  toggleSideBar() {
     this.sideBarSV.toggleStatus();
   }
 
-  
-  changeModalStatus(val){
+
+  changeModalStatus(val) {
     this.modalStatus.next(val)
   }
 
-  toggleModalStatus(){
+  toggleModalStatus() {
     this.modalStatus.next(!this.modalStatus.value);
     this.createHotelForm();
   }
 
-  modifyInfo(){
+  modifyInfo() {
     // getData();
     this.hotelForm = this.fb.group({
       name: ['Sunsol', Validators.required],
       stars: ['5', Validators.required],
+      enabled: ['true',],
       state: ['nueva esparta', Validators.required],
       city: ['margarita', Validators.required],
       lat: ['22565', Validators.required],
       lon: ['265', Validators.required],
       address: ['dfssdffs', Validators.required],
       fullDay: ['true',],
-      price: ['25000', Validators.required],
-      service: ['dfssdffs', Validators.required],
-      image: ['', Validators.required],
-      enabled: ['true', ],
+      fullDayPrice: ['25000', Validators.required],
+      // service: ['dfssdffs', Validators.required],
+      imagePricipal: ['', Validators.required],
 
     })
     this.modalStatus.next(!this.modalStatus.value);
   }
 
-  saveChanges(){
+
+  modifyInfoHab() {
+    // getData();
+    this.habForm = this.fb.group({
+      name: ['Sunsol', Validators.required],
+      stars: ['5', Validators.required],
+      enabled: ['true',],
+      state: ['nueva esparta', Validators.required],
+      city: ['margarita', Validators.required],
+      lat: ['22565', Validators.required],
+      lon: ['265', Validators.required],
+      address: ['dfssdffs', Validators.required],
+      fullDay: ['true',],
+      fullDayPrice: ['25000', Validators.required],
+      // service: ['dfssdffs', Validators.required],
+      imagePricipal: ['', Validators.required],
+
+    })
+    this.modalStatus.next(!this.modalStatus.value);
+  }
+
+  saveChanges() {
     // sendData();
+    console.log(this.services);
+
     this.modalStatus.next(false);
   }
 

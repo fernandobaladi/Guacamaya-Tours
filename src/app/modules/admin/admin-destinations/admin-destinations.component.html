@@ -125,7 +125,7 @@
                                 </label>
                                 <input type="text" class="form-control" formControlName="name">
                             </div>
-                            <div class="col-12 col-md-6 form-group">
+                            <div class="col-7 col-md-4 form-group">
                                 <label>
                                     Categoría
                                 </label>
@@ -135,6 +135,16 @@
                                         {{category.viewValue}}
                                     </option>
                                 </select>
+                            </div>
+                            <div class="col-5 col-md-2 checkbox-wrapper">
+                                <div class="col-12 col-md-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" formControlName="enabled">
+                                        <label class="form-check-label" for="enabled">
+                                            Habilitado
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12 col-md-6 form-group">
                                 <label>
@@ -181,12 +191,14 @@
                             <div class="col-12 col-md-6 form-group">
                                 <label>
                                     Actividades: <br>
-                                    <span *ngFor='let activity of activities'>
-                                        {{activity}} -
-                                    </span>
                                 </label>
-                                <div class="input-activity-box">
-                                    <input type="text" class="form-control" formControlName="activity">
+                                <div class="multiadd-box">
+                                    <span *ngFor='let activity of activities'>
+                                        {{activity}} <br>
+                                    </span>
+                                </div>
+                                <div class="input-box">
+                                    <input type="text" class="form-control input-bar" formControlName="activity">
                                     <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---add"
                                         (click)="addActivity()"> + </button>
                                 </div>
@@ -194,39 +206,31 @@
                             <div class="col-12 col-md-6 form-group">
                                 <label>
                                     Servicios: <br>
-                                    <span *ngFor='let service of services'>
-                                        {{service}} -
-                                    </span>
                                 </label>
-                                <div class="input-service-box">
-                                    <input type="text" class="form-control" formControlName="service">
+                                <div class="multiadd-box">
+                                    <span *ngFor='let service of services'>
+                                        {{service}} <br>
+                                    </span>
+                                </div>
+                                <div class="input-box">
+                                    <input type="text" class="form-control input-bar" formControlName="service">
                                     <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---add"
                                         (click)="addService()"> + </button>
                                 </div>
-                                <div class="col-12 form-group">
-                                    <label for="image">Imagen</label>
-                                    <input type="file" class="form-control-file" formControlName="image">
-                                </div>
-                                <div class="col-12 col-md-4 checkbox-wrapper">
-                                    <div class="col-12 col-md-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" formControlName="enabled">
-                                            <label class="form-check-label" for="enabled">
-                                                Habilitado
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 buttons">
-                                    <button class="btn gt-btn gt-btn--secondary " type="submit"
-                                        [disabled]="destinationForm.invalid" (click)="saveChanges()">
-                                        Guardar
-                                    </button>
-                                    <button class="btn gt-btn gt-btn--secondary" type="button"
-                                        (click)="toggleModalStatus()">
-                                        Cancelar
-                                    </button>
-                                </div>
+                            </div>
+                            <div class="col-12 form-group">
+                                <label for="image">Imagen</label>
+                                <input type="file" class="form-control-file" formControlName="image">
+                            </div>
+                            <div class="col-12 buttons">
+                                <button class="btn gt-btn gt-btn--secondary " type="submit"
+                                    [disabled]="destinationForm.invalid" (click)="saveChanges()">
+                                    Guardar
+                                </button>
+                                <button class="btn gt-btn gt-btn--secondary" type="button"
+                                    (click)="toggleModalStatus()">
+                                    Cancelar
+                                </button>
                             </div>
                         </div>
                     </form>

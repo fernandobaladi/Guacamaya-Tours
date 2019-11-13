@@ -63,11 +63,27 @@
         margin-bottom: 2rem;
       }
 
+      .habs-add-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+
       .hotels-table {
         background-color: $color-terciary;
 
         .hotel {
           background-color: $color-secondary;
+          color: black;
+        }
+      }
+
+      .habs-table {
+        background-color: $color-secondary;
+
+        .hab {
+          background-color: $color-primary;
           color: black;
         }
       }
