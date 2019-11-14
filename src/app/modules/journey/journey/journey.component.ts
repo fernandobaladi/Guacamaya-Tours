@@ -8,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class JourneyComponent implements OnInit {
 
   locator = '';
+  correctLocator=false;
   alphabeticArray = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  nextPage(){
+    this.correctLocator=true;
   }
 
   validator() {
