@@ -9,6 +9,11 @@ button.gt-btn{
 
     &.gt-btn--primary{
         background-color: $color-terciary;
+
+        &.gt-btn--primary---edit{
+            min-width: 60px;
+            margin-top: 0.3rem;
+        }
         
     }
     &.gt-btn--secondary{

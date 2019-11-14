@@ -35,3 +35,24 @@
     // margin-right: 1rem;
     // padding-left: 2rem;
 }
+
+.gt-tag-table--secondary{
+    
+    min-width: 100%;
+    background-color: $color-terciary;
+    font-size: 2rem;
+    font-family: $font-family-primary;
+    color: white;
+    // box-shadow: $box-shadow;
+    text-align: start;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    display: flex;
+    
+
+    @include phone{
+        text-align: center;
+        padding-left: 0;
+    }
+
+}
