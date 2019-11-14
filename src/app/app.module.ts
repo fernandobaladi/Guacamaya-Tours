@@ -7,6 +7,7 @@ import { CommonNavigationComponent } from './navigation/common-navigation/common
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ServicesComponent } from './services/services.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ServicesComponent } from './services/services.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

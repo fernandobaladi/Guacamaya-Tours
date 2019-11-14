@@ -1,15 +1,169 @@
+<!-- 
+<section class="gt-section gt-section--heightAuto">
+
+    <div class="contenedor-general">
+
+        <span>Localizador: AA1235</span>
+
+        <div class="contenedor-principal">
+
+            <div class="menu-principal">
+                <!- <!- imagen 
+                <div class="image"> <img style="background-color: red;"></div>
+                
+                <!- <!- informarción -- --
+                <div class="info">                            
+                        
+                    <span class="title">Sunsol</span> 
+                                
+                    <div id="estrellas-hoteles">
+                                
+                        <div>
+
+                            <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_1">
+                            <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_2">
+                            <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_3">
+                            <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_4">
+                            <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_5">
+                            
+                        </div>
+                                        
+                    </div>
+                            
+                    <span>Suite de lujo</span> 
+                            
+                 </div>
+
+
+                 <div class="separator"></div>
+
+                 <!- <!- entrada -- --
+                 <div class="entrada">
+                    <span class="menuprincipal-titulos">Entrada</span>
+                    <span class="menuprincipal-titulos-negritas">15</span>
+                    <span class="menuprincipal-titulos">Septiembre</span>
+                 </div>
+
+                 <div class="separator"></div>
+
+                 <!- <!- salida -- --
+                 <div class="entrada">
+                    <span class="menuprincipal-titulos">Entrada</span>
+                    <span class="menuprincipal-titulos-negritas">25</span>
+                    <span class="menuprincipal-titulos">Septiembre</span>
+                 </div>
+
+
+                <div class="separator"></div>
+
+
+                 <!- <!- dias, noches y personas -- --
+                 <div class="entrada">
+                    <span class="menuprincipal-titulos">Dias / Noches</span>
+                    <span class="menuprincipal-titulos-negritas">3 / 10</span>
+                    <span class="menuprincipal-titulos">5 adultos, 3 noches</span>
+                 </div>
+                
+            </div>
+
+
+            <!- <div class="separador-horizontal"></div> --
+
+            <!- <!- OTROS MENU -- --
+
+
+            <div class="menu-precios">
+                <div class="cosas-ordenadas">
+                    <span class="titulo-precio">Pedido</span>
+
+                    <div class="ordenes">
+                        <span>3 habitaciones</span>
+                        <span>Todo incluido: no</span>
+                    </div>
+                    
+                    <span class="titulo-precio">Precio total</span>    
+                </div>
+
+                <div class="precio-total">
+                    <span class="titulo-precio">USD$ 356</span>
+                    <span>bolívares...</span>    
+                </div>
+                
+            </div>
+
+
+            <div class="menu-huespedes">
+                <span class="titulo-precio">Huéspedes</span>
+
+                <div class="titulos-contenedor">
+                    <span>Nombre y apellido</span>
+                    <span>Edad</span>
+                    <span>Identificación</span>
+                </div>
+
+
+                <div class="titulos-contenedor-info">
+                    <span>Fernando Baladi</span>
+                    <span>19</span>
+                    <span>27.545.164</span>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <section class="gt-section gt-section--heightAuto">
     <div class="filtration-menu">
 
         <div class="filtration-search">
             <img src="../../../assets/img/filter.png">
-            <p >Filtrar por</p>
             <input type="text" [(ngModel)]="filter">
         </div>
 
         <div class="filtration-stars">
-            <p style="text-align: center;">Stars</p>
+
+            <div class="estrellas">
+                <img id="estrella-blanca1" src="../../../../assets/img/starblanca.png" [style.display]="blanca1 ? 'block' : 'none'" (click)="estrellaBlanca1()">
+                <img id="estrella-blanca2" src="../../../../assets/img/starblanca.png" [style.display]="blanca2 ? 'block' : 'none'" (click)="estrellaBlanca2()">
+                <img id="estrella-blanca3" src="../../../../assets/img/starblanca.png" [style.display]="blanca3 ? 'block' : 'none'" (click)="estrellaBlanca3()">
+                <img id="estrella-blanca4" src="../../../../assets/img/starblanca.png" [style.display]="blanca4 ? 'block' : 'none'" (click)="estrellaBlanca4()">
+                <img id="estrella-blanca5" src="../../../../assets/img/starblanca.png" [style.display]="blanca5 ? 'block' : 'none'" (click)="estrellaBlanca5()">
+
+                <img id="estrella-amarilla1" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla1 ? 'block' : 'none'" (click)="estrellaAmarilla1()">
+                <img id="estrella-amarilla2" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla2 ? 'block' : 'none'" (click)="estrellaAmarilla2()">
+                <img id="estrella-amarilla3" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla3 ? 'block' : 'none'" (click)="estrellaAmarilla3()">
+                <img id="estrella-amarilla4" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla4 ? 'block' : 'none'" (click)="estrellaAmarilla4()">
+                <img id="estrella-amarilla5" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla5 ? 'block' : 'none'" (click)="estrellaAmarilla5()">
+
+            </div>
+            
+
         </div>
 
         <div class="filtration-cities">
@@ -31,6 +185,79 @@
 
 
 
+<!-- Modal view  -->
+<div [style.display]="verModal ? 'block' : 'none'" class="modal">
+    <div class="modal-content">
+        <span (click)="modalClose()" class="close">&times;</span>
+        <span class="modal-content-title">Todos los servicios</span>
+        
+        <div class="modal-content-container-grid">
+                <div class="modal-content-instalaciones">
+                        <span class="titulo-pequeno">Instalaciones y servicios</span>
+                        
+                        <div *ngFor="let comodidad of comodidadesMenu">
+                            <span>-Mascotas Permitidas</span>
+                        </div>
+                </div>
+            
+                <div class="modal-content-equipamiento">
+                        <span class="titulo-pequeno">Equipamiento de la habitación</span>
+                        
+                        <div *ngFor="let comodidad of comodidadesMenu">
+                            <span>-Aire acondicionado</span>
+                        </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal view - habitaciones -->
+<div [style.display]="verModalHabitaciones ? 'block' : 'none'" class="modal">
+        <div class="modal-content">
+            <span (click)="modalCloseHabitaciones()" class="close">&times;</span>
+
+            <span class="modal-content-title">Suite de lujo</span>
+            
+            <div class="modal-content-habitaciones-imagenes">
+                    
+                <carousel>
+                        <slide *ngFor="let comodidad of comodidadesMenu">
+                          <img  alt="first slide" style="display: block; width: 100%;">
+                        </slide>                      
+                </carousel>
+                
+            </div>
+
+            <div>
+                <span class="modal-content-description">Descripción</span>
+            </div>
+            
+
+            <div>
+                <span class="modal-content-description-text">Descripcion....blblablbalbalbalbalblablablblablbalbalbalbalblablablblablbalbalbalbalblabla</span>
+            </div>
+            
+            <div class="modal-content-grid-boton-y-precio">
+            
+                
+            
+                <div class="circulo-precio">
+                    <div class="text-box">
+                            <span>Por tan solo 150 USD por noche</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</div>
+
+
+
+
+
+
 
 
 
@@ -46,7 +273,20 @@
                 <div class="info">
                     
                         <span class="title">{{hotel.name}}</span> 
-                        <span>Estrellas...</span>
+                        
+                        <div id="estrellas-hoteles">
+                            
+                            <div>
+                                <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_1">
+                                <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_2">
+                                <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_3">
+                                <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_4">
+                                <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_5">
+
+                            </div>
+
+                        </div>
+                        
                         <span>{{hotel.state}}</span> 
                         <span>{{hotel.city}}</span> 
                     
@@ -58,24 +298,103 @@
                     <p>Desde {{hotel.rooms[0].price}} USD por noche</p> 
                     
                     <div class="button-div">
-                        <button id="button" (click)="funcionBoton(hotel.id)">Info</button>
+                        <button id="button" (click)="funcionBoton(hotel.id)" >Info</button>
                     </div>
                     
                 </div>
             </div>
 
-            <!--  Aqui va el menú -->
+            <!-- Aqui va el menú -->
             
+            <div class="menu-contenedor" [style.display]="mostrarMenu ? 'block' : 'none'">
+
+                <div class="menuBar">
+                    <div class="menu-elements" (click)="clickGeneral(hotel.id)">General</div>
+                    <div class="menu-elements" (click)="clickComodidades(hotel.id)">Comodidades</div>
+                    <div class="menu-elements" (click)="clickHabitaciones(hotel.id)">Habitaciones</div>
+                    <div class="menu-elements" (click)="clickPromociones(hotel.id)">Promociones</div>
+                </div>
+
+                <!-- menu general  -->
+                <div id="menuGeneral{{hotel.id}}" class="menu-general" [style.display]="general ? 'block' : 'none'">
+                    <div class="titulo">
+                        <span>Ubicación</span>
+                        <img src="{{hotel.map}}">
+                        <div class="separator-menu-general"></div>
+                        <div class="menu-genera-texto">
+                            <span>{{hotel.name}}</span>
+                            <span class="menu-general-titulopequeno">Situado en ....., es la mejor opción si quieres buscar un lugar donde nunca vayas a aburrirte, cuenta con gran variedad de entretenimiento, varios restaurantes......</span>
+                            <span class="menu-general-contacto">Contacto</span>
+                            <span class="menu-general-titulopequeno">+58-414-2712045</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- menu comodidades -->
+                <div id="menuComodidades{{hotel.id}}" class="menu-comodidades" [style.display]="comodidades ? 'block' : 'none'">
+                    
+                    <div class="fotos" >    
+
+                        <carousel>
+                                <slide *ngFor="let comodidad of comodidadesMenu">
+                                  <img src="{{hotel.images[0]}}" alt="first slide" style="display: block; width: 100%;">
+                                </slide>                      
+                        </carousel>
 
 
+                    </div>
+    
+                    <div class="comodidades-iconos">
+                        <div *ngFor="let comodidad of comodidadesMenu">
+                            <img src="../../../../assets/img/swimming-silhouette.png">
+                            <span>Piscina</span>
+                        </div>
+                        
+                    </div>
+    
+                    
+
+                    <span (click)="mostrarModal()" class="mostrar-mas-comodidades">+ Mostrar mas comodidades</span>
+
+                </div>
 
 
+                <!-- menu habitaciones  -->
+                <div id="menuHabitaciones{{hotel.id}}" class="menu-habitaciones" [style.display]="habitaciones ? 'block' : 'none'">
+                    <div>
+                        <div class="habitaciones">
+
+                            <div *ngFor="let comodidad of comodidadesMenu"> 
+                                <img src="{{hotel.rooms[0].images[0]}}" (click)="mostrarModalHabitaciones()">
+                                <span>Suite de lujo</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+                 <!-- menu promociones -->
+                <div id="menuPromociones{{hotel.id}}" class="menu-promociones" [style.display]="promociones ? 'block' : 'none'">
+                     <div class="promociones-grid">
+                        <img src="{{hotel.images[0]}}">
+                        <div class="promociones-info">
+                            <p class="promo1">Ahorra hasta un</p>
+                            <p class="promo2">40%</p>
+                            <p class="promo3">Con nuestra promoción de 2x1 ahorraras hasta un 40% de descuento del costo final</p>
+                       </div>
+                    </div>
+                </div>
+
+                <div class="bottom-line"></div>
+
+            </div>
 
 
         </div>
 
     </div>
-
 
 </section>
 
@@ -83,119 +402,3 @@
 
 
 
-
-
-<section class="gt-section gt-section--heightAuto">
-    <div class="hotel-list">
-
-        <div class="hotel" *ngFor="let hotel of hotels">
-
-            <div class="hotel-content">
-                <div class="image"> <img src="{{hotel.images[0]}}" width="90px" height="90px"> </div>
-
-                <div class="info">
-                    
-                        <p class="title">{{hotel.name}}</p> 
-                        <p>Estrellas...</p>
-                        <p>{{hotel.state}}</p> 
-                        <p>{{hotel.city}}</p> 
-                    
-                </div>
-            
-                <div class="separator"></div>
-                
-                <div class="price">
-                    <p>Desde {{hotel.rooms[0].price}} USD por noche</p> 
-                    
-                    <div class="button-div">
-                        <button id="button" (click)="funcionBoton(hotel.id)">Info</button>
-                    </div>
-                    
-                </div>
-            
-            </div>
-            
-            
-            <!-- Menu -->
-
-
-            <div id="menuGeneral{{hotel.id}}" class="menu-general" >
-                <div class="menuBar">
-                    <div class="menu-elements" ><p (click)="clickGeneral(hotel.id)"> General</p></div>
-                    <div class="menu-elements" ><p (click)="clickComodidades(hotel.id)">Comodidades</p></div>
-                    <div class="menu-elements" ><p (click)="clickHabitaciones(hotel.id)">Habitaciones</p></div>
-                    <div class="menu-elements" ><p (click)="clickPromociones(hotel.id)">Promociones</p></div>
-                </div>
-
-                <div class="titulo">
-                    <img src="{{hotel.map}}">
-                </div>
-
-            </div>
-
-            <div id="menuComodidades{{hotel.id}}" class="menu-comodidades">
-                <div class="menuBar">
-                    <div class="menu-elements" (click)="clickGeneral(hotel.id)">General</div>
-                    <div class="menu-elements" (click)="clickComodidades(hotel.id)">Comodidades</div>
-                    <div class="menu-elements" (click)="clickHabitaciones(hotel.id)">Habitaciones</div>
-                    <div class="menu-elements" (click)="clickPromociones(hotel.id)">Promociones</div>
-                </div>
-
-                <div class="fotos">
-                    <img src="{{hotel.images[0]}}">
-                    <img src="{{hotel.images[1]}}">
-                    <img src="{{hotel.images[2]}}">
-                </div>
-
-                <div class="iconos1">
-                    <p>Piscina</p>
-                    <p>Bar de hotel</p>
-                    <p>Wifi (vestíbulo)</p>
-                </div>
-
-                <div class="iconos2">
-                    <p>Lavandería</p>
-                    <p>Restaurante</p>
-                </div>
-
-            </div>
-
-
-            <div id="menuHabitaciones{{hotel.id}}" class="menu-habitaciones">
-                <div class="menuBar">
-                    <div class="menu-elements" (click)="clickGeneral(hotel.id)">General</div>
-                    <div class="menu-elements" (click)="clickComodidades(hotel.id)">Comodidades</div>
-                    <div class="menu-elements" (click)="clickHabitaciones(hotel.id)">Habitaciones</div>
-                    <div class="menu-elements" (click)="clickPromociones(hotel.id)">Promociones</div>
-                </div>
-
-                <div class="habitaciones">
-                    <img src="{{hotel.rooms[0].images[0]}}">
-                    <img src="{{hotel.rooms[1].images[0]}}">
-                </div>
-
-            </div>
-
-            <div id="menuPromociones{{hotel.id}}" class="menu-promociones">
-                <div class="menuBar"> 
-                    <div class="menu-elements" (click)="clickGeneral(hotel.id)">General</div>
-                    <div class="menu-elements" (click)="clickComodidades(hotel.id)">Comodidades</div>
-                    <div class="menu-elements" (click)="clickHabitaciones(hotel.id)">Habitaciones</div>
-                    <div class="menu-elements" (click)="clickPromociones(hotel.id)">Promociones</div>
-                </div>
-                <div class="promociones-grid">
-                    <img src="{{hotel.images[0]}}">
-                    <div class="promociones-info">
-                        <p class="promo1">Ahorra hasta un</p>
-                        <p class="promo2">40%</p>
-                        <p class="promo3">Con nuestra promoción de 2x1 ahorraras hasta un 40% de descuento del costo final</p>
-                    </div>
-                </div>
-        
-            </div>
-            
-
-            <div class="bottom-line"></div>
-        </div>
-    </div>
-</section>
