@@ -19,7 +19,11 @@ export class HotelFacilitiesService {
     return this.firestoreSV.getAll(this.collectionPath);
   }
 
-  public getBooking(facilityId: string){
+  public getFacilitie(facilityId: string){
     return this.firestoreSV.getDoc(this.collectionPath, facilityId);
+  }
+
+  public update(facilityId: string, data) {
+    return this.firestoreSV.update(this.collectionPath, facilityId, data);
   }
 }
