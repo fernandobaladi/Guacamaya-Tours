@@ -21,7 +21,7 @@
                 <div class="col-12 col-md-4 col-lg-4">
                     <div class=" destinations-pipe-wrapper">
                         <img src="../../../../assets/img/loupe.png">
-                        <input class="form-control" placeholder="Nombre/Estado/Categoría/..." />
+                        <input class="form-control" placeholder="Nombre/Estado/Categoría/..." [(ngModel)]="search" />
                         <!-- <input class="form-control" placeholder="Nombre/Estado/Categoría/..." [(ngModel)]="search"  /> -->
                     </div>
                 </div>
@@ -56,11 +56,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="destination" *ngFor="let destination of destinations">
-                                            <th scope="row">holi</th>
+                        <tr class="destination" *ngFor="let destination of destinations | filter: search">
+                                            <th scope="row">{{destination.data.category.name}}</th>
                                             <td>{{destination.data.name}}</td>
-                                            <td>holi</td>
-                                            <td>holi</td>
+                                            <td>{{destination.data.state.name}}</td>
+                                            <td>{{destination.data.city.name}}</td>
                                             <td>{{destination.data.status?"Habilitado": "Deshabilitado"}}</td>
                                             <button class="btn gt-btn gt-btn--secondary" type="menu"
                                                     (click)="openModal()">
@@ -131,16 +131,16 @@
                                 </label>
                                 <select formControlName="category" class="form-control">
                                     <option selected value=''> Seleccione </option>
-                                    <option *ngFor="let category of categories" [value]="category.value">
-                                        {{category.viewValue}}
+                                    <option *ngFor="let category of categories" [value]="category.id">
+                                        {{category.data.name}}
                                     </option>
                                 </select>
                             </div>
                             <div class="col-5 col-md-2 checkbox-wrapper">
                                 <div class="col-12 col-md-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" formControlName="enabled">
-                                        <label class="form-check-label" for="enabled">
+                                        <input class="form-check-input" type="checkbox" formControlName="status">
+                                        <label class="form-check-label" for="status">
                                             Habilitado
                                         </label>
                                     </div>
@@ -152,8 +152,8 @@
                                 </label>
                                 <select formControlName="state" class="form-control">
                                     <option selected value=''> Seleccione </option>
-                                    <option *ngFor="let state of states" [value]="state.value">
-                                        {{state.viewValue}}
+                                    <option *ngFor="let state of states" [value]="state.id">
+                                        {{state.data.name}}
                                     </option>
                                 </select>
                             </div>
@@ -163,8 +163,8 @@
                                 </label>
                                 <select formControlName="city" class="form-control">
                                     <option selected value=''> Seleccione </option>
-                                    <option *ngFor="let city of cities" [value]="city.value">
-                                        {{city.viewValue}}
+                                    <option *ngFor="let city of cities" [value]="city.id">
+                                        {{city.data.name}}
                                     </option>
                                 </select>
                             </div>

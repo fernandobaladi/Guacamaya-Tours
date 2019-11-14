@@ -35,18 +35,18 @@ export class AdminDestinationsComponent implements OnInit {
   modalStatus = new BehaviorSubject (false);
   public destinationForm: FormGroup;
   destinations;
-
   categories;
-
   states;
-
   cities;
-
   activities = [ ] ;
   services = [ ];
   loading = false;
-
-
+  public stateForm: FormGroup;
+  public cityForm: FormGroup;
+  public categoryForm: FormGroup;
+  stateSelectedByUser;
+  citySelectedByUser;
+  categorySelectedByUser;
 
   constructor(private sideBarSV: SidebarService,
               private fb: FormBuilder,
@@ -59,6 +59,8 @@ export class AdminDestinationsComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.createDestinationForm();
+
     this.destinationsService.getAll().subscribe((destinationsSnapshot) =>{
       this.destinations = [];
       destinationsSnapshot.forEach((e: any) => {
@@ -68,6 +70,7 @@ export class AdminDestinationsComponent implements OnInit {
         });
       });
     });
+
     this.statesService.getAllStates().subscribe((statesSnapshot) => {
       this.states = [];
       statesSnapshot.forEach((e: any) => {
@@ -77,6 +80,7 @@ export class AdminDestinationsComponent implements OnInit {
         });
       });
     });
+
     this.citiesService.getAllCities().subscribe((citiesSnapshot) => {
       this.cities = [];
       citiesSnapshot.forEach((e: any) => {
@@ -86,6 +90,7 @@ export class AdminDestinationsComponent implements OnInit {
         });
       });
     });
+
     this.categoriesService.getAllCategories().subscribe((categoriesSnapshot) => {
       this.categories = [];
       categoriesSnapshot.forEach((e: any) => {
@@ -95,7 +100,6 @@ export class AdminDestinationsComponent implements OnInit {
         });
       });
     });
-    this.createDestinationForm();
   }
 
   addActivity() {
@@ -112,17 +116,36 @@ export class AdminDestinationsComponent implements OnInit {
   createDestinationForm() {
     this.destinationForm = this.fb.group({
       name: ['', Validators.required],
-      category: ['', ],
-      state: ['', ],
-      city: ['', ],
+      category:{
+        name: ['', ],
+        status: ['', ],
+        id: ['',]
+      },
+      state: {
+        name: ['', ],
+        status: ['', ],
+        id: ['', ],
+         // image:['']
+      },
+      city:{
+        name: ['', ],
+        status: ['', ],
+        id :['', ],
+        state: {
+          name: ['', ],
+          status: ['', ],
+          id: ['', ],
+         // image:['']
+        }
+      },
       lat: [, Validators.required],
       lon: [, Validators.required],
       description: ['', Validators.required],
       address: ['', Validators.required],
-      activity: ['', ],
-      service: ['', ],
-      image: ['', ],
-      status: ['', ],
+      activity: [''],
+      service: [''],
+      image: [''],
+      status: [''],
       id: ['']
     });
   }
@@ -131,7 +154,6 @@ export class AdminDestinationsComponent implements OnInit {
     this.sideBarSV.toggleStatus();
   }
 
-  
   changeModalStatus(val){
     this.modalStatus.next(val)
   }
@@ -141,18 +163,62 @@ export class AdminDestinationsComponent implements OnInit {
     this.createDestinationForm();
   }
 
-  openModal(destination?){
+  createStateForm() {
+    this.stateForm = this.fb.group({
+      data: [''],
+      id: ['']
+    });
+  }
+
+  createCityForm(){
+    this.cityForm = this.fb.group({
+      data: [''],
+      id: ['']
+    });
+  }
+
+  createCategoryForm() {
+    this.categoryForm = this.fb.group({
+      data:[''],
+      id: ['']
+    });
+  }
+
+  findStateSelected(id) {
+    this.states.forEach(element => {
+      if (id === element.id) {
+        this.stateSelectedByUser = element;
+      }
+    });
+  }
+  findCitySelected(id) {
+    this.cities.forEach(element => {
+      if (id === element.id) {
+        this.citySelectedByUser = element;
+      }
+    });
+  }
+
+  findCategorySelected(id) {
+    this.categories.forEach(element => {
+      if (id === element.id) {
+        this.categorySelectedByUser = element;
+      }
+    });
+  }
+  openModal(destination?) {
     if (destination) {
       this.destinationForm.controls.name.setValue(destination.data.name);
       this.destinationForm.controls.status.setValue(destination.data.status);
-      // this.destinationForm.controls.state.setValue(destination.data.state);
-      // this.destinationForm.controls.category.setValue(destination.data.category);
-      // this.destinationForm.controls.city.setValue(destination.data.city);
       this.destinationForm.controls.lat.setValue(destination.data.lat);
       this.destinationForm.controls.lon.setValue(destination.data.lon);
       this.destinationForm.controls.description.setValue(destination.data.description);
       this.destinationForm.controls.address.setValue(destination.data.address);
+      this.destinationForm.controls.state.setValue(destination.data.state.id);
+      this.destinationForm.controls.category.setValue(destination.data.category.id);
+      this.destinationForm.controls.city.setValue(destination.data.city.id);
       // this.destinationForm.controls.activity.setValue(destination.data.activity);
+      // this.destinationForm.controls.service.setValue(destination.data.activity);
       // this.destinationForm.controls.image.setValue(destination.data.image);
       this.destinationForm.controls.id.setValue(destination.id);
     } else {
@@ -167,7 +233,12 @@ export class AdminDestinationsComponent implements OnInit {
     if (!this.destinationForm.controls.status.value) {
       this.destinationForm.controls.status.setValue(false);
     }
-
+    this.createCategoryForm();
+    this.createCityForm();
+    this.createStateForm();
+    this.findCategorySelected(this.destinationForm.controls.category.value);
+    this.findCitySelected(this.destinationForm.controls.city.value);
+    this.findStateSelected(this.destinationForm.controls.state.value);
     let data = {
       name: this.destinationForm.controls.name.value,
       status: this.destinationForm.controls.status.value,
@@ -175,9 +246,29 @@ export class AdminDestinationsComponent implements OnInit {
       lon: parseInt(this.destinationForm.controls.lon.value, 10),
       description: this.destinationForm.controls.description.value,
       address: this.destinationForm.controls.address.value,
-      // state: this.destinationForm.controls.state.value
+      state: {
+        name: this.stateSelectedByUser.data.name,
+        status: this.stateSelectedByUser.data.status,
+        id: this.stateSelectedByUser.id
+      },
+      city: {
+        name: this.citySelectedByUser.data.name,
+        status: this.citySelectedByUser.data.status,
+        id: this.citySelectedByUser.id,
+        state: {
+          name: this.citySelectedByUser.data.state.name,
+          status: this.citySelectedByUser.data.state.status,
+          id: this.citySelectedByUser.data.state.id
+        }
+      },
+      category: {
+        name: this.categorySelectedByUser.data.name,
+        status: this.categorySelectedByUser.data.status,
+        id: this.categorySelectedByUser.id
+      }
     };
-
+    console.log(data);
+    
     if (!this.destinationForm.controls.id.value) {
 
       this.destinationsService.create(data)
