@@ -7,21 +7,25 @@ import { FirestoreService } from '../firestore/firestore.service';
 })
 export class DestinationsCategoryService {
 
-  collectionPath = 'destinations-category';
+  collectionPath = 'destinations-categories';
   constructor(
     private firestoreSV: FirestoreService
   ) { }
-  
-  public create(data){
+
+  public create(data) {
     return this.firestoreSV.create(this.collectionPath, data);
   }
 
-  public getAll(){
+  public getAllCategories() {
     return this.firestoreSV.getAll(this.collectionPath);
   }
 
-  public getBooking(destinationCategoryId: string){
+  public getCategory(destinationCategoryId: string) {
     return this.firestoreSV.getDoc(this.collectionPath, destinationCategoryId);
   }
-  
+
+  public updateCategory(categoryId: string, data) {
+    return this.firestoreSV.update(this.collectionPath, categoryId, data);
+  }
+
 }

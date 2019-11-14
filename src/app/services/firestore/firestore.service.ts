@@ -19,13 +19,24 @@ export class FirestoreService {
     });
   }
 
-  getDoc(collection, documentId: string) {
-    return this.firestore.collection(collection).doc(documentId).snapshotChanges();
+  public getDoc(collection, documentId: string) {
+    // return new Promise<any>((resolve, reject) => {
+      return this.firestore
+      .collection(collection)
+      .doc(documentId)
+      .snapshotChanges();
+      
+    // });
   }
-
-  getAll(collection) {
+  public getAll(collection) {
     return this.firestore.collection(collection).snapshotChanges();
   }
 
+  public delete(collection, documentId: string) {
+    return this.firestore.collection(collection).doc(documentId).delete();
+  }
 
+  public update(collection, documentId: string, data) {
+    return this.firestore.collection(collection).doc(documentId).update(data);
+  }
 }

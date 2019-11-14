@@ -11,15 +11,19 @@ export class DestinationsService {
     private firestoreSV: FirestoreService
   ) { }
 
-  public create(data){
+  public create(data) {
     return this.firestoreSV.create(this.collectionPath, data);
   }
 
-  public getAll(){
+  public getAll() {
     return this.firestoreSV.getAll(this.collectionPath);
   }
 
-  public getBooking(destinationId: string){
+  public getDestination(destinationId: string) {
     return this.firestoreSV.getDoc(this.collectionPath, destinationId);
+  }
+
+  public updateDestination(destinationId: string, data) {
+    return this.firestoreSV.update(this.collectionPath, destinationId, data);
   }
 }

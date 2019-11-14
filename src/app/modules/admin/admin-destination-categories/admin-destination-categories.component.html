@@ -18,13 +18,13 @@
                 <div class="col-12 col-md-4 col-lg-4">
                     <div class=" categories-pipe-wrapper">
                         <img src="../../../../assets/img/loupe.png">
-                        <input class="form-control" placeholder="Nombre" />
+                        <input class="form-control" placeholder="Nombre" [(ngModel)]="search"/>
                         <!-- <input class="form-control" placeholder="Nombre" [(ngModel)]="searchName"  /> -->
                     </div>
                 </div>
                 <div class="col-12 col-md-4 col-lg-4">
                     <div class=" categories-add-btn">
-                        <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="toggleModalStatus()">
+                        <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="openModal()">
                             Añadir +
                         </button>
                     </div>
@@ -50,18 +50,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr class="category" *ngFor="let category of categories">
-                                        <th scope="row">holi</th>
-                                        <td>holi</td>
+                        <tr class="category" *ngFor="let category of categories | filter: search">
+                                        <th scope="row">{{category.data.name}}</th>
+                                        <td>{{category.data.status?"Habilitado": "Deshabilitado"}}</td>
                                         <button class="btn gt-btn gt-btn--secondary" type="menu"
-                                                (click)="modifyInfo()">
+                                                (click)="openModal(category)">
                                                 Editar
                                         </button>
-                                    </tr> -->
+                                    </tr>
                         <!-- cuando vayas a hacerlo con firebase descomenta lo de arriba 
                                     y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
                                 cualquier cosa me preguntas  -->
-                        <tr class="category">
+                        <!-- <tr class="category">
                             <th scope="row">fsa</th>
                             <td>holi</td>
                             <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---edit" type="menu"
@@ -77,7 +77,7 @@
                                 (click)="modifyInfo()">
                                 Editar
                             </button>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -113,8 +113,8 @@
                             <div class="col-12 col-md-4 checkbox-wrapper">
                                 <div class="col-12 col-md-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" formControlName="enabled">
-                                        <label class="form-check-label" for="enabled">
+                                        <input class="form-check-input" type="checkbox" formControlName="status">
+                                        <label class="form-check-label" for="status">
                                             Habilitado
                                         </label>
                                     </div>

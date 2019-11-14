@@ -4,26 +4,26 @@ import { FirestoreService } from '../firestore/firestore.service';
 @Injectable({
   providedIn: 'root'
 })
-export class StatesService {
+export class CitiesService {
 
-  collectionPath = 'states';
+  collectionPath = 'cities';
   constructor(
     private firestoreSV: FirestoreService
   ) {}
 
-  public create(data) {
+  public createCity(data) {
     return this.firestoreSV.create(this.collectionPath, data);
   }
 
-  public getAllStates() {
+  public getAllCities() {
     return this.firestoreSV.getAll(this.collectionPath);
   }
 
-  public getState(stateId: string) {
-    return this.firestoreSV.getDoc(this.collectionPath, stateId);
+  public getCity(cityId: string) {
+    return this.firestoreSV.getDoc(this.collectionPath, cityId);
   }
 
-  public updateState(stateId: string, data) {
-    return this.firestoreSV.update(this.collectionPath, stateId, data);
+  public updateCity(cityId: string, data) {
+    return this.firestoreSV.update(this.collectionPath, cityId, data);
   }
 }
