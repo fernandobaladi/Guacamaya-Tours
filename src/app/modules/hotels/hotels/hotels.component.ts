@@ -16,12 +16,6 @@ export class HotelsComponent implements OnInit {
   
 
 
-
-
-
-
-
-
   //HOTELES
   filter = 'Ejemplo';
 
