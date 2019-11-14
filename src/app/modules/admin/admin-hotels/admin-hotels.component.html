@@ -243,7 +243,7 @@
                     </form>
                 </div>
 
-                 <!-- comienzo de la segunda tabla (habitaciones) -->
+                <!-- comienzo de la segunda tabla (habitaciones) -->
                 <div class="row">
                     <div class="col-12 ">
                         <div class=" gt-tag-table--secondary">
@@ -251,7 +251,7 @@
                                 Habitaciones
                             </span>
                             <div class=" habs-add-btn">
-                                <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="toggleModalStatus()">
+                                <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="toggleModalSecondaryStatus()">
                                     Añadir +
                                 </button>
                             </div>
@@ -319,6 +319,107 @@
                             Cancelar
                         </button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- comienzo del segundo modal (habs)-->
+
+<section class="overlay-modal-wrapper" [ngClass]="{'show': modalSecondaryStatus|async}">
+    <div class="overlay-modal" [ngClass]="{'show': modalSecondaryStatus|async}">
+    </div>
+    <div class="modal-wrapper" [ngClass]="{'show': modalSecondaryStatus|async}">
+        <div class="gt-admin-modal">
+            <div class="row">
+                <div class="col-12 title">
+                    <h1>
+                        Habitación
+                    </h1>
+                </div>
+            </div>
+            <div class="row form form-box">
+                <div class="col-12">
+                    <form [formGroup]="habForm">
+                        <div class="form-row">
+                            <div class="col-12 col-md-6 form-group">
+                                <label>
+                                    Nombre
+                                </label>
+                                <input type="text" class="form-control" formControlName="habName">
+                            </div>
+                            <div class="col-6 col-md-3 form-group">
+                                <label>
+                                    Cant. de personas
+                                </label>
+                                <input type="text" class="form-control" formControlName="habCapacity">
+                            </div>
+                            <div class="col-6 col-md-3 checkbox-wrapper">
+                                <div class="col-12 col-md-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" formControlName="habEnabled">
+                                        <label class="form-check-label" for="habEnabled">
+                                            Habilitada
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 form-group">
+                                <label>
+                                    Tipo de Vista
+                                </label>
+                                <input type="text" class="form-control" formControlName="habView">
+                            </div>
+                            <div class="col-12 col-md-6 form-group">
+                                <label>
+                                    Precio por noche
+                                </label>
+                                <input type="text" class="form-control" formControlName="habPrice">
+                            </div>
+                            <div class="col-12 col-md-6 form-group">
+                                <label for="facility">Comodidades</label>
+                                <div class="multiselect-wrapper">
+                                    <div *ngFor='let facility of facilities' class="multiselect-option">
+                                        <div>
+                                            <img [src]="facility.active? 'https://img.icons8.com/metro/452/checked-checkbox.png':'http://icons.iconarchive.com/icons/icons8/windows-8/256/User-Interface-Unchecked-Checkbox-icon.png'"
+                                                (click)="toggleFacility(facility)">
+                                        </div>
+                                        <div>
+                                            {{facility.viewValue}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-8 form-group">
+                                <label for="imagePricipal">Imagen principal</label>
+                                <input type="file" class="form-control-file" formControlName="imagePricipal">
+                            </div>
+                            <div class="col-12 col-md-8 form-group">
+                                <label for="imageAdditional">Imágenes adicionales </label>
+                                <div class="multiadd-box">
+                                    <img *ngFor='let imageAdditional of habImagesAdditionals' [src]="imageAdditional">
+                                </div>
+                                <div class="input-box">
+                                    <input type="file" class="form-control-file input-bar"
+                                        formControlName="imageAdditional">
+                                    <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---add"
+                                        (click)="addHabImage()"> + </button>
+                                </div>
+                                <!-- <input type="file" class="form-control-file" formControlName="imageAdditional"> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 buttons">
+                    <button class="btn gt-btn gt-btn--secondary " type="submit" [disabled]="habForm.invalid"
+                        (click)="saveHabChanges()">
+                        Guardar
+                    </button>
+                    <button class="btn gt-btn gt-btn--secondary" type="button" (click)="toggleModalSecondaryStatus()">
+                        Cancelar
+                    </button>
                 </div>
             </div>
         </div>
