@@ -8,10 +8,10 @@
         <div class="contenedor-principal">
 
             <div class="menu-principal">
-                <!- <!- imagen 
-                <div class="image"> <img style="background-color: red;"></div>
+                <!- imagen ->
+                <div class="image"> <img src="../../../../assets/img/hotels/sunsol-1.png" width="120px"></div>
                 
-                <!- <!- informarción -- --
+                <!- informacion ->
                 <div class="info">                            
                         
                     <span class="title">Sunsol</span> 
@@ -37,7 +37,7 @@
 
                  <div class="separator"></div>
 
-                 <!- <!- entrada -- --
+                 <!- <!- <!- entrada -- -- --
                  <div class="entrada">
                     <span class="menuprincipal-titulos">Entrada</span>
                     <span class="menuprincipal-titulos-negritas">15</span>
@@ -46,7 +46,7 @@
 
                  <div class="separator"></div>
 
-                 <!- <!- salida -- --
+                 <!- <!- <!- salida -- -- --
                  <div class="entrada">
                     <span class="menuprincipal-titulos">Entrada</span>
                     <span class="menuprincipal-titulos-negritas">25</span>
@@ -57,7 +57,7 @@
                 <div class="separator"></div>
 
 
-                 <!- <!- dias, noches y personas -- --
+                 <!- <!- <!- dias, noches y personas -- -- --
                  <div class="entrada">
                     <span class="menuprincipal-titulos">Dias / Noches</span>
                     <span class="menuprincipal-titulos-negritas">3 / 10</span>
@@ -67,9 +67,9 @@
             </div>
 
 
-            <!- <div class="separador-horizontal"></div> --
+            <div class="separador-horizontal"></div>
 
-            <!- <!- OTROS MENU -- --
+            <!- <!- <!- OTROS MENU -- -- --
 
 
             <div class="menu-precios">
@@ -86,11 +86,13 @@
 
                 <div class="precio-total">
                     <span class="titulo-precio">USD$ 356</span>
-                    <span>bolívares...</span>    
+                    <span>7.256.890 Bs.S</span>    
                 </div>
                 
             </div>
 
+
+            <!- <div class="separador-horizontal"></div> --
 
             <div class="menu-huespedes">
                 <span class="titulo-precio">Huéspedes</span>
@@ -122,15 +124,27 @@
 
 
 
+<!-- <div class="container">
+                    <div class="row justify-content-between" style="background-color: red;">
+                        <div class="col-4">
+                            <img src="../../../assets/img/filter.png">
+                        </div>
+                        
+                        <div class="col-6" style="background-color: blue;">
+                            <input type="text" [(ngModel)]="filter">
+                        </div>
+                        
+                    </div>
+                </div> -->
 
-
-
-
-
-
-
-
-
+                <!-- <div class="row justify-content-between" style="background-color: blue;"> 
+                        <div class="col-4">
+                                <img src="../../../assets/img/filter.png">
+                            </div>
+                            <div class="col-8">
+                                <input type="text" [(ngModel)]="filter">
+                            </div>
+                            </div> -->
 
 
 
@@ -139,6 +153,108 @@
 
 
 <section class="gt-section gt-section--heightAuto">
+
+    <div class="container menu-container">
+        
+        <div class="row justify-content-between">
+
+            <div class="col-4 filtration-search">
+
+                <img src="../../../assets/img/filter.png">
+                <input type="text" [(ngModel)]="filter">
+                
+            </div>
+            
+            <div class="col-4 filtration-stars">
+            
+                <div class="estrellas">
+                    <img id="estrella-blanca1" src="../../../../assets/img/starblanca.png" [style.display]="blanca1 ? 'block' : 'none'" (click)="estrellaBlanca1()">
+                    <img id="estrella-blanca2" src="../../../../assets/img/starblanca.png" [style.display]="blanca2 ? 'block' : 'none'" (click)="estrellaBlanca2()">
+                    <img id="estrella-blanca3" src="../../../../assets/img/starblanca.png" [style.display]="blanca3 ? 'block' : 'none'" (click)="estrellaBlanca3()">
+                    <img id="estrella-blanca4" src="../../../../assets/img/starblanca.png" [style.display]="blanca4 ? 'block' : 'none'" (click)="estrellaBlanca4()">
+                    <img id="estrella-blanca5" src="../../../../assets/img/starblanca.png" [style.display]="blanca5 ? 'block' : 'none'" (click)="estrellaBlanca5()">
+
+                    <img id="estrella-amarilla1" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla1 ? 'block' : 'none'" (click)="estrellaAmarilla1()">
+                    <img id="estrella-amarilla2" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla2 ? 'block' : 'none'" (click)="estrellaAmarilla2()">
+                    <img id="estrella-amarilla3" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla3 ? 'block' : 'none'" (click)="estrellaAmarilla3()">
+                    <img id="estrella-amarilla4" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla4 ? 'block' : 'none'" (click)="estrellaAmarilla4()">
+                    <img id="estrella-amarilla5" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla5 ? 'block' : 'none'" (click)="estrellaAmarilla5()">
+                </div>
+                        
+            
+            </div>
+            
+            <div class="col-4 filtration-cities">
+                <img src="../../../assets/img/loupe.png">
+                <input placeholder="Estado/Ciudad/Nombre">
+            </div>
+        
+        </div>
+    
+
+    </div>
+
+</section>
+
+
+<p id="principal-title" style="margin-left: 10px; font-size: 30px;">Todos los hoteles</p>
+<div class="separator-line" [ngSwitch]="filter">
+        <div *ngSwitchCase="'Nombre'">{{nameFunction()}}</div>
+        <div *ngSwitchCase="'Estado'">{{stateFunction()}}</div>
+        <div *ngSwitchDefault>{{functionDefault()}}</div>
+        <div *ngSwitchCase="'Ciudad'">{{cityFunction()}}</div>
+</div>
+
+
+
+
+
+<section class="gt-section gt-section--heightAuto">
+
+    <div class="container">
+
+        <div class="row" *ngFor="let hotel of hotels">
+
+            <div class="col-6">
+                <img src="{{hotel.images[0]}}" width="600px" height="400px"> 
+            </div>
+
+            <div class="col-3">
+
+            </div>
+
+            <div class="col-3">
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
+<!-- <section class="gt-section gt-section--heightAuto">
     <div class="filtration-menu">
 
         <div class="filtration-search">
@@ -181,11 +297,11 @@
             <div *ngSwitchCase="'Ciudad'">{{cityFunction()}}</div>
             <div *ngSwitchDefault>{{functionDefault()}}</div>
     </div>
-</section>
+</section> -->
 
 
 
-<!-- Modal view  -->
+<!-- <!- Modal view  -- -->
 <div [style.display]="verModal ? 'block' : 'none'" class="modal">
     <div class="modal-content">
         <span (click)="modalClose()" class="close">&times;</span>
@@ -213,7 +329,7 @@
 
 
 
-<!-- Modal view - habitaciones -->
+<!-- <!- Modal view - habitaciones -- -->
 <div [style.display]="verModalHabitaciones ? 'block' : 'none'" class="modal">
         <div class="modal-content">
             <span (click)="modalCloseHabitaciones()" class="close">&times;</span>
@@ -304,7 +420,7 @@
                 </div>
             </div>
 
-            <!-- Aqui va el menú -->
+            <!-- <!- Aqui va el menú -- -->
             
             <div class="menu-contenedor" [style.display]="mostrarMenu ? 'block' : 'none'">
 
@@ -315,7 +431,7 @@
                     <div class="menu-elements" (click)="clickPromociones(hotel.id)">Promociones</div>
                 </div>
 
-                <!-- menu general  -->
+                <!-- <!- menu general  -- -->
                 <div id="menuGeneral{{hotel.id}}" class="menu-general" [style.display]="general ? 'block' : 'none'">
                     <div class="titulo">
                         <span>Ubicación</span>
@@ -330,7 +446,7 @@
                     </div>
                 </div>
 
-                <!-- menu comodidades -->
+                <!-- <!- menu comodidades -- -->
                 <div id="menuComodidades{{hotel.id}}" class="menu-comodidades" [style.display]="comodidades ? 'block' : 'none'">
                     
                     <div class="fotos" >    
@@ -359,7 +475,7 @@
                 </div>
 
 
-                <!-- menu habitaciones  -->
+                <!-- <!- menu habitaciones  -- -->
                 <div id="menuHabitaciones{{hotel.id}}" class="menu-habitaciones" [style.display]="habitaciones ? 'block' : 'none'">
                     <div>
                         <div class="habitaciones">
@@ -375,7 +491,7 @@
                     
                 </div>
 
-                 <!-- menu promociones -->
+                 <!-- <!- menu promociones -- -->
                 <div id="menuPromociones{{hotel.id}}" class="menu-promociones" [style.display]="promociones ? 'block' : 'none'">
                      <div class="promociones-grid">
                         <img src="{{hotel.images[0]}}">
@@ -397,8 +513,4 @@
     </div>
 
 </section>
-
-
-
-
 
