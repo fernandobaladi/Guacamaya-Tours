@@ -13,6 +13,37 @@
     line-height: $tag-height;  
     padding-left: 3rem;
 
+    @include phone{
+        text-align: center;
+        padding-left: 0;
+    }
+
+}
+.gt-tag-steps{
+
+    max-width: 100%;
+    background-color: $color-terciary;
+    color: white;
+    font-family: $font-family-primary;
+    box-shadow: $box-shadow;
+    text-align: start;
+    margin-bottom: 1rem; 
+    padding-left: 3rem;
+
+    @include phone{
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .title{
+        font-size: 2rem;
+    }
+    .subtitle{
+        // padding-left: 2rem;
+        font-size: 1.3rem;
+        padding-bottom: 0.5rem;
+    }
+
 }
 
 .gt-tag-table{

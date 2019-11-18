@@ -1,0 +1,49 @@
+@import "../../../../styles/sass/lib/variables";
+@import "../../../../styles/sass/layout/layout.scss";
+
+div.slider-wrapper {
+  width: 100%;
+  height: calc(100vh - 270px - 1rem);
+  position: relative;
+  overflow: hidden;
+  box-shadow: $box-shadow;
+}
+carousel {
+  slide {
+    img {
+      max-height: 100%;
+      height: calc(100vh - 270px - 1rem);
+      object-fit: cover;
+    }
+    .destination-title-wrapper {
+      height: 100%;
+    //   width: calc(100vh - 270px - 1rem);
+      width: 100%;
+      position: fixed;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s;
+      background: rgba(0, 0, 0, 0.4);
+
+      .destination-title {
+        font-family: $font-family-secondary;
+        font-size: 3rem;
+        color: white;
+        cursor: pointer;
+      }
+    }
+    &:hover {
+        .destination-title-wrapper{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+  }
+}
+.gt-thumbnail-title{
+    font-size: 1.5rem;
+}

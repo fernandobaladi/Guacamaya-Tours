@@ -1,0 +1,127 @@
+<section class="gt-section gt-section--fullWidth">
+    <div class="row">
+        <div class="col-12 step-one">
+            <div class="row">
+                <div class="col-12">
+                    <div class="col-12 gt-tag-steps">
+                        <div class="col-12 col-md-4 title">
+                            <span> Paso 1 </span>
+                        </div>
+                        <div class="col-12 col-8 subtitle">
+                            <span> Selecciona el tipo de destino a conocer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class='gt-section gt-section--slider'>
+                <div class="slider-wrapper">
+                    <carousel>
+                        <slide>
+                            <img src="http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg"
+                                alt="first slide" style="display: block; width: 100%;">
+                            <div class="destination-title-wrapper">
+                                <div class="destination-title">
+                                    Costa
+                                </div>
+                            </div>
+                        </slide>
+                        <slide>
+                            <img src="https://viajesblog.net/wp-content/uploads/2018/05/salto-del-angel.jpg"
+                                alt="second slide" style="display: block; width: 100%;">
+                            <div class="destination-title-wrapper">
+                                <div class="destination-title">
+                                    Montaña
+                                </div>
+                            </div>
+                        </slide>
+                        <slide>
+                            <img src="https://i1.wp.com/diariolavoz.net/wp-content/uploads/2013/07/ubicacion-medanos-de-coro.jpg"
+                                alt="fourth slide" style="display: block; width: 100%;">
+                            <div class="destination-title-wrapper">
+                                <div class="destination-title">
+                                    Selva
+                                </div>
+                            </div>
+                        </slide>
+                        <slide>
+                            <img src="https://www.eltelegrafo.com.ec/media/k2/items/cache/0dd63e66c3035bda0f70aa3c277a0c98_XL.jpg"
+                                alt="third slide" style="display: block; width: 100%;">
+                            <div class="destination-title-wrapper">
+                                <div class="destination-title">
+                                    Llano
+                                </div>
+                            </div>
+                        </slide>
+                    </carousel>
+                </div>
+            </section>
+        </div>
+
+        <!-- comienzo de la segunda pantalla -->
+
+        <div class="col-12 step-two">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 gt-tag-steps">
+                            <div class="col-12 col-md-4 title">
+                                <span> Paso 2 </span>
+                            </div>
+                            <div class="col-12 col-8 subtitle">
+                                <span> Selecciona el/los estado(s) que quisieras conocer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row gt-thumbnail-wrapper">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2 gt-thumbnail-box" *ngFor="let state of states">
+                                <div class="gt-thumbnail">
+                                    <div class="gt-thumbnail-img">
+                                        <img [src]="state.img">
+                                    </div>
+                                    <div class="gt-thumbnail-title" [ngClass]="{'show':state.selected}">
+                                        <span>{{state.name}}</span>
+                                    </div>
+                                    <div class="gt-thumbnail-checkbox ">
+                                        <img [src]="state.selected? 'https://img.icons8.com/metro/452/checked-checkbox.png':'http://icons.iconarchive.com/icons/icons8/windows-8/256/User-Interface-Unchecked-Checkbox-icon.png'"
+                                            (click)="toggleState(state)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- comienzo del tercer paso -->
+        <div class="col-12 step-three">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 gt-tag-steps">
+                            <div class="col-12 col-md-4 title">
+                                <span> Paso 3 </span>
+                            </div>
+                            <div class="col-12 col-8 subtitle">
+                                <span> Disfruta de Venezuela</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

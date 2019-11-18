@@ -31,6 +31,17 @@ section.gt-section{
         min-height: calc(100vh - 100px - 50px - 2rem);
         height: calc(100vh - 100px - 50px - 2rem);
     }
+    &.gt-section--fullHeightWidth{
+        min-height: calc(100vh - 100px - 50px - 2rem);
+        height: calc(100vh - 100px - 50px - 2rem);
+        max-width: initial;
+        overflow: hidden;
+    }
+    &.gt-section--fullWidth{
+        min-height: auto;
+        max-width: initial;
+        overflow: hidden;
+    }
     &.gt-section--heightAuto{
         min-height: auto;
     }

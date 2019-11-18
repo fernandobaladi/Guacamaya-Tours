@@ -34,6 +34,10 @@ const routes: Routes = [
         path: 'journey',
         loadChildren: () => import('./modules/journey/journey.module').then (m => m.JourneyModule)
       },
+      {
+        path: 'destination',
+        loadChildren: () => import('./modules/destination/destination.module').then (m => m.DestinationModule)
+      },
     ]
   },
 
