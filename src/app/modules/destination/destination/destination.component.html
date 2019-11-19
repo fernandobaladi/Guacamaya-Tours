@@ -1,6 +1,6 @@
 <section class="gt-section gt-section--fullWidth">
     <div class="row">
-        <div class="col-12 step-one">
+        <div class="col-12 step-one" *ngIf="steps.step_one">
             <div class="row">
                 <div class="col-12">
                     <div class="col-12 gt-tag-steps">
@@ -13,42 +13,14 @@
                     </div>
                 </div>
             </div>
-            <section class='gt-section gt-section--slider'>
+            <section class='gt-section gt-section--fullWidth'>
                 <div class="slider-wrapper">
                     <carousel>
-                        <slide>
-                            <img src="http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg"
-                                alt="first slide" style="display: block; width: 100%;">
+                        <slide *ngFor="let category of categories">
+                            <img [src]="category.img" style="display: block; width: 100%;">
                             <div class="destination-title-wrapper">
-                                <div class="destination-title">
-                                    Costa
-                                </div>
-                            </div>
-                        </slide>
-                        <slide>
-                            <img src="https://viajesblog.net/wp-content/uploads/2018/05/salto-del-angel.jpg"
-                                alt="second slide" style="display: block; width: 100%;">
-                            <div class="destination-title-wrapper">
-                                <div class="destination-title">
-                                    Montaña
-                                </div>
-                            </div>
-                        </slide>
-                        <slide>
-                            <img src="https://i1.wp.com/diariolavoz.net/wp-content/uploads/2013/07/ubicacion-medanos-de-coro.jpg"
-                                alt="fourth slide" style="display: block; width: 100%;">
-                            <div class="destination-title-wrapper">
-                                <div class="destination-title">
-                                    Selva
-                                </div>
-                            </div>
-                        </slide>
-                        <slide>
-                            <img src="https://www.eltelegrafo.com.ec/media/k2/items/cache/0dd63e66c3035bda0f70aa3c277a0c98_XL.jpg"
-                                alt="third slide" style="display: block; width: 100%;">
-                            <div class="destination-title-wrapper">
-                                <div class="destination-title">
-                                    Llano
+                                <div class="destination-title" (click)="goToStep(2, category)">
+                                    {{category.name}}
                                 </div>
                             </div>
                         </slide>
@@ -59,12 +31,23 @@
 
         <!-- comienzo de la segunda pantalla -->
 
-        <div class="col-12 step-two">
+        <div class="col-12 step-two" *ngIf="steps.step_two">
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-12">
-
+                        <div class="col-12 miniSlider-wrapper">
+                            <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
+                                [startFromIndex]="6" [interval]="false">
+                                <slide *ngFor="let category of categories; let index=index">
+                                    <img [src]="category.img" alt="image slide" style="display: block; width: 100%;"
+                                        class="miniSlide-img" [ngClass]="{'unselected': !category.selected}">
+                                    <div class="destination-title-wrapper" [ngClass]="{'show': category.selected}">
+                                        <div class="destination-title" (click)="goToStep(2, category)">
+                                            {{category.name}}
+                                        </div>
+                                    </div>
+                                </slide>
+                            </carousel>
                         </div>
                     </div>
                     <div class="row">
@@ -77,9 +60,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container-fluid">
+                    <div class="container">
                         <div class="row gt-thumbnail-wrapper">
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2 gt-thumbnail-box" *ngFor="let state of states">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2 gt-thumbnail-box"
+                                *ngFor="let state of states">
                                 <div class="gt-thumbnail">
                                     <div class="gt-thumbnail-img">
                                         <img [src]="state.img">
@@ -95,18 +79,36 @@
                             </div>
                         </div>
                     </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 btn-wrapper">
+                                <button class=" gt-btn gt-btn--primary" (click)="goToStep(3)">Siguiente</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
 
         <!-- comienzo del tercer paso -->
-        <div class="col-12 step-three">
+        <div class="col-12 step-three" *ngIf="steps.step_three">
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-12">
-
+                        <div class="col-12 miniSlider-wrapper">
+                            <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
+                                [startFromIndex]="6" [interval]="false">
+                                <slide *ngFor="let category of categories; let index=index">
+                                    <img [src]="category.img" alt="image slide" style="display: block; width: 100%;"
+                                        class="miniSlide-img" [ngClass]="{'unselected': !category.selected}">
+                                    <div class="destination-title-wrapper" [ngClass]="{'show': category.selected}">
+                                        <div class="destination-title" (click)="goToStep(2, category)">
+                                            {{category.name}}
+                                        </div>
+                                    </div>
+                                </slide>
+                            </carousel>
                         </div>
                     </div>
                     <div class="row">
@@ -116,6 +118,55 @@
                             </div>
                             <div class="col-12 col-8 subtitle">
                                 <span> Disfruta de Venezuela</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row destination-pipes">
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class="destination-sort-wrapper">
+                                <img src="../../../../assets/img/filter.png">
+                                <select [(ngModel)]="optionSort" class="form-control">
+                                    <option selected value=''> Ordenar por: </option>
+                                    <option value="1"> Nombre </option>
+                                    <option value="2"> Estado </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class=" destination-pipe-wrapper">
+                                <img src="../../../../assets/img/loupe.png">
+                                <input class="form-control" placeholder="Nombre/Estado/Ciudad" [(ngModel)]="search" />
+                                <!-- <input class="form-control" placeholder="Nombre/Estado" [(ngModel)]="searchName"  /> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 sort-title">
+                                <span>Todos los destinos</span>
+                            </div>
+                        </div>
+                        <div class="row destination-wrapper" *ngFor="let destination of destinations">
+                            <div class="col-12 destination-box">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 destination-img-box">
+                                        <img [src]="destination.img">
+                                    </div>
+                                    <div class="col-12 col-md-6 destination-text-box">
+                                        <div class="col-12 destination-name">
+                                            <span>{{destination.name}}</span>
+                                        </div>
+                                        <div class="col-12 col-md-6 destination-state">
+                                            <span>{{destination.state}}</span>
+                                        </div>
+                                        <div class="col-12 col-md-6 destination-city">
+                                            <span>{{destination.city}}</span>
+                                        </div>
+                                        <div class="col-12 destination-info">
+                                            <span>{{destination.info}}</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

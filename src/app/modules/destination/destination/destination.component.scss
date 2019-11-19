@@ -35,6 +35,11 @@ carousel {
         color: white;
         cursor: pointer;
       }
+
+      &.show {
+              opacity: 1;
+              visibility: visible;
+      }
     }
     &:hover {
         .destination-title-wrapper{
@@ -44,6 +49,111 @@ carousel {
     }
   }
 }
+
+//Paso 2
+
 .gt-thumbnail-title{
     font-size: 1.5rem;
+}
+
+.miniSlider-wrapper{
+  margin-bottom: 1rem;
+}
+
+carousel{
+  slide{
+    img.miniSlide-img{
+      &.unselected{
+        filter: brightness(0.2);
+      }
+    }
+  }
+}
+
+.btn-wrapper{
+  display: flex;
+  justify-content: flex-end;
+}
+
+//Paso 3
+
+.destination-pipes{
+
+  margin-top: 1rem;
+
+  .destination-sort-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  
+    img {
+      height: 30px;
+      width: 30px;
+      margin-right: 0.5rem;
+    }
+    select.form-control {
+      background-color: $color-secondary;
+      width: 250px;
+    }
+  }
+  .destination-pipe-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  
+    img {
+      height: 30px;
+      width: 30px;
+      margin-right: 0.5rem;
+    }
+    input.form-control {
+      background-color: $color-secondary;
+      width: 250px;
+    }
+  }
+}
+
+.sort-title{
+  font-size: 2rem;
+  border-bottom: solid;
+  border-bottom-width: 0.5rem;
+  border-bottom-color: $color-primary;
+  margin-bottom: 1rem;
+}
+
+.destination-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  min-height: 350px;
+
+  .destination-box{
+
+    .destination-img-box{
+      height: 300px;
+      width: auto;
+
+      img{
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+  .destination-text-box{
+    .destination-name{
+      font-size: 1.5rem;
+    }
+    .destination-state{
+      font-size: 1rem;
+    }
+    .destination-city{
+      font-size: 1rem;
+    }
+    .destination-info{
+      font-size: 1rem;
+    }
+  }
 }
