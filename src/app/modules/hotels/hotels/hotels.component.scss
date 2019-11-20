@@ -274,10 +274,22 @@
     max-height: 50px;
 }
 
-.estrellas {
-    display: grid;
+.estrellas-columnas {
     justify-content: center;
-    grid-template-columns: 7% 7% 7% 7% 7%;
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    img {
+        max-height: 25px;
+        max-width: 25px;
+    }
+}
+
+.estrellas {
+    //display: grid;
+    justify-content: center;
+    //grid-template-columns: 7% 7% 7% 7% 7%;
 
     img {
         max-height: 25px;
@@ -310,7 +322,26 @@
 .separator-line {
     background-color: #62D2BE;
     height: 10px;
+    margin-bottom: 20px;
 }
+
+.separator-line-hoteles {
+    background-color: #62D2BE;
+    height: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+
+.informacion-general {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+
 
 
 .hotel-list {
@@ -345,25 +376,33 @@
 }
 
 
-.info {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 0.5em;
-    max-height: 120px;
-    margin-left: 25px;
-    line-height:5px;
+// .info {
+//     //display: flex;
+//     //justify-content: space-around;
+//     //align-items: flex-start;
+//     //flex-direction: column;
+//     //padding: 0.5em;
+//     //max-height: 120px;
+//     //margin-left: 25px;
+//     //line-height:5px;
+//     //font-family: $font-family-primary;
+// }
+
+.titulo-descripcion-hoteles {
+    //line-height: 17px;
+    font-size: 20px;
     font-family: $font-family-primary;
 
 }
-.info span {
-    line-height: 7px;
-    margin-top: 15px;
-}
+
+// .info span {
+//     line-height: 7px;
+//     margin-top: 15px;
+// }
 
 #estrellas-hoteles {
     margin-top: 10px;
+    margin-bottom: 10px;
     height: 20px;
     width: 80%;
 
@@ -389,18 +428,25 @@
 .price {
     display: grid;
     grid-template-rows: 60% 25%;
-    justify-content: center;
-    align-items: center;
+    //justify-content: center;
+    //align-items: center;
     font-family: $font-family-primary;
+
+    p {
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+    }
 }
 
 
 #button{
-    width: 80px;
-    height: 35px;
-    background-color: $button-color;
+    width: 120px;
+    height: 45px;
+    background-color:$color-menu;
+    color: white;
     font-family: $font-family-primary;
-    font-size: 15px;
+    font-size: 20px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
@@ -408,10 +454,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 10px;
 }
 
 .title{
-   font-size: 20px;
+   font-size: 40px;
 }
 
 
@@ -427,6 +474,148 @@
 
 
 //aquiiiiiii
+
+.row-menu-bar {
+    height: 40px;
+    padding-top: 10px;
+    color: white;
+    background-color: $color-menu;
+    font-family: $font-family-primary;
+    font-size: 20px;
+    text-align: center;
+}
+
+.barra-verde {
+    height: 5px;
+    background-color: #62d1be;
+}
+
+
+.container-general {
+    background-color: $color-menu;
+    height: auto;
+
+}
+
+
+#imagen-mapa {
+    margin-top: 15px;
+    
+}
+
+.col-titulo-menuGeneral {
+   
+   margin-top: 30px;
+   display: flex;
+   justify-content: center;
+
+    span {
+        margin-top: 10px;
+        color: white;
+        font-family: $font-family-primary;
+        font-size: 40px;
+        text-align: center;
+    }
+}
+
+.col-descripcion-menuGeneral {
+    //height: 80px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    span {
+        margin-left: 20px;
+        margin-top: 10px;
+        color: white;
+        font-family: $font-family-primary;
+        font-size: 18px;
+        text-align: center;
+    }
+}
+
+.col-contacto-menuGeneral {
+    //height: 80px;
+
+    margin-top: 50px;
+
+    span {
+        margin-bottom: 10px;
+        margin-left: 20px;
+        margin-top: 20px;
+        color: white;
+        font-family: $font-family-primary;
+        font-size: 30px;
+        text-align: center;
+    }
+}
+
+.imagenes-comodidades {
+    padding: 1.5em;
+    background-color: $color-menu;
+}
+
+
+.row-comodidades-menu {
+    padding: 1.5em;
+    background: $color-menu;
+    //height: 400px;
+    //display: none;
+    font-family: $font-family-primary;
+    font-size: 20px;
+    color: white;
+
+    img {
+        margin-right: 15px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+.row-menu-habitaciones {
+    
+    background: $color-menu;    
+    font-family: $font-family-primary;
+    padding: 1.5em;
+
+    img {
+        width: 300px;
+        height: 150px;
+    }
+
+    span {
+        margin-top: 10px;
+        color: white;
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+
+.principal-image {
+    width: 100%;
+}
+
+.menu-elements {
+    border-bottom-color: $color-primary;
+    border-bottom-style: solid;
+    width: 50%;
+    
+}
+
+.imagen-hotel {
+    width: 100%;
+}
+
+.suites-habitaciones {
+    margin-top: 40px;
+}
+
+
+
+
+
+
 
 
 .menu-general {
@@ -512,6 +701,7 @@
     margin-left: 1em;
     text-align: center;
 }
+
 
 .mostrar-mas-comodidades {
     padding-top: 40px;

@@ -154,37 +154,51 @@
 
 <section class="gt-section gt-section--heightAuto">
 
-    <div class="container menu-container">
+    <div class="container menu-container" [style.display]="displayListaHoteles ? 'block' : 'none'">
         
         <div class="row justify-content-between">
 
-            <div class="col-4 filtration-search">
+            <div class="col-lg-4 col-md-4 col-sm-12 filtration-search">
 
                 <img src="../../../assets/img/filter.png">
                 <input type="text" [(ngModel)]="filter">
                 
             </div>
-            
-            <div class="col-4 filtration-stars">
-            
-                <div class="estrellas">
-                    <img id="estrella-blanca1" src="../../../../assets/img/starblanca.png" [style.display]="blanca1 ? 'block' : 'none'" (click)="estrellaBlanca1()">
-                    <img id="estrella-blanca2" src="../../../../assets/img/starblanca.png" [style.display]="blanca2 ? 'block' : 'none'" (click)="estrellaBlanca2()">
-                    <img id="estrella-blanca3" src="../../../../assets/img/starblanca.png" [style.display]="blanca3 ? 'block' : 'none'" (click)="estrellaBlanca3()">
-                    <img id="estrella-blanca4" src="../../../../assets/img/starblanca.png" [style.display]="blanca4 ? 'block' : 'none'" (click)="estrellaBlanca4()">
-                    <img id="estrella-blanca5" src="../../../../assets/img/starblanca.png" [style.display]="blanca5 ? 'block' : 'none'" (click)="estrellaBlanca5()">
+        
 
-                    <img id="estrella-amarilla1" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla1 ? 'block' : 'none'" (click)="estrellaAmarilla1()">
-                    <img id="estrella-amarilla2" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla2 ? 'block' : 'none'" (click)="estrellaAmarilla2()">
-                    <img id="estrella-amarilla3" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla3 ? 'block' : 'none'" (click)="estrellaAmarilla3()">
-                    <img id="estrella-amarilla4" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla4 ? 'block' : 'none'" (click)="estrellaAmarilla4()">
-                    <img id="estrella-amarilla5" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla5 ? 'block' : 'none'" (click)="estrellaAmarilla5()">
+
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="row justify-content-between">
+                    <div class="col-2 estrellas-columnas">
+                        <img id="estrella-blanca1" src="../../../../assets/img/starblanca.png" [style.display]="blanca1 ? 'block' : 'none'" (click)="estrellaBlanca1()">
+                        <img id="estrella-amarilla1" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla1 ? 'block' : 'none'" (click)="estrellaAmarilla1()">
+                    </div>
+            
+                    <div class="col-2 estrellas-columnas">
+                        <img id="estrella-blanca2" src="../../../../assets/img/starblanca.png" [style.display]="blanca2 ? 'block' : 'none'" (click)="estrellaBlanca2()">
+                        <img id="estrella-amarilla2" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla2 ? 'block' : 'none'" (click)="estrellaAmarilla2()">
+                    </div>
+            
+                    <div class="col-2 estrellas-columnas">
+                        <img id="estrella-blanca3" src="../../../../assets/img/starblanca.png" [style.display]="blanca3 ? 'block' : 'none'" (click)="estrellaBlanca3()">
+                        <img id="estrella-amarilla3" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla3 ? 'block' : 'none'" (click)="estrellaAmarilla3()">
+                    </div>
+            
+                    <div class="col-2 estrellas-columnas">
+                        <img id="estrella-blanca4" src="../../../../assets/img/starblanca.png" [style.display]="blanca4 ? 'block' : 'none'" (click)="estrellaBlanca4()">
+                        <img id="estrella-amarilla4" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla4 ? 'block' : 'none'" (click)="estrellaAmarilla4()">
+                    </div>
+            
+                    <div class="col-2 estrellas-columnas">
+                        <img id="estrella-blanca5" src="../../../../assets/img/starblanca.png" [style.display]="blanca5 ? 'block' : 'none'" (click)="estrellaBlanca5()">
+                        <img id="estrella-amarilla5" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla5 ? 'block' : 'none'" (click)="estrellaAmarilla5()">
+                    </div>
                 </div>
-                        
-            
             </div>
+                
             
-            <div class="col-4 filtration-cities">
+            
+            <div class="col-lg-4 col-md-4 col-sm-12 filtration-cities">
                 <img src="../../../assets/img/loupe.png">
                 <input placeholder="Estado/Ciudad/Nombre">
             </div>
@@ -197,43 +211,261 @@
 </section>
 
 
-<p id="principal-title" style="margin-left: 10px; font-size: 30px;">Todos los hoteles</p>
-<div class="separator-line" [ngSwitch]="filter">
-        <div *ngSwitchCase="'Nombre'">{{nameFunction()}}</div>
-        <div *ngSwitchCase="'Estado'">{{stateFunction()}}</div>
-        <div *ngSwitchDefault>{{functionDefault()}}</div>
-        <div *ngSwitchCase="'Ciudad'">{{cityFunction()}}</div>
+
+<p id="principal-title" style="margin-left: 10px; font-size: 30px;" [style.display]="displayListaHoteles ? 'block' : 'none'">Todos los hoteles</p>
+
+<div class="separator-line" [ngSwitch]="filter" [style.display]="displayListaHoteles ? 'block' : 'none'">
+    <div *ngSwitchCase="'Nombre'">{{nameFunction()}}</div>
+    <div *ngSwitchCase="'Estado'">{{stateFunction()}}</div>
+    <div *ngSwitchDefault>{{functionDefault()}}</div>
+    <div *ngSwitchCase="'Ciudad'">{{cityFunction()}}</div>
 </div>
 
 
 
-
+<!-- ACA EMPIEZA LA LISTA DE HOTELES -->
 
 <section class="gt-section gt-section--heightAuto">
 
-    <div class="container">
+    <div class="container-fluid" *ngFor="let hotel of hotels" [style.display]="displayListaHoteles ? 'block' : 'none'">
 
-        <div class="row" *ngFor="let hotel of hotels">
+        <div class="row align-items-center justify-content-between" >
 
-            <div class="col-6">
-                <img src="{{hotel.images[0]}}" width="600px" height="400px"> 
+            <div class="col-12 col-lg-6  align-self-center">
+                <img src="{{hotel.images[0]}}" class="img-fluid imagen-hotel" alt="Responsive image">
             </div>
 
-            <div class="col-3">
+            <div class="col-12 col-lg-2 col-sm-12 col-md-6 informacion-general">
+                    
+                    <div>
+                        <span class="title">{{hotel.name}}</span> 
+                                
+                            <div id="estrellas-hoteles">
+                                    
+                                <div>
+                                    <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_1">
+                                    <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_2">
+                                    <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_3">
+                                    <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_4">
+                                    <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_5">
+                                </div>    
 
+                            </div>
+                                
+                            <div><span class="titulo-descripcion-hoteles">{{hotel.state}}</span> </div>
+                            <div><span class="titulo-descripcion-hoteles">{{hotel.city}}</span> </div>
+                            
+                    </div>
             </div>
 
-            <div class="col-3">
-
+            <div class="col-12 col-lg-2 col-md-6 col-sm-12">
+                <div class="separator"></div>
+                
+                <div class="price">
+                    <p>Desde {{hotel.rooms[0].price}} USD por noche</p> 
+                    
+                    <div class="button-div">
+                        <button id="button" (click)="funcionInfoBoton()" >Info</button>
+                    </div>
+                    
+                </div>
             </div>
 
 
         </div>
 
+        <div class="row">
+            <div class="col-12">
+                <div class="row separator-line-hoteles"></div>
+            </div>
+        </div>
+        
+
 
     </div>
 
 </section>
+
+
+
+<!-- menu de los hoteles -->
+<section class="gt-section gt-section--heightAuto" [style.display]="displayListaHoteles ? 'none' : 'block'">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <img src="../../../../assets/img/hola.jpg" class="img-fluid principal-image" alt="Responsive image">
+                </div>
+            </div>
+            
+            <div class="row row-menu-bar justify-content-around align-items-center">
+
+                <div class="col-4">
+                    <div class="menu-elements" (click)="clickGeneral()">General</div>    
+                </div>
+
+                <div class="col-4">
+                    <div class="menu-elements" (click)="clickComodidades()">Comodidades</div>
+                </div>
+
+                <div class="col-4">
+                    <div class="menu-elements" (click)="clickHabitaciones()">Habitaciones</div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- <div class="container-fluid">
+                <div class="row row-menu-bar justify-content-around align-items-center">
+    
+                    <div class="col-2">
+                        <div class="barra-verde" [style.display]="general ? 'block' : 'none'"></div>
+                    </div>
+    
+                    <div class="col-2">
+                        <div class="barra-verde" [style.display]="comodidades ? 'block' : 'none'"></div>
+                    </div>
+    
+                    <div class="col-2">
+                        <div class="barra-verde" [style.display]="habitaciones ? 'block' : 'none'"></div>
+                    </div>
+    
+                </div>
+            </div> -->
+
+
+
+
+
+        <!-- menu general -->
+        <div class="container-fluid container-general" [style.display]="general ? 'block' : 'none'">
+
+            <div class="row justify-content-between align-items-center">
+
+                <div class="col-12">
+                    <img src="../../../../assets/img/hotels/sunsol-1.png" id="imagen-mapa" class="img-fluid principal-image" alt="Responsive image" >
+                </div>
+
+                <div class="col-12 col-titulo-menuGeneral">
+                    <span>Sunsol</span>
+                </div>
+
+                <div class="col-12 col-descripcion-menuGeneral">
+                    <span>Situado en ..... es la mejor opción si quieres buscar un lugar donde nunca vayas a aburrirte, cuenta con gran variedad de entretenimiento, varios restaurantes......</span>
+                </div>
+
+                <div class="col-12 col-contacto-menuGeneral">
+                    <span>Contacto</span>
+                </div>
+
+                <div class="col-12 col-descripcion-menuGeneral">
+                    <div><span>+58 414-2712045</span></div>
+                    <div><span>+58 424-2315678</span></div>
+                </div>
+            
+            </div>
+
+        </div>
+
+
+        <!-- menu comodidades -->
+        <div class="container-fluid" [style.display]="comodidades ? 'block' : 'none'">
+
+            <div class="row imagenes-comodidades">
+                <carousel [itemsPerSlide]="itemsPerSlide"
+                          [singleSlideOffset]="singleSlideOffset"
+                          [noWrap]="!noWrap"
+                          [interval]="false"
+                          [startFromIndex]="1">
+
+                    <slide *ngFor="let slide of slides; let index=index">
+                        <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;">
+                    </slide>
+                </carousel>
+
+            </div>
+
+
+            <div class="row row-comodidades-menu justify-content-between align-items-center">
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <img src="../../../../assets/img/swimming-silhouette.png">
+                    <span>Piscina</span>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <img src="../../../../assets/img/swimming-silhouette.png">
+                    <span>Piscina</span>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <img src="../../../../assets/img/swimming-silhouette.png">
+                    <span>Piscina</span>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <img src="../../../../assets/img/swimming-silhouette.png">
+                    <span>Piscina</span>
+                </div>
+            
+            </div>
+
+
+            <div class="row row-comodidades-menu">
+                <span (click)="mostrarModal()" class="mostrar-mas-comodidades">+ Mostrar mas comodidades</span>
+            </div>
+
+        </div>
+
+
+        <!-- menu habitaciones -->
+        <div class="container-fluid" [style.display]="habitaciones ? 'block' : 'none'">
+
+            <div class="row row-menu-habitaciones">
+
+                <div class="col-lg-4 col-md-6 col-sm-12 suites-habitaciones">
+                    <div>
+                    <img class="img-fluid" alt="Responsive image" src="../../../../assets/img/hotels/premium-king-1.jpg" (click)="mostrarModalHabitaciones()">
+                    </div>
+
+                    <div>
+                    <span>Suite de lujo</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 suites-habitaciones">
+                    <div>
+                    <img class="img-fluid" alt="Responsive image" src="../../../../assets/img/hotels/premium-king-1.jpg" (click)="mostrarModalHabitaciones()">
+                    </div>
+
+                    <div>
+                    <span>Suite doble</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 suites-habitaciones">
+                    <div>
+                        <img class="img-fluid" alt="Responsive image" src="../../../../assets/img/hotels/premium-king-1.jpg" (click)="mostrarModalHabitaciones()">
+                    </div>
+    
+                    <div>
+                        <span>Suite doble</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- menu promociones -->
+
+
+
+</section>
+
 
 
 
@@ -334,37 +566,51 @@
         <div class="modal-content">
             <span (click)="modalCloseHabitaciones()" class="close">&times;</span>
 
-            <span class="modal-content-title">Suite de lujo</span>
-            
-            <div class="modal-content-habitaciones-imagenes">
-                    
-                <carousel>
-                        <slide *ngFor="let comodidad of comodidadesMenu">
-                          <img  alt="first slide" style="display: block; width: 100%;">
-                        </slide>                      
-                </carousel>
-                
-            </div>
 
-            <div>
-                <span class="modal-content-description">Descripción</span>
-            </div>
-            
+            <div class="container">
 
-            <div>
-                <span class="modal-content-description-text">Descripcion....blblablbalbalbalbalblablablblablbalbalbalbalblablablblablbalbalbalbalblabla</span>
-            </div>
-            
-            <div class="modal-content-grid-boton-y-precio">
-            
-                
-            
-                <div class="circulo-precio">
-                    <div class="text-box">
-                            <span>Por tan solo 150 USD por noche</span>
+                <div class="row justify-content-between align-items-center">
+
+                    <div class="col-12">
+                        <span class="modal-content-title">Suite de lujo</span>
                     </div>
+
+                    <div class="col-12 imagenes-modal-habitaciones">
+                        <carousel [itemsPerSlide]="itemsPerSlide"
+                            [singleSlideOffset]="singleSlideOffset"
+                            [noWrap]="!noWrap"
+                            [interval]="false"
+                            [startFromIndex]="1">
+      
+                            <slide *ngFor="let slide of slidesHabitaciones; let index=index">
+                                <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;">
+                            </slide>
+                        </carousel>
+                    </div>
+
+
+                    <div class="col-12">
+                        <span class="modal-content-description">Descripción</span>
+                    </div>
+
+
+                    <div class="col-12 modal-content-description-text">
+                        <span>Habitación ideal para las parejas recién casadas o que simplemente quieren tener unas vacaciones llenas de amor y diversión .... Cuenta con una cama king size, jacuzzi .....</span>
+                    </div>
+
+
+                    <div class="col-12 modal-content-grid-boton-y-precio">
+                        <div class="circulo-precio">
+                            <div class="text-box">
+                                <span>Por tan solo 150 USD por noche</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
+
 
         </div>
 </div>
@@ -379,7 +625,7 @@
 
 <section class="gt-section gt-section--heightAuto">
     
-    <div class="hotel-list">
+    <div class="hotel-list" [style.display]="ocultar ? 'block' : 'none'">
 
         <div class="hotel" *ngFor="let hotel of hotels">
 
@@ -514,3 +760,24 @@
 
 </section>
 
+
+
+
+<!-- <div class="col-4 filtration-stars">
+            
+        <div class="estrellas">
+            <img id="estrella-blanca1" src="../../../../assets/img/starblanca.png" [style.display]="blanca1 ? 'block' : 'none'" (click)="estrellaBlanca1()">
+            <img id="estrella-blanca2" src="../../../../assets/img/starblanca.png" [style.display]="blanca2 ? 'block' : 'none'" (click)="estrellaBlanca2()">
+            <img id="estrella-blanca3" src="../../../../assets/img/starblanca.png" [style.display]="blanca3 ? 'block' : 'none'" (click)="estrellaBlanca3()">
+            <img id="estrella-blanca4" src="../../../../assets/img/starblanca.png" [style.display]="blanca4 ? 'block' : 'none'" (click)="estrellaBlanca4()">
+            <img id="estrella-blanca5" src="../../../../assets/img/starblanca.png" [style.display]="blanca5 ? 'block' : 'none'" (click)="estrellaBlanca5()">
+
+            <img id="estrella-amarilla1" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla1 ? 'block' : 'none'" (click)="estrellaAmarilla1()">
+            <img id="estrella-amarilla2" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla2 ? 'block' : 'none'" (click)="estrellaAmarilla2()">
+            <img id="estrella-amarilla3" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla3 ? 'block' : 'none'" (click)="estrellaAmarilla3()">
+            <img id="estrella-amarilla4" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla4 ? 'block' : 'none'" (click)="estrellaAmarilla4()">
+            <img id="estrella-amarilla5" src="../../../../assets/img/staramarilla.png" [style.display]="amarilla5 ? 'block' : 'none'" (click)="estrellaAmarilla5()">
+        </div>
+                
+    
+    </div> -->

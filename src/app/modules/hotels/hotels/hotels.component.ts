@@ -18,11 +18,74 @@ export class HotelsComponent implements OnInit {
 
 
 
+  itemsPerSlide = 3;
+  singleSlideOffset = false;
+  noWrap = false;
+ 
+  slidesChangeMessage = '';
+ 
+  slides = [
+    {image: '../../../../assets/img/hotels/sunsol-1.png'},
+    {image: '../../../../assets/img/hotels/sunsol-2.png'},
+    {image: '../../../../assets/img/hotels/sunsol-3.png'},
+    {image: '../../../../assets/img/hotels/sunsol-3.png'},
+    {image: '../../../../assets/img/hotels/sunsol-1.png'},
+    {image: '../../../../assets/img/hotels/sunsol-2.png'},
+  ];
 
+
+  slidesHabitaciones = [
+    {image: '../../../../assets/img/hotels/sunsol-1.png'},
+    {image: '../../../../assets/img/hotels/sunsol-2.png'},
+    {image: '../../../../assets/img/hotels/sunsol-3.png'},
+    {image: '../../../../assets/img/hotels/sunsol-3.png'},
+    {image: '../../../../assets/img/hotels/sunsol-1.png'},
+    {image: '../../../../assets/img/hotels/sunsol-2.png'},
+  ];
+ 
+  onSlideRangeChange(indexes: number[]): void {
+    //this.slidesChangeMessage = `Slides have been switched: ${indexes}`;
+  }
 
 
 
   //HOTELES
+  public displayListaHoteles = true;
+  public idHotel = "";
+
+  public ocultar = false;
+
+  public general: boolean = true;
+  public comodidades: boolean = false;
+  public habitaciones: boolean = false;
+  public promociones: boolean = false;
+
+  funcionHabilitarMenus(par1: boolean, par2: boolean, par3: boolean) {
+    this.general = par1;
+    this.comodidades = par2;
+    this.habitaciones = par3;
+  }
+
+
+
+  funcionInfoBoton() {
+    this.displayListaHoteles = false;
+  }
+
+  clickGeneral() {
+    this.funcionHabilitarMenus(true, false, false);
+  }
+
+  clickComodidades() {
+    this.funcionHabilitarMenus(false, true, false);
+  }
+
+  clickHabitaciones() {
+    this.funcionHabilitarMenus(false, false, true);
+  }
+
+
+
   filter = 'Ejemplo';
 
   hotels = HOTELS;
@@ -137,43 +200,40 @@ export class HotelsComponent implements OnInit {
   }
 
 
-  public general: boolean = false;
-  public comodidades: boolean = false;
-  public habitaciones: boolean = false;
-  public promociones: boolean = false;
+ 
 
 
-  clickGeneral(id: string) {
-    // this.general = true;
-    // this.comodidades = false;
-    // this.habitaciones = false;
-    // this.promociones = false;
-    this.funcionAyuda('menuGeneral'  + id, 'menuComodidades' + id, 'menuHabitaciones' + id, 'menuPromociones' + id);
-  }
+  // clickGeneral(id: string) {
+  //   // this.general = true;
+  //   // this.comodidades = false;
+  //   // this.habitaciones = false;
+  //   // this.promociones = false;
+  //   this.funcionAyuda('menuGeneral'  + id, 'menuComodidades' + id, 'menuHabitaciones' + id, 'menuPromociones' + id);
+  // }
 
-  clickComodidades(id: string) {
-    // this.general = false;
-    // this.comodidades = true;
-    // this.habitaciones = false;
-    // this.promociones = false;
-    this.funcionAyuda('menuComodidades' + id, 'menuGeneral' + id, 'menuHabitaciones' + id, 'menuPromociones' + id);
-  }
+  // clickComodidades(id: string) {
+  //   // this.general = false;
+  //   // this.comodidades = true;
+  //   // this.habitaciones = false;
+  //   // this.promociones = false;
+  //   this.funcionAyuda('menuComodidades' + id, 'menuGeneral' + id, 'menuHabitaciones' + id, 'menuPromociones' + id);
+  // }
 
-  clickHabitaciones(id: string) {
-    // this.general = false;
-    // this.comodidades = false;
-    // this.habitaciones = true;
-    // this.promociones = false;
-    this.funcionAyuda('menuHabitaciones' + id, 'menuGeneral' + id, 'menuComodidades' + id, 'menuPromociones' + id);
-  }
+  // clickHabitaciones(id: string) {
+  //   // this.general = false;
+  //   // this.comodidades = false;
+  //   // this.habitaciones = true;
+  //   // this.promociones = false;
+  //   this.funcionAyuda('menuHabitaciones' + id, 'menuGeneral' + id, 'menuComodidades' + id, 'menuPromociones' + id);
+  // }
 
-  clickPromociones(id: string) {
-    // this.general = false;
-    // this.comodidades = false;
-    // this.habitaciones = false;
-    // this.promociones = true;
-    this.funcionAyuda('menuPromociones' + id, 'menuGeneral' + id, 'menuComodidades' + id, 'menuHabitaciones' + id);
-  }
+  // clickPromociones(id: string) {
+  //   // this.general = false;
+  //   // this.comodidades = false;
+  //   // this.habitaciones = false;
+  //   // this.promociones = true;
+  //   this.funcionAyuda('menuPromociones' + id, 'menuGeneral' + id, 'menuComodidades' + id, 'menuHabitaciones' + id);
+  // }
 
 
 
@@ -285,8 +345,8 @@ export class HotelsComponent implements OnInit {
   public estrella_amarilla_1 = true;
   public estrella_amarilla_2 = true;
   public estrella_amarilla_3 = true;
-  public estrella_amarilla_4 = false;
-  public estrella_amarilla_5 = false;
+  public estrella_amarilla_4 = true;
+  public estrella_amarilla_5 = true;
 
   public estrellasDeHotel = 5;
 
