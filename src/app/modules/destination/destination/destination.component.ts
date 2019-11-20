@@ -35,6 +35,9 @@ export class DestinationComponent implements OnInit {
     step_two: false,
     step_three: false,
   }
+  enableStep=false;
+  
+  screen: string;
 
   states: state[] = [
     {
@@ -88,21 +91,21 @@ export class DestinationComponent implements OnInit {
   destinations: destination[] = [
     {
       img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
-      name: "Costa",
+      name: "Pico Bolívar",
       state: "Mérida",
       city: "Mérida",
       info: "Es un lugar impresionante, a veces envuelto en neblina y a veces con un sol radiante que tuesta la piel",
     },
     {
       img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
-      name: "Costa",
+      name: "Pico Bolívar",
       state: "Mérida",
       city: "Mérida",
       info: "Es un lugar impresionante, a veces envuelto en neblina y a veces con un sol radiante que tuesta la piel",
     },
     {
       img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
-      name: "Costa",
+      name: "Pico Bolívar",
       state: "Mérida",
       city: "Mérida",
       info: "Es un lugar impresionante, a veces envuelto en neblina y a veces con un sol radiante que tuesta la piel",
@@ -122,19 +125,26 @@ export class DestinationComponent implements OnInit {
     console.log(window.innerWidth);
 
     if (window.innerWidth <= 991 && window.innerWidth > 640) {
+      this.screen = "medium";
       this.itemsPerSlide = 2;
     }
     else if (window.innerWidth <= 640) {
+      this.screen = "small";
       this.itemsPerSlide = 1;
     }
     else {
+      this.screen = "normal";
       this.itemsPerSlide = 4;
     }
   }
 
+ 
 
   toggleState(state) {
     state.selected = !state.selected;
+    this.enableStep = this.anyStateSelected();
+    console.log(this.enableStep);
+    
   }
 
   goToStep(step, category?) {
@@ -167,5 +177,9 @@ export class DestinationComponent implements OnInit {
 
   categoriesSelectedToFalse() {
     this.categories.map(e => e.selected = false)
+  }
+
+  anyStateSelected(){
+    return this.states.some(e=>{ return e.selected});
   }
 }

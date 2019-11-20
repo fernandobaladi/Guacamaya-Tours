@@ -1,0 +1,38 @@
+<section class="overlay-wrapper" [ngClass]="{'show': status}">
+        <div class="overlay" [ngClass]="{'show': status}" (click)='toggleSideBar()' >
+            <div class="close-btn">
+                <img src="https://static.thenounproject.com/png/26894-200.png">
+            </div>
+        </div>
+        <div class="side-bar-wrapper" [ngClass]="{'show': status}">
+            <div class="logo-box" routerLink="/home" (click)='toggleSideBar()'>
+                <img src="../../../assets/img/guaca-logo-admin.png">
+            </div>
+            <div class="text-box">
+                <span class="title title-clickeable" routerLink="/hotels"
+                (click)='toggleSideBar()'>
+                    Hoteles
+                </span>
+                <span class="title title-clickeable" routerLink="/destination" (click)='toggleSideBar()'>
+                    Destinos
+                </span>
+                <span class="title title-clickeable"
+                (click)='toggleSideBar()'>
+                    Planea tu viaje
+                </span>
+                <span class="title title-clickeable" routerLink="/journey"
+                (click)='toggleSideBar()'>
+                    Itinerario
+                </span>
+                <span class="title title-clickeable" routerLink="/contact" (click)='toggleSideBar()'>
+                    Contáctanos
+                </span>
+                <span class="title title-clickeable"routerLink="/about-us"
+                (click)='toggleSideBar()'>
+                    Conócenos
+                </span>
+            </div>
+        </div>
+    </section>
+    
+    

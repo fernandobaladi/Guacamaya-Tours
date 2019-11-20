@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { AdminNavigationComponent } from './navigation/admin-navigation/admin-navigation.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ClientSideBarComponent } from './components/client-side-bar/client-side-bar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     HeaderComponent,
     FooterComponent,
     AdminNavigationComponent,
-    SideBarComponent
+    SideBarComponent,
+    ClientSideBarComponent
   ],
   imports: [
     BrowserModule,

@@ -14,10 +14,28 @@
   cursor: pointer;
   box-shadow: 0px 0px 11px #000000;
 
-  // para usar los @media se coloca esto y dentro de esto se colocan los cambios
-  // @include phone{
+  img {
+    height: 70%;
+    width: 70%;
+    filter: invert(1);
+  }
+}
 
-  // }
+.client-side-bar-btn {
+  // right: 1rem;
+  // top: 1rem;
+  background-color: $color-terciary;
+  // position: fixed;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  z-index: 1;
+  padding: 0.6rem;
+  cursor: pointer;
+  box-shadow: 0px 0px 11px #000000;
 
   img {
     height: 70%;

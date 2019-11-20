@@ -27,6 +27,8 @@ export class AdminCitiesComponent implements OnInit {
   cities;
   public stateForm: FormGroup;
   stateSelectedByUser;
+
+
   constructor(private sideBarSV: SidebarService,
               private fb: FormBuilder,
               private router: Router,
@@ -34,6 +36,7 @@ export class AdminCitiesComponent implements OnInit {
               private statesService: StatesService,
               private citiesService: CitiesService
     ) { }
+    
   ngOnInit() {
 
     this.createCityForm();

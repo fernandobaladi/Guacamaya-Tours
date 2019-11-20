@@ -5,7 +5,7 @@
     (mouseenter)="changeHeader(1)" (mouseleave)="changeHeader(0) -->
 
 <div class="gt-navbar">
-    <div class="gt-navbar-grid">
+    <div class="gt-navbar-grid"  *ngIf="screen==='large'">
 
         <div class="gt-navbar-icon-wrapper">
             <div class="navbar-img" routerLink="/hotels" routerLinkActive="activeLink">
@@ -61,4 +61,10 @@
         </div>
         
     </div>
+    <div class="side-bar-btn-wrapper" *ngIf="screen==='medium'">
+        <div class="client-side-bar-btn" (click)=toggleSideBar() >
+                <img src="https://icon-library.net/images/navbar-icon/navbar-icon-2.jpg">
+        </div>
+    </div>
 </div>
+

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { SidebarService } from 'src/app/services/sidebar-service/sidebar-service.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +11,16 @@ import { NgClass } from '@angular/common';
 export class HeaderComponent implements OnInit {
 
   headerColor="#62D2BE";
+  screen:string;
 
-  constructor() { }
+  constructor(private sideBarSV: SidebarService,) { 
+    if (window.innerWidth <= 991) {
+      this.screen = "medium";
+    }
+    else {
+      this.screen = "large";
+    }
+  }
 
   ngOnInit() {
   }
@@ -24,6 +34,22 @@ export class HeaderComponent implements OnInit {
       default: this.headerColor="#62D2BE";
         break;
     }
+  } 
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+
+    console.log(window.innerWidth);
+
+    if (window.innerWidth <= 991) {
+      this.screen = "medium";
+    }
+    else {
+      this.screen = "large";
+    }
   }
 
+  toggleSideBar() {
+    this.sideBarSV.toggleStatusClientMenu();
+  }
 }

@@ -98,4 +98,13 @@
       transform: scale(1.2) translateY(5px);
     }
   }
+
+  .side-bar-btn-wrapper{
+    height: 100px;
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    // margin: 0 auto;
+  }
 }
