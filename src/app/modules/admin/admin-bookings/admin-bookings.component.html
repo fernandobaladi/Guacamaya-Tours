@@ -8,7 +8,7 @@
                 <div class="col-12 col-md-6 col-lg-6">
                     <div class="bookings-sort-wrapper">
                         <img src="../../../../assets/img/filter.png">
-                        <select [(ngModel)]="optionSort" class="form-control" >
+                        <select [(ngModel)]="optionSort" class="form-control">
                             <option selected value=''> Ordenar por: </option>
                             <option value="1"> Nombre </option>
                             <option value="2"> Fecha </option>
@@ -21,14 +21,14 @@
                     <div class=" bookings-pipe-wrapper">
                         <img src="../../../../assets/img/loupe.png">
                         <!-- <input class="form-control" placeholder="Nombre/Fecha/Status" /> -->
-                        <input class="form-control" placeholder="Nombre/Fecha/Status" [(ngModel)]="search"  />
+                        <input class="form-control" placeholder="Nombre/Fecha/Status" [(ngModel)]="search" />
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
                     <div class=" gt-tag-table">
-                        <span> 
+                        <span>
                             Reservaciones
                         </span>
                     </div>
@@ -45,6 +45,7 @@
                             <th scope="col">Monto</th>
                             <th scope="col">Teléfono</th>
                             <th scope="col">Status</th>
+                            <th scope="col"></th>
 
                         </tr>
                     </thead>
@@ -56,15 +57,95 @@
                             <td>{{book.data.amount}}</td>
                             <td>{{book.data.phoneNumber}}</td>
                             <td>{{book.data.status}}</td>
+                            <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="modifyInfo()">
+                                Editar
+                            </button>
                         </tr>
                         <!-- cuando vayas a hacerlo con firebase descomenta lo de arriba 
                         y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
                     cualquier cosa me preguntas  -->
-                        
+
                     </tbody>
                 </table>
             </div>
 
+        </div>
+    </div>
+</section>
+
+
+<!-- comienzo del modal -->
+<section class="overlay-modal-wrapper" [ngClass]="{'show': modalStatus|async}">
+    <div class="overlay-modal" [ngClass]="{'show': modalStatus|async}">
+    </div>
+    <div class="modal-wrapper" [ngClass]="{'show': modalStatus|async}">
+        <div class="gt-admin-modal">
+            <div class="row">
+                <div class="col-12 title">
+                    <h1>
+                        Reservación
+                    </h1>
+                </div>
+            </div>
+            <div class="row form form-box">
+                <div class="col-12">
+                    <form [formGroup]="bookingForm">
+                        <div class="form-row">
+                            <div class="col-12 col-md-6 form-group">
+                                <label>
+                                    Nombre
+                                </label>
+                                <input type="text" class="form-control" formControlName="name" readonly>
+                            </div>
+                            <div class="col-12 col-md-6 form-group">
+                                <label>
+                                    Forma de pago
+                                </label>
+                                <input type="text" class="form-control" formControlName="payment" readonly>
+                            </div>
+                            <div class="col-12 col-md-6 form-group">
+                                <label>
+                                    Número
+                                </label>
+                                <input type="text" class="form-control" formControlName="transferNum" readonly>
+                            </div>
+                            <div class="col-12 col-md-6 form-group">
+                                <label>
+                                    Fecha
+                                </label>
+                                <input type="text" class="form-control" formControlName="date" readonly>
+                            </div>
+                            <div class="col-12 col-md-6 form-group">
+                                <label>
+                                    Monto
+                                </label>
+                                <input type="text" class="form-control" formControlName="amount" readonly>
+                            </div>
+                            <div class="col-12 col-md-6 form-group">
+                                <label>
+                                    Status
+                                </label>
+                                <select formControlName="status" class="form-control">
+                                    <option selected value=''> Seleccionar: </option>
+                                    <option value="1"> Cancelado </option>
+                                    <option value="2"> Pagado </option>
+                                    <option value="3"> Por Confirmar </option>
+                                </select>
+                            </div>
+                            <div class="col-12 buttons">
+                                <button class="btn gt-btn gt-btn--secondary " type="submit"
+                                    [disabled]="bookingForm.invalid" (click)="saveChanges()">
+                                    Guardar
+                                </button>
+                                <button class="btn gt-btn gt-btn--secondary" type="button"
+                                    (click)="toggleModalStatus()">
+                                    Cancelar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </section>
