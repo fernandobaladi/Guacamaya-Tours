@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'statusFilterStates'
+  name: 'statusFilter'
 })
-export class StatusFilterStatesPipe implements PipeTransform {
+export class StatusFilterPipe implements PipeTransform {
 
   transform(states: any[]): any {
     return states.filter(state => state.data.status);

@@ -20,6 +20,7 @@ export interface state {
 export class AdminCitiesComponent implements OnInit {
   citySort = '';
   stateSelect = '';
+  optionSort = '';
   modalStatus = new BehaviorSubject (false);
   public cityForm: FormGroup;
   loading = false;
@@ -101,10 +102,12 @@ export class AdminCitiesComponent implements OnInit {
     if (city) {
       this.cityForm.controls.name.setValue(city.data.name);
       this.cityForm.controls.status.setValue(city.data.status);
-      this.cityForm.controls.state.setValue(city.data.state);
+      this.cityForm.controls.state.setValue(city.data.state.id);
       this.cityForm.controls.id.setValue(city.id);
     } else {
       this.cityForm.reset();
+      this.cityForm.controls.state.setValue('');
+
     }
     this.modalStatus.next(!this.modalStatus.value);
   }

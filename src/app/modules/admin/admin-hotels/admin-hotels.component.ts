@@ -28,7 +28,7 @@ export interface service {
 })
 export class AdminHotelsComponent implements OnInit {
 
-  hotelSort = '';
+  optionSort = '';
   modalStatus = new BehaviorSubject(false);
   public hotelForm: FormGroup;
   public habForm: FormGroup;

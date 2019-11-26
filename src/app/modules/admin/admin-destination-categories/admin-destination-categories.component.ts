@@ -12,7 +12,7 @@ import { DestinationsCategoryService } from 'src/app/services/destinations/desti
 })
 export class AdminDestinationCategoriesComponent implements OnInit {
 
-  categorySort = '';
+  optionSort = '';
   modalStatus = new BehaviorSubject (false);
   categories;
   loading = false;

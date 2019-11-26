@@ -13,7 +13,7 @@ import { RoomsFacilitiesService } from 'src/app/services/hotels/rooms/rooms-faci
 export class AdminHabsFacilitiesComponent implements OnInit {
 
   
-  facilitySort = '';
+  optionSort = '';
   modalStatus = new BehaviorSubject (false);
   public facilityForm: FormGroup;
   facilities;

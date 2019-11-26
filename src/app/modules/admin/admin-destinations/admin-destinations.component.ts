@@ -31,7 +31,7 @@ export interface city {
 })
 export class AdminDestinationsComponent implements OnInit {
 
-  destinationSort = '';
+  optionSort = '';
   modalStatus = new BehaviorSubject (false);
   public destinationForm: FormGroup;
   destinations;
@@ -116,25 +116,25 @@ export class AdminDestinationsComponent implements OnInit {
   createDestinationForm() {
     this.destinationForm = this.fb.group({
       name: ['', Validators.required],
-      category:{
-        name: ['', ],
-        status: ['', ],
-        id: ['',]
+      category: {
+        name: [''],
+        status: [''],
+        id: ['']
       },
       state: {
-        name: ['', ],
-        status: ['', ],
-        id: ['', ],
+        name: [''],
+        status: [''],
+        id: [''],
          // image:['']
       },
       city:{
-        name: ['', ],
-        status: ['', ],
-        id :['', ],
+        name: [''],
+        status: [''],
+        id :[''],
         state: {
-          name: ['', ],
-          status: ['', ],
-          id: ['', ],
+          name: [''],
+          status: [''],
+          id: [''],
          // image:['']
         }
       },
@@ -150,15 +150,15 @@ export class AdminDestinationsComponent implements OnInit {
     });
   }
 
-  toggleSideBar(){
+  toggleSideBar() {
     this.sideBarSV.toggleStatus();
   }
 
-  changeModalStatus(val){
-    this.modalStatus.next(val)
+  changeModalStatus(val) {
+    this.modalStatus.next(val);
   }
 
-  toggleModalStatus(){
+  toggleModalStatus() {
     this.modalStatus.next(!this.modalStatus.value);
     this.createDestinationForm();
   }
@@ -223,6 +223,9 @@ export class AdminDestinationsComponent implements OnInit {
       this.destinationForm.controls.id.setValue(destination.id);
     } else {
       this.destinationForm.reset();
+      this.destinationForm.controls.state.setValue('');
+      this.destinationForm.controls.category.setValue('');
+      this.destinationForm.controls.city.setValue('');
     }
     this.modalStatus.next(!this.modalStatus.value);
   }
