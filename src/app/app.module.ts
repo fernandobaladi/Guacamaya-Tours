@@ -13,6 +13,8 @@ import { AdminNavigationComponent } from './navigation/admin-navigation/admin-na
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ClientSideBarComponent } from './components/client-side-bar/client-side-bar.component';
+import { VacationBuilderComponent } from './modules/vacationBuilder/vacation-builder/vacation-builder.component';
+import { VacationBuilderNavigationComponent } from './navigation/vacationBuilderNavigation/vacation-builder-navigation/vacation-builder-navigation.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ClientSideBarComponent } from './components/client-side-bar/client-side
     FooterComponent,
     AdminNavigationComponent,
     SideBarComponent,
-    ClientSideBarComponent
+    ClientSideBarComponent,
+    VacationBuilderComponent,
+    VacationBuilderNavigationComponent
   ],
   imports: [
     BrowserModule,
