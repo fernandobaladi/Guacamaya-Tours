@@ -51,7 +51,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="state" *ngFor="let state of states | sortStates: optionSort | filter: search">
+                        <tr class="state" *ngFor="let state of states | generalSort: optionSort | filter: search">
                                 <th scope="row">{{state.data.name}}</th>
                                 <td>{{state.data.status?"Habilitado": "Deshabilitado"}}</td>
                                 <button class="btn gt-btn gt-btn--secondary" type="menu"

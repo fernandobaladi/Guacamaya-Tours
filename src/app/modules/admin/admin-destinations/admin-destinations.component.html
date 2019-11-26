@@ -8,13 +8,13 @@
                 <div class="col-12 col-md-4 col-lg-4">
                     <div class="destinations-sort-wrapper">
                         <img src="../../../../assets/img/filter.png">
-                        <select [(ngModel)]="destinationSort" class="form-control">
-                            <option selected value=''> Filtrar por: </option>
-                            <option value="1"> Categoría </option>
-                            <option value="2"> Nombre </option>
+                        <select [(ngModel)]="optionSort" class="form-control">
+                            <option selected value=''> Ordenar por: </option>
+                            <option value="1"> Nombre </option>
+                            <option value="2"> Status </option>
                             <option value="3"> Estado </option>
                             <option value="4"> Ciudad </option>
-                            <option value="5"> Status </option>
+                            <option value="5"> Categoría </option>
                         </select>
                     </div>
                 </div>
@@ -56,14 +56,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="destination" *ngFor="let destination of destinations | filter: search">
+                        <tr class="destination" *ngFor="let destination of destinations | generalSort: optionSort | filter: search">
                                             <th scope="row">{{destination.data.category.name}}</th>
                                             <td>{{destination.data.name}}</td>
                                             <td>{{destination.data.state.name}}</td>
                                             <td>{{destination.data.city.name}}</td>
                                             <td>{{destination.data.status?"Habilitado": "Deshabilitado"}}</td>
                                             <button class="btn gt-btn gt-btn--secondary" type="menu"
-                                                    (click)="openModal()">
+                                                    (click)="openModal(destination)">
                                                     Editar
                                             </button>
                                         </tr>
@@ -131,7 +131,7 @@
                                 </label>
                                 <select formControlName="category" class="form-control">
                                     <option selected value=''> Seleccione </option>
-                                    <option *ngFor="let category of categories" [value]="category.id">
+                                    <option *ngFor="let category of categories | sortByName | statusFilter" [value]="category.id">
                                         {{category.data.name}}
                                     </option>
                                 </select>
@@ -152,7 +152,7 @@
                                 </label>
                                 <select formControlName="state" class="form-control">
                                     <option selected value=''> Seleccione </option>
-                                    <option *ngFor="let state of states" [value]="state.id">
+                                    <option *ngFor="let state of states | statusFilter | sortByName" [value]="state.id">
                                         {{state.data.name}}
                                     </option>
                                 </select>
@@ -163,7 +163,7 @@
                                 </label>
                                 <select formControlName="city" class="form-control">
                                     <option selected value=''> Seleccione </option>
-                                    <option *ngFor="let city of cities" [value]="city.id">
+                                    <option *ngFor="let city of cities | sortByName | statusFilter | citiesFilterByState" [value]="city.id">
                                         {{city.data.name}}
                                     </option>
                                 </select>

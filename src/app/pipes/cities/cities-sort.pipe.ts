@@ -30,12 +30,13 @@ export class CitiesSortPipe implements PipeTransform {
               // Si a === b
             return 0;
           });
+
       case '3':
         return cities.sort( function(a, b) {
-          if (a.data.status > b.data.status) {
+          if (a.data.status < b.data.status) {
             return 1;
           }
-          if (a.data.status < b.data.status) {
+          if (a.data.status > b.data.status) {
             return -1;
           }
             // Si a === b

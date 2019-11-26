@@ -7,18 +7,21 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AdminStatesComponent } from './admin-states/admin-states.component';
-import { SortBookingsPipe } from '../../pipes/sort-bookings.pipe';
-import { SearchBookingPipe } from '../../pipes/search-booking.pipe';
+import { SortBookingsPipe } from '../../pipes/booking/sort-bookings.pipe';
+import { SearchBookingPipe } from '../../pipes/booking/search-booking.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { SortStatesPipe} from '../../pipes/sort-states.pipe';
+import { GeneralSortPipe} from '../../pipes/states/general-sort.pipe';
 import { AdminCitiesComponent } from './admin-cities/admin-cities.component';
 import { AdminDestinationCategoriesComponent } from './admin-destination-categories/admin-destination-categories.component';
 import { AdminHotelServicesComponent } from './admin-hotel-services/admin-hotel-services.component';
 import { AdminHabsFacilitiesComponent } from './admin-habs-facilities/admin-habs-facilities.component';
 import { AdminDestinationsComponent } from './admin-destinations/admin-destinations.component';
 import { AdminHotelsComponent } from './admin-hotels/admin-hotels.component';
-import { StatusFilterStatesPipe } from 'src/app/pipes/status-filter-states.pipe';
+import { StatusFilterPipe } from 'src/app/pipes/states/status-filter.pipe';
 import { CitiesSortPipe } from '../../pipes/cities/cities-sort.pipe';
+import { SortByNamePipe} from '../../pipes/states/sort-by-name.pipe';
+import { CitiesFilterByStatePipe } from '../../pipes/destinations/cities-filter-by-state.pipe';
+
 
 @NgModule({
   declarations: [AdminDashboardComponent,
@@ -27,15 +30,17 @@ import { CitiesSortPipe } from '../../pipes/cities/cities-sort.pipe';
     AdminBookingsComponent,
     SortBookingsPipe,
     SearchBookingPipe,
-    SortStatesPipe,
+    GeneralSortPipe,
     AdminCitiesComponent,
     AdminDestinationCategoriesComponent,
     AdminHotelServicesComponent,
     AdminHabsFacilitiesComponent,
     AdminDestinationsComponent,
     AdminHotelsComponent,
-    StatusFilterStatesPipe,
-    CitiesSortPipe
+    StatusFilterPipe,
+    CitiesSortPipe,
+    SortByNamePipe,
+    CitiesFilterByStatePipe
   ],
   imports: [
     CommonModule,

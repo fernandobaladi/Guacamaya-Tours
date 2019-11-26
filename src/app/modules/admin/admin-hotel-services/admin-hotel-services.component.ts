@@ -12,7 +12,7 @@ import { HotelFacilitiesService } from 'src/app/services/hotels/hotel-facilities
 })
 export class AdminHotelServicesComponent implements OnInit {
 
-  hotelServiceSort = '';
+  optionSort = '';
   modalStatus = new BehaviorSubject(false);
   public hotelServiceForm: FormGroup;
   facilities;
