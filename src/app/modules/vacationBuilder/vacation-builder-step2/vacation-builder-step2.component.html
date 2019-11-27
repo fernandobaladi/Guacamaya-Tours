@@ -1,7 +1,7 @@
 <section class="gt-section gt-section--fullHeightWidthScrolleable">
     <section class="gt-section gt-section--fullWidth">
         <div class="row">
-            <div class="col-12 step-one">
+            <div class="col-12">
                 <div class="row">
                     <div class="col-12">
                         <div class="col-12 gt-tag-steps">
@@ -14,15 +14,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <!-- <div class="col-12 col-md-6 form-group">
-                        <input class="form-control" placeholder="Fecha de llegada" ngModel bsDatepicker [minDate]="minDate"
-                            [maxDate]="maxDate">
+                <div class="row selectors-wrapper">
+                    <div class="col-12">
+                        <div class="row ">
+                            <div class="col-12 col-md-6 form-group datePicker-wrapper">
+                                <input class="form-control datePicker-box" placeholder="Fecha de llegada" ngModel bsDatepicker
+                                    [minDate]="minDate" [maxDate]="maxDate" >
+                            </div>
+                            <div class="col-12 col-md-6 form-group datePicker-wrapper">
+                                <input class="form-control datePicker-box" placeholder="Fecha de salida" ngModel bsDatepicker
+                                    [minDate]="minDate" [maxDate]="maxDate">
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-6 form-group">
-                        <input class="form-control" placeholder="Fecha de salida" ngModel bsDatepicker [minDate]="minDate"
-                            [maxDate]="maxDate">
-                    </div> -->
                 </div>
             </div>
         </div>

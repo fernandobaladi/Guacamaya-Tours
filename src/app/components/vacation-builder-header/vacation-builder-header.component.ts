@@ -36,6 +36,6 @@ export class VacationBuilderHeaderComponent implements OnInit {
   }
 
   toggleSideBar() {
-    this.sideBarSV.toggleStatusClientMenu();
+    this.sideBarSV.toggleStatusVacationMenu();
   }
 }

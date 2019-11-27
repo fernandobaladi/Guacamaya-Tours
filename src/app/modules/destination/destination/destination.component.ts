@@ -64,6 +64,7 @@ export class DestinationComponent implements OnInit {
 
   itemsPerSlide: number;
   singleSlideOffset = true;
+  
 
   categories: category[] = [
     {

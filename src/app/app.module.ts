@@ -18,6 +18,7 @@ import { VacationBuilderNavigationComponent } from './navigation/vacation-builde
 import { VacationBuilderHeaderComponent } from './components/vacation-builder-header/vacation-builder-header.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { VacationSideBarComponent } from './components/vacation-side-bar/vacation-side-bar.component';
 
 
 
@@ -32,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ClientSideBarComponent,
     VacationBuilderNavigationComponent,
     VacationBuilderHeaderComponent,
+    VacationSideBarComponent,
     
   ],
   imports: [

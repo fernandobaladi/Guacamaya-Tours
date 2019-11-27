@@ -1,0 +1,19 @@
+@import "../../../../styles/sass/lib/variables";
+@import "../../../../styles/sass/layout/layout.scss";
+@import "../../../../styles/sass/lib/mixings";
+@import "../../../../styles/sass/components/tag";
+
+.selectors-wrapper{
+    margin-top: 1rem;
+}
+.datePicker-box {
+    background-color: $color-secondary;
+    height: 50px;
+    min-width: 300px;
+    max-width: 90%;
+    text-align: center;
+}
+.datePicker-wrapper{
+    display: flex;
+    justify-content: center;
+}
