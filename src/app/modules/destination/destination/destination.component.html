@@ -125,7 +125,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <<div class="col-12 miniSlider-wrapper" *ngIf="screen==='normal'">
+                        <div class="col-12 miniSlider-wrapper" *ngIf="screen==='normal'">
                             <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
                                 [startFromIndex]="6" [interval]="false">
                                 <slide *ngFor="let category of categories; let index=index">
@@ -138,95 +138,96 @@
                                     </div>
                                 </slide>
                             </carousel>
-                    </div>
-                    <div class="col-12 miniSlider-wrapper" *ngIf="screen==='medium'">
-                        <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
-                            [startFromIndex]="6" [interval]="false">
-                            <slide *ngFor="let category of categories; let index=index">
-                                <img [src]="category.img" alt="image slide" style="display: block; width: 100%;"
-                                    class="miniSlide-img" [ngClass]="{'unselected': !category.selected}">
-                                <div class="destination-title-wrapper" [ngClass]="{'show': category.selected}">
-                                    <div class="destination-title" (click)="goToStep(2, category)">
-                                        {{category.name}}
+                        </div>
+                        <div class="col-12 miniSlider-wrapper" *ngIf="screen==='medium'">
+                            <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
+                                [startFromIndex]="6" [interval]="false">
+                                <slide *ngFor="let category of categories; let index=index">
+                                    <img [src]="category.img" alt="image slide" style="display: block; width: 100%;"
+                                        class="miniSlide-img" [ngClass]="{'unselected': !category.selected}">
+                                    <div class="destination-title-wrapper" [ngClass]="{'show': category.selected}">
+                                        <div class="destination-title" (click)="goToStep(2, category)">
+                                            {{category.name}}
+                                        </div>
                                     </div>
-                                </div>
-                            </slide>
-                        </carousel>
-                    </div>
-                    <div class="col-12 miniSlider-wrapper" *ngIf="screen==='small'">
-                        <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
-                            [startFromIndex]="6" [interval]="false">
-                            <slide *ngFor="let category of categories; let index=index">
-                                <img [src]="category.img" alt="image slide" style="display: block; width: 100%;"
-                                    class="miniSlide-img" [ngClass]="{'unselected': !category.selected}">
-                                <div class="destination-title-wrapper" [ngClass]="{'show': category.selected}">
-                                    <div class="destination-title" (click)="goToStep(2, category)">
-                                        {{category.name}}
+                                </slide>
+                            </carousel>
+                        </div>
+                        <div class="col-12 miniSlider-wrapper" *ngIf="screen==='small'">
+                            <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
+                                [startFromIndex]="6" [interval]="false">
+                                <slide *ngFor="let category of categories; let index=index">
+                                    <img [src]="category.img" alt="image slide" style="display: block; width: 100%;"
+                                        class="miniSlide-img" [ngClass]="{'unselected': !category.selected}">
+                                    <div class="destination-title-wrapper" [ngClass]="{'show': category.selected}">
+                                        <div class="destination-title" (click)="goToStep(2, category)">
+                                            {{category.name}}
+                                        </div>
                                     </div>
-                                </div>
-                            </slide>
-                        </carousel>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 gt-tag-steps">
-                        <div class="col-12 col-md-4 title">
-                            <span> Paso 3 </span>
-                        </div>
-                        <div class="col-12 col-8 subtitle">
-                            <span> Disfruta de Venezuela</span>
+                                </slide>
+                            </carousel>
                         </div>
                     </div>
-                </div>
-                <div class="row destination-pipes">
-                    <div class="col-12 col-md-6 col-lg-6">
-                        <div class="destination-sort-wrapper">
-                            <img src="../../../../assets/img/filter.png">
-                            <select [(ngModel)]="optionSort" class="form-control">
-                                <option selected value=''> Ordenar por: </option>
-                                <option value="1"> Nombre </option>
-                                <option value="2"> Estado </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-6">
-                        <div class=" destination-pipe-wrapper">
-                            <img src="../../../../assets/img/loupe.png">
-                            <input class="form-control" placeholder="Nombre/Estado/Ciudad" [(ngModel)]="search" />
-                            <!-- <input class="form-control" placeholder="Nombre/Estado" [(ngModel)]="searchName"  /> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
                     <div class="row">
-                        <div class="col-12 sort-title">
-                            <span>Todos los destinos</span>
+                        <div class="col-12 gt-tag-steps">
+                            <div class="col-12 col-md-4 title">
+                                <span> Paso 3 </span>
+                            </div>
+                            <div class="col-12 col-8 subtitle">
+                                <span> Disfruta de Venezuela</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="row container destination-wrapper" *ngFor="let destination of destinations">
-                        <div class="col-12 destination-box">
-                            <div class="row">
-                                <div class="col-12 col-md-6 destination-img-wrapper">
-                                    <div class="destination-img-gradient">
+                    <div class="row destination-pipes">
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class="destination-sort-wrapper">
+                                <img src="../../../../assets/img/filter.png">
+                                <select [(ngModel)]="optionSort" class="form-control">
+                                    <option selected value=''> Ordenar por: </option>
+                                    <option value="1"> Nombre </option>
+                                    <option value="2"> Estado </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-6">
+                            <div class=" destination-pipe-wrapper">
+                                <img src="../../../../assets/img/loupe.png">
+                                <input class="form-control" placeholder="Nombre/Estado/Ciudad" [(ngModel)]="search" />
+                                <!-- <input class="form-control" placeholder="Nombre/Estado" [(ngModel)]="searchName"  /> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 sort-title">
+                                <span>Todos los destinos</span>
+                            </div>
+                        </div>
+                        <div class="row container destination-wrapper" *ngFor="let destination of destinations">
+                            <div class="col-12 destination-box">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 destination-img-wrapper">
+                                        <div class="destination-img-gradient">
 
+                                        </div>
+                                        <div class="destination-img-box">
+                                            <img [src]="destination.img">
+                                        </div>
                                     </div>
-                                    <div class="destination-img-box">
-                                        <img [src]="destination.img">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 destination-text-box">
-                                    <div class="row ">
-                                        <div class="col-12 destination-title">
-                                            <span><b>{{destination.name}}</b></span>
-                                        </div>
-                                        <div class="col-12 col-md-6 destination-subtitle">
-                                            <span>Estado: {{destination.state}}</span>
-                                        </div>
-                                        <div class="col-12 col-md-6 destination-subtitle">
-                                            <span>Ciudad: {{destination.city}}</span>
-                                        </div>
-                                        <div class="col-12 destination-info">
-                                            <span>{{destination.info}}</span>
+                                    <div class="col-12 col-md-6 destination-text-box">
+                                        <div class="row ">
+                                            <div class="col-12 destination-title">
+                                                <span><b>{{destination.name}}</b></span>
+                                            </div>
+                                            <div class="col-12 col-md-6 destination-subtitle">
+                                                <span>Estado: {{destination.state}}</span>
+                                            </div>
+                                            <div class="col-12 col-md-6 destination-subtitle">
+                                                <span>Ciudad: {{destination.city}}</span>
+                                            </div>
+                                            <div class="col-12 destination-info">
+                                                <span>{{destination.info}}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -236,7 +237,5 @@
                 </div>
             </div>
         </div>
-
-    </div>
     </div>
 </section>

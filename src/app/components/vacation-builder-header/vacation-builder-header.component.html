@@ -1,0 +1,46 @@
+<div class="gt-navbar">
+    <div class="row gt-navbar" *ngIf="screen==='large'">
+        <div class="col-1"></div>
+        <div class="col-2 gt-navbar-icon-wrapper">
+            <div class="gt-navbar-icon-box" routerLink="/vacationBuilder/step1" routerLinkActive="activeLink">
+                <div class="navbar-img">
+                    <img src="../../../assets/img/placeholder.png">
+                </div>
+            </div>
+        </div>
+        <div class="col-2 gt-navbar-icon-wrapper">
+            <div class="gt-navbar-icon-box" routerLink="/vacationBuilder/step2" routerLinkActive="activeLink">
+                <div class="navbar-img">
+                    <img src="../../../assets/img/calendar.png">
+                </div>
+            </div>
+        </div>
+        <div class="col-2 gt-navbar-icon-wrapper">
+            <div class="gt-navbar-icon-box">
+                <div class="navbar-img">
+                    <img src="../../../assets/img/business-center.png">
+                </div>
+            </div>
+        </div>
+        <div class="col-2 gt-navbar-icon-wrapper">
+            <div class="gt-navbar-icon-box">
+                <div class="navbar-img">
+                    <img src="../../../assets/img/user-shape.png">
+                </div>
+            </div>
+        </div>
+        <div class="col-2 gt-navbar-icon-wrapper">
+            <div class="gt-navbar-icon-box">
+                <div class="navbar-img">
+                    <img src="../../../assets/img/money.png">
+                </div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="side-bar-btn-wrapper" *ngIf="screen==='medium'">
+        <div class="client-side-bar-btn" (click)=toggleSideBar()>
+            <img src="https://icon-library.net/images/navbar-icon/navbar-icon-2.jpg">
+        </div>
+    </div>
+</div>

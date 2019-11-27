@@ -1,1 +1,125 @@
-<p>vacation-builder works!</p>
+<section class="gt-section gt-section--fullHeightWidthScrolleable">
+    <section class="gt-section gt-section--fullWidth">
+        <div class="row">
+            <div class="col-12 step-one" *ngIf="steps.step_one">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="col-12 gt-tag-steps">
+                            <div class="col-12 col-md-4 title">
+                                <span> Paso 1 </span>
+                            </div>
+                            <div class="col-12 col-8 subtitle">
+                                <span> Elige el destino a donde desea viajar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section class='gt-section gt-section--fullWidth'>
+                    <div class="slider-wrapper">
+                        <carousel>
+                            <slide *ngFor="let category of categories">
+                                <img [src]="category.img" style="display: block; width: 100%;">
+                                <div class="destination-title-wrapper">
+                                    <div class="destination-title" (click)="goToStep(2, category)">
+                                        {{category.name}}
+                                    </div>
+                                </div>
+                            </slide>
+                        </carousel>
+                    </div>
+                </section>
+            </div>
+    
+            <!-- comienzo de la segunda pantalla -->
+    
+            <div class="col-12 step-two" *ngIf="steps.step_two">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 miniSlider-wrapper" *ngIf="screen==='normal'">
+                                <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
+                                    [startFromIndex]="6" [interval]="false">
+                                    <slide *ngFor="let category of categories; let index=index">
+                                        <img [src]="category.img" alt="image slide" style="display: block; width: 100%;"
+                                            class="miniSlide-img" [ngClass]="{'unselected': !category.selected}">
+                                        <div class="destination-title-wrapper" [ngClass]="{'show': category.selected}">
+                                            <div class="destination-title" (click)="goToStep(2, category)">
+                                                {{category.name}}
+                                            </div>
+                                        </div>
+                                    </slide>
+                                </carousel>
+                            </div>
+                            <div class="col-12 miniSlider-wrapper" *ngIf="screen==='medium'">
+                                <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
+                                    [startFromIndex]="6" [interval]="false">
+                                    <slide *ngFor="let category of categories; let index=index">
+                                        <img [src]="category.img" alt="image slide" style="display: block; width: 100%;"
+                                            class="miniSlide-img" [ngClass]="{'unselected': !category.selected}">
+                                        <div class="destination-title-wrapper" [ngClass]="{'show': category.selected}">
+                                            <div class="destination-title" (click)="goToStep(2, category)">
+                                                {{category.name}}
+                                            </div>
+                                        </div>
+                                    </slide>
+                                </carousel>
+                            </div>
+                            <div class="col-12 miniSlider-wrapper" *ngIf="screen==='small'">
+                                <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
+                                    [startFromIndex]="6" [interval]="false">
+                                    <slide *ngFor="let category of categories; let index=index">
+                                        <img [src]="category.img" alt="image slide" style="display: block; width: 100%;"
+                                            class="miniSlide-img" [ngClass]="{'unselected': !category.selected}">
+                                        <div class="destination-title-wrapper" [ngClass]="{'show': category.selected}">
+                                            <div class="destination-title" (click)="goToStep(2, category)">
+                                                {{category.name}}
+                                            </div>
+                                        </div>
+                                    </slide>
+                                </carousel>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 gt-tag-steps">
+                                <div class="col-12 col-md-4 title">
+                                    <span> Paso 1 </span>
+                                </div>
+                                <div class="col-12 col-8 subtitle">
+                                    <span> Elige el destino a donde desea viajar</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row gt-thumbnail-wrapper">
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2 gt-thumbnail-box"
+                                    *ngFor="let state of states">
+                                    <div class="gt-thumbnail">
+                                        <div class="gt-thumbnail-img">
+                                            <img [src]="state.img">
+                                        </div>
+                                        <div class="gt-thumbnail-title" [ngClass]="{'show':state.selected}">
+                                            <span>{{state.name}}</span>
+                                        </div>
+                                        <div class="gt-thumbnail-checkbox ">
+                                            <img [src]="state.selected? 'https://img.icons8.com/metro/452/checked-checkbox.png':'http://icons.iconarchive.com/icons/icons8/windows-8/256/User-Interface-Unchecked-Checkbox-icon.png'"
+                                                (click)="toggleState(state)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 btn-wrapper">
+                                    <button class=" gt-btn gt-btn--primary" routerLink="/vacationBuilder/step2"
+                                        [disabled]="!enableStep">Siguiente</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+</section>

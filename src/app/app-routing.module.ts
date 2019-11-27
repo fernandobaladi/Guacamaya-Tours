@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonNavigationComponent } from './navigation/common-navigation/common-navigation.component';
 import { AdminNavigationComponent } from './navigation/admin-navigation/admin-navigation.component';
-import { VacationBuilderComponent } from './modules/vacationBuilder/vacation-builder/vacation-builder.component';
+// import { VacationBuilderComponent } from './modules/vacationBuilder/vacation-builder/vacation-builder.component';
+import { VacationBuilderNavigationComponent } from './navigation/vacation-builder-navigation/vacation-builder-navigation.component';
 
 
 const routes: Routes = [
@@ -59,10 +60,15 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: VacationBuilderComponent,
+    redirectTo: '/vacationBuilder',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
+    component: VacationBuilderNavigationComponent,
     children: [
       {
-        path: 'vacation',
+        path: 'vacationBuilder',
         loadChildren: () => import('./modules/vacationBuilder/vacation-builder.module').then (m => m.VacationBuilderModule)
       },
     ]
