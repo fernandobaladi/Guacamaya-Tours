@@ -17,7 +17,7 @@ import { async } from 'rxjs/internal/scheduler/async';
 export class AdminDestinationCategoriesComponent implements OnInit {
 
   optionSort = '';
-  modalStatus = new BehaviorSubject (false);
+  modalStatus = new BehaviorSubject(false);
   categories;
   loading = false;
   public categoryForm: FormGroup;
@@ -27,11 +27,11 @@ export class AdminDestinationCategoriesComponent implements OnInit {
   downloadURL: string;
 
   constructor(private sideBarSV: SidebarService,
-              private fb: FormBuilder,
-              private router: Router,
-              private route: ActivatedRoute,
-              private categoriesService: DestinationsCategoryService
-    ) { }
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private categoriesService: DestinationsCategoryService
+  ) { }
 
   ngOnInit() {
     this.createCategoryForm();
@@ -53,14 +53,14 @@ export class AdminDestinationCategoriesComponent implements OnInit {
   createCategoryForm() {
     this.categoryForm = this.fb.group({
       name: ['', Validators.required],
-      status: ['', ],
+      status: ['',],
       imageURL: ['', Validators.required],
-      imagePath:[''],
-      id:['']
+      imagePath: [''],
+      id: ['']
     });
   }
 
-  toggleSideBar(){
+  toggleSideBar() {
     this.sideBarSV.toggleStatus();
   }
 
@@ -68,12 +68,12 @@ export class AdminDestinationCategoriesComponent implements OnInit {
     this.modalStatus.next(val);
   }
 
-  toggleModalStatus(){
+  toggleModalStatus() {
     this.modalStatus.next(!this.modalStatus.value);
     this.createCategoryForm();
   }
 
-openModal(category?) {
+  openModal(category?) {
     if (category) {
       this.categoryForm.controls.name.setValue(category.data.name);
       this.categoryForm.controls.status.setValue(category.data.status);
@@ -88,42 +88,68 @@ openModal(category?) {
     this.modalStatus.next(!this.modalStatus.value);
   }
 
+  public inputTextfield: string;
+  public apareceBorde: boolean = false;
+  public colorBorde: boolean = false;
+
   saveChanges() {
-    this.loading = true;
 
-    if (!this.categoryForm.controls.status.value) {
-      this.categoryForm.controls.status.setValue(false);
-    }
-    let data = {
-      name: this.categoryForm.controls.name.value,
-      status: this.categoryForm.controls.status.value,
-      imageURL: this.categoryForm.controls.imageURL.value,
-      imagePath: this.categoryForm.controls.imagePath.value,
-    };
+    var regex = /^[a-zA-Z]+$/
+    if (!regex.test(this.inputTextfield)) {
 
-    if (!this.categoryForm.controls.id.value) {
-
-      this.categoriesService.create(data)
-        .then(res => {
-          alert('¡Se ha agregado exitosamente el estado!');
-          this.categoryForm.reset();
-        }).catch(err => {
-          this.loading = false;
-          alert('Ha habido un error con la información introducida');
-        });
+      //console.log("Mega ahre");
+      this.apareceBorde = true;
+      this.colorBorde = true;
 
     } else {
 
-      this.categoriesService.updateCategory(this.categoryForm.controls.id.value, data)
-        .then(res => {
-          alert('¡Se ha editado exitosamente el estado!');
-          this.categoryForm.reset();
-        }).catch(err => {
-          this.loading = false;
-          alert('Ha habido un error con la información introducida');
-        });
+      this.apareceBorde = false;
+      this.colorBorde = false;
+
+      this.loading = true;
+
+      if (!this.categoryForm.controls.status.value) {
+        this.categoryForm.controls.status.setValue(false);
+      }
+
+      // let data = {
+      //   name: this.categoryForm.controls.name.value,
+      //   status: this.categoryForm.controls.status.value
+      // };
+
+      let data = {
+        name: this.categoryForm.controls.name.value,
+        status: this.categoryForm.controls.status.value,
+        imageURL: this.categoryForm.controls.imageURL.value,
+        imagePath: this.categoryForm.controls.imagePath.value,
+      };
+
+      if (!this.categoryForm.controls.id.value) {
+
+        this.categoriesService.create(data)
+          .then(res => {
+            alert('¡Se ha agregado exitosamente el estado!');
+            this.categoryForm.reset();
+          }).catch(err => {
+            this.loading = false;
+            alert('Ha habido un error con la información introducida');
+          });
+
+      } else {
+
+        this.categoriesService.updateCategory(this.categoryForm.controls.id.value, data)
+          .then(res => {
+            alert('¡Se ha editado exitosamente el estado!');
+            this.categoryForm.reset();
+          }).catch(err => {
+            this.loading = false;
+            alert('Ha habido un error con la información introducida');
+          });
+      }
+      this.modalStatus.next(false);
+
     }
-    this.modalStatus.next(false);
+
   }
 
 }
