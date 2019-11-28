@@ -12,11 +12,6 @@ export class HotelsComponent implements OnInit {
 
   constructor() { }
 
-  //ITINERARIO
-  
-
-
-
 
   itemsPerSlide = 3;
   singleSlideOffset = false;
@@ -157,29 +152,6 @@ export class HotelsComponent implements OnInit {
   funcionBoton(id: string) {
 
     this.mostrarMenu = !this.mostrarMenu
-
-  //   const x = document.getElementById('menuGeneral' + id);
-  //   const y = document.getElementById('menuComodidades' + id);
-  //   const z = document.getElementById('menuHabitaciones' + id);
-  //   const w = document.getElementById('menuPromociones' + id);
-
-  //   if (x.style.display === 'block' || y.style.display === 'block' || z.style.display === 'block' || w.style.display === 'block') {
-
-  //       if (y.style.display === 'block') {
-  //         y.style.display = 'none';
-  //       }
-  //       if (z.style.display === 'block') {
-  //         z.style.display = 'none';
-  //       }
-  //       if (w.style.display === 'block') {
-  //         w.style.display = 'none';
-  //       }
-  //       if (x.style.display === 'block') {
-  //         x.style.display = 'none';
-  //       }
-  //   } else {
-  //     x.style.display = 'block';
-  //   }
   }
 
 
@@ -199,8 +171,6 @@ export class HotelsComponent implements OnInit {
       document.getElementById(visible).style.display = 'block';
   }
 
-
- 
 
 
   // clickGeneral(id: string) {
