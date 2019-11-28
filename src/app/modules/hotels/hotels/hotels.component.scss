@@ -226,19 +226,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //HOTELES
 
 
@@ -673,7 +660,12 @@
 
 
 .principal-image {
-    //width: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.secondary-image {
+    // width: 100%;
     object-fit: cover;
 }
 
