@@ -21,6 +21,7 @@ import { StatusFilterPipe } from 'src/app/pipes/states/status-filter.pipe';
 import { CitiesSortPipe } from '../../pipes/cities/cities-sort.pipe';
 import { SortByNamePipe} from '../../pipes/states/sort-by-name.pipe';
 import { CitiesFilterByStatePipe } from '../../pipes/destinations/cities-filter-by-state.pipe';
+import { ImageUploaderComponent } from 'src/app/components/image-uploader/image-uploader.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { CitiesFilterByStatePipe } from '../../pipes/destinations/cities-filter-
     StatusFilterPipe,
     CitiesSortPipe,
     SortByNamePipe,
-    CitiesFilterByStatePipe
+    CitiesFilterByStatePipe,
+    ImageUploaderComponent
   ],
   imports: [
     CommonModule,

@@ -39,8 +39,9 @@ export class AdminDestinationsComponent implements OnInit {
   states;
   cities;
   activities = [ ] ;
-  services = [ ];
+  facilities = [ ];
   loading = false;
+  downloadURL: string;
   public stateForm: FormGroup;
   public cityForm: FormGroup;
   public categoryForm: FormGroup;
@@ -107,9 +108,9 @@ export class AdminDestinationsComponent implements OnInit {
     this.destinationForm.controls.activity.setValue('');
   }
 
-  addService() {
-    this.services.push(this.destinationForm.controls.service.value);
-    this.destinationForm.controls.service.setValue('');
+  addFacilities() {
+    this.facilities.push(this.destinationForm.controls.facility.value);
+    this.destinationForm.controls.facility.setValue('');
   }
 
 
@@ -127,7 +128,7 @@ export class AdminDestinationsComponent implements OnInit {
         id: [''],
          // image:['']
       },
-      city:{
+      city: {
         name: [''],
         status: [''],
         id :[''],
@@ -143,8 +144,9 @@ export class AdminDestinationsComponent implements OnInit {
       description: ['', Validators.required],
       address: ['', Validators.required],
       activity: [''],
-      service: [''],
-      image: [''],
+      facility: [''],
+      imageURL: ['', Validators.required],
+      imagePath: [''],
       status: [''],
       id: ['']
     });
@@ -206,7 +208,14 @@ export class AdminDestinationsComponent implements OnInit {
       }
     });
   }
+
+  uploaderRes(res) {
+    this.destinationForm.controls.imageURL.setValue(res.imageURL);
+    this.destinationForm.controls.imagePath.setValue(res.imagePath);
+  }
+
   openModal(destination?) {
+    this.activities = [];
     if (destination) {
       this.destinationForm.controls.name.setValue(destination.data.name);
       this.destinationForm.controls.status.setValue(destination.data.status);
@@ -217,10 +226,12 @@ export class AdminDestinationsComponent implements OnInit {
       this.destinationForm.controls.state.setValue(destination.data.state.id);
       this.destinationForm.controls.category.setValue(destination.data.category.id);
       this.destinationForm.controls.city.setValue(destination.data.city.id);
-      // this.destinationForm.controls.activity.setValue(destination.data.activity);
-      // this.destinationForm.controls.service.setValue(destination.data.activity);
-      // this.destinationForm.controls.image.setValue(destination.data.image);
+      this.destinationForm.controls.imageURL.setValue(destination.data.imageURL);
+      this.destinationForm.controls.imagePath.setValue(destination.data.imagePath);
+      this.activities = destination.data.activities;
+      this.facilities = destination.data.facilities;
       this.destinationForm.controls.id.setValue(destination.id);
+      
     } else {
       this.destinationForm.reset();
       this.destinationForm.controls.state.setValue('');
@@ -268,15 +279,18 @@ export class AdminDestinationsComponent implements OnInit {
         name: this.categorySelectedByUser.data.name,
         status: this.categorySelectedByUser.data.status,
         id: this.categorySelectedByUser.id
-      }
+      },
+      activities: this.activities,
+      facilities: this.facilities,
+      imageURL: this.destinationForm.controls.imageURL.value,
+      imagePath: this.destinationForm.controls.imagePath.value
     };
     console.log(data);
-    
     if (!this.destinationForm.controls.id.value) {
 
       this.destinationsService.create(data)
         .then(res => {
-          alert('¡Se ha agregado exitosamente el estado!');
+          alert('¡Se ha agregado exitosamente el destino!');
           this.destinationForm.reset();
         }).catch(err => {
           this.loading = false;
@@ -287,7 +301,7 @@ export class AdminDestinationsComponent implements OnInit {
 
       this.destinationsService.updateDestination(this.destinationForm.controls.id.value, data)
         .then(res => {
-          alert('¡Se ha editado exitosamente el estado!');
+          alert('¡Se ha editado exitosamente el destino!');
           this.destinationForm.reset();
         }).catch(err => {
           this.loading = false;

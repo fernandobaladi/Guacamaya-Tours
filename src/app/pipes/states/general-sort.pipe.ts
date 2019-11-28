@@ -62,6 +62,51 @@ export class GeneralSortPipe implements PipeTransform {
                     // Si a === b
                 return 0;
               });
+            case '6':
+              return array.sort( function(a, b) {
+                if (a.data.stars > b.data.stars) {
+                  return 1;
+                }
+                if (a.data.stars < b.data.stars) {
+                  return -1;
+                }
+                    // Si a === b
+                return 0;
+              });
+              case '7':
+          return array.sort( function(a, b) {
+            if (a.data.date > b.data.date) {
+              return 1;
+            }
+            if (a.data.date < b.data.date) {
+              return -1;
+            }
+              // Si a === b
+            return 0;
+          });
+      case '8':
+          return array.sort( function(a, b) {
+            if (a.data.status > b.data.status) {
+              return 1;
+            }
+            if (a.data.status < b.data.status) {
+              return -1;
+            }
+              // Si a === b
+            return 0;
+          });
+    
+      case '9':
+          return array.sort( function(a, b) {
+            if (a.data.amount > b.data.amount) {
+              return -1;
+            }
+            if (a.data.amount < b.data.amount) {
+              return 1;
+            }
+              // Si a === b
+            return 0;
+          });
     }
     return array;
   }

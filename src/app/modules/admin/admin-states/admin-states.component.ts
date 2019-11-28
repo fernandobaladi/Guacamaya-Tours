@@ -20,6 +20,7 @@ export class AdminStatesComponent implements OnInit {
   stateId;
   search: string;
   public stateForm: FormGroup;
+  downloadURL: string;
 
   constructor(private sideBarSV: SidebarService,
               private fb: FormBuilder,
@@ -46,10 +47,16 @@ export class AdminStatesComponent implements OnInit {
     this.stateForm = this.fb.group({
       name: ['', Validators.required],
       status: [''],
+      imageURL: ['', Validators.required],
+      imagePath: [''],
       id: ['']
     });
   }
 
+  uploaderRes(res) {
+    this.stateForm.controls.imageURL.setValue(res.imageURL);
+    this.stateForm.controls.imagePath.setValue(res.imagePath);
+  }
 
   toggleSideBar() {
     this.sideBarSV.toggleStatus();
@@ -67,6 +74,8 @@ export class AdminStatesComponent implements OnInit {
     if (state) {
       this.stateForm.controls.name.setValue(state.data.name);
       this.stateForm.controls.status.setValue(state.data.status);
+      this.stateForm.controls.imageURL.setValue(state.data.imageURL);
+      this.stateForm.controls.imagePath.setValue(state.data.imagePath);
       this.stateForm.controls.id.setValue(state.id);
     } else {
       this.stateForm.reset();
@@ -81,7 +90,9 @@ export class AdminStatesComponent implements OnInit {
     }
     let data = {
       name: this.stateForm.controls.name.value,
-      status: this.stateForm.controls.status.value
+      status: this.stateForm.controls.status.value,
+      imagePath: this.stateForm.controls.imagePath.value,
+      imageURL: this.stateForm.controls.imageURL.value
     };
 
     if (!this.stateForm.controls.id.value) {

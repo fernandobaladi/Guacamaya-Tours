@@ -11,9 +11,9 @@
                         <select [(ngModel)]="optionSort" class="form-control">
                             <option selected value=''> Ordenar por: </option>
                             <option value="1"> Nombre </option>
-                            <option value="2"> Fecha </option>
-                            <option value="3"> Status </option>
-                            <option value="4"> Monto </option>
+                            <option value="7"> Fecha </option>
+                            <option value="8"> Status </option>
+                            <option value="9"> Monto </option>
                         </select>
                     </div>
                 </div>
@@ -50,14 +50,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="book" *ngFor="let book of bookings  | sortBookings: optionSort | filter: search">
+                        <tr class="book" *ngFor="let book of bookings  | generalSort: optionSort | filter: search">
                             <th scope="row">{{book.data.date}}</th>
                             <td>{{book.data.name}}</td>
                             <td>{{book.data.locator}}</td>
                             <td>{{book.data.amount}}</td>
                             <td>{{book.data.phoneNumber}}</td>
-                            <td>{{book.data.status}}</td>
-                            <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="modifyInfo()">
+                            <td>{{book.data.statusName}}</td>
+                            <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="openModal(book)">
                                 Editar
                             </button>
                         </tr>
@@ -105,7 +105,7 @@
                             </div>
                             <div class="col-12 col-md-6 form-group">
                                 <label>
-                                    Número
+                                    Número de transacción
                                 </label>
                                 <input type="text" class="form-control" formControlName="transferNum" readonly>
                             </div>

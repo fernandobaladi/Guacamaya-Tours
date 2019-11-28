@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { SidebarService } from 'src/app/services/sidebar-service/sidebar-service.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { DestinationsCategoryService } from 'src/app/services/destinations/destinations-category.service';
+import { AngularFireUploadTask, AngularFireStorage } from '@angular/fire/storage';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { finalize } from 'rxjs/operators';
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Component({
   selector: 'app-admin-destination-categories',
@@ -17,6 +21,10 @@ export class AdminDestinationCategoriesComponent implements OnInit {
   categories;
   loading = false;
   public categoryForm: FormGroup;
+  task: AngularFireUploadTask;
+  percentage: Observable<number>;
+  snapshot: Observable<any>;
+  downloadURL: string;
 
   constructor(private sideBarSV: SidebarService,
               private fb: FormBuilder,
@@ -35,16 +43,19 @@ export class AdminDestinationCategoriesComponent implements OnInit {
           data: e.payload.doc.data()
         });
       });
-      console.log(this.categories);
-      
     });
+  }
+  uploaderRes(res) {
+    this.categoryForm.controls.imageURL.setValue(res.imageURL);
+    this.categoryForm.controls.imagePath.setValue(res.imagePath);
   }
 
   createCategoryForm() {
     this.categoryForm = this.fb.group({
       name: ['', Validators.required],
       status: ['', ],
-      image: [''],
+      imageURL: ['', Validators.required],
+      imagePath:[''],
       id:['']
     });
   }
@@ -66,9 +77,13 @@ openModal(category?) {
     if (category) {
       this.categoryForm.controls.name.setValue(category.data.name);
       this.categoryForm.controls.status.setValue(category.data.status);
+      this.categoryForm.controls.imageURL.setValue(category.data.imageURL);
+      this.categoryForm.controls.imagePath.setValue(category.data.imagePath);
       this.categoryForm.controls.id.setValue(category.id);
+      this.downloadURL = category.data.image;
     } else {
       this.categoryForm.reset();
+      this.downloadURL = null;
     }
     this.modalStatus.next(!this.modalStatus.value);
   }
@@ -79,10 +94,11 @@ openModal(category?) {
     if (!this.categoryForm.controls.status.value) {
       this.categoryForm.controls.status.setValue(false);
     }
-
     let data = {
       name: this.categoryForm.controls.name.value,
-      status: this.categoryForm.controls.status.value
+      status: this.categoryForm.controls.status.value,
+      imageURL: this.categoryForm.controls.imageURL.value,
+      imagePath: this.categoryForm.controls.imagePath.value,
     };
 
     if (!this.categoryForm.controls.id.value) {

@@ -17,6 +17,7 @@ export class AdminHotelServicesComponent implements OnInit {
   public hotelServiceForm: FormGroup;
   facilities;
   loading = false;
+  
 
   constructor(private sideBarSV: SidebarService,
               private fb: FormBuilder,
@@ -38,11 +39,17 @@ export class AdminHotelServicesComponent implements OnInit {
     });
   }
 
+  uploaderRes(res) {
+    this.hotelServiceForm.controls.imageURL.setValue(res.imageURL);
+    this.hotelServiceForm.controls.imagePath.setValue(res.imagePath);
+  }
+
   createHotelServiceForm() {
     this.hotelServiceForm = this.fb.group({
       name: ['', Validators.required],
       status: ['',],
-      image: ['',],
+      imageURL: ['',Validators.required],
+      imagePath: ['',],
       id: ['']
 
     });
@@ -66,6 +73,8 @@ export class AdminHotelServicesComponent implements OnInit {
     if (facility) {
       this.hotelServiceForm.controls.name.setValue(facility.data.name);
       this.hotelServiceForm.controls.status.setValue(facility.data.status);
+      this.hotelServiceForm.controls.imageURL.setValue(facility.data.imageURL);
+      this.hotelServiceForm.controls.imagePath.setValue(facility.data.imagePath);
       this.hotelServiceForm.controls.id.setValue(facility.id);
     } else {
       this.hotelServiceForm.reset();
@@ -81,7 +90,9 @@ export class AdminHotelServicesComponent implements OnInit {
     }
     let data = {
       name: this.hotelServiceForm.controls.name.value,
-      status: this.hotelServiceForm.controls.status.value
+      status: this.hotelServiceForm.controls.status.value,
+      imagePath: this.hotelServiceForm.controls.imagePath.value,
+      imageURL: this.hotelServiceForm.controls.imageURL.value,
     };
 
     if (!this.hotelServiceForm.controls.id.value) {

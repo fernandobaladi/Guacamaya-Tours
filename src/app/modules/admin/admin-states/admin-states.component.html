@@ -106,7 +106,11 @@
                             </div>
                             <div class="col-12 form-group">
                                 <label for="image">Imagen</label>
-                                <input type="file" class="form-control-file" formControlName="image">
+                                <div *ngIf="this.stateForm.controls.imageURL.value">
+                                    <img [src]=this.stateForm.controls.imageURL.value>
+                                </div>
+                                <app-image-uploader
+                                path="states" (res)="uploaderRes($event)"></app-image-uploader>
                             </div>
                             <div class="col-12 buttons">
                                 <button class="btn gt-btn gt-btn--secondary" type="submit"

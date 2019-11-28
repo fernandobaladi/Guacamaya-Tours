@@ -22,4 +22,7 @@ export class HotelsService {
   public getBooking(hotelId: string){
     return this.firestoreSV.getDoc(this.collectionPath, hotelId);
   }
+  public updateHotel(hotelId: string, data) {
+    return this.firestoreSV.update(this.collectionPath, hotelId, data);
+  }
 }

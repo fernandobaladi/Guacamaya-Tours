@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HostListener } from "@angular/core";
+import { DestinationsCategoryService } from 'src/app/services/destinations/destinations-category.service';
+import { DestinationsService } from 'src/app/services/destinations/destinations.service';
+import { StatesService } from 'src/app/services/states/states.service';
 
 export interface state {
   img: string;
@@ -38,86 +41,118 @@ export class DestinationComponent implements OnInit {
   enableStep=false;
   
   screen: string;
-
-  states: state[] = [
-    {
-      img: "https://steemitimages.com/DQmbJA4t1388EhBPCZgRv5svVFp7zHxABt6qQXMSvMMFCkx/image.png",
-      name: "Mérida",
-      selected: false,
-    },
-    {
-      img: "https://www.el-carabobeno.com/wp-content/uploads/2017/10/trujillo-1.jpg",
-      name: "Trujillo",
-      selected: false,
-    },
-    {
-      img: "http://mmedia.eluniversal.com/17914/san-cristobal-15703.jpg",
-      name: "Táchira",
-      selected: false,
-    },
-    {
-      img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Flor_de_venezuela_barquisimeto_lara.jpg",
-      name: "Lara",
-      selected: false,
-    },
-  ]
+  states;
+  // states: state[] = [
+  //   {
+  //     img: "https://steemitimages.com/DQmbJA4t1388EhBPCZgRv5svVFp7zHxABt6qQXMSvMMFCkx/image.png",
+  //     name: "Mérida",
+  //     selected: false,
+  //   },
+  //   {
+  //     img: "https://www.el-carabobeno.com/wp-content/uploads/2017/10/trujillo-1.jpg",
+  //     name: "Trujillo",
+  //     selected: false,
+  //   },
+  //   {
+  //     img: "http://mmedia.eluniversal.com/17914/san-cristobal-15703.jpg",
+  //     name: "Táchira",
+  //     selected: false,
+  //   },
+  //   {
+  //     img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Flor_de_venezuela_barquisimeto_lara.jpg",
+  //     name: "Lara",
+  //     selected: false,
+  //   },
+  // ]
 
   itemsPerSlide: number;
   singleSlideOffset = true;
-  
 
-  categories: category[] = [
-    {
-      img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
-      name: "Costa",
-      selected: false,
-    },
-    {
-      img: "https://viajesblog.net/wp-content/uploads/2018/05/salto-del-angel.jpg",
-      name: "Montaña",
-      selected: false,
-    },
-    {
-      img: "https://i1.wp.com/diariolavoz.net/wp-content/uploads/2013/07/ubicacion-medanos-de-coro.jpg",
-      name: "Selva",
-      selected: false,
-    },
-    {
-      img: "https://www.eltelegrafo.com.ec/media/k2/items/cache/0dd63e66c3035bda0f70aa3c277a0c98_XL.jpg",
-      name: "Llano",
-      selected: false,
-    },
-  ]
+  categories;
+  // categories: category[] = [
+  //   {
+  //     img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
+  //     name: "Costa",
+  //     selected: false,
+  //   },
+  //   {
+  //     img: "https://viajesblog.net/wp-content/uploads/2018/05/salto-del-angel.jpg",
+  //     name: "Montaña",
+  //     selected: false,
+  //   },
+  //   {
+  //     img: "https://i1.wp.com/diariolavoz.net/wp-content/uploads/2013/07/ubicacion-medanos-de-coro.jpg",
+  //     name: "Selva",
+  //     selected: false,
+  //   },
+  //   {
+  //     img: "https://www.eltelegrafo.com.ec/media/k2/items/cache/0dd63e66c3035bda0f70aa3c277a0c98_XL.jpg",
+  //     name: "Llano",
+  //     selected: false,
+  //   },
+  // ]
+  destinations;
+  // destinations: destination[] = [
+  //   {
+  //     img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
+  //     name: "Pico Bolívar",
+  //     state: "Mérida",
+  //     city: "Mérida",
+  //     info: "Es un lugar impresionante, a veces envuelto en neblina y a veces con un sol radiante que tuesta la piel",
+  //   },
+  //   {
+  //     img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
+  //     name: "Pico Bolívar",
+  //     state: "Mérida",
+  //     city: "Mérida",
+  //     info: "Es un lugar impresionante, a veces envuelto en neblina y a veces con un sol radiante que tuesta la piel",
+  //   },
+  //   {
+  //     img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
+  //     name: "Pico Bolívar",
+  //     state: "Mérida",
+  //     city: "Mérida",
+  //     info: "Es un lugar impresionante, a veces envuelto en neblina y a veces con un sol radiante que tuesta la piel",
+  //   },
+  // ]
 
-  destinations: destination[] = [
-    {
-      img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
-      name: "Pico Bolívar",
-      state: "Mérida",
-      city: "Mérida",
-      info: "Es un lugar impresionante, a veces envuelto en neblina y a veces con un sol radiante que tuesta la piel",
-    },
-    {
-      img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
-      name: "Pico Bolívar",
-      state: "Mérida",
-      city: "Mérida",
-      info: "Es un lugar impresionante, a veces envuelto en neblina y a veces con un sol radiante que tuesta la piel",
-    },
-    {
-      img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
-      name: "Pico Bolívar",
-      state: "Mérida",
-      city: "Mérida",
-      info: "Es un lugar impresionante, a veces envuelto en neblina y a veces con un sol radiante que tuesta la piel",
-    },
-  ]
-
-  constructor() {
+  constructor(private categoriesService: DestinationsCategoryService,
+              private destinationsService: DestinationsService,
+              private statesService: StatesService) {
     this.getScreenSize();
   }
 
   ngOnInit() {
+    this.categoriesService.getAllCategories().subscribe((categoriesSnapshot) => {
+      this.categories = [];
+      categoriesSnapshot.forEach((e: any) => {
+        this.categories.push({
+          id: e.payload.doc.id,
+          data: e.payload.doc.data()
+        });
+      });
+    });
+
+    this.statesService.getAllStates().subscribe((statesSnapshot) => {
+      this.states = [];
+      statesSnapshot.forEach((e: any) => {
+        this.states.push({
+          id: e.payload.doc.id,
+          data: e.payload.doc.data()
+        });
+      });
+    });
+
+
+    this.destinationsService.getAll().subscribe((destinationsSnapshot) =>{
+      this.destinations = [];
+      destinationsSnapshot.forEach((e: any) => {
+        this.destinations.push({
+          id: e.payload.doc.id,
+          data: e.payload.doc.data()
+        });
+      });
+    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -145,7 +180,7 @@ export class DestinationComponent implements OnInit {
     state.selected = !state.selected;
     this.enableStep = this.anyStateSelected();
     console.log(this.enableStep);
-    
+    console.log(this.destinations);
   }
 
   goToStep(step, category?) {
@@ -181,6 +216,6 @@ export class DestinationComponent implements OnInit {
   }
 
   anyStateSelected(){
-    return this.states.some(e=>{ return e.selected});
+    return this.states.some(e => { return e.selected });
   }
 }

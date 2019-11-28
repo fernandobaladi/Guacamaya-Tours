@@ -208,19 +208,23 @@
                                     Servicios: <br>
                                 </label>
                                 <div class="multiadd-box">
-                                    <span *ngFor='let service of services'>
-                                        {{service}} <br>
+                                    <span *ngFor='let facility of facilities'>
+                                        {{facility}} <br>
                                     </span>
                                 </div>
                                 <div class="input-box">
-                                    <input type="text" class="form-control input-bar" formControlName="service">
+                                    <input type="text" class="form-control input-bar" formControlName="facility">
                                     <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---add"
-                                        (click)="addService()"> + </button>
+                                        (click)="addFacilities()"> + </button>
                                 </div>
                             </div>
                             <div class="col-12 form-group">
                                 <label for="image">Imagen</label>
-                                <input type="file" class="form-control-file" formControlName="image">
+                                <div *ngIf="this.destinationForm.controls.imageURL.value">
+                                    <img [src]=this.destinationForm.controls.imageURL.value>
+                                </div>
+                                <app-image-uploader
+                                path="destinations" (res)="uploaderRes($event)"></app-image-uploader>
                             </div>
                             <div class="col-12 buttons">
                                 <button class="btn gt-btn gt-btn--secondary " type="submit"
