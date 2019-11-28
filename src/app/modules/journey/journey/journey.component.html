@@ -1,9 +1,14 @@
 <section class="gt-section gt-section--fullHeight verifier" [ngClass]="{'dontShow': correctLocator}">
+    
     <div class="journey-box-wrapper">
+        
         <div class="journey-wrapper">
+
             <div class="journey-guacamaya">
                 <img src="../../../../assets/img/contact/guaca.png">
             </div>
+
+
             <div class="journey-box-text">
                 <span>¿Quiéres chequear tu itinerario?</span>
                 <div class="journey-form-box">
@@ -12,133 +17,212 @@
                     [(ngModel)]="locator"  (ngModelChange)="locator = $event.toUpperCase()">
                 </div>
             </div>
+
+
             <button class="btn gt-btn gt-btn--primary" (click)="nextPage()">
                 Siguiente
             </button>
+
         </div>
     </div>
 </section>
 
+
+
 <section class="gt-section gt-section--heightAuto info-reserva" [ngClass]="{'show': correctLocator}">
 
-        <div class="contenedor-general">
+        <!-- <div class="contenedor-general"> -->
     
             <span>Localizador: AA1235</span>
-    
-            <div class="contenedor-principal">
-    
-                <div class="menu-principal">
-                    <!-- <!- <!- imagen  -->
-                    <div class="image"> <img src="../../../../assets/img/hotels/sunsol-1.png" width="120px"></div>
-                    
-                    <!-- <!- <!- informarción -- -- -->
-                    <div class="info">                            
-                            
-                        <span class="title">Sunsol</span> 
-                                    
-                        <div id="estrellas-hoteles">
-                                    
-                            <div>
-    
-                                <img src="https://rapidretic.net.au/wp-content/uploads/2016/11/5stars.png">
-                                
-                                <!-- <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_1">
-                                <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_2">
-                                <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_3">
-                                <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_4">
-                                <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_5"> -->
-                                
+
+
+            <div class="container-fluid contenedor-principal">
+
+                <div class="row">
+
+                    <!-- parte izquierda menu -->
+                    <div class="col-lg-4 col-12">
+
+                        <div class="row justify-content-between">
+
+                            <div class="col-4">
+                                <div class="image"> <img src="../../../../assets/img/hotels/sunsol-1.png" width="120px"></div>
                             </div>
-                                            
+
+                            <div class="col-7">
+                                <div class="info">                            
+                            
+                                    <span class="title">Sunsol</span> 
+                                                        
+                                    <div id="estrellas-hoteles">
+                                                        
+                                        <div>
+
+                                            <img src="../../../../assets/img/staramarilla.png">
+                                            <img src="../../../../assets/img/staramarilla.png">
+                                            <img src="../../../../assets/img/staramarilla.png">
+                                            <img src="../../../../assets/img/staramarilla.png">
+                                            <img src="../../../../assets/img/staramarilla.png">
+                                                    
+                                        </div>
+                                                                
+                                    </div>
+                                                    
+                                    <span>Suite de lujo</span> 
+                                                    
+                                </div>
+                            </div>
+
                         </div>
-                                
-                        <span>Suite de lujo</span> 
-                                
-                     </div>
-    
-    
-                     <div class="separator"></div>
-    
-                     <!-- <!- <!- entrada -- -- -->
-                     <div class="entrada">
-                        <span class="menuprincipal-titulos">Entrada</span>
-                        <span class="menuprincipal-titulos-negritas">15</span>
-                        <span class="menuprincipal-titulos">Septiembre</span>
-                     </div>
-    
-                     <div class="separator"></div>
-    
-                     <!-- <!- <!- salida -- -- -->
-                     <div class="entrada">
-                        <span class="menuprincipal-titulos">Entrada</span>
-                        <span class="menuprincipal-titulos-negritas">25</span>
-                        <span class="menuprincipal-titulos">Septiembre</span>
-                     </div>
-    
-    
-                    <div class="separator"></div>
-    
-    
-                     <!-- <!- <!- dias, noches y personas -- -- -->
-                     <div class="entrada">
-                        <span class="menuprincipal-titulos">Dias / Noches</span>
-                        <span class="menuprincipal-titulos-negritas">3 / 10</span>
-                        <span class="menuprincipal-titulos">5 adultos, 3 noches</span>
-                     </div>
+
+                    </div>
+
+                    <!-- segunda parte -->
+
+                    <!-- <div class="separator"></div> -->
+
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-12">
+                        <div class="entrada">
+                            <span class="menuprincipal-titulos"><strong>Entrada</strong></span>
+                            <span class="menuprincipal-titulos-negritas">15</span>
+                            <span class="menuprincipal-titulos">Septiembre</span>
+                         </div>
+
+                    </div>
+
+                    <!-- tercera parte -->
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-12">
+                        <div class="entrada">
+                            <span class="menuprincipal-titulos"><strong>Salida</strong></span>
+                            <span class="menuprincipal-titulos-negritas">30</span>
+                            <span class="menuprincipal-titulos">Septiembre</span>
+                        </div>
+                    </div>
+
+                    <!-- cuarta parte-->
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="entrada">
+                            <span class="menuprincipal-titulos"><strong>Dias / Noches</strong></span>
+                            <span class="menuprincipal-titulos-negritas">3 / 10</span>
+                            <span class="menuprincipal-titulos">5 adultos, 3 noches</span>
+                         </div>
+                    </div>
                     
+
+
                 </div>
-    
-    
-                <div class="separador-horizontal"></div>
-    
-                <!-- <!- <!- OTROS MENU -- -- -->
-    
-    
-                <div class="menu-precios">
-                    <div class="cosas-ordenadas">
-                        <span class="titulo-precio">Pedido</span>
-    
-                        <div class="ordenes">
-                            <span>3 habitaciones</span>
-                            <span>Todo incluido: no</span>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="separador-horizontal"></div>
+                    </div>
+                </div>
+
+                <!-- segundo menu -->
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="menu-precios">
+                            <div class="cosas-ordenadas">
+                                <span class="titulo-precio">Orden total</span>
+                
+                                <div class="ordenes">
+                                    <span>3 habitaciones</span>
+                                    <span>Todo incluido: no</span>
+                                </div>
+                                    
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="menu-precios">
+                            <div class="precio-total">
+                                <span class="titulo-precio">Precio</span>
+                                <span class="titulo-precio">USD$ 356</span>
+                                <span>7.256.890 Bs.S</span>    
+                            </div>
                         </div>
                         
-                        <span class="titulo-precio">Precio total</span>    
                     </div>
-    
-                    <div class="precio-total">
-                        <span class="titulo-precio">USD$ 356</span>
-                        <span>7.256.890 Bs.S</span>    
-                    </div>
-                    
-                </div>
-    
-    
-                <!-- <div class="separador-horizontal"></div> -->
-    
-                <div class="menu-huespedes">
-                    <span class="titulo-precio">Huéspedes</span>
-    
-                    <div class="titulos-contenedor">
-                        <span>Nombre y apellido</span>
-                        <span>Edad</span>
-                        <span>Identificación</span>
-                    </div>
-    
-    
-                    <div class="titulos-contenedor-info">
-                        <span>Fernando Baladi</span>
-                        <span>19</span>
-                        <span>27.545.164</span>
-                    </div>
-    
-    
-                </div>
-    
-            </div>
-    
-        </div>
-    
-    
-    </section>
 
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="separador-horizontal"></div>
+                    </div>
+                </div>
+
+                <!-- tercer menu -->
+
+                <div class="row">
+
+                    <div class="col-12">
+                        <span class="titulo-huespedes">Huéspedes</span>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                        
+                        <div class="row">
+                            <div class="col-12 titulos-menu-container">
+                                <span>Nombre y apellido</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 datos-container">
+                                <span>Fernando Baladi</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                        
+                        <div class="row">
+                            <div class="col-12 titulos-menu-container">
+                                <span>Edad</span>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-12 datos-container">
+                                <span>19</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                        
+                        <div class="row">
+                            <div class="col-12 titulos-menu-container">
+                                <span>Identificación</span>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                                <div class="col-12 datos-container" id="margen-tabla">
+                                    <span>27.545.164</span>
+                                </div>
+                        </div>
+                            
+                    </div>
+
+                </div>
+
+            </div> 
+
+</section>
