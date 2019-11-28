@@ -82,43 +82,60 @@ export class AdminHotelServicesComponent implements OnInit {
     this.modalStatus.next(!this.modalStatus.value);
   }
 
+
+  public inputTextfield: string;
+  public apareceBorde: boolean = false;
+  public colorBorde: boolean = false;
+
   saveChanges() {
-    this.loading = true;
 
-    if(!this.hotelServiceForm.controls.status.value){
-      this.hotelServiceForm.controls.status.setValue(false);
-    }
-    let data = {
-      name: this.hotelServiceForm.controls.name.value,
-      status: this.hotelServiceForm.controls.status.value,
-      imagePath: this.hotelServiceForm.controls.imagePath.value,
-      imageURL: this.hotelServiceForm.controls.imageURL.value,
-    };
+    var empty = /^$/;
+    var regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.inputTextfield) && !empty.test(this.inputTextfield)) {
 
-    if (!this.hotelServiceForm.controls.id.value) {
-
-      this.hotelsFacilities.create(data)
-        .then(res => {
-          alert('¡Se ha agregado exitosamente el estado!');
-          this.hotelServiceForm.reset();
-        }).catch(err => {
-          this.loading = false;
-          alert('Ha habido un error con la información introducida');
-        });
+      //console.log("Mega ahre");
+      this.apareceBorde = true;
+      this.colorBorde = true;
 
     } else {
 
-      this.hotelsFacilities.update(this.hotelServiceForm.controls.id.value, data)
-        .then(res => {
-          alert('¡Se ha editado exitosamente el estado!');
-          this.hotelServiceForm.reset();
-        }).catch(err => {
-          this.loading = false;
-          alert('Ha habido un error con la información introducida');
-        });
-    }
-    this.modalStatus.next(false);
+        this.loading = true;
+
+        if(!this.hotelServiceForm.controls.status.value){
+          this.hotelServiceForm.controls.status.setValue(false);
+        }
+        let data = {
+          name: this.hotelServiceForm.controls.name.value,
+          status: this.hotelServiceForm.controls.status.value,
+          imagePath: this.hotelServiceForm.controls.imagePath.value,
+          imageURL: this.hotelServiceForm.controls.imageURL.value,
+        };
+
+        if (!this.hotelServiceForm.controls.id.value) {
+
+          this.hotelsFacilities.create(data)
+            .then(res => {
+              alert('¡Se ha agregado exitosamente el estado!');
+              this.hotelServiceForm.reset();
+            }).catch(err => {
+              this.loading = false;
+              alert('Ha habido un error con la información introducida');
+            });
+
+        } else {
+
+          this.hotelsFacilities.update(this.hotelServiceForm.controls.id.value, data)
+            .then(res => {
+              alert('¡Se ha editado exitosamente el estado!');
+              this.hotelServiceForm.reset();
+            }).catch(err => {
+              this.loading = false;
+              alert('Ha habido un error con la información introducida');
+            });
+        }
+        this.modalStatus.next(false);
   
+    }
   }
 
 }

@@ -1,12 +1,12 @@
 @import "../../../../styles/sass/lib/variables";
 
 .contact-box-wrapper {
-  display: flex;
+  //display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-//   background-color: black;
+  //background-color: black;
 
   .contact-wrapper {
     width: auto;
@@ -20,25 +20,25 @@
     
     .gt-tag {
       width: $tag-min-width;
-      position: relative;
+      //position: relative;
       right: 0;
       top: 0;
-      align-self: flex-end;
+      //align-self: flex-end;
       text-align: center;
       padding-left: 0;
     }
 
     .contact-info-wrapper {
       height: 75%;
-      width: 550px;
+      width: auto;
       background-color: $color-secondary;
-      position: relative;
+      //position: relative;
       font-family: $font-family-primary;
       font-size: 1rem;
-      display: flex;
-      justify-content: space-around;
-      flex-direction: column;
-      align-items: flex-end;
+      //display: flex;
+      //justify-content: space-around;
+      //flex-direction: column;
+      //align-items: flex-end;
       box-shadow: $box-shadow;
 
       .contact-info-guaca {
@@ -89,5 +89,55 @@
         }
       }
     }
+  }
+}
+
+
+.gt-tag {
+  //width: $tag-min-width;
+  //position: relative;
+  right: 0;
+  top: 0;
+  //align-self: flex-end;
+  text-align: center;
+  //padding-left: 0;
+}
+
+.contact-info-guaca {
+  //height: 350px;
+  //width: 450px;
+  //position: absolute;
+  //bottom: -16px;
+  //left: -216px;
+  z-index: 1;
+
+  img {
+    height: 350px;
+    width: 450px;
+  }
+}
+
+
+.contact-info-element {
+  //display: flex;
+  //justify-content: flex-start;
+  //align-items: center;
+
+  img {
+    height: 40px;
+    width: 40px;
+    transition: .3s;
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
+  }
+
+  img:hover{
+    transform: scale(1.2);
+  }
+
+  span {
+    padding-left: 2rem;
   }
 }

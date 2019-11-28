@@ -71,6 +71,8 @@ export class AdminDestinationCategoriesComponent implements OnInit {
   toggleModalStatus() {
     this.modalStatus.next(!this.modalStatus.value);
     this.createCategoryForm();
+    this.apareceBorde = false;
+    this.colorBorde = false;
   }
 
   openModal(category?) {
@@ -92,10 +94,14 @@ export class AdminDestinationCategoriesComponent implements OnInit {
   public apareceBorde: boolean = false;
   public colorBorde: boolean = false;
 
+
+  
+
   saveChanges() {
 
-    var regex = /^[a-zA-Z]+$/
-    if (!regex.test(this.inputTextfield)) {
+    var empty = /^$/;
+    var regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.inputTextfield) && !empty.test(this.inputTextfield)) {
 
       //console.log("Mega ahre");
       this.apareceBorde = true;
