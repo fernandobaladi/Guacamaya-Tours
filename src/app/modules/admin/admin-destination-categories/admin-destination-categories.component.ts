@@ -73,41 +73,64 @@ openModal(category?) {
     this.modalStatus.next(!this.modalStatus.value);
   }
 
+
+  public inputTextfield: string;
+  public apareceBorde: boolean = false;
+  public colorBorde: boolean = false;
+
   saveChanges() {
-    this.loading = true;
 
-    if (!this.categoryForm.controls.status.value) {
-      this.categoryForm.controls.status.setValue(false);
-    }
+    var regex = /^[a-zA-Z]+$/
+    if (!regex.test(this.inputTextfield)) {
 
-    let data = {
-      name: this.categoryForm.controls.name.value,
-      status: this.categoryForm.controls.status.value
-    };
-
-    if (!this.categoryForm.controls.id.value) {
-
-      this.categoriesService.create(data)
-        .then(res => {
-          alert('¡Se ha agregado exitosamente el estado!');
-          this.categoryForm.reset();
-        }).catch(err => {
-          this.loading = false;
-          alert('Ha habido un error con la información introducida');
-        });
-
+      //console.log("Mega ahre");
+      this.apareceBorde = true;
+      this.colorBorde = true;
+    
     } else {
 
-      this.categoriesService.updateCategory(this.categoryForm.controls.id.value, data)
-        .then(res => {
-          alert('¡Se ha editado exitosamente el estado!');
-          this.categoryForm.reset();
-        }).catch(err => {
-          this.loading = false;
-          alert('Ha habido un error con la información introducida');
-        });
+      this.apareceBorde = false;
+      this.colorBorde = false;
+
+        this.loading = true;
+
+        if (!this.categoryForm.controls.status.value) {
+          this.categoryForm.controls.status.setValue(false);
+        }
+
+        let data = {
+          name: this.categoryForm.controls.name.value,
+          status: this.categoryForm.controls.status.value
+        };
+
+        if (!this.categoryForm.controls.id.value) {
+
+          this.categoriesService.create(data)
+            .then(res => {
+              alert('¡Se ha agregado exitosamente el estado!');
+              this.categoryForm.reset();
+            }).catch(err => {
+              this.loading = false;
+              alert('Ha habido un error con la información introducida');
+            });
+
+        } else {
+
+          this.categoriesService.updateCategory(this.categoryForm.controls.id.value, data)
+            .then(res => {
+              alert('¡Se ha editado exitosamente el estado!');
+              this.categoryForm.reset();
+            }).catch(err => {
+              this.loading = false;
+              alert('Ha habido un error con la información introducida');
+            });
+        }
+        this.modalStatus.next(false);
+  
     }
-    this.modalStatus.next(false);
-  }
+
+}
+  
+
 
 }
