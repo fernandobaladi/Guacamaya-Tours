@@ -3,14 +3,8 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { SidebarService } from 'src/app/services/sidebar-service/sidebar-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { plusOne } from 'src/app/models/plusOne';
 
-export interface plusOne {
-  namePlus: String,
-  lastNamePlus: String,
-  agePlus: Number,
-  IDTypePlus: String,
-  IDPlus: Number
-}
 
 @Component({
   selector: 'app-vacation-builder-step4',
@@ -23,6 +17,13 @@ export class VacationBuilderStep4Component implements OnInit {
     step_one: true,
     step_two: false,
   }
+
+  vacationRounds = {
+    round_one: true,
+    round_two: false,
+  }
+
+  
   enableStep=false;
   loading = false;
   public clientBasicForm: FormGroup;
@@ -101,6 +102,21 @@ export class VacationBuilderStep4Component implements OnInit {
     }
   }
 
+  goTovacationRound(round) {
+    this.roundsToFalse();
+    switch (round) {
+      case 1:
+        this.vacationRounds.round_one = true;
+        break;
+      case 2:
+        this.vacationRounds.round_two = true;
+        break;
+
+      default:
+        break;
+    }
+  }
+
   checkPlusOne(){
 
     if(this.plusOnes.length === this.clientBasicForm.controls.numberPeople.value){
@@ -111,6 +127,11 @@ export class VacationBuilderStep4Component implements OnInit {
   stepsToFalse() {
     this.steps.step_one = false;
     this.steps.step_two = false;
+  }
+
+  roundsToFalse() {
+    this.vacationRounds.round_one = false;
+    this.vacationRounds.round_two = false;
   }
 
   toggleModalStatus() {

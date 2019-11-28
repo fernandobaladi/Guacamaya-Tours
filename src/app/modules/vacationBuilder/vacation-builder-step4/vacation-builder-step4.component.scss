@@ -1,13 +1,12 @@
 @import "../../../../styles/sass/lib/variables";
 
 .vacation-form-wrapper {
-
-    // .form-group{
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     flex-direction: column;
-    // }
+  // .form-group{
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     flex-direction: column;
+  // }
 
   .form-control--custom {
     background-color: $color-terciary;
@@ -21,36 +20,36 @@
   justify-content: flex-end;
 }
 
-.input-box{
-    display: flex;
-    align-items: center;
+.input-box {
+  display: flex;
+  align-items: center;
 
-    img{
-        height: 40px;
-        width: 40px;
-        margin-right: 1rem;
-    }
+  img {
+    height: 40px;
+    width: 40px;
+    margin-right: 1rem;
+  }
 }
 
-label{
-    font-family: $font-family-primary;
-    font-size: 1.5rem;
+label {
+  font-family: $font-family-primary;
+  font-size: 1.5rem;
 }
 
 .btn-box {
-    bottom: 1rem;
+  bottom: 1rem;
 }
 
-.btn-wrapper{
-    position: relative;
-    height: calc(100vh - 370px - 4rem);
+.btn-wrapper {
+  position: relative;
+  height: calc(100vh - 370px - 4rem);
 }
 
-.id-wrapper{
+.id-wrapper {
   text-align: center;
 }
 
-.idSelect{
+.idSelect {
   margin-left: 1rem;
   margin-right: -1.5rem;
 }
@@ -88,4 +87,20 @@ label{
     color: black;
     background-color: $color-secondary;
   }
+
+  .plusOne-info-box {
+    border-bottom: solid;
+    border-bottom-width: 0.2rem;
+    border-bottom-color: $color-primary;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .multiadd-box {
+    height: 200px;
+    max-width: 100%;
+    overflow: auto;
+
+  }
+  
 }

@@ -1,4 +1,8 @@
-export interface State {
+import { state } from '../models/state';
+
+export interface city {
     name: string;
-    status: string;
+    status: Boolean;
+    state: state;
+    id: String;
 }

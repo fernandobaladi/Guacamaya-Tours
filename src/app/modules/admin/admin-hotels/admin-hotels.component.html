@@ -9,7 +9,7 @@
                     <div class="hotels-sort-wrapper">
                         <img src="../../../../assets/img/filter.png">
                         <select [(ngModel)]="optionSort" class="form-control">
-                            <option selected value=''> Ordenar por: </option>
+                            <option selected value='' disabled> Ordenar por: </option>
                             <option value="1"> Nombre </option>
                             <option value="3"> Estado </option>
                             <option value="4"> Ciudad </option>
@@ -131,7 +131,7 @@
                                     Estrellas
                                 </label>
                                 <select formControlName="stars" class="form-control">
-                                    <option selected value=''> Seleccionar: </option>
+                                    <option selected value='' disabled> Seleccionar: </option>
                                     <option value="1"> 1 </option>
                                     <option value="2"> 2 </option>
                                     <option value="3"> 3 </option>
@@ -154,7 +154,7 @@
                                     Estado
                                 </label>
                                 <select formControlName="state" class="form-control">
-                                    <option selected value=''> Seleccione </option>
+                                    <option selected value='' disabled> Seleccione </option>
                                     <option *ngFor="let state of states | statusFilter | sortByName" [value]="state.id">
                                         {{state.data.name}}
                                     </option>
@@ -165,7 +165,7 @@
                                     Ciudad
                                 </label>
                                 <select formControlName="city" class="form-control">
-                                    <option selected value=''> Seleccione </option>
+                                    <option selected value='' disabled> Seleccione </option>
                                     <option *ngFor="let city of cities | sortByName | statusFilter | citiesFilterByState" [value]="city.id">
                                         {{city.data.name}}
                                     </option>

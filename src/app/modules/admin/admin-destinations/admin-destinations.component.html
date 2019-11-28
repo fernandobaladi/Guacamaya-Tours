@@ -130,7 +130,7 @@
                                     Categoría
                                 </label>
                                 <select formControlName="category" class="form-control">
-                                    <option selected value=''> Seleccione </option>
+                                    <option selected value='' disabled> Seleccione </option>
                                     <option *ngFor="let category of categories | sortByName | statusFilter" [value]="category.id">
                                         {{category.data.name}}
                                     </option>
@@ -151,7 +151,7 @@
                                     Estado
                                 </label>
                                 <select formControlName="state" class="form-control">
-                                    <option selected value=''> Seleccione </option>
+                                    <option selected value='' disabled> Seleccione </option>
                                     <option *ngFor="let state of states | statusFilter | sortByName" [value]="state.id">
                                         {{state.data.name}}
                                     </option>
@@ -162,7 +162,7 @@
                                     Ciudad
                                 </label>
                                 <select formControlName="city" class="form-control">
-                                    <option selected value=''> Seleccione </option>
+                                    <option selected value='' disabled> Seleccione </option>
                                     <option *ngFor="let city of cities | sortByName | statusFilter | citiesFilterByState" [value]="city.id">
                                         {{city.data.name}}
                                     </option>

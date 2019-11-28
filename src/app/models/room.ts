@@ -1,10 +1,8 @@
-export class Room {
+export class room {
 
-    name: string;
+    name: string; 
     capacity: number;
     view?: string;
-    images: string[];
-    facilities?: string;
     price: number;
 
 }

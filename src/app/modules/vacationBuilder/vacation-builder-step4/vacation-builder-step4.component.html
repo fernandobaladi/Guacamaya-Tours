@@ -27,7 +27,8 @@
                                         <div class="input-box">
                                             <img src="../../../assets/img/user-shape.png">
                                             <input type="number" class="form-control form-control--custom"
-                                                formControlName="numberPeople" min="1">
+                                                formControlName="numberPeople" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                                title="Numbers only">
                                         </div>
                                     </div>
                                     <div class="col-12 form-group">
@@ -37,7 +38,8 @@
                                         <div class="input-box">
                                             <img src="../../../assets/img/hotel.png">
                                             <input type="number" class="form-control form-control--custom"
-                                                formControlName="numberHabs" min="1">
+                                                formControlName="numberHabs" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                                title="Numbers only">
                                         </div>
                                     </div>
                                     <!-- <div class="col-12 buttons">
@@ -114,7 +116,7 @@
                                         <div class="row">
                                             <div class="col-3 text-right idSelect">
                                                 <select formControlName="IDType" class="form-control">
-                                                    <option selected value=''> Seleccione </option>
+                                                    <option selected value='' disabled> Seleccione </option>
                                                     <option> V- </option>
                                                     <option> J- </option>
                                                     <option> E- </option>
@@ -148,6 +150,36 @@
                             </form>
                         </div>
                     </div>
+
+                    <!-- Cuadro de todos los acompañantes -->
+
+                    <div class="row" *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
+                        <div class="col-12 formTitle">
+                            <h1>
+                                Todos los acompañantes
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row form mt-4" *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
+                        <div class="col-12 offset-md-3 col-md-6 ">
+                            <div class="multiadd-box">
+                                <!-- <div class="image-additional-box"
+                                    *ngFor='let imageAdditional of imagesAdditionals; let i=index'>
+                                    <img [src]="imageAdditional">
+                                    <div class="close-btn" (click)="deleteImage(i)">
+                                        X
+                                    </div>
+                                </div> -->
+                                <div class="plusOne-info-box" *ngFor='let plusOne of plusOnes'>
+                                    Nombre: {{plusOne.namePlus}}
+                                    <br> Apellido: {{plusOne.lastNamePlus}}
+                                    <br> Edad: {{plusOne.agePlus}}
+                                    <br> Cédula: {{plusOne.IDTypePlus}} {{plusOne.IDPlus}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
 
                     <!-- Comienzo del formulario de acompañante -->
                     <div class="row" *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
@@ -186,7 +218,7 @@
                                         <div class="row">
                                             <div class="col-3 text-right idSelect">
                                                 <select formControlName="IDTypePlus" class="form-control">
-                                                    <option selected value=''> Seleccione </option>
+                                                    <option selected value='' disabled> Seleccione </option>
                                                     <option> V- </option>
                                                     <option> J- </option>
                                                     <option> E- </option>
@@ -203,14 +235,14 @@
                         </div>
                         <div class="col-12 offset-md-3 col-md-6 mt-5 text-right">
                             <button class="gt-btn gt-btn--secondary" (click)="addPlusOne()"
-                                [disabled]="plusOneForm.invalid || this.plusOnes.length >= this.clientBasicForm.controls.numberPeople.value">Agregar</button>
+                                [disabled]="plusOneForm.invalid || this.plusOnes.length >= (this.clientBasicForm.controls.numberPeople.value -1)">Agregar</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 offset-md-3 col-md-6 mt-5 text-right"
                     *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
-                    <button class="gt-btn gt-btn--secondary" (click)="goToStep(2)"
-                        [disabled]="clientInfoForm.invalid || this.plusOnes.length != this.clientBasicForm.controls.numberPeople.value">Siguiente</button>
+                    <button class="gt-btn gt-btn--secondary" (click)="toggleModalStatus()"
+                        [disabled]="clientInfoForm.invalid || this.plusOnes.length != (this.clientBasicForm.controls.numberPeople.value -1)">Siguiente</button>
                 </div>
                 <div class="col-12 offset-md-3 col-md-6 mt-5 text-right"
                     *ngIf="this.clientBasicForm.controls.numberPeople.value===1">

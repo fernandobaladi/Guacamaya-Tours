@@ -13,7 +13,7 @@ import { AdminNavigationComponent } from './navigation/admin-navigation/admin-na
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ClientSideBarComponent } from './components/client-side-bar/client-side-bar.component';
-import { VacationBuilderComponent } from './modules/vacationBuilder/vacation-builder/vacation-builder.component';
+// import { VacationBuilderComponent } from './modules/vacationBuilder/vacation-builder/vacation-builder.component';
 import { VacationBuilderNavigationComponent } from './navigation/vacation-builder-navigation/vacation-builder-navigation.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { VacationBuilderHeaderComponent } from './components/vacation-builder-header/vacation-builder-header.component';

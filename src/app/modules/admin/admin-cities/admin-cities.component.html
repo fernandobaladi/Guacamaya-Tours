@@ -120,7 +120,7 @@
                                     Estado
                                 </label>
                                 <select formControlName="state" class="form-control">
-                                    <option selected value=''> Seleccione </option>
+                                    <option selected value='' disabled> Seleccione </option>
                                     <option *ngFor="let state of states | statusFilter | sortByName" [value]="state.id"> {{state.data.name}}
                                     </option>
                                 </select>
