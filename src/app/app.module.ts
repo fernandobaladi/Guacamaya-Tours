@@ -16,6 +16,12 @@ import { ClientSideBarComponent } from './components/client-side-bar/client-side
 import { VacationBuilderComponent } from './modules/vacationBuilder/vacation-builder/vacation-builder.component';
 import { VacationBuilderNavigationComponent } from './navigation/vacation-builder-navigation/vacation-builder-navigation.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { VacationBuilderHeaderComponent } from './components/vacation-builder-header/vacation-builder-header.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { VacationSideBarComponent } from './components/vacation-side-bar/vacation-side-bar.component';
+
+
 
 @NgModule({
   declarations: [
@@ -26,8 +32,10 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     AdminNavigationComponent,
     SideBarComponent,
     ClientSideBarComponent,
-    VacationBuilderComponent,
-    VacationBuilderNavigationComponent
+    VacationBuilderNavigationComponent,
+    VacationBuilderHeaderComponent,
+    VacationSideBarComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -37,7 +45,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     CarouselModule.forRoot(),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]

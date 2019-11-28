@@ -8,6 +8,7 @@ export class SidebarService {
 
   status= new BehaviorSubject (false)
   statusClientMenu= new BehaviorSubject (false)
+  statusVacationMenu= new BehaviorSubject (false)
 
   constructor() { }
 
@@ -25,5 +26,13 @@ export class SidebarService {
 
   toggleStatusClientMenu(){
     this.statusClientMenu.next( !this.statusClientMenu.value );
+  }
+
+  changeStatusVacationMenu(val){
+    this.statusVacationMenu.next(val)
+  }
+
+  toggleStatusVacationMenu(){
+    this.statusVacationMenu.next( !this.statusVacationMenu.value );
   }
 }

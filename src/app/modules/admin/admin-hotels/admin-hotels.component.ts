@@ -32,6 +32,10 @@ export interface facility {
   viewValue: string;
   active: boolean;
 }
+export interface image {
+  img: string;
+  selected?: boolean;
+}
 
 @Component({
   selector: 'app-admin-hotels',
@@ -88,7 +92,7 @@ export class AdminHotelsComponent implements OnInit {
   // ];
 
   // services=[  ]
-  imagesAdditionals = [];
+  imagesAdditionals: image [];
   habImagesAdditionals = [];
   fullDayAvailable = false;
 
@@ -184,7 +188,15 @@ export class AdminHotelsComponent implements OnInit {
     // this.hotelForm.controls.imageAdditional.setValue('');
   }
 
+  deleteImage(pos) {
+    this.imagesAdditionals.splice(pos,1)
+  }
 
+  // toggleSelectedImage(pos){
+  //   this.imagesAdditionals[pos].selected = !this.imagesAdditionals[pos].selected;
+  // }
+  
+  
   createHotelForm() {
     this.hotelForm = this.fb.group({
       name: ['', Validators.required],
@@ -467,6 +479,10 @@ export class AdminHotelsComponent implements OnInit {
     // es decir eso iria justo aca antes del .push y el push tambien habria q cambiarle lo q esta dentro del ()
     this.habImagesAdditionals.push(this.habForm.controls.imageAdditional.value);
     this.habForm.controls.imageAdditional.setValue('');
+  }
+
+  deleteHabImage(pos){
+    this.habImagesAdditionals.splice(pos,1)
   }
 
   toggleFacility(facility) {

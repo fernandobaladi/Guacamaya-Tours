@@ -47,7 +47,6 @@
                 <table class="table hotels-table">
                     <thead>
                         <tr>
-                            <th scope="col">Categoría</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Ciudad</th>
@@ -78,7 +77,6 @@
                             <td>holi</td>
                             <td>holi</td>
                             <td>holi</td>
-                            <td>holi</td>
                             <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---edit" type="menu"
                                 (click)="modifyInfo()">
                                 Editar
@@ -87,7 +85,6 @@
                         </tr>
                         <tr class="hotel">
                             <th scope="row">fsa</th>
-                            <td>holi</td>
                             <td>holi</td>
                             <td>holi</td>
                             <td>holi</td>
@@ -228,7 +225,13 @@
                             <div class="col-12 col-md-8 form-group">
                                 <label for="imageAdditional">Imágenes adicionales </label>
                                 <div class="multiadd-box">
-                                    <img *ngFor='let imageAdditional of imagesAdditionals' [src]="imageAdditional">
+                                    <div class="image-additional-box"
+                                        *ngFor='let imageAdditional of imagesAdditionals; let i=index'>
+                                        <img [src]="imageAdditional">
+                                        <div class="close-btn" (click)="deleteImage(i)">
+                                            X
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="input-box">
                                     <input type="file" class="form-control-file input-bar"
@@ -250,7 +253,8 @@
                                 Habitaciones
                             </span>
                             <div class=" habs-add-btn">
-                                <button class="btn gt-btn gt-btn--secondary" type="menu" (click)="toggleModalSecondaryStatus()">
+                                <button class="btn gt-btn gt-btn--secondary" type="menu"
+                                    (click)="toggleModalSecondaryStatus()">
                                     Añadir +
                                 </button>
                             </div>
@@ -402,7 +406,13 @@
                             <div class="col-12 col-md-8 form-group">
                                 <label for="imageAdditional">Imágenes adicionales </label>
                                 <div class="multiadd-box">
-                                    <img *ngFor='let imageAdditional of habImagesAdditionals' [src]="imageAdditional">
+                                    <div class="image-additional-box"
+                                        *ngFor='let imageAdditional of habImagesAdditionals; let i=index'>
+                                        <img [src]="imageAdditional">
+                                        <div class="close-btn" (click)="deleteHabImage(i)">
+                                            X
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="input-box">
                                     <input type="file" class="form-control-file input-bar"

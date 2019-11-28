@@ -1,0 +1,54 @@
+<section class="overlay-wrapper" [ngClass]="{'show': status}">
+    <div class="overlay" [ngClass]="{'show': status}" (click)='toggleSideBar()'>
+        <div class="close-btn">
+            <img src="https://static.thenounproject.com/png/26894-200.png">
+        </div>
+    </div>
+    <div class="side-bar-wrapper" [ngClass]="{'show': status}">
+        <div class="logo-box" routerLink="/home" (click)='toggleSideBar()'>
+            <img src="../../../assets/img/guaca-logo-admin.png">
+        </div>
+        <div class="text-box">
+            <div class="option">
+                <div class="navbar-img">
+                    <img src="../../../assets/img/placeholder.png">
+                </div>
+                <span class="title title-clickeable" routerLink="/vacationBuilder/step1" (click)='toggleSideBar()'>
+                    Paso 1: Destino
+                </span>
+            </div>
+            <div class="option">
+                <div class="navbar-img">
+                    <img src="../../../assets/img/calendar.png">
+                </div>
+                <span class="title title-clickeable" routerLink="/vacationBuilder/step2" (click)='toggleSideBar()'>
+                    Paso 2: Fecha
+                </span>
+            </div>
+            <div class="option">
+                <div class="navbar-img">
+                    <img src="../../../assets/img/business-center.png">
+                </div>
+                <span class="title title-clickeable" routerLink="/vacationBuilder/step3" (click)='toggleSideBar()'>
+                    Paso 3: Hotel
+                </span>
+            </div>
+            <div class="option">
+                <div class="navbar-img">
+                    <img src="../../../assets/img/user-shape.png">
+                </div>
+                <span class="title title-clickeable" routerLink="/vacationBuilder/step4" (click)='toggleSideBar()'>
+                    Paso 4: Datos
+                </span>
+            </div>
+            <div class="option">
+                <div class="navbar-img">
+                    <img src="../../../assets/img/money.png">
+                </div>
+                <span class="title title-clickeable" routerLink="/vacationBuilder/step5" (click)='toggleSideBar()'>
+                    Paso 5: Pago
+                </span>
+            </div>
+        </div>
+    </div>
+</section>

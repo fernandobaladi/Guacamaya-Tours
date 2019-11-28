@@ -1,0 +1,34 @@
+<section class="gt-section gt-section--fullHeightWidthScrolleable">
+    <section class="gt-section gt-section--fullWidth">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="col-12 gt-tag-steps">
+                            <div class="col-12 col-md-4 title">
+                                <span> Paso 2 </span>
+                            </div>
+                            <div class="col-12 col-8 subtitle">
+                                <span> Selecciona la fecha de tu viaje</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row selectors-wrapper">
+                    <div class="col-12">
+                        <div class="row ">
+                            <div class="col-12 col-md-6 form-group datePicker-wrapper">
+                                <input class="form-control datePicker-box" placeholder="Fecha de llegada" ngModel bsDatepicker
+                                    [minDate]="minDate" [maxDate]="maxDate" >
+                            </div>
+                            <div class="col-12 col-md-6 form-group datePicker-wrapper">
+                                <input class="form-control datePicker-box" placeholder="Fecha de salida" ngModel bsDatepicker
+                                    [minDate]="minDate" [maxDate]="maxDate">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

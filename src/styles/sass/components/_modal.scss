@@ -139,6 +139,21 @@
           background-color: $color-secondary;
           color: black;
 
+          .image-additional-box{
+            width: 70px;
+            height: 70px;
+            position: relative;
+
+            .close-btn{
+              width: 10px;
+              height: 10px;
+              position: absolute;
+              right: 0;
+              top: 0;
+              cursor: pointer;
+            }
+          }
+
           img{
             width: 60px;
             height: 60px;
