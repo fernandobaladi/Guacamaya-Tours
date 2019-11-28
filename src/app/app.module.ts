@@ -35,7 +35,8 @@ import { VacationSideBarComponent } from './components/vacation-side-bar/vacatio
     VacationBuilderNavigationComponent,
     VacationBuilderHeaderComponent,
     VacationSideBarComponent,
-    
+    VacationBuilderComponent
+
   ],
   imports: [
     BrowserModule,

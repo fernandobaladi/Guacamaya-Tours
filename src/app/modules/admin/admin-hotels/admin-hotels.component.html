@@ -207,20 +207,24 @@
                             <div class="col-12 col-md-6 form-group">
                                 <label for="service">Servicios del hotel</label>
                                 <div class="multiselect-wrapper">
-                                    <div *ngFor='let service of services' class="multiselect-option">
+                                    <div *ngFor='let service of facilitiesHotel' class="multiselect-option">
                                         <div>
                                             <img [src]="service.active? 'https://img.icons8.com/metro/452/checked-checkbox.png':'http://icons.iconarchive.com/icons/icons8/windows-8/256/User-Interface-Unchecked-Checkbox-icon.png'"
                                                 (click)="toggleService(service)">
                                         </div>
                                         <div>
-                                            {{service.viewValue}}
+                                            {{service.data.name}}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-8 form-group">
                                 <label for="imagePricipal">Imagen principal</label>
-                                <input type="file" class="form-control-file" formControlName="imagePricipal">
+                                <div *ngIf="this.hotelForm.controls.mainImageURL.value">
+                                    <img [src]=this.hotelForm.controls.mainImageURL.value>
+                                </div>
+                                <app-image-uploader
+                                path="hotel" (res)="uploaderRes($event)"></app-image-uploader>
                             </div>
                             <div class="col-12 col-md-8 form-group">
                                 <label for="imageAdditional">Imágenes adicionales </label>
@@ -397,11 +401,11 @@
                             </div>
                             <div class="col-12 col-md-8 form-group">
                                 <label for="imagePricipal">Imagen principal</label>
-                                <div *ngIf="this.hotelForm.controls.mainImageURL.value">
+                                <!-- <div *ngIf="this.hotelForm.controls.mainImageURL.value">
                                     <img [src]=this.hotelForm.controls.mainImageURL.value>
                                 </div>
                                 <app-image-uploader
-                                path="hotel" (res)="uploaderRes($event)"></app-image-uploader>
+                                path="hotel" (res)="uploaderRes($event)"></app-image-uploader>-->
                             </div>
                             <div class="col-12 col-md-8 form-group">
                                 <label for="imageAdditional">Imágenes adicionales </label>

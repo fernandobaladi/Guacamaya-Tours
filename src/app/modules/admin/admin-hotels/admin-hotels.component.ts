@@ -112,7 +112,6 @@ export class AdminHotelsComponent implements OnInit {
   ngOnInit() {
     this.createHotelForm();
     this.createHabForm();
-    console.log("epa");
     this.statesService.getAllStates().subscribe((statesSnapshot) => {
       this.states = [];
       statesSnapshot.forEach((e: any) => {
@@ -245,8 +244,8 @@ export class AdminHotelsComponent implements OnInit {
   }
 
   uploaderRes(res) {
-    this.hotelForm.controls.imageURL.setValue(res.imageURL);
-    this.hotelForm.controls.imagePath.setValue(res.imagePath);
+    this.hotelForm.controls.mainImageURL.setValue(res.imageURL);
+    this.hotelForm.controls.mainImagePath.setValue(res.imagePath);
   }
 
   createStateForm() {
@@ -278,6 +277,14 @@ export class AdminHotelsComponent implements OnInit {
 
   toggleService(service) {
     service.active = !service.active;
+    // if (service.active) {
+    //   this.facilitiesHotel.push({
+    //     facilityName: service.data.name,
+    //     facilityImageURL: service.data.imageURL
+    //   });
+    // }else{
+    //   this.facilitiesHotel.
+    // }
   }
 
   toggleSideBar() {
