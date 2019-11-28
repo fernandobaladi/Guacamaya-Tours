@@ -88,7 +88,7 @@ export class AdminHotelsComponent implements OnInit {
     this.createHabForm();
 
     this.hotelForm.controls.fullDay.valueChanges.subscribe(e => {
-      console.log(e);
+      
 
       this.fullDayAvailable = e;
       console.log("esto es", this.fullDayAvailable);

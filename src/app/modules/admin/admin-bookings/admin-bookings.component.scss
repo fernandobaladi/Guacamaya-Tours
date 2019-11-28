@@ -1,6 +1,5 @@
 @import "../../../../styles/sass/lib/variables";
 @import "../../../../styles/sass/lib/mixings";
-@import "../../../../styles/sass/components/tag";
 
 .gt-section {
   margin-bottom: 0;
@@ -58,6 +57,8 @@
 
       .bookings-table {
         background-color: $color-terciary;
+        color: white;
+
         // font-size: 1rem;
 
         .book {

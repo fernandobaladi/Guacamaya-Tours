@@ -141,7 +141,6 @@ export class VacationBuilderComponent implements OnInit {
   toggleState(state) {
     state.selected = !state.selected;
     this.enableStep = this.anyStateSelected();
-    console.log(this.enableStep);
     
   }
 

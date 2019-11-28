@@ -1,20 +1,50 @@
 @import "../../../../styles/sass/lib/variables";
-@import "../../../../styles/sass/layout/layout.scss";
 @import "../../../../styles/sass/lib/mixings";
-@import "../../../../styles/sass/components/tag";
 
-.selectors-wrapper{
-    margin-top: 1rem;
+.selectors-wrapper {
+  margin-top: 2rem;
 }
 .datePicker-box {
-    background-color: $color-terciary;
-    color: white;
-    height: 50px;
-    min-width: 300px;
-    max-width: 90%;
-    text-align: center;
+  background-color: $color-terciary;
+  color: white;
+  height: 50px;
+  text-align: center;
 }
-.datePicker-wrapper{
-    display: flex;
-    justify-content: center;
+.datePicker-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-box {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 1rem;
+}
+
+// .btn-wrapper {
+//   position: relative;
+//   height: calc(100vh - 320px - 4rem);
+// }
+
+.form-control--custom {
+  background-color: $color-terciary;
+  color: white;
+  height: 50px;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 40px;
+    width: 40px;
+    margin-right: 1rem;
+  }
+}
+
+label {
+  font-family: $font-family-primary;
+  font-size: 1.5rem;
 }

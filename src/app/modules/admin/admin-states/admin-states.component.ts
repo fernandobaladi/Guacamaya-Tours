@@ -38,7 +38,7 @@ export class AdminStatesComponent implements OnInit {
           data: e.payload.doc.data()
         });
       });
-      console.log(this.states);
+      // console.log(this.states);
     });
   }
 

@@ -1,8 +1,5 @@
 @import "../../../../styles/sass/lib/variables";
 @import "../../../../styles/sass/lib/mixings";
-@import "../../../../styles/sass/components/tag";
-@import "../../../../styles/sass/components/button";
-@import "../../../../styles/sass/components/modal";
 
 .gt-section {
   margin-bottom: 0;
@@ -65,6 +62,8 @@
 
       .cities-table {
         background-color: $color-terciary;
+        color: white;
+
 
         .city {
           background-color: $color-secondary;

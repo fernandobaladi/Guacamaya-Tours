@@ -14,17 +14,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="row selectors-wrapper">
-                    <div class="col-12">
-                        <div class="row ">
-                            <div class="col-12 col-md-6 form-group datePicker-wrapper">
-                                <input class="form-control datePicker-box" placeholder="Fecha de llegada" ngModel bsDatepicker
-                                    [minDate]="minDate" [maxDate]="maxDate" >
-                            </div>
-                            <div class="col-12 col-md-6 form-group datePicker-wrapper">
-                                <input class="form-control datePicker-box" placeholder="Fecha de salida" ngModel bsDatepicker
-                                    [minDate]="minDate" [maxDate]="maxDate">
-                            </div>
+                <div class="container">
+                    <div class="row vacation-form-wrapper mt-3">
+                        <div class="col-12 offset-md-3 col-md-6 ">
+                            <form [formGroup]="clientDateForm">
+                                <div class="form-row">
+                                    <div class="col-12 form-group ">
+                                        <label>
+                                            Fecha de viaje deseada
+                                        </label>
+                                        <div class="input-box">
+                                            <img src="../../../assets/img/calendar.png">
+                                            <input class="form-control datePicker-box"
+                                                placeholder="Check-in & Check-out" [(ngModel)]="vacationDate"
+                                                bsDaterangepicker [minDate]="minDate" [maxDate]="maxDate"
+                                                [bsConfig]="{dateInputFormat: 'MM/DD/YYYY'}"
+                                                formControlName="date">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-12 offset-md-3 col-md-6 mt-4 text-right">
+                            <button class="gt-btn gt-btn--secondary" routerLink="/vacationBuilder/step3"
+                            (click)="saveValues()"
+                                [disabled]="clientDateForm.invalid">Siguiente</button>
                         </div>
                     </div>
                 </div>

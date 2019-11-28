@@ -6,6 +6,10 @@ button.gt-btn{
     font-family: $font-family-primary;
     color: white;
     text-align: center;
+    border:none;
+    transition: .3s ease-in;
+    border-radius: 4px;
+    cursor: pointer;
 
     &.gt-btn--primary{
         background-color: $color-terciary;
@@ -29,6 +33,12 @@ button.gt-btn{
             margin-top: 0.3rem;
             margin-right: 0.5rem;
         }
+    }
+
+    &:disabled{
+        background-color: grey!important;
+        color: lightgrey!important;
+        cursor: auto!important;
     }
 
 }

@@ -1,8 +1,6 @@
 @import "../../../../styles/sass/lib/variables";
 @import "../../../../styles/sass/lib/mixings";
-@import "../../../../styles/sass/components/tag";
-@import "../../../../styles/sass/components/button";
-@import "../../../../styles/sass/components/modal";
+
 
 .gt-section {
   margin-bottom: 0;
@@ -65,6 +63,8 @@
 
       .hotel-services-table {
         background-color: $color-terciary;
+        color: white;
+
 
         .hotel-service {
           background-color: $color-secondary;

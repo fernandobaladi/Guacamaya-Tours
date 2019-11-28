@@ -1,20 +1,250 @@
 <section class="gt-section gt-section--fullHeightWidthScrolleable">
-        <section class="gt-section gt-section--fullWidth">
-            <div class="row">
-                <div class="col-12">
+    <section class="gt-section gt-section--fullWidth">
+        <div class="row">
+            <div class="col-12 step-one" *ngIf="steps.step_one">
+                <div class="row ">
+                    <div class="col-12">
+                        <div class="col-12 gt-tag-steps">
+                            <div class="col-12 col-md-4 title">
+                                <span> Paso 4 </span>
+                            </div>
+                            <div class="col-12 col-8 subtitle">
+                                <span> Coloca los datos de los huéspedes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="form-wrapper"> -->
+                <div class="container">
+                    <div class="row vacation-form-wrapper mt-4">
+                        <div class="col-12 offset-md-3 col-md-6 ">
+                            <form [formGroup]="clientBasicForm">
+                                <div class="form-row">
+                                    <div class="col-12 form-group ">
+                                        <label>
+                                            Cantidad de huéspedes
+                                        </label>
+                                        <div class="input-box">
+                                            <img src="../../../assets/img/user-shape.png">
+                                            <input type="number" class="form-control form-control--custom"
+                                                formControlName="numberPeople" min="1">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>
+                                            Cantidad de habitaciones
+                                        </label>
+                                        <div class="input-box">
+                                            <img src="../../../assets/img/hotel.png">
+                                            <input type="number" class="form-control form-control--custom"
+                                                formControlName="numberHabs" min="1">
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-12 buttons">
+                                                <button class="btn gt-btn gt-btn--secondary" type="submit"
+                                                    [disabled]="clientBasicForm.invalid" (click)="saveChanges()">
+                                                    Guardar
+                                                </button>
+                                            </div> -->
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-12 offset-md-3 col-md-6 mt-5 text-right">
+                            <button class="gt-btn gt-btn--secondary" (click)="goToStep(2)"
+                                [disabled]="clientBasicForm.invalid">Siguiente</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- comienzo de la segunda pantalla -->
+        <div class="row">
+            <div class="col-12 step-two" *ngIf="steps.step_two">
+                <div class="row ">
+                    <div class="col-12">
+                        <div class="col-12 gt-tag-steps">
+                            <div class="col-12 col-md-4 title">
+                                <span> Paso 4 </span>
+                            </div>
+                            <div class="col-12 col-8 subtitle">
+                                <span> Coloca los datos de los huéspedes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comienzo de los formularios
+                Primer formulario (Huésped principal) -->
+                <div class="container">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="col-12 gt-tag-steps">
-                                <div class="col-12 col-md-4 title">
-                                    <span> Paso 4 </span>
+                        <div class="col-12 formTitle">
+                            <h1>
+                                Huésped
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row form mt-4">
+                        <div class="col-12 offset-md-3 col-md-6 ">
+                            <form [formGroup]="clientInfoForm">
+                                <div class="form-row">
+                                    <div class="col-12 col-md-6 form-group">
+                                        <label>
+                                            Nombre
+                                        </label>
+                                        <input type="text" class="form-control" formControlName="name">
+                                    </div>
+                                    <div class="col-12 col-md-6 form-group">
+                                        <label>
+                                            Apellido
+                                        </label>
+                                        <input type="text" class="form-control" formControlName="lastName">
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group">
+                                        <label>
+                                            Edad
+                                        </label>
+                                        <input type="text" class="form-control" formControlName="age">
+                                    </div>
+                                    <div class="col-12 col-md-8 form-group id-wrapper">
+                                        <label>
+                                            Cédula
+                                        </label>
+                                        <div class="row">
+                                            <div class="col-3 text-right idSelect">
+                                                <select formControlName="IDType" class="form-control">
+                                                    <option selected value=''> Seleccione </option>
+                                                    <option> V- </option>
+                                                    <option> J- </option>
+                                                    <option> E- </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-9">
+                                                <input type="text" class="form-control" placeholder="Ej: 27158423"
+                                                    formControlName="ID">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 form-group">
+                                        <label>
+                                            Teléfono
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Ej: 04142536852"
+                                            formControlName="phone">
+                                    </div>
+                                    <div class="col-12 col-md-6 form-group">
+                                        <label>
+                                            Correo
+                                        </label>
+                                        <input type="email" class="form-control" placeholder="Ej: name@gmail.com"
+                                            formControlName="email">
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label for="address">Dirección</label>
+                                        <textarea class="form-control" formControlName="address" rows="2"></textarea>
+                                    </div>
                                 </div>
-                                <div class="col-12 col-8 subtitle">
-                                    <span> Coloca los datos de los huéspedes</span>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Comienzo del formulario de acompañante -->
+                    <div class="row" *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
+                        <div class="col-12 formTitle">
+                            <h1>
+                                Acompañante
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row form mt-4" *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
+                        <div class="col-12 offset-md-3 col-md-6 ">
+                            <form [formGroup]="plusOneForm">
+                                <div class="form-row">
+                                    <div class="col-12 col-md-6 form-group">
+                                        <label>
+                                            Nombre
+                                        </label>
+                                        <input type="text" class="form-control" formControlName="namePlus">
+                                    </div>
+                                    <div class="col-12 col-md-6 form-group">
+                                        <label>
+                                            Apellido
+                                        </label>
+                                        <input type="text" class="form-control" formControlName="lastNamePlus">
+                                    </div>
+                                    <div class="col-12 col-md-4 form-group">
+                                        <label>
+                                            Edad
+                                        </label>
+                                        <input type="text" class="form-control" formControlName="agePlus">
+                                    </div>
+                                    <div class="col-12 col-md-8 form-group id-wrapper">
+                                        <label>
+                                            Cédula
+                                        </label>
+                                        <div class="row">
+                                            <div class="col-3 text-right idSelect">
+                                                <select formControlName="IDTypePlus" class="form-control">
+                                                    <option selected value=''> Seleccione </option>
+                                                    <option> V- </option>
+                                                    <option> J- </option>
+                                                    <option> E- </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-9">
+                                                <input type="text" class="form-control" placeholder="Ej: 27158423"
+                                                    formControlName="IDPlus">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                            </form>
+                        </div>
+                        <div class="col-12 offset-md-3 col-md-6 mt-5 text-right">
+                            <button class="gt-btn gt-btn--secondary" (click)="addPlusOne()"
+                                [disabled]="plusOneForm.invalid || this.plusOnes.length >= this.clientBasicForm.controls.numberPeople.value">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 offset-md-3 col-md-6 mt-5 text-right"
+                    *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
+                    <button class="gt-btn gt-btn--secondary" (click)="goToStep(2)"
+                        [disabled]="clientInfoForm.invalid || this.plusOnes.length != this.clientBasicForm.controls.numberPeople.value">Siguiente</button>
+                </div>
+                <div class="col-12 offset-md-3 col-md-6 mt-5 text-right"
+                    *ngIf="this.clientBasicForm.controls.numberPeople.value===1">
+                    <button class="gt-btn gt-btn--secondary" (click)="toggleModalStatus()"
+                        [disabled]="clientInfoForm.invalid">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="overlay-modal-wrapper" [ngClass]="{'show': modalStatus|async}">
+        <div class="overlay-modal" [ngClass]="{'show': modalStatus|async}">
+        </div>
+        <div class="modal-wrapper" [ngClass]="{'show': modalStatus|async}">
+            <div class="gt-admin-modal">
+                <div class="row">
+                    <div class="col-12 title">
+                        <h3>
+                            Deseas añadir otro hotel a tu reserva?
+                        </h3>
+                        <div class="row form">
+                            <div class="col-12 buttons">
+                                <button class="btn gt-btn gt-btn--secondary" type="submit"
+                                    routerLink="/vacationBuilder/step1">
+                                    Si
+                                </button>
+                                <button class="btn gt-btn gt-btn--secondary" type="button" (click)="toggleModalStatus()"
+                                    routerLink="/vacationBuilder/step5">
+                                    No
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </section>
+</section>
