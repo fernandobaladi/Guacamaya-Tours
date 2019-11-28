@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CommonNavigationComponent } from './navigation/common-navigation/common-navigation.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AdminNavigationComponent } from './navigation/admin-navigation/admin-navigation.component';
@@ -15,7 +15,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ClientSideBarComponent } from './components/client-side-bar/client-side-bar.component';
 import { VacationBuilderComponent } from './modules/vacationBuilder/vacation-builder/vacation-builder.component';
 import { VacationBuilderNavigationComponent } from './navigation/vacation-builder-navigation/vacation-builder-navigation.component';
-
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,9 @@ import { VacationBuilderNavigationComponent } from './navigation/vacation-builde
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]

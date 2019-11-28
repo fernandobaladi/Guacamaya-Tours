@@ -18,6 +18,7 @@ export class AdminHabsFacilitiesComponent implements OnInit {
   public facilityForm: FormGroup;
   facilities;
   loading = false;
+  downloadURL: string;
 
   constructor(private sideBarSV: SidebarService,
               private fb: FormBuilder,
@@ -43,9 +44,15 @@ export class AdminHabsFacilitiesComponent implements OnInit {
     this.facilityForm = this.fb.group({
       name: ['', Validators.required],
       status: ['', ],
-      image: ['',],
+      imageURL: ['', Validators.required],
+      imagePath: [''],
       id:['']
     });
+  }
+
+  uploaderRes(res) {
+    this.facilityForm.controls.imageURL.setValue(res.imageURL);
+    this.facilityForm.controls.imagePath.setValue(res.imagePath);
   }
 
   toggleSideBar(){
@@ -67,6 +74,8 @@ export class AdminHabsFacilitiesComponent implements OnInit {
     if (facility) {
       this.facilityForm.controls.name.setValue(facility.data.name);
       this.facilityForm.controls.status.setValue(facility.data.status);
+      this.facilityForm.controls.imageURL.setValue(facility.data.imageURL);
+      this.facilityForm.controls.imagePath.setValue(facility.data.imagePath);
       this.facilityForm.controls.id.setValue(facility.id);
     } else {
       this.facilityForm.reset();
@@ -82,7 +91,9 @@ export class AdminHabsFacilitiesComponent implements OnInit {
     }
     let data = {
       name: this.facilityForm.controls.name.value,
-      status: this.facilityForm.controls.status.value
+      status: this.facilityForm.controls.status.value,
+      imagePath: this.facilityForm.controls.imagePath.value,
+      imageURL: this.facilityForm.controls.imageURL.value
     };
 
     if (!this.facilityForm.controls.id.value) {

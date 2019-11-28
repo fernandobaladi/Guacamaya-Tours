@@ -36,8 +36,7 @@ export class AdminCitiesComponent implements OnInit {
               private route: ActivatedRoute,
               private statesService: StatesService,
               private citiesService: CitiesService
-    ) { }
-    
+    ) {}
   ngOnInit() {
 
     this.createCityForm();
@@ -66,13 +65,14 @@ export class AdminCitiesComponent implements OnInit {
     this.cityForm = this.fb.group({
       name: ['', Validators.required],
       state: {
-        name:[''],
-        status: [''],
+        name:['', Validators.required],
+        status: ['', Validators.required],
         id:['']
       },
       status: ['', ],
       id: [''],
-      image: [''],
+      imageURL: ['', Validators.required],
+      imagePath: ['']
     });
   }
   createStateForm() {
@@ -83,6 +83,10 @@ export class AdminCitiesComponent implements OnInit {
   }
   toggleSideBar() {
     this.sideBarSV.toggleStatus();
+  }
+  uploaderRes(res) {
+    this.cityForm.controls.imageURL.setValue(res.imageURL);
+    this.cityForm.controls.imagePath.setValue(res.imagePath);
   }
 
   changeModalStatus(val) {
@@ -106,6 +110,8 @@ export class AdminCitiesComponent implements OnInit {
       this.cityForm.controls.name.setValue(city.data.name);
       this.cityForm.controls.status.setValue(city.data.status);
       this.cityForm.controls.state.setValue(city.data.state.id);
+      this.cityForm.controls.imagePath.setValue(city.data.imagePath);
+      this.cityForm.controls.imageURL.setValue(city.data.imageURL);
       this.cityForm.controls.id.setValue(city.id);
     } else {
       this.cityForm.reset();
@@ -123,22 +129,15 @@ export class AdminCitiesComponent implements OnInit {
     }
     this.createStateForm();
     console.log(this.cityForm.controls.state.value);
-    // let sId;
-    // let stateSelected = this.statesService.getState(this.cityForm.controls.state.value).subscribe((stateSnapshot) => {
-    //   sId = this.cityForm.controls.state.value;
-    //   this.stateForm.setValue({
-    //     id: this.cityForm.controls.state.value,
-    //     data: stateSnapshot.payload.data()
-    //   });
-    // });
     this.findStateSelected(this.cityForm.controls.state.value);
-    // let info = this.stateForm.controls.data;
     let info = this.stateSelectedByUser;
     console.log(info);
 
     const data = {
       name: this.cityForm.controls.name.value,
       status: this.cityForm.controls.status.value,
+      imagePath: this.cityForm.controls.imagePath.value,
+      imageURL: this.cityForm.controls.imageURL.value,
       state: {
         name: this.stateSelectedByUser.data.name,
         status: this.stateSelectedByUser.data.status,

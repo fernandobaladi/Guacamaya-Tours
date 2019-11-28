@@ -22,5 +22,8 @@ export class BookingsService {
   public getBooking(bookingId: string) {
     return this.firestoreSV.getDoc(this.collectionPath, bookingId);
   }
+  public updateBooking(bookingId: string, data) {
+    return this.firestoreSV.update(this.collectionPath, bookingId, data);
+  }
 
 }

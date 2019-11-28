@@ -78,6 +78,13 @@
         font-size: 1rem;
         background-color: $color-terciary;
         padding: 1rem 0;
+        
+        img{
+          height: 60px;
+          width: auto;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+        }
 
         .buttons {
           display: flex;

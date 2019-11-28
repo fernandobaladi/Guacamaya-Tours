@@ -122,8 +122,11 @@
                             </div>
                             <div class="col-12 form-group">
                                 <label for="image">Imagen</label>
-                                <input type="file" class="form-control-file" formControlName="image">
-                            </div>
+                                <div *ngIf="this.facilityForm.controls.imageURL.value">
+                                    <img [src]=this.facilityForm.controls.imageURL.value>
+                                </div>
+                                <app-image-uploader
+                                path="habs-facilities" (res)="uploaderRes($event)"></app-image-uploader>                            </div>
                             <div class="col-12 buttons">
                                 <button class="btn gt-btn gt-btn--secondary" type="submit"
                                     [disabled]="facilityForm.invalid" (click)="saveChanges()">
