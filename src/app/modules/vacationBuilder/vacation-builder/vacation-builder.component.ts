@@ -2,9 +2,11 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { order } from 'src/app/models/order';
 import { ActivatedRoute } from '@angular/router';
 import { OrderService } from 'src/app/services/order/order.service';
-import { State } from '../../../models/State';
-import { DestinationCategory } from 'src/app/models/DestinationCategory';
+//import { State } from '../../../models/State';
+//import { DestinationCategory } from 'src/app/models/DestinationCategory';
 import { Router } from '@angular/router';
+import { DestinationCategory } from 'src/app/models/destinationCategory';
+import { State } from 'src/app/models/state';
 
 export class localState extends State{
   img: string;

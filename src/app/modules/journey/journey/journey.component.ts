@@ -54,9 +54,27 @@ export class JourneyComponent implements OnInit {
 
     if (this.correctLocator == false) {
       alert('Localizador no encontrado, por favor ingresa un localizaodr válido');
+      //alert(this.generaNss);
       this.locator = "";
     }
   }
+
+
+  generaNss(): string {
+    let result = "";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const charactersLength = characters.length;
+    for (let i = 0; i < 1; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+  }
+
+
+
+
+
 
   //array con los datos para firebase (array de ejemplo)
   arrayEjemplo = [
