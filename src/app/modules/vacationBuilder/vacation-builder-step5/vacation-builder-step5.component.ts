@@ -87,7 +87,7 @@ export class VacationBuilderStep5Component implements OnInit {
 
     this.orderSV.create(this.orderSV.order)
         .then(res => {
-          alert('¡Se ha agregado exitosamente el hotel!');
+          alert('¡Se ha agregado exitosamente la reserva!');
           this.orderSV.order = null;
         }).catch(err => {
           alert('Ha habido un error con la información introducida');
