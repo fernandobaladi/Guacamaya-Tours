@@ -14,6 +14,37 @@ import { OrderService } from 'src/app/services/order/order.service';
 })
 export class VacationBuilderStep4Component implements OnInit {
 
+
+  //validacion personas y habitaciones
+
+  public huespedesTextfield;
+  public maxHuespedes = 4;
+  public habitacionesTextfield;
+
+  validarHuespedesYHabitaciones() {
+
+    if ((this.habitacionesTextfield*this.maxHuespedes) >= this.huespedesTextfield) {
+      //validacion aprobada
+      alert("Aprobada");
+    
+    } else {
+      alert("Negada");
+      // if (this.habitacionesTextfield < this.huespedesTextfield){
+
+      //   //validacion aprobada
+      //   alert("Aprobada");
+        
+      // }else {
+      //     //validacion negada
+      //     alert("Negada");
+      //   }
+    }
+
+  } 
+
+  
+
+
   steps = {
     step_one: true,
     step_two: false,
@@ -84,11 +115,57 @@ export class VacationBuilderStep4Component implements OnInit {
     });
   }
 
+
+  public inputTextfield: string;
+  public inputTextfield2: string;
+  public inputTextfield3: string;
+  public inputTextfield4: string;
+  public inputTextfield5: string;
+  public inputTextfield6: string;
+  public inputTextfield7: string;
+  public apareceBorde: boolean = false;
+  public colorBorde: boolean = false;
+
   saveChanges() {
-    this.loading = true;
+
+    var empty = /^$/;
+    var regex = /^[a-zA-Z]+$/;
+    var regex2 = /^([0-9])*$/;
+    if (!regex.test(this.inputTextfield) && !empty.test(this.inputTextfield)) {
+
+      if (!regex.test(this.inputTextfield2) && !empty.test(this.inputTextfield2)) {
+
+        if (!regex.test(this.inputTextfield3) && !empty.test(this.inputTextfield3)) {
+
+          if (!regex.test(this.inputTextfield4) && !empty.test(this.inputTextfield4)) {
+
+            if (!regex2.test(this.inputTextfield5) && !empty.test(this.inputTextfield5)) {
+
+              if (!regex2.test(this.inputTextfield6) && !empty.test(this.inputTextfield6)) {
+
+                if (!regex2.test(this.inputTextfield7) && !empty.test(this.inputTextfield7)) {
+        
+                  this.apareceBorde = true;
+                  this.colorBorde = true;
+                }
+              }
+            }
+          }
+        }
+      }
+
+    } else {
+      this.loading = true;
+    }
+
+
+    
   }
 
   goToStep(step) {
+
+    this.validarHuespedesYHabitaciones();
+
     this.stepsToFalse();
     switch (step) {
       case 1:

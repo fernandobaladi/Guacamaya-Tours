@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 import { VacationBuilderRoutingModule } from './vacation-builder-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -23,6 +24,7 @@ import { FilterPipe } from 'src/app/pipes/vacation-builder/destination/filter.pi
   imports: [
     CommonModule,
     VacationBuilderRoutingModule,
+    NgxPayPalModule,
     SharedModule,
     CarouselModule.forRoot(),
     BsDatepickerModule.forRoot(),

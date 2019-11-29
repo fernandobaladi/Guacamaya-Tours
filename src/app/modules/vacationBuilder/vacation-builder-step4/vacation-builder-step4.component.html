@@ -26,7 +26,7 @@
                                         </label>
                                         <div class="input-box">
                                             <img src="../../../assets/img/user-shape.png">
-                                            <input type="number" class="form-control form-control--custom"
+                                            <input [(ngModel)]="huespedesTextfield" type="number" class="form-control form-control--custom"
                                                 formControlName="numberPeople" min="1"
                                                 onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                                                 title="Numbers only">
@@ -38,7 +38,7 @@
                                         </label>
                                         <div class="input-box">
                                             <img src="../../../assets/img/hotel.png">
-                                            <input type="number" class="form-control form-control--custom"
+                                            <input [(ngModel)]="habitacionesTextfield" type="number" class="form-control form-control--custom"
                                                 formControlName="numberHabs" min="1"
                                                 onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                                                 title="Numbers only">
@@ -97,19 +97,19 @@
                                         <label>
                                             Nombre
                                         </label>
-                                        <input type="text" class="form-control" formControlName="name">
+                                        <input [style.border-color]="colorBorde ? 'red' : '#393a39'" [(ngModel)]="inputTextfield" type="text" class="form-control" formControlName="name">
                                     </div>
                                     <div class="col-12 col-md-6 form-group">
                                         <label>
                                             Apellido
                                         </label>
-                                        <input type="text" class="form-control" formControlName="lastName">
+                                        <input [style.border-color]="colorBorde ? 'red' : '#393a39'" [(ngModel)]="inputTextfield2" type="text" class="form-control" formControlName="lastName">
                                     </div>
                                     <div class="col-12 col-md-4 form-group">
                                         <label>
                                             Edad
                                         </label>
-                                        <input type="text" class="form-control" formControlName="age">
+                                        <input [style.border-color]="colorBorde ? 'red' : '#393a39'" [(ngModel)]="inputTextfield5" type="text" class="form-control" formControlName="age">
                                     </div>
                                     <div class="col-12 col-md-8 form-group id-wrapper">
                                         <label>
@@ -125,7 +125,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-9">
-                                                <input type="text" class="form-control" placeholder="Ej: 27158423"
+                                                <input [style.border-color]="colorBorde ? 'red' : '#393a39'" [(ngModel)]="inputTextfield6" type="text" class="form-control" placeholder="Ej: 27158423"
                                                     formControlName="ID">
                                             </div>
                                         </div>
@@ -134,7 +134,7 @@
                                         <label>
                                             Teléfono
                                         </label>
-                                        <input type="text" class="form-control" placeholder="Ej: 04142536852"
+                                        <input [style.border-color]="colorBorde ? 'red' : '#393a39'" [(ngModel)]="inputTextfield7" type="text" class="form-control" placeholder="Ej: 04142536852"
                                             formControlName="phoneNumber">
                                     </div>
                                     <div class="col-12 col-md-6 form-group">
@@ -170,13 +170,13 @@
                                         <label>
                                             Nombre
                                         </label>
-                                        <input type="text" class="form-control" formControlName="namePlus">
+                                        <input [style.border-color]="colorBorde ? 'red' : '#393a39'" [(ngModel)]="inputTextfield3" type="text" class="form-control" formControlName="namePlus">
                                     </div>
                                     <div class="col-12 col-md-6 form-group">
                                         <label>
                                             Apellido
                                         </label>
-                                        <input type="text" class="form-control" formControlName="lastNamePlus">
+                                        <input [style.border-color]="colorBorde ? 'red' : '#393a39'" [(ngModel)]="inputTextfield4" type="text" class="form-control" formControlName="lastNamePlus">
                                     </div>
                                     <div class="col-12 col-md-4 form-group">
                                         <label>

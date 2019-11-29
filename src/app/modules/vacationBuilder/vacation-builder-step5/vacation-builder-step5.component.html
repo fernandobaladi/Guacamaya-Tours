@@ -18,10 +18,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 offset-md-3 col-md-6 text-center  payment-type-box">
-                            <img src="../../../../assets/img/paypal (1).png">
+                            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                            <!-- <img src="../../../../assets/img/paypal (1).png">
                             <div class="title">
                                 PayPal
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-12 offset-md-3 col-md-6 text-center payment-type-box" (click)="goToStep(2)">
                             <img src="../../../../assets/img/sent.png">

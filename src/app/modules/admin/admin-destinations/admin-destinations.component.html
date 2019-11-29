@@ -122,7 +122,8 @@
                                 <label>
                                     Nombre
                                 </label>
-                                <input type="text" class="form-control" formControlName="name">
+                                <input [style.border-color]="colorBorde ? 'red' : '#393a39'" [(ngModel)]="inputTextfield"
+                                 type="text" class="form-control" formControlName="name">
                             </div>
                             <div class="col-7 col-md-4 form-group">
                                 <label>
@@ -171,13 +172,13 @@
                                 <label>
                                     Latitud
                                 </label>
-                                <input type="text" class="form-control" formControlName="lat">
+                                <input [style.border-color]="colorBorde ? 'red' : '#393a39'" [(ngModel)]="inputTextfield2" type="text" class="form-control" formControlName="lat">
                             </div>
                             <div class="col-12 col-md-6 form-group">
                                 <label>
                                     Longitud
                                 </label>
-                                <input type="text" class="form-control" formControlName="lon">
+                                <input [style.border-color]="colorBorde ? 'red' : '#393a39'" [(ngModel)]="inputTextfield3" type="text" class="form-control" formControlName="lon">
                             </div>
                             <div class="col-12 form-group">
                                 <label for="description">Descripción</label>
@@ -227,7 +228,7 @@
                             </div>
                             <div class="col-12 buttons">
                                 <button class="btn gt-btn gt-btn--secondary " type="submit"
-                                    [disabled]="destinationForm.invalid" (click)="saveChanges()">
+                                    (click)="saveChanges()">
                                     Guardar
                                 </button>
                                 <button class="btn gt-btn gt-btn--secondary" type="button"
@@ -242,3 +243,5 @@
         </div>
     </div>
 </section>
+
+<!-- [disabled]="destinationForm.invalid"  -->
