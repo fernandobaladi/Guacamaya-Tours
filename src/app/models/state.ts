@@ -1,5 +1,5 @@
-export interface state {
+export class State {
     name: string;
-    status: Boolean;
-    id: String;
+    status?: Boolean;
+    id?: String;
 }

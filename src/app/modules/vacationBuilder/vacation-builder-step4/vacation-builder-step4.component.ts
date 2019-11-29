@@ -4,6 +4,7 @@ import { SidebarService } from 'src/app/services/sidebar-service/sidebar-service
 import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { plusOne } from 'src/app/models/plusOne';
+import { OrderService } from 'src/app/services/order/order.service';
 
 
 @Component({
@@ -23,8 +24,8 @@ export class VacationBuilderStep4Component implements OnInit {
     round_two: false,
   }
 
-  
-  enableStep=false;
+
+  enableStep = false;
   loading = false;
   public clientBasicForm: FormGroup;
   public clientInfoForm: FormGroup;
@@ -38,7 +39,7 @@ export class VacationBuilderStep4Component implements OnInit {
   constructor(private sideBarSV: SidebarService,
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute, private orderSV: OrderService) { }
 
   ngOnInit() {
     this.createClientBasicForm();
@@ -46,9 +47,9 @@ export class VacationBuilderStep4Component implements OnInit {
     this.createPlusOneForm();
   }
 
-  addPlusOne(){
+  addPlusOne() {
     this.plusOnes.push(this.plusOneForm.value);
-    console.log(this.plusOnes);
+    // console.log(this.plusOnes);
     this.plusOneForm.reset();
     this.checkPlusOne();
   }
@@ -117,9 +118,35 @@ export class VacationBuilderStep4Component implements OnInit {
     }
   }
 
-  checkPlusOne(){
+  saveInfo() {
+    const auxBooking = {
+      roomQuantity: this.clientBasicForm.controls.numberHabs.value,
+      plusOneQuantity: (this.clientBasicForm.controls.numberPeople.value - 1),
+      plusOne: this.plusOnes
+    }
 
-    if(this.plusOnes.length === this.clientBasicForm.controls.numberPeople.value){
+    const auxOrder = {
+      name: this.clientInfoForm.controls.name.value,
+      lastName: this.clientInfoForm.controls.lastName.value,
+      IDType: this.clientInfoForm.controls.IDType.value,
+      ID: this.clientInfoForm.controls.ID.value,
+      phone: this.clientInfoForm.controls.phone.value,
+      email: this.clientInfoForm.controls.email.value,
+      address: this.clientInfoForm.controls.address.value,
+    }
+
+    console.log(auxOrder, auxBooking);
+    console.log('clicked!');
+    
+    this.orderSV.updateBooking(auxBooking);
+    this.orderSV.updateOrder(auxOrder);
+    // this.router.navigate(["vacationBuilder/step2"]);
+    this.toggleModalStatus();
+  }
+
+  checkPlusOne() {
+
+    if (this.plusOnes.length === this.clientBasicForm.controls.numberPeople.value) {
       this.plusOnesCompletes = true;
     }
   }
@@ -127,6 +154,16 @@ export class VacationBuilderStep4Component implements OnInit {
   stepsToFalse() {
     this.steps.step_one = false;
     this.steps.step_two = false;
+  }
+
+  newBooking(){
+    this.orderSV.saveActualBooking();
+    this.router.navigate(["vacationBuilder/step1"]);
+  }
+
+  lastBooking(){
+    this.orderSV.saveActualBooking();
+    this.router.navigate(["vacationBuilder/step5"]);
   }
 
   roundsToFalse() {

@@ -1,5 +1,5 @@
-export interface destinationCategory {
+export class DestinationCategory {
     name: string;
-    status: Boolean;
-    id: String;
+    status?: Boolean;
+    id?: String;
 }

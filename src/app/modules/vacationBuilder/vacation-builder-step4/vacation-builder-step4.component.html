@@ -52,7 +52,7 @@
                             </form>
                         </div>
                         <div class="col-12 offset-md-3 col-md-6 mt-5 text-right">
-                            <button class="gt-btn gt-btn--secondary" (click)="goToStep(2)"
+                            <button class="gt-btn gt-btn--secondary" (click)="goToStep(2)" 
                                 [disabled]="clientBasicForm.invalid">Siguiente</button>
                         </div>
                     </div>
@@ -241,12 +241,12 @@
                 </div>
                 <div class="col-12 offset-md-3 col-md-6 mt-5 text-right"
                     *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
-                    <button class="gt-btn gt-btn--secondary" (click)="toggleModalStatus()"
+                    <button class="gt-btn gt-btn--secondary" (click)="saveInfo()"
                         [disabled]="clientInfoForm.invalid || this.plusOnes.length != (this.clientBasicForm.controls.numberPeople.value -1)">Siguiente</button>
                 </div>
                 <div class="col-12 offset-md-3 col-md-6 mt-5 text-right"
                     *ngIf="this.clientBasicForm.controls.numberPeople.value===1">
-                    <button class="gt-btn gt-btn--secondary" (click)="toggleModalStatus()"
+                    <button class="gt-btn gt-btn--secondary" (click)="saveInfo()"
                         [disabled]="clientInfoForm.invalid">Siguiente</button>
                 </div>
             </div>
@@ -265,11 +265,10 @@
                         <div class="row form">
                             <div class="col-12 buttons">
                                 <button class="btn gt-btn gt-btn--secondary" type="submit"
-                                    routerLink="/vacationBuilder/step1">
+                                (click)="newBooking()">
                                     Si
                                 </button>
-                                <button class="btn gt-btn gt-btn--secondary" type="button" (click)="toggleModalStatus()"
-                                    routerLink="/vacationBuilder/step5">
+                                <button class="btn gt-btn gt-btn--secondary" type="button" (click)="lastBooking()">
                                     No
                                 </button>
                             </div>

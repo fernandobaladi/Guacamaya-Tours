@@ -1,20 +1,20 @@
 import { room } from './room';
-import { state } from './state';
+import { State } from './state';
 import { city } from './city';
 
-export class hotel {
+export class Hotel {
 
     name: String;
     stars: number;
-    status: Boolean;
-    state: state;
-    city: city
+    status?: Boolean;
+    state: string;
+    city: string;
     lat: number;
     lon: number;
     adress: String;
     fullday: Boolean;
     fulldayPrice?: number;
     id: string;
-    rooms: room[];
+    rooms?: room[];
 
 }

@@ -1,15 +1,29 @@
 import { plusOne } from './plusOne';
-import { destinationCategory } from './destinationCategory';
-import { state } from './state';
-import { hotel } from './hotel';
+import { DestinationCategory } from './destinationCategory';
+import { State } from './state';
+import { Hotel } from './hotel';
 import { room } from './room';
 
-export interface booking {
-    destinationCategory: destinationCategory;
-    state: state;
-    hotel: hotel;
+export class booking {
+    destinationCategory: DestinationCategory;
+    state: State;
+    hotel: Hotel;
     room: room;
+    roomQuantity: number;
+    plusOneQuantity: number;
     checkIn: number;
     checkOut: number;
     plusOne: plusOne[];
+
+    constructor() {
+        this.destinationCategory = null;
+        this.state= null;
+        this.hotel= null;
+        this.room= null;
+        this.roomQuantity = null;
+        this.plusOneQuantity = null;
+        this.checkIn= null;
+        this.checkOut= null;
+        this.plusOne = [];
+    }
 }

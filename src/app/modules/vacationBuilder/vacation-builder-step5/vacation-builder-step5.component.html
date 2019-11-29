@@ -1,20 +1,118 @@
 <section class="gt-section gt-section--fullHeightWidthScrolleable">
-        <section class="gt-section gt-section--fullWidth">
-            <div class="row">
-                <div class="col-12">
+    <section class="gt-section gt-section--fullWidth">
+
+        <div class="row">
+            <div class="col-12" *ngIf="steps.step_one">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="col-12 gt-tag-steps">
+                            <div class="col-12 col-md-4 title">
+                                <span> Paso 5 </span>
+                            </div>
+                            <div class="col-12 col-8 subtitle">
+                                <span> Selecciona la forma de pago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="col-12 gt-tag-steps">
-                                <div class="col-12 col-md-4 title">
-                                    <span> Paso 5 </span>
-                                </div>
-                                <div class="col-12 col-8 subtitle">
-                                    <span> Selecciona la forma de pago</span>
-                                </div>
+                        <div class="col-12 offset-md-3 col-md-6 text-center  payment-type-box">
+                            <img src="../../../../assets/img/paypal (1).png">
+                            <div class="title">
+                                PayPal
+                            </div>
+                        </div>
+                        <div class="col-12 offset-md-3 col-md-6 text-center payment-type-box" (click)="goToStep(2)">
+                            <img src="../../../../assets/img/sent.png">
+                            <div class="title">
+                                Tranferencia
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12" *ngIf="steps.step_two">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 formTitle">
+                            <h1>
+                                Datos de la Transferencia
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row vacation-form-wrapper mt-3">
+                        <div class="col-12 offset-md-3 col-md-6 ">
+                            <form [formGroup]="paymentForm">
+                                <div class="form-row">
+                                    <div class="col-12  form-group">
+                                        <label>
+                                            Monto
+                                        </label>
+                                        <input type="text" class="form-control" formControlName="amount">
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>
+                                            Banco de origen
+                                        </label>
+                                        <select formControlName="originBank" class="form-control">
+                                            <option selected value='' disabled> Seleccione </option>
+                                            <option> Banesco </option>
+                                            <option> Mercantil </option>
+                                            <option> BOD </option>
+                                            <option> BNC </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>
+                                            Banco de destino
+                                        </label>
+                                        <select formControlName="destinationBank" class="form-control">
+                                            <option selected value='' disabled> Seleccione </option>
+                                            <option> Banesco </option>
+                                            <option> Mercantil </option>
+                                            <option> BOD </option>
+                                            <option> BNC </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>
+                                            Número de la transferencia
+                                        </label>
+                                        <input type="text" class="form-control" formControlName="transferNumber">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-12 offset-md-3 col-md-6 mt-4 text-right">
+                            <button class="gt-btn gt-btn--secondary" (click)="saveInfo()"
+                                [disabled]="paymentForm.invalid">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" *ngIf="steps.step_three">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 successfullPayment">
+                            <h2>
+                                Pago cargado exitosamente, en un plazo de 72 horas recibirá un correo con la
+                                confirmación de su reserva
+                            </h2>
+                        </div>
+                        <div class="col-12 offset-md-3 col-md-6 mt-4 text-right">
+                            <button class="gt-btn gt-btn--secondary" routerLink="/home"
+                                [disabled]="paymentForm.invalid">Siguiente</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+</section>

@@ -51,7 +51,7 @@
                     </thead>
                     <tbody>
                         <tr class="book" *ngFor="let book of bookings  | generalSort: optionSort | filter: search">
-                            <th scope="row">{{book.data.date}}</th>
+                            <th scope="row">{{book.data.date}}</th> 
                             <td>{{book.data.name}}</td>
                             <td>{{book.data.locator}}</td>
                             <td>{{book.data.amount}}</td>

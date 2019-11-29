@@ -1,7 +1,7 @@
 import { booking } from './booking';
 import { payment } from './payment';
 
-export interface order {
+export class order {
     name: String;
     lastName: String;
     IDType: String;
@@ -9,8 +9,22 @@ export interface order {
     phone: Number;
     email: String;
     address: String;
-    booking: booking [];
+    bookings: booking [];
     locator: string;
     amount: number;
     payment: payment;  
-  }
+    
+    constructor() {
+      this.name = null;
+      this.lastName= null;
+      this.IDType= null;
+      this.ID= null;
+      this.phone = null;
+      this.email = null;
+      this.address= null;
+      this.bookings= [];
+      this.locator = null;
+      this.amount = null;
+      this.payment = null;
+    }
+}

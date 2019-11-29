@@ -4,5 +4,6 @@ export class room {
     capacity: number;
     view?: string;
     price: number;
+    status?: Boolean;
 
 }

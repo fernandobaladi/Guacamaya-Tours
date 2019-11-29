@@ -1,8 +1,8 @@
-import { state } from '../models/state';
+import { State } from '../models/state';
 
 export interface city {
     name: string;
     status: Boolean;
-    state: state;
+    state: State;
     id: String;
 }

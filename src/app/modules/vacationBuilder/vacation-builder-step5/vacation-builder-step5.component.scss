@@ -1,0 +1,137 @@
+@import "../../../../styles/sass/lib/variables";
+@import "../../../../styles/sass/lib/mixings";
+
+.payment-type-box{
+
+    background-color: $color-terciary;
+    margin-top: 1rem;
+    box-shadow: $box-shadow;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover{
+        background-color: $color-primary;
+    }
+
+    .title{
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    img{
+        height: 90px;
+        width: 90px;
+        margin-top: 0.5rem;
+    }
+}
+
+.vacation-form-wrapper {
+    // .form-group{
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     flex-direction: column;
+    // }
+  
+    .form-control {
+      background-color: $color-terciary;
+      color: white;
+      height: 50px;
+    }
+  }
+  
+  .btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .input-box {
+    display: flex;
+    align-items: center;
+  
+    img {
+      height: 40px;
+      width: 40px;
+      margin-right: 1rem;
+    }
+  }
+  
+  label {
+    font-family: $font-family-primary;
+    font-size: 1.5rem;
+  }
+  
+  .btn-box {
+    bottom: 1rem;
+  }
+  
+  .btn-wrapper {
+    position: relative;
+    height: calc(100vh - 370px - 4rem);
+  }
+  
+  .id-wrapper {
+    text-align: center;
+  }
+  
+  .idSelect {
+    margin-left: 1rem;
+    margin-right: -1.5rem;
+  }
+  
+  .formTitle {
+    margin-top: 1rem;
+    background-color: $color-primary;
+    width: 100%;
+    text-align: center;
+    color: white;
+  }
+  
+  .form {
+    color: white;
+    font-size: 1rem;
+    background-color: $color-terciary;
+    padding: 1rem 0;
+  
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    input.form-control {
+      color: black;
+      background-color: $color-secondary;
+    }
+  
+    select.form-control {
+      color: black;
+      background-color: $color-secondary;
+    }
+  
+    textarea.form-control {
+      color: black;
+      background-color: $color-secondary;
+    }
+  
+    .plusOne-info-box {
+      border-bottom: solid;
+      border-bottom-width: 0.2rem;
+      border-bottom-color: $color-primary;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+  
+    .multiadd-box {
+      height: 200px;
+      max-width: 100%;
+      overflow: auto;
+  
+    }
+    
+  }
+
+  .successfullPayment{
+      background-color: $color-terciary;
+      color: white;
+  }
+  

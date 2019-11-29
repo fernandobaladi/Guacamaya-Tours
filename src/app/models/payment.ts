@@ -1,6 +1,6 @@
-export interface payment {
+export class payment {
     amount: number;
-    type: string;
+    // type: string;
     destinationBank?: string;
     originBank?: string;
     transferNumber?: number; 

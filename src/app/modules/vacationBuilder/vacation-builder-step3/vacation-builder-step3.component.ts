@@ -1,5 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { HOTELS } from '../../../mock-hotels';
+import { Hotel } from 'src/app/models/hotel';
+import { room } from 'src/app/models/room';
+import { OrderService } from 'src/app/services/order/order.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+// import { HOTELS } from '../../../mock-hotels';
+
+export class facility{
+  name: string;
+  image: string;
+}
+
+export class hotelService{
+  name: string;
+  image: string;
+}
+
+export class localRoom extends room{
+  images: string[];
+  facilities?: facility[];
+  selected: boolean;
+}
+export class localHotel extends Hotel{
+  id: string;
+  images: string[];
+  rooms: localRoom[];
+  map?: string;
+  selected: boolean;
+  hotelServices?: hotelService[];
+}
 
 @Component({
   selector: 'app-vacation-builder-step3',
@@ -8,7 +37,79 @@ import { HOTELS } from '../../../mock-hotels';
 })
 export class VacationBuilderStep3Component implements OnInit {
 
-  constructor() { }
+  hotels: localHotel[] = [
+
+    {
+      name: 'SunSol', id: '1', stars: 4, lat: 11.11323713130922,
+      lon: -63.84605099648965,
+      adress: 'Av. Costanera, sector el Tirano, Isla de Margarita Carretera Costanera, 6301, Nueva Esparta',
+      state: 'Nueva Esparta',
+      city: 'Margarita', images: [
+        './assets/img/hotels/sunsol-1.png', './assets/img/hotels/sunsol-2.png', './assets/img/hotels/sunsol-3.png'
+      ], fullday: true, fulldayPrice: 100, rooms: [
+        {
+          name: 'Premium doble queen', capacity: 2, view: 'none', 
+          images: [
+            './assets/img/hotels/premium-doble-queen-1.jpg',
+            './assets/img/hotels/premium-doble-queen-2.jpg'
+          ], price: 220, selected: false
+        },
+        {
+          name: 'Habitación Deluxe', capacity: 2, view: 'none', images: [
+            './assets/img/hotels/habitacion-deluxe-1.jpg', './assets/img/hotels/habitacion-deluxe-2.jpg', 
+            '../../../../assets/img/hotels/sunsol-2.png', 
+          ], price: 300, selected: false
+        },
+      ], hotelServices: [
+        {
+          name: 'piscina',  image: '../../../../assets/img/swimming-silhouette.png',
+        }, {
+          name: 'piscina',  image: '../../../../assets/img/swimming-silhouette.png',
+        }], map: './assets/img/sunsol-map.png',
+      selected: false
+    },
+    {
+      name: 'Eurobuilding', id: '2', stars: 5, lat: 10.482434180733861,
+      lon: -66.84976672535872, adress: 'Calle La Guairita, Caracas 1061, Miranda', state: 'Miranda',
+      city: 'Caracas', images: [
+        './assets/img/hotels/Eurobuilding-Hotel-1.jpg', './assets/img/hotels/Eurobuilding-Hotel-2.jpg',
+        './assets/img/hotels/Eurobuilding-Hotel-3.jpg'
+      ], fullday: true, fulldayPrice: 130, rooms: [
+        {
+          name: 'Habitación Deluxe', capacity: 2, view: 'none', images: [
+            './assets/img/hotels/habitacion-deluxe-1.jpg', './assets/img/hotels/habitacion-deluxe-2.jpg',
+            './assets/img/hotels/habitacion-business-3.jpg', '../../../../assets/img/hotels/sunsol-1.png'
+          ], price: 300, selected: false
+        },
+        {
+          name: 'Habitación Business', capacity: 2, view: 'none', images: [
+            './assets/img/hotels/habitacion-business-1.jpg', './assets/img/hotels/habitacion-business-2.jpg'
+          ], price: 330, selected: false
+        }], map: './assets/img/eurobuilding-map.png',
+      selected: false
+    },
+    {
+      name: 'Lidotel Valencia', id: '3', stars: 4, lat: 10.239714535199255,
+      lon: -67.99901357029846, adress: 'Avenida Norte-Sur 4, Naguanagua 2035, G, Venezuela', state: 'Carabobo',
+      city: 'Valencia', images: [
+        './assets/img/hotels/lidotel-valencia-1.jpg', './assets/img/hotels/lidotel-valencia-2.jpg',
+        './assets/img/hotels/lidotel-valencia-3.jpg', 
+      ], fullday: true, fulldayPrice: 90, rooms: [
+        {
+          name: 'Suite Junior', capacity: 2, view: 'none', images: [
+            './assets/img/hotels/suite-junior-1.jpg', './assets/img/hotels/suite-junior-2.jpg'
+          ], price: 180, selected: false
+        },
+        {
+          name: 'Habitación Doble Deluxe', capacity: 4, view: 'none', images: [
+            './assets/img/hotels/habitacion-doble-deluxe-1.jpg', './assets/img/hotels/habitacion-doble-deluxe-2.jpg',
+            './assets/img/hotels/habitacion-doble-deluxe-3.jpg'
+          ], price: 330, selected: false
+        }], map: './assets/img/lidotel-map.png',
+      selected: false
+    }];
+
+  constructor(private orderSV: OrderService, private route: ActivatedRoute, private router:Router ) { }
 
   ngOnInit() {
   }
@@ -22,34 +123,34 @@ export class VacationBuilderStep3Component implements OnInit {
 
   //RESERVAR HOTEL
   reservarHotel() {
-    
+
   }
 
   itemsPerSlide = 3;
   singleSlideOffset = false;
   noWrap = false;
- 
+
   slidesChangeMessage = '';
- 
+
   slides = [
-    {image: '../../../../assets/img/hotels/sunsol-1.png'},
-    {image: '../../../../assets/img/hotels/sunsol-2.png'},
-    {image: '../../../../assets/img/hotels/sunsol-3.png'},
-    {image: '../../../../assets/img/hotels/sunsol-3.png'},
-    {image: '../../../../assets/img/hotels/sunsol-1.png'},
-    {image: '../../../../assets/img/hotels/sunsol-2.png'},
+    { image: '../../../../assets/img/hotels/sunsol-1.png' },
+    { image: '../../../../assets/img/hotels/sunsol-2.png' },
+    { image: '../../../../assets/img/hotels/sunsol-3.png' },
+    { image: '../../../../assets/img/hotels/sunsol-3.png' },
+    { image: '../../../../assets/img/hotels/sunsol-1.png' },
+    { image: '../../../../assets/img/hotels/sunsol-2.png' },
   ];
 
 
   slidesHabitaciones = [
-    {image: '../../../../assets/img/hotels/sunsol-1.png'},
-    {image: '../../../../assets/img/hotels/sunsol-2.png'},
-    {image: '../../../../assets/img/hotels/sunsol-3.png'},
-    {image: '../../../../assets/img/hotels/sunsol-3.png'},
-    {image: '../../../../assets/img/hotels/sunsol-1.png'},
-    {image: '../../../../assets/img/hotels/sunsol-2.png'},
+    { image: '../../../../assets/img/hotels/sunsol-1.png' },
+    { image: '../../../../assets/img/hotels/sunsol-2.png' },
+    { image: '../../../../assets/img/hotels/sunsol-3.png' },
+    { image: '../../../../assets/img/hotels/sunsol-3.png' },
+    { image: '../../../../assets/img/hotels/sunsol-1.png' },
+    { image: '../../../../assets/img/hotels/sunsol-2.png' },
   ];
- 
+
   onSlideRangeChange(indexes: number[]): void {
     //this.slidesChangeMessage = `Slides have been switched: ${indexes}`;
   }
@@ -74,6 +175,87 @@ export class VacationBuilderStep3Component implements OnInit {
   }
 
 
+  //modificacion de todas la funcionalidades no estaticas de la pagina
+
+  steps = {
+    step_one: true,
+    step_two: false,
+  }
+
+  modalRoomStatus = new BehaviorSubject(false);
+
+  hotelSelected: localHotel;
+  roomSelected: localRoom;
+
+
+  goToStep(step, localHotel?) {
+    this.stepsToFalse();
+    switch (step) {
+      case 1:
+        this.steps.step_one = true;
+        break;
+      case 2:
+        this.hotelSelectedToFalse();
+        this.steps.step_two = true;
+        localHotel.selected = true;
+        this.hotelSelected = this.findHotelSelected();
+        break;
+    
+      default:
+        break;
+    }
+  }
+
+  stepsToFalse() {
+    this.steps.step_one = false;
+    this.steps.step_two = false;
+
+  }
+
+  hotelSelectedToFalse() {
+    this.hotels.map(e => e.selected = false)
+  }
+
+  findHotelSelected() {
+    return this.hotels.find(e => { return e.selected });
+  }
+
+  roomSelectedToFalse() {
+    this.hotelSelected.rooms.map(e => e.selected = false)
+  }
+
+  openModalRooms(localRoom){
+    // this.modalRoomStatus.next(!this.modalRoomStatus.value);
+    this.verModalHabitaciones = true;
+    this.roomSelectedToFalse();
+    localRoom.selected = true;
+    this.roomSelected = this.findRoomSelected()
+    console.log(this.roomSelected);
+    
+  }
+
+  closeModalRooms(){
+    this.verModal = false;
+    // this.modalRoomStatus.next(!this.modalRoomStatus.value);
+  }
+
+  findRoomSelected() {
+    return this.hotelSelected.rooms.find(e => { return e.selected });
+    
+  }
+
+  saveInfo() {
+    const auxBooking= {
+      hotel: this.findHotelSelected(),
+      room: this.findRoomSelected()
+    }
+    this.orderSV.updateBooking(auxBooking);
+    this.router.navigate(["vacationBuilder/step4"]);
+    this.modalRoomStatus.next(!this.modalRoomStatus.value);
+  }
+
+  //fin de la modificacion 
+
 
   funcionInfoBoton() {
     this.displayListaHoteles = false;
@@ -91,29 +273,26 @@ export class VacationBuilderStep3Component implements OnInit {
     this.funcionHabilitarMenus(false, false, true);
   }
 
-
-
   filter = 'Ejemplo';
 
-  hotels = HOTELS;
   hotelsAux = this.hotels;
 
   comodidadesMenu = [
-    {name: 'SunSol', id: '1', stars: 4},
-    {name: 'SunSol', id: '1', stars: 4},
-    {name: 'SunSol', id: '1', stars: 4},
-    {name: 'SunSol', id: '1', stars: 4}
+    { name: 'SunSol', id: '1', stars: 4 },
+    { name: 'SunSol', id: '1', stars: 4 },
+    { name: 'SunSol', id: '1', stars: 4 },
+    { name: 'SunSol', id: '1', stars: 4 }
   ]
 
   functionDefault() {
 
-      console.log('No hay match');
-      this.hotels = this.hotelsAux;
+    console.log('No hay match');
+    this.hotels = this.hotelsAux;
   }
   nameFunction() {
 
     // tslint:disable-next-line: only-arrow-functions
-    this.hotels.sort( function(a, b) {
+    this.hotels.sort(function (a, b) {
       if (a.name > b.name) {
         return 1;
       }
@@ -127,7 +306,7 @@ export class VacationBuilderStep3Component implements OnInit {
   stateFunction() {
 
     // tslint:disable-next-line: only-arrow-functions
-    this.hotels.sort( function(a, b) {
+    this.hotels.sort(function (a, b) {
       if (a.state > b.state) {
         return 1;
       }
@@ -141,7 +320,7 @@ export class VacationBuilderStep3Component implements OnInit {
   cityFunction() {
 
     // tslint:disable-next-line: only-arrow-functions
-    this.hotels.sort( function(a, b) {
+    this.hotels.sort(function (a, b) {
       if (a.city > b.city) {
         return 1;
       }
@@ -152,13 +331,13 @@ export class VacationBuilderStep3Component implements OnInit {
       return 0;
     });
   }
-  
+
 
   public shouldDisplay = false;
 
 
   public mostrarMenu = false;
-  
+
   funcionBoton(id: string) {
 
     this.mostrarMenu = !this.mostrarMenu
@@ -166,55 +345,20 @@ export class VacationBuilderStep3Component implements OnInit {
 
 
   funcionAyuda(visible: string, ocultar1: string, ocultar2: string, ocultar3: string) {
-      if (document.getElementById(ocultar1).style.display === 'block' ) {
-        document.getElementById(ocultar1).style.display = 'none';
-      }
+    if (document.getElementById(ocultar1).style.display === 'block') {
+      document.getElementById(ocultar1).style.display = 'none';
+    }
 
-      if (document.getElementById(ocultar2).style.display === 'block' ) {
-        document.getElementById(ocultar2).style.display = 'none';
-      }
+    if (document.getElementById(ocultar2).style.display === 'block') {
+      document.getElementById(ocultar2).style.display = 'none';
+    }
 
-      if (document.getElementById(ocultar3).style.display === 'block' ) {
-        document.getElementById(ocultar3).style.display = 'none';
-      }
+    if (document.getElementById(ocultar3).style.display === 'block') {
+      document.getElementById(ocultar3).style.display = 'none';
+    }
 
-      document.getElementById(visible).style.display = 'block';
+    document.getElementById(visible).style.display = 'block';
   }
-
-
-
-  // clickGeneral(id: string) {
-  //   // this.general = true;
-  //   // this.comodidades = false;
-  //   // this.habitaciones = false;
-  //   // this.promociones = false;
-  //   this.funcionAyuda('menuGeneral'  + id, 'menuComodidades' + id, 'menuHabitaciones' + id, 'menuPromociones' + id);
-  // }
-
-  // clickComodidades(id: string) {
-  //   // this.general = false;
-  //   // this.comodidades = true;
-  //   // this.habitaciones = false;
-  //   // this.promociones = false;
-  //   this.funcionAyuda('menuComodidades' + id, 'menuGeneral' + id, 'menuHabitaciones' + id, 'menuPromociones' + id);
-  // }
-
-  // clickHabitaciones(id: string) {
-  //   // this.general = false;
-  //   // this.comodidades = false;
-  //   // this.habitaciones = true;
-  //   // this.promociones = false;
-  //   this.funcionAyuda('menuHabitaciones' + id, 'menuGeneral' + id, 'menuComodidades' + id, 'menuPromociones' + id);
-  // }
-
-  // clickPromociones(id: string) {
-  //   // this.general = false;
-  //   // this.comodidades = false;
-  //   // this.habitaciones = false;
-  //   // this.promociones = true;
-  //   this.funcionAyuda('menuPromociones' + id, 'menuGeneral' + id, 'menuComodidades' + id, 'menuHabitaciones' + id);
-  // }
-
 
 
   //ESTRELLAS
@@ -231,7 +375,7 @@ export class VacationBuilderStep3Component implements OnInit {
   public amarilla5 = false;
 
   //blancas
-  estrellaBlanca1() { 
+  estrellaBlanca1() {
     this.blanca1 = false;
     this.blanca2 = false;
     this.blanca3 = false;
@@ -240,7 +384,7 @@ export class VacationBuilderStep3Component implements OnInit {
     this.amarilla1 = true;
   }
 
-  estrellaBlanca2() { 
+  estrellaBlanca2() {
     this.blanca1 = false;
     this.blanca2 = false;
     this.blanca3 = false;
@@ -250,7 +394,7 @@ export class VacationBuilderStep3Component implements OnInit {
     this.amarilla2 = true;
   }
 
-  estrellaBlanca3() { 
+  estrellaBlanca3() {
     this.blanca1 = false;
     this.blanca2 = false;
     this.blanca3 = false;
@@ -261,7 +405,7 @@ export class VacationBuilderStep3Component implements OnInit {
     this.amarilla3 = true;
   }
 
-  estrellaBlanca4() { 
+  estrellaBlanca4() {
     this.blanca1 = false;
     this.blanca2 = false;
     this.blanca3 = false;
@@ -273,7 +417,7 @@ export class VacationBuilderStep3Component implements OnInit {
     this.amarilla4 = true;
   }
 
-  estrellaBlanca5() { 
+  estrellaBlanca5() {
     this.blanca1 = false;
     this.blanca2 = false;
     this.blanca3 = false;

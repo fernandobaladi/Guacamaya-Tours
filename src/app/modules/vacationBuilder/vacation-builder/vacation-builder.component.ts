@@ -1,23 +1,27 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { order } from 'src/app/models/order';
+import { ActivatedRoute } from '@angular/router';
+import { OrderService } from 'src/app/services/order/order.service';
+import { State } from '../../../models/State';
+import { DestinationCategory } from 'src/app/models/DestinationCategory';
+import { Router } from '@angular/router';
 
-export interface state {
+export class localState extends State{
   img: string;
-  name: string;
   selected: boolean;
 }
 
-export interface category {
+export class category extends DestinationCategory {
   img: string;
-  name: string;
   selected: boolean;
 }
 
-export interface destination {
-  img: string;
-  name: string;
-  state: string;
-  city: string;
-  info: string;
+export class destination {
+  img: String;
+  name: String;
+  state: String;
+  city: String;
+  info: String;
 }
 
 @Component({
@@ -32,12 +36,12 @@ export class VacationBuilderComponent implements OnInit {
     step_one: true,
     step_two: false,
     step_three: false,
-  }
-  enableStep=false;
-  
+  } 
+  enableStep = false;
+
   screen: string;
 
-  states: state[] = [
+  states: localState[] = [
     {
       img: "https://steemitimages.com/DQmbJA4t1388EhBPCZgRv5svVFp7zHxABt6qQXMSvMMFCkx/image.png",
       name: "Mérida",
@@ -110,7 +114,7 @@ export class VacationBuilderComponent implements OnInit {
     },
   ]
 
-  constructor() { 
+  constructor(private orderSV: OrderService, private route: ActivatedRoute, private router:Router ) {
     this.getScreenSize();
   }
 
@@ -136,12 +140,20 @@ export class VacationBuilderComponent implements OnInit {
     }
   }
 
- 
+  saveInfo() {
+    const auxBooking= {
+      destinationCategory: this.categorySelected(),
+      state: this.stateSelected()
+    }
+    this.orderSV.updateBooking(auxBooking);
+    this.router.navigate(["vacationBuilder/step2"]);
+  }
 
   toggleState(state) {
+    this.stateSelectedToFalse();
     state.selected = !state.selected;
     this.enableStep = this.anyStateSelected();
-    
+
   }
 
   goToStep(step, category?) {
@@ -176,8 +188,20 @@ export class VacationBuilderComponent implements OnInit {
     this.categories.map(e => e.selected = false)
   }
 
-  anyStateSelected(){
-    return this.states.some(e=>{ return e.selected});
+  stateSelectedToFalse() {
+    this.states.map(e => e.selected = false)
+  }
+
+  anyStateSelected() {
+    return this.states.some(e => { return e.selected });
+  }
+
+  stateSelected() {
+    return this.states.find(e => { return e.selected });
+  }
+
+  categorySelected() {
+    return this.categories.find(e => e.selected );
   }
 
 }

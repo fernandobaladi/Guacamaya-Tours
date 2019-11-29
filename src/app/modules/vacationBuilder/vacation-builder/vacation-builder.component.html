@@ -50,7 +50,7 @@
                                     </slide>
                                 </carousel>
                             </div>
-                            <div class="col-12 miniSlider-wrapper" *ngIf="screen==='medium'">
+                            <div class="col-12 miniSlider-wrapper" *ngIf="screen==='medium'"> 
                                 <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
                                     [startFromIndex]="6" [interval]="false">
                                     <slide *ngFor="let category of categories; let index=index">
@@ -92,17 +92,17 @@
                         <div class="container">
                             <div class="row gt-thumbnail-wrapper">
                                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2 gt-thumbnail-box"
-                                    *ngFor="let state of states">
+                                    *ngFor="let localState of states">
                                     <div class="gt-thumbnail">
                                         <div class="gt-thumbnail-img">
-                                            <img [src]="state.img">
+                                            <img [src]="localState.img">
                                         </div>
-                                        <div class="gt-thumbnail-title" [ngClass]="{'show':state.selected}">
-                                            <span>{{state.name}}</span>
+                                        <div class="gt-thumbnail-title" [ngClass]="{'show':localState.selected}">
+                                            <span>{{localState.name}}</span>
                                         </div>
                                         <div class="gt-thumbnail-checkbox ">
-                                            <img [src]="state.selected? 'https://img.icons8.com/metro/452/checked-checkbox.png':'http://icons.iconarchive.com/icons/icons8/windows-8/256/User-Interface-Unchecked-Checkbox-icon.png'"
-                                                (click)="toggleState(state)">
+                                            <img [src]="localState.selected? 'https://img.icons8.com/metro/452/checked-checkbox.png':'http://icons.iconarchive.com/icons/icons8/windows-8/256/User-Interface-Unchecked-Checkbox-icon.png'"
+                                                (click)="toggleState(localState)">
                                         </div>
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 btn-wrapper">
-                                    <button class=" gt-btn gt-btn--secondary" routerLink="/vacationBuilder/step2"
+                                    <button class=" gt-btn gt-btn--secondary" (click)="saveInfo()"
                                         [disabled]="!enableStep">Siguiente</button>
                                 </div>
                             </div>
