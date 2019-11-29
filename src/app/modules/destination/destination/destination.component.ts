@@ -37,7 +37,7 @@ export class DestinationComponent implements OnInit {
     step_one: true,
     step_two: false,
     step_three: false,
-  }
+  };
   enableStep = false;
   stateCounted = false;
   screen: string;
@@ -90,7 +90,6 @@ export class DestinationComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
 
-    console.log(window.innerWidth);
 
     if (window.innerWidth <= 991 && window.innerWidth > 640) {
       this.screen = "medium";
@@ -111,8 +110,6 @@ export class DestinationComponent implements OnInit {
   toggleState(state) {
     state.selected = !state.selected;
     this.enableStep = this.anyStateSelected();
-    console.log(this.enableStep);
-    console.log(this.destinations);
   }
 
   goToStep(step, category?) {
@@ -160,7 +157,6 @@ export class DestinationComponent implements OnInit {
         }
       }
     });
-  console.log(this.states);
   }
 
   stepsToFalse() {
@@ -176,23 +172,23 @@ export class DestinationComponent implements OnInit {
     this.states.map(e => e.selected = false);
   }
 
-  categoriesSelected(): any[]{
-    
-    let catSelect = this.categories.find(e => {if(e.selected){
+  categoriesSelected(): any[] {
+    const catSelect = this.categories.find(e => {if(e.selected){
       return e;
     }
-    
+
   });
     return catSelect;
   }
   statesSelected() {
-    let stateSelect = this.states.map(e => {if(e.selected){
-      return e
+    const stateSelect = this.states.map(e => {if(e.selected){
+      return e;
     }});
     return stateSelect;
   }
 
-  anyStateSelected(){
-    return this.states.some(e => {return e.selected});
+  anyStateSelected() {
+    return this.states.some(e => {return e.selected;
+    });
   }
 }
