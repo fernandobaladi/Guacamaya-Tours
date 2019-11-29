@@ -371,6 +371,12 @@
 }
 
 
+
+.iconos-comodidades {
+    margin-top: 20px;
+}
+
+
 .row-comodidades-menu {
     padding: 1.5em;
     background: $color-menu;
@@ -460,6 +466,23 @@
 .suites-habitaciones {
     margin-top: 40px;
 }
+
+
+
+
+
+.mapa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+
+
+
+
+
 
 
 
@@ -613,7 +636,8 @@
 .circulo-precio {
     height: 150px;
     width: 150px;
-    background-color: #fae239;
+    background-color: $color-primary;
+    color: white;
     border-radius: 50%;
     justify-content: center;
     font-family: $font-family-primary;
