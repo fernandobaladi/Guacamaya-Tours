@@ -22,7 +22,6 @@
                     <div class=" destinations-pipe-wrapper">
                         <img src="../../../../assets/img/loupe.png">
                         <input class="form-control" placeholder="Nombre/Estado/Categoría/..." [(ngModel)]="search" />
-                        <!-- <input class="form-control" placeholder="Nombre/Estado/Categoría/..." [(ngModel)]="search"  /> -->
                     </div>
                 </div>
                 <div class="col-12 col-md-4 col-lg-4">
@@ -123,7 +122,7 @@
                                 <label>
                                     Nombre
                                 </label>
-                                <input type="text" class="form-control" formControlName="name">
+                                <input [style.border-color]="colorBorde ? 'red' : '#393a39'" [(ngModel)]="inputTextfield" type="text" class="form-control" formControlName="name">
                             </div>
                             <div class="col-7 col-md-4 form-group">
                                 <label>

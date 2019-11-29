@@ -27,6 +27,25 @@ export class AdminLoginComponent implements OnInit {
     this.createLoginForm()
   }
 
+  usuarioCampo = '';
+  constrasenaCampo = '';
+
+  usuario = "edwardpizzurro@gmail.com"
+  contrasena = "12345";
+
+  loginButton() {
+
+    if (this.usuarioCampo == this.usuario && this.constrasenaCampo == this.contrasena) {
+      
+      this.router.navigate(["/admin/dashboard"]);
+      
+    } else {
+      alert('Usuario no encontrado, por favot ingresa un usuario válido');
+      this.usuarioCampo = "";
+      this.constrasenaCampo = "";
+    }
+  }
+
   // authData() {
 
   //   this.loading = true;

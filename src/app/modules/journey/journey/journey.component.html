@@ -1,73 +1,96 @@
 <section class="gt-section gt-section--fullHeight verifier" [ngClass]="{'dontShow': correctLocator}">
     
-    <div class="journey-box-wrapper">
-        
-        <div class="journey-wrapper">
 
-            <div class="journey-guacamaya">
-                <img src="../../../../assets/img/contact/guaca.png">
-            </div>
+    <div class="container journey-wrapper">
 
-
-            <div class="journey-box-text">
-                <span>¿Quiéres chequear tu itinerario?</span>
-                <div class="journey-form-box">
-                    <label for="journeyLocator">Introduce tu localizador:</label>
-                    <input type="text" class="journey-form" placeholder="Ej: AA4523" 
-                    [(ngModel)]="locator"  (ngModelChange)="locator = $event.toUpperCase()">
-                </div>
-            </div>
-
-
-            <button class="btn gt-btn gt-btn--primary" (click)="nextPage()">
-                Siguiente
-            </button>
-
+        <div class="journey-guacamaya" *ngIf="screen==='normal'">
+            <img src="../../../../assets/img/contact/guaca.png">
         </div>
+
+
+        <div class="row">
+            <div class="col-12 journey-box-text">
+                <span>¿Quiéres chequear tu itinerario?</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 journey-box-text">
+
+                    <div class="row journey-box-text">
+                        <div class="col-12">
+                            <label for="journeyLocator">Introduce tu localizador:</label>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="destination-pipe-wrapper">
+                                <input type="text" class="journey-form" placeholder="Ej: AA4523" 
+                                [(ngModel)]="locator" (ngModelChange)="locator = $event.toUpperCase()">
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button class="btn gt-btn gt-btn--primary" (click)="nextPage()">
+                                Siguiente
+                            </button>
+                        </div>
+                        
+                    </div>
+            </div>
+        </div>
+
     </div>
+
 </section>
 
 
 
-<section class="gt-section gt-section--heightAuto info-reserva" [ngClass]="{'show': correctLocator}">
 
-        <!-- <div class="contenedor-general"> -->
+
+
+<section class="gt-section gt-section--heightAuto info-reserva" [ngClass]="{'show': correctLocator}" *ngFor="let dato of arrayEjemplo">
+
     
-            <span>Localizador: AA1235</span>
-
+    <div class="texto-localizador">
+        <!-- localidor -->
+        <span><strong>Localizador: AA1235</strong></span>
+    </div>
 
             <div class="container-fluid contenedor-principal">
 
                 <div class="row">
 
-                    <!-- parte izquierda menu -->
+                    
                     <div class="col-lg-4 col-12">
 
                         <div class="row justify-content-between">
 
                             <div class="col-4">
+                                <!-- imagen de la reserva (el hotel) -->
                                 <div class="image"> <img src="../../../../assets/img/hotels/sunsol-1.png" width="120px"></div>
                             </div>
 
                             <div class="col-7">
                                 <div class="info">                            
-                            
+                                    
+                                    <!-- titulo del hotel de la reserva -->
                                     <span class="title">Sunsol</span> 
                                                         
                                     <div id="estrellas-hoteles">
                                                         
                                         <div>
 
-                                            <img src="../../../../assets/img/staramarilla.png">
-                                            <img src="../../../../assets/img/staramarilla.png">
-                                            <img src="../../../../assets/img/staramarilla.png">
-                                            <img src="../../../../assets/img/staramarilla.png">
-                                            <img src="../../../../assets/img/staramarilla.png">
+                                            <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_1">
+                                            <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_2">
+                                            <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_3">
+                                            <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_4">
+                                            <img src="../../../../assets/img/staramarilla.png" *ngIf="estrella_amarilla_5">
                                                     
                                         </div>
                                                                 
                                     </div>
-                                                    
+                                    
+                                    <!-- tipo de suite de la reserva -->
                                     <span>Suite de lujo</span> 
                                                     
                                 </div>
@@ -83,8 +106,11 @@
 
                     <div class="col-lg-2 col-md-3 col-sm-3 col-12">
                         <div class="entrada">
+                            
                             <span class="menuprincipal-titulos"><strong>Entrada</strong></span>
+                            <!-- dia de entrada -->
                             <span class="menuprincipal-titulos-negritas">15</span>
+                            <!-- mes de entrada -->
                             <span class="menuprincipal-titulos">Septiembre</span>
                          </div>
 
@@ -94,7 +120,9 @@
                     <div class="col-lg-2 col-md-3 col-sm-3 col-12">
                         <div class="entrada">
                             <span class="menuprincipal-titulos"><strong>Salida</strong></span>
+                            <!-- dia de salida -->
                             <span class="menuprincipal-titulos-negritas">30</span>
+                            <!-- mes de salida -->
                             <span class="menuprincipal-titulos">Septiembre</span>
                         </div>
                     </div>
@@ -103,8 +131,10 @@
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                         <div class="entrada">
                             <span class="menuprincipal-titulos"><strong>Dias / Noches</strong></span>
+                            <!-- diasy noches -->
                             <span class="menuprincipal-titulos-negritas">3 / 10</span>
-                            <span class="menuprincipal-titulos">5 adultos, 3 noches</span>
+                            <!-- cant adultos y ninos-->
+                            <span class="menuprincipal-titulos">5 adultos, 3 ninod</span>
                          </div>
                     </div>
                     
@@ -127,7 +157,9 @@
                                 <span class="titulo-precio">Orden total</span>
                 
                                 <div class="ordenes">
+                                    <!-- todas las habitacioens pedidas en la reserva -->
                                     <span>3 habitaciones</span>
+                                    <!-- esto lo puedes quitar si quieres -->
                                     <span>Todo incluido: no</span>
                                 </div>
                                     
@@ -141,7 +173,9 @@
                         <div class="menu-precios">
                             <div class="precio-total">
                                 <span class="titulo-precio">Precio</span>
+                                <!-- precio en $ -->
                                 <span class="titulo-precio">USD$ 356</span>
+                                <!-- precio en Bs -->
                                 <span>7.256.890 Bs.S</span>    
                             </div>
                         </div>
@@ -180,7 +214,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-12 datos-container">
+                            <div class="col-12 datos-container" *ngFor="let huesped of huespedes">
                                 <span>Fernando Baladi</span>
                             </div>
                         </div>
@@ -197,8 +231,8 @@
                         </div>
     
                         <div class="row">
-                            <div class="col-12 datos-container">
-                                <span>19</span>
+                            <div class="col-12 datos-container" *ngFor="let huesped of arrayEjemplo.huespedes">
+                                <span>{{huesped}}</span>
                             </div>
                         </div>
                         
@@ -214,7 +248,7 @@
                         </div>
     
                         <div class="row">
-                                <div class="col-12 datos-container" id="margen-tabla">
+                                <div class="col-12 datos-container" id="margen-tabla" *ngFor="let huesped of huespedes">
                                     <span>27.545.164</span>
                                 </div>
                         </div>
@@ -226,3 +260,20 @@
             </div> 
 
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

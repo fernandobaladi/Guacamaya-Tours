@@ -67,6 +67,8 @@ export class AdminHabsFacilitiesComponent implements OnInit {
   toggleModalStatus(){
     this.modalStatus.next(!this.modalStatus.value);
     this.createFacilityForm();
+    this.apareceBorde = false;
+    this.colorBorde = false;
   }
 
   
@@ -83,7 +85,22 @@ export class AdminHabsFacilitiesComponent implements OnInit {
     this.modalStatus.next(!this.modalStatus.value);
   }
 
+  public inputTextfield: string;
+  public apareceBorde: boolean = false;
+  public colorBorde: boolean = false;
+
   saveChanges(){
+
+    var empty = /^$/;
+    var regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.inputTextfield) && !empty.test(this.inputTextfield)) {
+
+      //console.log("Mega ahre");
+      this.apareceBorde = true;
+      this.colorBorde = true;
+
+    } else {
+
     this.loading = true;
 
     if(!this.facilityForm.controls.status.value){
@@ -120,6 +137,7 @@ export class AdminHabsFacilitiesComponent implements OnInit {
     }
     this.modalStatus.next(false);
   
-  }
+    }
+}
 
 }

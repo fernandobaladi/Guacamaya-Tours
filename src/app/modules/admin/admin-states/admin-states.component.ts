@@ -69,6 +69,9 @@ export class AdminStatesComponent implements OnInit {
 
   toggleModalStatus() {
     this.modalStatus.next(!this.modalStatus.value);
+    this.apareceBorde = false;
+    this.colorBorde = false;
+
   }
   openModal(state?) {
     if (state) {
@@ -82,42 +85,59 @@ export class AdminStatesComponent implements OnInit {
     }
     this.modalStatus.next(!this.modalStatus.value);
   }
+
+  public inputTextfield: string;
+  public apareceBorde: boolean = false;
+  public colorBorde: boolean = false;
+
   saveChanges() {
-    this.loading = true;
+    var empty = /^$/;
+    var regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.inputTextfield) && !empty.test(this.inputTextfield)) {
 
-    if(!this.stateForm.controls.status.value){
-      this.stateForm.controls.status.setValue(false);
-    }
-    let data = {
-      name: this.stateForm.controls.name.value,
-      status: this.stateForm.controls.status.value,
-      imagePath: this.stateForm.controls.imagePath.value,
-      imageURL: this.stateForm.controls.imageURL.value
-    };
-
-    if (!this.stateForm.controls.id.value) {
-
-      this.statesService.create(data)
-        .then(res => {
-          alert('¡Se ha agregado exitosamente el estado!');
-          this.stateForm.reset();
-        }).catch(err => {
-          this.loading = false;
-          alert('Ha habido un error con la información introducida');
-        });
+      //console.log("Mega ahre");
+      this.apareceBorde = true;
+      this.colorBorde = true;
 
     } else {
 
-      this.statesService.updateState(this.stateForm.controls.id.value, data)
-        .then(res => {
-          alert('¡Se ha editado exitosamente el estado!');
-          this.stateForm.reset();
-        }).catch(err => {
-          this.loading = false;
-          alert('Ha habido un error con la información introducida');
-        });
-    }
-    this.modalStatus.next(false);
+    
+        this.loading = true;
+
+        if(!this.stateForm.controls.status.value){
+          this.stateForm.controls.status.setValue(false);
+        }
+        let data = {
+          name: this.stateForm.controls.name.value,
+          status: this.stateForm.controls.status.value,
+          imagePath: this.stateForm.controls.imagePath.value,
+          imageURL: this.stateForm.controls.imageURL.value
+        };
+
+        if (!this.stateForm.controls.id.value) {
+
+          this.statesService.create(data)
+            .then(res => {
+              alert('¡Se ha agregado exitosamente el estado!');
+              this.stateForm.reset();
+            }).catch(err => {
+              this.loading = false;
+              alert('Ha habido un error con la información introducida');
+            });
+
+        } else {
+
+          this.statesService.updateState(this.stateForm.controls.id.value, data)
+            .then(res => {
+              alert('¡Se ha editado exitosamente el estado!');
+              this.stateForm.reset();
+            }).catch(err => {
+              this.loading = false;
+              alert('Ha habido un error con la información introducida');
+            });
+        }
+        this.modalStatus.next(false);
+      }
   }
 
 }
