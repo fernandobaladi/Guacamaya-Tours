@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-about-us',
@@ -9,10 +9,24 @@ export class AboutUsComponent implements OnInit {
 
   missionActive = false;
   visionActive = false;
+  screen: string;
+
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+
+
+    if (window.innerWidth <= 991) {
+      this.screen = "medium";
+    }
+    else {
+      this.screen = "normal";
+    }
   }
 
 
