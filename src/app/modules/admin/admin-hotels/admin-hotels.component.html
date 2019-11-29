@@ -57,17 +57,16 @@
                     </thead>
                     <tbody>
                         <tr class="hotel" *ngFor="let hotel of hotels | generalSort: optionSort ">
-                                            <th scope="row">holi</th>
-                                            <td>{{hotel.data.name}}</td>
-                                            <td>{{hotel.data.state.name}}</td>
-                                            <td>{{hotel.data.city.name}}</td>
-                                            <td>{{hotel.data.status?"Habilitado": "Deshabilitado"}}</td>
-                                            <td>{{hotel.data.stars}}</td>
-                                            <button class="btn gt-btn gt-btn--secondary" type="menu"
-                                                    (click)="openModal(hotel)">
-                                                    Editar
-                                            </button>
-                                        </tr>
+                            <th scope="row">{{hotel.data.name}}</th>
+                            <td>{{hotel.data.state.name}}</td>
+                            <td>{{hotel.data.city.name}}</td>
+                            <td>{{hotel.data.status?"Habilitado": "Deshabilitado"}}</td>
+                            <td>{{hotel.data.stars}}</td>
+                            <button class="btn gt-btn gt-btn--secondary" type="menu"
+                                    (click)="openModal(hotel)">
+                                    Editar
+                            </button>
+                        </tr>
                         <!-- cuando vayas a hacerlo con firebase descomenta lo de arriba 
                                         y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
                                     cualquier cosa me preguntas  -->
@@ -231,15 +230,18 @@
                                 <div class="multiadd-box">
                                     <div class="image-additional-box"
                                         *ngFor='let imageAdditional of imagesAdditionals; let i=index'>
-                                        <img [src]="imageAdditional">
+                                        <img [src]="imageAdditional.imageAdditionalURL">
                                         <div class="close-btn" (click)="deleteImage(i)">
                                             X
                                         </div>
                                     </div>
                                 </div>
                                 <div class="input-box">
-                                    <input type="file" class="form-control-file input-bar"
-                                        formControlName="imageAdditional">
+                                        <div *ngIf="this.hotelForm.controls.imageAdditionalURL.value">
+                                                <img [src]=this.hotelForm.controls.imageAdditionalURL.value>
+                                            </div>
+                                    <app-image-uploader
+                                path="hotel/images" (res)="uploaderRes2($event)"></app-image-uploader>
                                     <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---add"
                                         (click)="addImage()"> + </button>
                                 </div>
@@ -258,7 +260,7 @@
                             </span>
                             <div class=" habs-add-btn">
                                 <button class="btn gt-btn gt-btn--secondary" type="menu"
-                                    (click)="toggleModalSecondaryStatus()">
+                                    (click)="openModal2()">
                                     Añadir +
                                 </button>
                             </div>
@@ -273,48 +275,22 @@
                                 <th scope="col">Vista</th>
                                 <th scope="col">Max. personas</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">¿Disponible?</th>
+                                <!-- <th scope="col">¿Disponible?</th> -->
                                 <th scope="col"> </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <tr class="hab" *ngFor="let hab of habs">
-                                            <th scope="row">holi</th>
-                                            <td>holi</td>
-                                            <td>holi</td>
-                                            <td>holi</td>
-                                            <td>holi</td>
+                            <tr class="hab" *ngFor="let hab of habs" >
+                                            <th scope="row">{{hab.data.habName}}</th>
+                                            <td>{{hab.data.habView}}</td>
+                                            <td>{{hab.data.habCapacity}}</td>
+                                            <td>{{hab.data.habStatus}}</td>
+                                            <!-- <td>holi</td> -->
                                             <button class="btn gt-btn gt-btn--secondary" type="menu"
-                                                    (click)="modifyInfoHab()">
+                                                    (click)="openModal2(hab)">
                                                     Editar
                                             </button>
-                                        </tr> -->
-                            <!-- cuando vayas a hacerlo con firebase descomenta lo de arriba 
-                                        y donde estan los holi vas a colocar lo que le pasas (guiate de mi microproyecto)
-                                    cualquier cosa me preguntas  -->
-                            <tr class="hab">
-                                <th scope="row">fsa</th>
-                                <td>holi</td>
-                                <td>holi</td>
-                                <td>holi</td>
-                                <td>holi</td>
-                                <button class="btn gt-btn gt-btn--primary gt-btn--primary---edit" type="menu"
-                                    (click)="modifyInfoHab()">
-                                    Editar
-                                </button>
-
-                            </tr>
-                            <tr class="hab">
-                                <th scope="row">fsa</th>
-                                <td>holi</td>
-                                <td>holi</td>
-                                <td>holi</td>
-                                <td>holi</td>
-                                <button class="btn gt-btn gt-btn--primary gt-btn--primary---edit" type="menu"
-                                    (click)="modifyInfoHab()">
-                                    Editar
-                                </button>
-                            </tr>
+                                        </tr>
                         </tbody>
                     </table>
                     <div class="col-12 buttons">
@@ -366,8 +342,8 @@
                             <div class="col-6 col-md-3 checkbox-wrapper">
                                 <div class="col-12 col-md-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" formControlName="habEnabled">
-                                        <label class="form-check-label" for="habEnabled">
+                                        <input class="form-check-input" type="checkbox" formControlName="habStatus">
+                                        <label class="form-check-label" for="habStatus">
                                             Habilitada
                                         </label>
                                     </div>
@@ -388,49 +364,57 @@
                             <div class="col-12 col-md-6 form-group">
                                 <label for="facility">Comodidades</label>
                                 <div class="multiselect-wrapper">
-                                    <div *ngFor='let facility of facilities' class="multiselect-option">
+                                    <div *ngFor='let facility of facilitiesHabs' class="multiselect-option">
                                         <div>
                                             <img [src]="facility.active? 'https://img.icons8.com/metro/452/checked-checkbox.png':'http://icons.iconarchive.com/icons/icons8/windows-8/256/User-Interface-Unchecked-Checkbox-icon.png'"
                                                 (click)="toggleFacility(facility)">
                                         </div>
                                         <div>
-                                            {{facility.viewValue}}
+                                            {{facility.data.name}}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-8 form-group">
                                 <label for="imagePricipal">Imagen principal</label>
-                                <!-- <div *ngIf="this.hotelForm.controls.mainImageURL.value">
-                                    <img [src]=this.hotelForm.controls.mainImageURL.value>
+                                <div *ngIf="this.habForm.controls.imagePrincipalURL.value">
+                                    <img [src]=this.habForm.controls.imagePrincipalURL.value>
                                 </div>
                                 <app-image-uploader
-                                path="hotel" (res)="uploaderRes($event)"></app-image-uploader>-->
+                                path="hotel/habs" (res)="uploaderRes3($event)"></app-image-uploader>
                             </div>
                             <div class="col-12 col-md-8 form-group">
                                 <label for="imageAdditional">Imágenes adicionales </label>
                                 <div class="multiadd-box">
                                     <div class="image-additional-box"
-                                        *ngFor='let imageAdditional of habImagesAdditionals; let i=index'>
-                                        <img [src]="imageAdditional">
+                                        *ngFor='let imageAdditional of imagesAdditionalsHabs; let i=index'>
+                                        <img [src]="imageAdditional.imageAdditionalURL">
                                         <div class="close-btn" (click)="deleteHabImage(i)">
                                             X
                                         </div>
                                     </div>
                                 </div>
+                                <!-- <div class="input-box">
+                                    <app-image-uploader
+                                path="hotel/images" (res)="uploaderRes2($event)"></app-image-uploader>
+                                    <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---add"
+                                        (click)="addImage()"> + </button>
+                                </div> -->
                                 <div class="input-box">
-                                    <input type="file" class="form-control-file input-bar"
-                                        formControlName="imageAdditional">
+                                        <div *ngIf="this.habForm.controls.imageAdditionalURL.value">
+                                                <img [src]=this.habForm.controls.imageAdditionalURL.value>
+                                        </div>
+                                    <app-image-uploader
+                                path="hotel/habs/images" (res)="uploaderRes4($event)"></app-image-uploader>
                                     <button class="btn gt-btn gt-btn--secondary gt-btn--secondary---add"
                                         (click)="addHabImage()"> + </button>
                                 </div>
-                                <!-- <input type="file" class="form-control-file" formControlName="imageAdditional"> -->
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="col-12 buttons">
-                    <button class="btn gt-btn gt-btn--secondary " type="submit" [disabled]="habForm.invalid"
+                    <button class="btn gt-btn gt-btn--secondary " type="submit" [disabled]="this.habForm.invalid"
                         (click)="saveHabChanges()">
                         Guardar
                     </button>

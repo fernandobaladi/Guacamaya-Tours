@@ -9,6 +9,8 @@ import { HotelFacilitiesService } from 'src/app/services/hotels/hotel-facilities
 import { RoomsFacilitiesService } from 'src/app/services/hotels/rooms/rooms-facilities.service';
 import { HotelsService } from 'src/app/services/hotels/hotels.service';
 import { RoomsService } from 'src/app/services/hotels/rooms/rooms.service';
+import { HabsService } from 'src/app/services/hotels/rooms/habs.service';
+import { element } from 'protractor';
 
 
 export interface state {
@@ -51,6 +53,7 @@ export class AdminHotelsComponent implements OnInit {
   cities;
   hotels;
   rooms;
+  habs;
   facilitiesHotel;
   facilitiesHabs;
   loading = false;
@@ -62,41 +65,17 @@ export class AdminHotelsComponent implements OnInit {
   public cityForm: FormGroup;
   public facilitiesHotelForm: FormGroup;
   public facilitiesHabsForm: FormGroup;
-
-  // states: state[] = [
-  //   { value: 'por-0', viewValue: 'Portuguesa' },
-  //   { value: 'car-1', viewValue: 'Carabobo' },
-  //   { value: 'zulia-1', viewValue: 'Zulia' },
-  //   { value: 'lara-1', viewValue: 'Lara' },
-  // ];
-
-  // cities: city[] = [
-  //   { value: 'ccs-0', viewValue: 'Caracas' },
-  //   { value: 'val-1', viewValue: 'Valencia' },
-  //   { value: 'zulia-1', viewValue: 'Zulia' },
-  //   { value: 'lara-1', viewValue: 'Lara' },
-  // ];
-
-  // services: service[] = [
-  //   { value: 'airC-0', viewValue: 'Aire acondicionado', active: false },
-  //   { value: 'pis-1', viewValue: 'Piscina', active: false },
-  //   { value: 'spa-2', viewValue: 'Spa', active: false },
-  //   { value: 'parque-3', viewValue: 'Parque', active: false },
-  // ];
-
-  // facilities: facility[] = [
-  //   { value: 'airC-0', viewValue: 'Aire acondicionado', active: false },
-  //   { value: 'jac-1', viewValue: 'Jacuzzi', active: false },
-  //   { value: 'co-2', viewValue: 'Cocina', active: false },
-  //   { value: 'bal-3', viewValue: 'Balcón', active: false },
-  // ];
-
-  // services=[  ]
-  imagesAdditionals: image [];
-  habImagesAdditionals = [];
+  facilitiesHotelAux = [];
+  facilitiesHabsAux = [];
+  habsInfo = [];
+  roomName;
+  roomId;
+  imagesAdditionals = [];
+  imagesAdditionalsHabs = [];
   fullDayAvailable = false;
-
-
+  indexHelper: number;
+  loading2 = false;
+  hotelSelectedHabId;
 
   constructor(private sideBarSV: SidebarService,
               private fb: FormBuilder,
@@ -107,7 +86,8 @@ export class AdminHotelsComponent implements OnInit {
               private facilitiesHotelService: HotelFacilitiesService,
               private facilitiesHabsService: RoomsFacilitiesService,
               private hotelService: HotelsService,
-              private roomsService: RoomsService) { }
+              private roomsService: RoomsService,
+              private habsService: HabsService) { }
 
   ngOnInit() {
     this.createHotelForm();
@@ -132,6 +112,16 @@ export class AdminHotelsComponent implements OnInit {
       });
     });
 
+    this.habsService.getAll().subscribe((habsSnapshot) => {
+      this.habs = [];
+      habsSnapshot.forEach((e: any) => {
+        this.habs.push({
+          id: e.payload.doc.id,
+          data: e.payload.doc.data()
+        });
+        console.log(this.habs);
+      });
+    });
     this.facilitiesHabsService.getAllFacilities().subscribe((facilitiesHabsSnapshot) => {
       this.facilitiesHabs = [];
       facilitiesHabsSnapshot.forEach((e: any) => {
@@ -180,22 +170,23 @@ export class AdminHotelsComponent implements OnInit {
   }
 
   addImage() {
-    //aca hay q arreglar esto xq hay que montar la imagen a firestore, se guarda alla y
+    // aca hay q arreglar esto xq hay que montar la imagen a firestore, se guarda alla y
     // se devuelve el link q el te da que es lo que muestra la imagen que es lo que se va a mandar al array como tal,
     // es decir eso iria justo aca antes del .push y el push tambien habria q cambiarle lo q esta dentro del ()
-    // this.imagesAdditionals.push(this.hotelForm.controls.imageAdditional.value);
-    // this.hotelForm.controls.imageAdditional.setValue('');
+    this.imagesAdditionals.push({
+      imageAdditionalURL: this.hotelForm.controls.imageAdditionalURL.value,
+      imageAdditionalPath: this.hotelForm.controls.imageAdditionalPath.value
+    });
+    this.hotelForm.controls.imageAdditionalURL.setValue('');
+    this.hotelForm.controls.imageAdditionalPath.setValue('');
+    console.log(this.imagesAdditionals);
   }
-
   deleteImage(pos) {
-    this.imagesAdditionals.splice(pos,1)
+    this.imagesAdditionals.splice(pos, 1);
+    console.log(this.imagesAdditionals);
+
   }
 
-  // toggleSelectedImage(pos){
-  //   this.imagesAdditionals[pos].selected = !this.imagesAdditionals[pos].selected;
-  // }
-  
-  
   createHotelForm() {
     this.hotelForm = this.fb.group({
       name: ['', Validators.required],
@@ -205,7 +196,6 @@ export class AdminHotelsComponent implements OnInit {
         name: [''],
         status: [''],
         id: ['']
-        // image:['']
       },
       city: {
         name: [''],
@@ -215,7 +205,6 @@ export class AdminHotelsComponent implements OnInit {
           name: [''],
           status: [''],
           id: ['']
-          // image:['']
         }
       },
       lat: ['', Validators.required],
@@ -225,13 +214,12 @@ export class AdminHotelsComponent implements OnInit {
       fullDayPrice: [{ value: '', disabled: true }],
       id: [''],
       mainImageURL: [''],
-      mainImagePath: ['']
-      // service: ['',Validators.required],
-      // imagePricipal: ['', Validators.required],
-      // imageAdditional: ['',],
+      mainImagePath: [''],
+      facilitiesHotel: [''],
+      imageAdditionalPath: [''],
+      imageAdditionalURL: [''],
+      habsInfo: ['']
     });
-    // this.imagesAdditionals = [];
-    // this.facilitiesHotel.map(e => { e.active = false });
   }
 
 
@@ -255,20 +243,20 @@ export class AdminHotelsComponent implements OnInit {
     });
   }
 
-  createCityForm(){
+  createCityForm() {
     this.cityForm = this.fb.group({
       data: [''],
       id: ['']
     });
   }
 
-  createFacilitiesHotel(){
+  createFacilitiesHotel() {
     this.facilitiesHotelForm = this.fb.group({
       data: [''],
       id: ['']
     });
   }
-  createFacilitiesRoom(){
+  createFacilitiesRoom() {
     this.facilitiesHabsForm = this.fb.group({
       data: [''],
       id: ['']
@@ -277,14 +265,25 @@ export class AdminHotelsComponent implements OnInit {
 
   toggleService(service) {
     service.active = !service.active;
-    // if (service.active) {
-    //   this.facilitiesHotel.push({
-    //     facilityName: service.data.name,
-    //     facilityImageURL: service.data.imageURL
-    //   });
-    // }else{
-    //   this.facilitiesHotel.
-    // }
+    if (service.active) {
+      this.facilitiesHotelAux.push({
+        facilityName: service.data.name,
+        facilityImageURL: service.data.imageURL
+      });
+
+    } else {
+      var counter: number;
+      counter = 0;
+      this.facilitiesHotelAux.map(e => {
+        if (e.facilityName === service.data.name) {
+          this.indexHelper = counter;
+        }
+        counter = counter + 1;
+      });
+      this.facilitiesHotelAux.splice(this.indexHelper, 1);
+    }
+    console.log(this.facilitiesHotelAux);
+
   }
 
   toggleSideBar() {
@@ -315,28 +314,21 @@ export class AdminHotelsComponent implements OnInit {
       }
     });
   }
+  findLastHab(name){
+    this.habs.forEach(async element => {
+      if (name === element.name) {
+        this.roomId = await element.id;
+        console.log(this.roomId);
+      }
+      console.log(element);
+      this.roomId = element.id;
+      console.log(this.roomId);
 
-  // modifyInfo() {
-  //   // getData();
-  //   this.hotelForm = this.fb.group({
-  //     name: ['Sunsol', Validators.required],
-  //     stars: ['5', Validators.required],
-  //     enabled: ['true',],
-  //     state: ['nueva esparta', Validators.required],
-  //     city: ['margarita', Validators.required],
-  //     lat: ['22565', Validators.required],
-  //     lon: ['265', Validators.required],
-  //     address: ['dfssdffs', Validators.required],
-  //     fullDay: ['true',],
-  //     fullDayPrice: ['25000', Validators.required],
-  //     // service: ['dfssdffs', Validators.required],
-  //     imagePricipal: ['', Validators.required],
-
-  //   })
-  //   this.modalStatus.next(!this.modalStatus.value);
-  // }
-
+    });
+  }
   openModal(hotel?) {
+    this.imagesAdditionals = [];
+    this.facilitiesHotelAux = [];
     if (hotel) {
       this.hotelForm.controls.id.setValue(hotel.id);
       this.hotelForm.controls.name.setValue(hotel.data.name);
@@ -351,21 +343,27 @@ export class AdminHotelsComponent implements OnInit {
       this.hotelForm.controls.city.setValue(hotel.data.city.id);
       this.hotelForm.controls.mainImagePath.setValue(hotel.data.mainImagePath);
       this.hotelForm.controls.mainImageURL.setValue(hotel.data.mainImageURL);
+      this.imagesAdditionals = hotel.data.imagesAdditionals;
+      this.facilitiesHotelAux = hotel.data.facilitiesHotel;
+      this.hotelSelectedHabId = hotel.data.habsInfo.habId;
     } else {
       this.hotelForm.reset();
       this.hotelForm.controls.state.setValue('');
       this.hotelForm.controls.city.setValue('');
       this.hotelForm.controls.stars.setValue('');
+      this.hotelSelectedHabId = null;
     }
     this.modalStatus.next(!this.modalStatus.value);
   }
-  saveChanges() {
+  async saveChanges() {
     // sendData();
+    this.findLastHab(this.roomName);
+    this.habsInfo = [{ habId: await this.roomId, habName: await this.roomName}];
     this.loading = true;
     if (!this.hotelForm.controls.status.value) {
       this.hotelForm.controls.status.setValue(false);
     }
-    if(!this.hotelForm.controls.fullDay.value){
+    if (!this.hotelForm.controls.fullDay.value) {
       this.hotelForm.controls.fullDay.setValue(false);
       this.hotelForm.controls.fullDayPrice.setValue(0);
     }
@@ -398,9 +396,13 @@ export class AdminHotelsComponent implements OnInit {
         }
       },
       mainImageURL: this.hotelForm.controls.mainImagePath.value,
-      mainImagePath: this.hotelForm.controls.mainImageURL.value
+      mainImagePath: this.hotelForm.controls.mainImageURL.value,
+      imagesAdditionals: this.imagesAdditionals,
+      facilitiesHotel: this.facilitiesHotelAux,
+      hasbInfo: this.habsInfo
+
     };
-    
+    console.log(data);
     if (!this.hotelForm.controls.id.value) {
 
       this.hotelService.create(data)
@@ -410,6 +412,8 @@ export class AdminHotelsComponent implements OnInit {
         }).catch(err => {
           this.loading = false;
           alert('Ha habido un error con la información introducida');
+          console.log(err);
+          
         });
 
     } else {
@@ -429,72 +433,138 @@ export class AdminHotelsComponent implements OnInit {
 
   //Funciones relacionadas con las habitaciones
 
-  createHabForm() {
-    this.habForm = this.fb.group({
-      habName: ['', Validators.required],
-      habCapacity: ['', Validators.required],
-      habEnabled: ['', Validators.required],
-      habView: ['',],
-      habPrice: ['', Validators.required],
-      habQuantity: ['', Validators.required],
-      imagePricipal: ['', Validators.required],
-      imageAdditional: [''],
-    });
-    this.habImagesAdditionals = [];
-    //this.facilitiesHabs.map(e => { e.active = false });
-  }
 
   toggleModalSecondaryStatus() {
     this.modalSecondaryStatus.next(!this.modalSecondaryStatus.value);
     this.createHabForm();
   }
 
-  openModal2(habs?) {
-    if (habs) {
 
+  createHabForm() {
+    this.habForm = this.fb.group({
+      habName: [''],
+      habCapacity: [''],
+      habStatus: [''],
+      habView: [''],
+      habPrice: [''],
+      imagePrincipalURL: [''],
+      imagePrincipalPath: [''],
+      imageAdditionalPath: [''],
+      imageAdditionalURL: [''],
+      facilitiesHabs: [''],
+      id: ['']
+    });
+    // this.habImagesAdditionals = [];
+    // this.facilitiesHabs.map(e => { e.active = false });
+  }
+  openModal2(hab?) {
+    this.imagesAdditionalsHabs = [];
+    this.facilitiesHabsAux = [];
+    if (hab) {
+      this.habForm.controls.id.setValue(hab.id);
+      this.habForm.controls.habName.setValue(hab.data.habName);
+      this.habForm.controls.habCapacity.setValue(hab.data.habCapacity);
+      this.habForm.controls.habStatus.setValue(hab.data.habStatus);
+      this.habForm.controls.habView.setValue(hab.data.habView);
+      this.habForm.controls.habPrice.setValue(hab.data.habPrice);
+      this.habForm.controls.imagePrincipalPath.setValue(hab.data.imagePrincipalPath);
+      this.habForm.controls.imagePrincipalURL.setValue(hab.data.imagePrincipalURL);
+      this.imagesAdditionalsHabs = hab.data.imagesAdditionals;
+      this.facilitiesHabsAux = hab.data.facilitiesHabs;
     } else {
-
+      this.habForm.reset();
     }
     this.modalSecondaryStatus.next(!this.modalSecondaryStatus.value);
   }
-  // modifyInfoHab() {
-  //   // getData();
-  //   this.habForm = this.fb.group({
-  //     habName: ['sgg', Validators.required],
-  //     habCapacity: ['sgs', Validators.required],
-  //     habEnabled: ['true', Validators.required],
-  //     habView: ['vzvx',],
-  //     habPrice: ['15312', Validators.required],
-  //     habQuantity: ['fz', Validators.required],
-  //     imagePricipal: ['fz', Validators.required],
-  //     imageAdditional: ['zff',],
 
-  //   })
-  //   this.modalSecondaryStatus.next(!this.modalSecondaryStatus.value);
-  // }
-
+  uploaderRes2(res) {
+    this.hotelForm.controls.imageAdditionalURL.setValue(res.imageURL);
+    this.hotelForm.controls.imageAdditionalPath.setValue(res.imagePath);
+  }
+  uploaderRes3(res) {
+    this.habForm.controls.imagePrincipalURL.setValue(res.imageURL);
+    this.habForm.controls.imagePrincipalPath.setValue(res.imagePath);
+  }
+  uploaderRes4(res) {
+    this.habForm.controls.imageAdditionalURL.setValue(res.imageURL);
+    this.habForm.controls.imageAdditionalPath.setValue(res.imagePath);
+  }
   saveHabChanges() {
-    // sendData();
-    // console.log(this.services);
+    this.loading2 = true;
+    if (!this.hotelForm.controls.status.value) {
+      this.hotelForm.controls.status.setValue(false);
+    }
 
+    let data = {
+      habName: this.habForm.controls.habName.value,
+      habCapacity: this.habForm.controls.habCapacity.value,
+      habStatus: this.habForm.controls.habStatus.value,
+      habView: this.habForm.controls.habView.value,
+      habPrice: this.habForm.controls.habPrice.value,
+      imagePrincipalPath: this.habForm.controls.imagePrincipalPath.value,
+      imagePrincipalURL: this.habForm.controls.imagePrincipalURL.value,
+      imagesAdditionals: this.imagesAdditionalsHabs,
+      facilitiesHabs: this.facilitiesHabsAux
+    };
+    if (!this.habForm.controls.id.value) {
+
+      this.habsService.createHab(data)
+        .then(res => {
+          alert('¡Se ha agregado exitosamente la habitación!');
+        }).catch(err => {
+          this.loading2 = false;
+          alert('Ha habido un error con la información introducida');
+        });
+    } else {
+
+      this.habsService.updateHab(this.habForm.controls.id.value, data)
+        .then(res => {
+          alert('¡Se ha editado exitosamente la habitación!');
+        }).catch(err => {
+          this.loading2 = false;
+          alert('Ha habido un error con la información introducida');
+        });
+    }
+    this.roomName = this.habForm.controls.habName.value;
+    this.habForm.reset();
     this.modalSecondaryStatus.next(false);
   }
 
   addHabImage() {
-    //aca hay q arreglar esto xq hay que montar la imagen a firestore, se guarda alla y
+    // aca hay q arreglar esto xq hay que montar la imagen a firestore, se guarda alla y
     // se devuelve el link q el te da que es lo que muestra la imagen que es lo que se va a mandar al array como tal,
     // es decir eso iria justo aca antes del .push y el push tambien habria q cambiarle lo q esta dentro del ()
-    this.habImagesAdditionals.push(this.habForm.controls.imageAdditional.value);
-    this.habForm.controls.imageAdditional.setValue('');
+    this.imagesAdditionalsHabs.push({
+      imageAdditionalURL: this.habForm.controls.imageAdditionalURL.value,
+      imageAdditionalPath: this.habForm.controls.imageAdditionalPath.value
+    });
+    console.log(this.imagesAdditionalsHabs);
+    this.habForm.controls.imageAdditionalURL.setValue('');
+    this.habForm.controls.imageAdditionalPath.setValue('');
   }
 
-  deleteHabImage(pos){
-    this.habImagesAdditionals.splice(pos,1)
+  deleteHabImage(pos) {
+    this.imagesAdditionalsHabs.splice(pos, 1);
   }
 
   toggleFacility(facility) {
     facility.active = !facility.active;
+    if (facility.active) {
+      this.facilitiesHabsAux.push({
+        facilityName: facility.data.name,
+        facilityImageURL: facility.data.imageURL
+      });
+    } else {
+      var counter: number;
+      counter = 0;
+      this.facilitiesHabsAux.map(e => {
+        if (e.facilityName === facility.data.name) {
+          this.indexHelper = counter;
+        }
+        counter = counter + 1;
+      });
+      this.facilitiesHabsAux.splice(this.indexHelper, 1);
+    }
+    console.log(this.facilitiesHabsAux);
   }
-
-
 }

@@ -22,6 +22,7 @@ import { CitiesSortPipe } from '../../pipes/cities/cities-sort.pipe';
 import { SortByNamePipe} from '../../pipes/states/sort-by-name.pipe';
 import { CitiesFilterByStatePipe } from '../../pipes/destinations/cities-filter-by-state.pipe';
 import { ImageUploaderComponent } from 'src/app/components/image-uploader/image-uploader.component';
+import { HabsFilterPipe } from 'src/app/pipes/hotels/habs-filter.pipe';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ImageUploaderComponent } from 'src/app/components/image-uploader/image-
     CitiesSortPipe,
     SortByNamePipe,
     CitiesFilterByStatePipe,
-    ImageUploaderComponent
+    ImageUploaderComponent,
+    HabsFilterPipe
   ],
   imports: [
     CommonModule,

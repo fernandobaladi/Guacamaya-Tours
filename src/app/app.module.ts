@@ -34,8 +34,8 @@ import { VacationSideBarComponent } from './components/vacation-side-bar/vacatio
     ClientSideBarComponent,
     VacationBuilderNavigationComponent,
     VacationBuilderHeaderComponent,
-    VacationSideBarComponent,
-    VacationBuilderComponent
+    VacationSideBarComponent
+    // VacationBuilderComponent
 
   ],
   imports: [
