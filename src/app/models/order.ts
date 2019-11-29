@@ -6,25 +6,29 @@ export class order {
     lastName: String;
     IDType: String;
     ID: Number;
-    phone: Number;
+    phoneNumber: Number;
     email: String;
     address: String;
     bookings: booking [];
     locator: string;
     amount: number;
-    payment: payment;  
+    payment: payment;
+    status: number;  
+    statusName: string;
     
     constructor() {
       this.name = null;
       this.lastName= null;
       this.IDType= null;
       this.ID= null;
-      this.phone = null;
+      this.phoneNumber = null;
       this.email = null;
       this.address= null;
       this.bookings= [];
       this.locator = null;
       this.amount = null;
       this.payment = null;
+      this.status = null;
+      this.statusName = null; 
     }
 }

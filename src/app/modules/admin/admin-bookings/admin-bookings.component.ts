@@ -73,9 +73,9 @@ export class AdminBookingsComponent implements OnInit {
     if (booking) {
       this.bookingForm.controls.name.setValue(booking.data.name);
       this.bookingForm.controls.payment.setValue(booking.data.payment);
-      this.bookingForm.controls.transferNum.setValue(booking.data.transferNum);
+      this.bookingForm.controls.transferNum.setValue(booking.data.payment.transferNumber);
       this.bookingForm.controls.date.setValue(booking.data.date);
-      this.bookingForm.controls.amount.setValue(booking.data.amount);
+      this.bookingForm.controls.amount.setValue(booking.data.payment.amount);
       this.bookingForm.controls.status.setValue(booking.data.status);
       this.bookingForm.controls.phoneNumber.setValue(booking.data.phoneNumber);
       this.bookingForm.controls.email.setValue(booking.data.email);
