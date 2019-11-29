@@ -95,12 +95,12 @@ export class AdminDestinationCategoriesComponent implements OnInit {
   public colorBorde: boolean = false;
 
 
-  
 
   saveChanges() {
 
     var empty = /^$/;
     var regex = /^[a-zA-Z]+$/;
+
     if (!regex.test(this.inputTextfield) && !empty.test(this.inputTextfield)) {
 
       //console.log("Mega ahre");
