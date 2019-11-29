@@ -67,6 +67,8 @@ export class AdminHotelServicesComponent implements OnInit {
   toggleModalStatus() {
     this.modalStatus.next(!this.modalStatus.value);
     this.createHotelServiceForm();
+    this.apareceBorde = false;
+    this.colorBorde = false;
   }
 
   openModal(facility?) {

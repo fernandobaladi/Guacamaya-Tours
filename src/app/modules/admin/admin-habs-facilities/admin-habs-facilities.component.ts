@@ -67,6 +67,8 @@ export class AdminHabsFacilitiesComponent implements OnInit {
   toggleModalStatus(){
     this.modalStatus.next(!this.modalStatus.value);
     this.createFacilityForm();
+    this.apareceBorde = false;
+    this.colorBorde = false;
   }
 
   

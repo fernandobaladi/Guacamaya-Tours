@@ -96,6 +96,8 @@ export class AdminCitiesComponent implements OnInit {
   toggleModalStatus() {
     this.modalStatus.next(!this.modalStatus.value);
     this.createCityForm();
+    this.apareceBorde = false;
+    this.colorBorde = false;
   }
 
   findStateSelected(id) {
@@ -121,52 +123,69 @@ export class AdminCitiesComponent implements OnInit {
     this.modalStatus.next(!this.modalStatus.value);
   }
 
+
+  public inputTextfield: string;
+  public apareceBorde: boolean = false;
+  public colorBorde: boolean = false;
+
   saveChanges() {
-    this.loading = true;
+    var empty = /^$/;
+    var regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.inputTextfield) && !empty.test(this.inputTextfield)) {
 
-    if (!this.cityForm.controls.status.value) {
-      this.cityForm.controls.status.setValue(false);
-    }
-    this.createStateForm();
-    console.log(this.cityForm.controls.state.value);
-    this.findStateSelected(this.cityForm.controls.state.value);
-    let info = this.stateSelectedByUser;
-    console.log(info);
-
-    const data = {
-      name: this.cityForm.controls.name.value,
-      status: this.cityForm.controls.status.value,
-      imagePath: this.cityForm.controls.imagePath.value,
-      imageURL: this.cityForm.controls.imageURL.value,
-      state: {
-        name: this.stateSelectedByUser.data.name,
-        status: this.stateSelectedByUser.data.status,
-        id: this.stateSelectedByUser.id
-      }};
-
-    if (!this.cityForm.controls.id.value) {
-
-      this.citiesService.createCity(data)
-        .then(res => {
-          alert('¡Se ha agregado exitosamente el estado!');
-          this.cityForm.reset();
-        }).catch(err => {
-          this.loading = false;
-          alert('Ha habido un error con la información introducida');
-        });
+      //console.log("Mega ahre");
+      this.apareceBorde = true;
+      this.colorBorde = true;
 
     } else {
 
-      this.citiesService.updateCity(this.cityForm.controls.id.value, data)
-        .then(res => {
-          alert('¡Se ha editado exitosamente el estado!');
-          this.cityForm.reset();
-        }).catch(err => {
-          this.loading = false;
-          alert('Ha habido un error con la información introducida');
-        });
-    }
-    this.modalStatus.next(false);
+    
+        this.loading = true;
+
+        if (!this.cityForm.controls.status.value) {
+          this.cityForm.controls.status.setValue(false);
+        }
+        this.createStateForm();
+        console.log(this.cityForm.controls.state.value);
+        this.findStateSelected(this.cityForm.controls.state.value);
+        let info = this.stateSelectedByUser;
+        console.log(info);
+
+        const data = {
+          name: this.cityForm.controls.name.value,
+          status: this.cityForm.controls.status.value,
+          imagePath: this.cityForm.controls.imagePath.value,
+          imageURL: this.cityForm.controls.imageURL.value,
+          state: {
+            name: this.stateSelectedByUser.data.name,
+            status: this.stateSelectedByUser.data.status,
+            id: this.stateSelectedByUser.id
+          }};
+
+        if (!this.cityForm.controls.id.value) {
+
+          this.citiesService.createCity(data)
+            .then(res => {
+              alert('¡Se ha agregado exitosamente el estado!');
+              this.cityForm.reset();
+            }).catch(err => {
+              this.loading = false;
+              alert('Ha habido un error con la información introducida');
+            });
+
+        } else {
+
+          this.citiesService.updateCity(this.cityForm.controls.id.value, data)
+            .then(res => {
+              alert('¡Se ha editado exitosamente el estado!');
+              this.cityForm.reset();
+            }).catch(err => {
+              this.loading = false;
+              alert('Ha habido un error con la información introducida');
+            });
+        }
+        this.modalStatus.next(false);
+      }
   }
 
 }

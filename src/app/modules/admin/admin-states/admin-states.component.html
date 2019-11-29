@@ -92,7 +92,7 @@
                                 <label>
                                     Nombre
                                 </label>
-                                <input type="text" class="form-control" formControlName="name">
+                                <input [style.border-color]="colorBorde ? 'red' : '#393a39'" [(ngModel)]="inputTextfield" type="text" class="form-control" formControlName="name">
                             </div>
                             <div class="col-12 col-md-4 checkbox-wrapper">
                                 <div class="col-12 col-md-12">
@@ -114,7 +114,7 @@
                             </div>
                             <div class="col-12 buttons">
                                 <button class="btn gt-btn gt-btn--secondary" type="submit"
-                                    [disabled]="stateForm.invalid" (click)="saveChanges()">
+                                    (click)="saveChanges()">
                                     Guardar
                                 </button>
                                 <button class="btn gt-btn gt-btn--secondary" type="button"

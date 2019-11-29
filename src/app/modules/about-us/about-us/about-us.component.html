@@ -1,19 +1,64 @@
 <section class="gt-section gt-section--fullHeight">
-    <div class="aboutUs-box-wrapper">
+
+
+    <div class="container aboutUs-wrapper">
+
+        <div class="aboutUs-guacamaya" [ngClass]="{'transitionLeft': visionActive, 'transitionRight': missionActive}">
+            <img src="../../../../assets/img/contact/guaca.png">
+        </div>
+
+        <div class="row">
+
+            <div class="col-6">
+                <div class="aboutUs-box" (click)="activateVision()"
+                [ngClass]="{'isActive': visionActive}">
+
+                    <span class="aboutUs-box-title">Visión</span>
+                    <span class="aboutUs-box-info">Esta es la info de la visión</span>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="aboutUs-box" (click)="activateMission()"
+                [ngClass]="{'isActive': missionActive}">
+                    <span class="aboutUs-box-title">Misión</span>
+                    <span class="aboutUs-box-info">Esta es la info de la misión</span>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- <div class="aboutUs-box-wrapper">
+
+
         <div class="aboutUs-wrapper">
+
             <div class="aboutUs-box" (click)="activateVision()"
             [ngClass]="{'isActive': visionActive}">
+
                 <span class="aboutUs-box-title">Visión</span>
                 <span class="aboutUs-box-info">Esta es la info de la visión</span>
+
             </div>
+            
             <div class="aboutUs-guacamaya" [ngClass]="{'transitionLeft': visionActive, 'transitionRight': missionActive}">
                 <img src="../../../../assets/img/contact/guaca.png">
             </div>
+
             <div class="aboutUs-box" (click)="activateMission()"
             [ngClass]="{'isActive': missionActive}">
                 <span class="aboutUs-box-title">Misión</span>
                 <span class="aboutUs-box-info">Esta es la info de la misión</span>
             </div>
+
         </div>
-    </div>
+
+    </div> -->
+
 </section>
