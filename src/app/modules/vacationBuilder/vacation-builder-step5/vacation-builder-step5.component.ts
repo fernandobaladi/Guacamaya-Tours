@@ -18,6 +18,7 @@ export class VacationBuilderStep5Component implements OnInit {
     step_three: false,
   }
 
+  finalAmount = 0;
   clientPayment: payment;
 
   public paymentForm: FormGroup;
@@ -29,7 +30,19 @@ export class VacationBuilderStep5Component implements OnInit {
 
   ngOnInit() {
     this.createPaymentForm();
-    this.paymentForm.controls.amount.setValue(this.orderSV.order.amount);
+
+    this.orderSV.order.bookings.forEach(element => {
+
+      
+      this.finalAmount = ((element.plusOneQuantity + 1) * element.room.price) + this.finalAmount;
+
+      if (element.hotel.fullday) {
+        this.finalAmount = (element.hotel.fulldayPrice * (element.plusOneQuantity + 1)) + this.finalAmount;
+      }
+      console.log(this.finalAmount);
+    });
+    this.paymentForm.controls.amount.setValue(this.finalAmount);
+
   }
 
   goToStep(step) {
@@ -66,9 +79,11 @@ export class VacationBuilderStep5Component implements OnInit {
   }
 
   saveInfo() {
-
+    
+    this.paymentForm.controls.amount.setValue(this.finalAmount);
     this.clientPayment = {
-      amount: this.paymentForm.controls.amount.value,
+      // amount: this.paymentForm.controls.amount.value,
+      amount: this.finalAmount,
       destinationBank: this.paymentForm.controls.destinationBank.value,
       originBank: this.paymentForm.controls.originBank.value,
       transferNumber: this.paymentForm.controls.transferNumber.value,
@@ -80,19 +95,18 @@ export class VacationBuilderStep5Component implements OnInit {
     this.orderSV.updateOrder(auxOrder);
     this.goToStep(3);
     console.log(this.orderSV.order);
-    this.orderSV.order.amount = 500;
-    this.orderSV.order.locator = "AA1234";
+    this.orderSV.order.locator = "AA1248";
 
 
 
     this.orderSV.create(this.orderSV.order)
         .then(res => {
           alert('¡Se ha agregado exitosamente la reserva!');
-          this.orderSV.order = null;
         }).catch(err => {
           alert('Ha habido un error con la información introducida');
           console.log(err);
         });
+        this.orderSV.order = null;
     this.router.navigate(["home"]);
   }
 

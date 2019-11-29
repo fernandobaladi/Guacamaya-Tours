@@ -68,7 +68,7 @@ export class VacationBuilderStep4Component implements OnInit {
       age: ['', Validators.required],
       IDType: ['', Validators.required],
       ID: ['', Validators.required],
-      phone: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
       email: ['', Validators.required],
       address: ['', Validators.required],
     });
@@ -130,9 +130,11 @@ export class VacationBuilderStep4Component implements OnInit {
       lastName: this.clientInfoForm.controls.lastName.value,
       IDType: this.clientInfoForm.controls.IDType.value,
       ID: this.clientInfoForm.controls.ID.value,
-      phone: this.clientInfoForm.controls.phone.value,
+      phoneNumber: this.clientInfoForm.controls.phoneNumber.value,
       email: this.clientInfoForm.controls.email.value,
       address: this.clientInfoForm.controls.address.value,
+      status: 3,
+      statusName: 'Por Confirmar'
     }
 
     console.log(auxOrder, auxBooking);
