@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HOTELS } from '../../../mock-hotels';
+import { localHotel, localRoom } from '../../vacationBuilder/vacation-builder-step3/vacation-builder-step3.component';
+import { BehaviorSubject } from 'rxjs';
 // import { timingSafeEqual } from 'crypto';
 
 @Component({
@@ -11,6 +13,78 @@ import { HOTELS } from '../../../mock-hotels';
 export class HotelsComponent implements OnInit {
 
   constructor() { }
+
+  hotels: localHotel[] = [
+
+    {
+      name: 'SunSol', id: '1', stars: 4, lat: 11.11323713130922,
+      lon: -63.84605099648965,
+      adress: 'Av. Costanera, sector el Tirano, Isla de Margarita Carretera Costanera, 6301, Nueva Esparta',
+      state: 'Nueva Esparta',
+      city: 'Margarita', images: [
+        './assets/img/hotels/sunsol-1.png', './assets/img/hotels/sunsol-2.png', './assets/img/hotels/sunsol-3.png'
+      ], fullday: true, fulldayPrice: 100, rooms: [
+        {
+          name: 'Premium doble queen', capacity: 2, view: 'none', 
+          images: [
+            './assets/img/hotels/premium-doble-queen-1.jpg',
+            './assets/img/hotels/premium-doble-queen-2.jpg'
+          ], price: 220, selected: false
+        },
+        {
+          name: 'Habitación Deluxe', capacity: 2, view: 'none', images: [
+            './assets/img/hotels/habitacion-deluxe-1.jpg', './assets/img/hotels/habitacion-deluxe-2.jpg', 
+            '../../../../assets/img/hotels/sunsol-2.png', 
+          ], price: 300, selected: false
+        },
+      ], hotelServices: [
+        {
+          name: 'piscina',  image: '../../../../assets/img/swimming-silhouette.png',
+        }, {
+          name: 'piscina',  image: '../../../../assets/img/swimming-silhouette.png',
+        }], map: './assets/img/sunsol-map.png',
+      selected: false
+    },
+    {
+      name: 'Eurobuilding', id: '2', stars: 5, lat: 10.482434180733861,
+      lon: -66.84976672535872, adress: 'Calle La Guairita, Caracas 1061, Miranda', state: 'Miranda',
+      city: 'Caracas', images: [
+        './assets/img/hotels/Eurobuilding-Hotel-1.jpg', './assets/img/hotels/Eurobuilding-Hotel-2.jpg',
+        './assets/img/hotels/Eurobuilding-Hotel-3.jpg'
+      ], fullday: true, fulldayPrice: 130, rooms: [
+        {
+          name: 'Habitación Deluxe', capacity: 2, view: 'none', images: [
+            './assets/img/hotels/habitacion-deluxe-1.jpg', './assets/img/hotels/habitacion-deluxe-2.jpg',
+            './assets/img/hotels/habitacion-business-3.jpg', '../../../../assets/img/hotels/sunsol-1.png'
+          ], price: 300, selected: false
+        },
+        {
+          name: 'Habitación Business', capacity: 2, view: 'none', images: [
+            './assets/img/hotels/habitacion-business-1.jpg', './assets/img/hotels/habitacion-business-2.jpg'
+          ], price: 330, selected: false
+        }], map: './assets/img/eurobuilding-map.png',
+      selected: false
+    },
+    {
+      name: 'Lidotel Valencia', id: '3', stars: 4, lat: 10.239714535199255,
+      lon: -67.99901357029846, adress: 'Avenida Norte-Sur 4, Naguanagua 2035, G, Venezuela', state: 'Carabobo',
+      city: 'Valencia', images: [
+        './assets/img/hotels/lidotel-valencia-1.jpg', './assets/img/hotels/lidotel-valencia-2.jpg',
+        './assets/img/hotels/lidotel-valencia-3.jpg', 
+      ], fullday: true, fulldayPrice: 90, rooms: [
+        {
+          name: 'Suite Junior', capacity: 2, view: 'none', images: [
+            './assets/img/hotels/suite-junior-1.jpg', './assets/img/hotels/suite-junior-2.jpg'
+          ], price: 180, selected: false
+        },
+        {
+          name: 'Habitación Doble Deluxe', capacity: 4, view: 'none', images: [
+            './assets/img/hotels/habitacion-doble-deluxe-1.jpg', './assets/img/hotels/habitacion-doble-deluxe-2.jpg',
+            './assets/img/hotels/habitacion-doble-deluxe-3.jpg'
+          ], price: 330, selected: false
+        }], map: './assets/img/lidotel-map.png',
+      selected: false
+    }];
 
 
   itemsPerSlide = 3;
@@ -62,9 +136,82 @@ export class HotelsComponent implements OnInit {
   }
 
 
+  //modificacion de todas la funcionalidades no estaticas de la pagina
+
+  steps = {
+    step_one: true,
+    step_two: false,
+  }
+
+  modalRoomStatus = new BehaviorSubject(false);
+
+  hotelSelected: localHotel;
+  roomSelected: localRoom;
+
+
+  goToStep(step, localHotel?) {
+    this.stepsToFalse();
+    switch (step) {
+      case 1:
+        this.steps.step_one = true;
+        break;
+      case 2:
+        this.hotelSelectedToFalse();
+        this.steps.step_two = true;
+        localHotel.selected = true;
+        this.hotelSelected = this.findHotelSelected();
+        break;
+    
+      default:
+        break;
+    }
+  }
+
+  stepsToFalse() {
+    this.steps.step_one = false;
+    this.steps.step_two = false;
+
+  }
+
+  hotelSelectedToFalse() {
+    this.hotels.map(e => e.selected = false)
+  }
+
+  findHotelSelected() {
+    return this.hotels.find(e => { return e.selected });
+  }
+
+  roomSelectedToFalse() {
+    this.hotelSelected.rooms.map(e => e.selected = false)
+  }
+
+  openModalRooms(localRoom){
+    // this.modalRoomStatus.next(!this.modalRoomStatus.value);
+    this.verModalHabitaciones = true;
+    this.roomSelectedToFalse();
+    localRoom.selected = true;
+    this.roomSelected = this.findRoomSelected()
+    console.log(this.roomSelected);
+    
+  }
+
+  closeModalRooms(){
+    this.verModal = false;
+    // this.modalRoomStatus.next(!this.modalRoomStatus.value);
+  }
+
+  findRoomSelected() {
+    return this.hotelSelected.rooms.find(e => { return e.selected });
+    
+  }
+
+
+  //fin de la modificacion 
+
 
   funcionInfoBoton() {
     this.displayListaHoteles = false;
+    this.steps.step_one = false;
   }
 
   clickGeneral() {
@@ -83,7 +230,7 @@ export class HotelsComponent implements OnInit {
 
   filter = 'Ejemplo';
 
-  hotels = HOTELS;
+  //hotels = HOTELS;
   hotelsAux = this.hotels;
 
   comodidadesMenu = [
@@ -95,6 +242,7 @@ export class HotelsComponent implements OnInit {
 
   ngOnInit() {
   }
+
   functionDefault() {
 
       console.log('No hay match');
@@ -141,6 +289,14 @@ export class HotelsComponent implements OnInit {
       // a must be equal to b
       return 0;
     });
+  }
+
+  
+  //BOTON IR ATRAS
+  goBack(){
+    this.displayListaHoteles = true;
+    this.steps.step_one = true;
+
   }
   
 

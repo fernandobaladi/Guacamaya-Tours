@@ -244,6 +244,7 @@ export class VacationBuilderStep3Component implements OnInit {
     
   }
 
+  
   saveInfo() {
     const auxBooking= {
       hotel: this.findHotelSelected(),
