@@ -68,6 +68,9 @@ export class VacationBuilderStep3Component implements OnInit {
         }], map: './assets/img/sunsol-map.png',
       selected: false
     },
+
+
+
     {
       name: 'Eurobuilding', id: '2', stars: 5, lat: 10.482434180733861,
       lon: -66.84976672535872, adress: 'Calle La Guairita, Caracas 1061, Miranda', state: 'Miranda',
@@ -88,6 +91,9 @@ export class VacationBuilderStep3Component implements OnInit {
         }], map: './assets/img/eurobuilding-map.png',
       selected: false
     },
+
+
+
     {
       name: 'Lidotel Valencia', id: '3', stars: 4, lat: 10.239714535199255,
       lon: -67.99901357029846, adress: 'Avenida Norte-Sur 4, Naguanagua 2035, G, Venezuela', state: 'Carabobo',
@@ -235,7 +241,7 @@ export class VacationBuilderStep3Component implements OnInit {
   }
 
   closeModalRooms(){
-    this.verModal = false;
+    this.verModalHabitaciones = false;
     // this.modalRoomStatus.next(!this.modalRoomStatus.value);
   }
 

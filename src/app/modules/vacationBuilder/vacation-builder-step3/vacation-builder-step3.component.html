@@ -233,9 +233,10 @@
 
                         <div class="row justify-content-between align-items-center">
 
-                            <div class="col-12">
-                                <img src="../../../../assets/img/hotels/sunsol-1.png" id="imagen-mapa"
-                                    class="img-fluid secondary-image" alt="Responsive image">
+                            <div class="col-12 mapa">
+                                <!-- <img src="../../../../assets/img/hotels/sunsol-1.png" id="imagen-mapa"
+                                    class=" img-fluid secondary-image" alt="Responsive image"> -->
+                                <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=sunsol&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com">whatismyip-address.com</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
                             </div>
 
                             <div class="col-12 col-titulo-menuGeneral">
@@ -243,9 +244,7 @@
                             </div>
 
                             <div class="col-12 col-descripcion-menuGeneral">
-                                <span>Situado en ..... es la mejor opción si quieres buscar un lugar donde nunca vayas a
-                                    aburrirte, cuenta con gran variedad de entretenimiento, varios
-                                    restaurantes......</span>
+                                <span>El hotel ... ofrece, como muchos otros hoteles, esa sensación hogareña inigualable. La diferencia es que nuestro hotel, no sólo te hará sentir en casa, también te trataremos como una familia. Cuidando la delicada generosidad y ofreciéndote todas las actividades que te encantarían tener en casa. Sin faltar, piscina, bar, restaurante y lavandería, también te ofreceremos servicios como gimnasio gratuito y sauna privado. Si no estás contento con ello, también te ofreceremos el mejor servicio a la habitación que puedas probar. Y recuerda, no hay lugar como nuestro hogar!</span>
                             </div>
 
                             <div class="col-12 col-contacto-menuGeneral">
@@ -278,10 +277,40 @@
 
                         <div class="row row-comodidades-menu justify-content-between align-items-center">
 
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-12" *ngFor="let hotelSv of hotelSelected.hotelServices">
+                            <!-- <div class="col-lg-4 col-md-6 col-sm-6 col-12" *ngFor="let hotelSv of hotelSelected.hotelServices">
                                 <img src="{{hotelSv.image}}">
                                 <span>{{hotelSv.name}}</span>
-                            </div>
+                            </div> -->
+
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-12 iconos-comodidades">
+                                    <img src="../../../../assets/img/swimming-silhouette.png">
+                                    <span>Piscina</span>
+                                </div>
+                
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12 iconos-comodidades">
+                                    <img src="../../../../assets/img/aire.png">
+                                    <span>Aire Acondicionado</span>
+                                </div>
+                
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12 iconos-comodidades">
+                                    <img src="../../../../assets/img/lavadora.png">
+                                    <span>Lavadora</span>
+                                </div>
+                
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12 iconos-comodidades">
+                                    <img src="../../../../assets/img/contact/alcohol.png">
+                                    <span>Bar</span>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12 iconos-comodidades">
+                                    <img src="../../../../assets/img/contact/restaurant.png">
+                                    <span>Restaurante</span>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12 iconos-comodidades">
+                                    <img src="../../../../assets/img/contact/estacionamiento.png">
+                                    <span>Estacionamiento</span>
+                                </div>
 
 
                         </div>
@@ -374,9 +403,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12 modal-content-description-text">
-                                    <span>Habitación ideal para las parejas recién casadas o que simplemente quieren
-                                        tener unas vacaciones llenas de amor y diversión .... Cuenta con una cama king
-                                        size, jacuzzi .....</span>
+                                    <span>La suite... es ideal para ti y tu familia. Con sus dos camas matrimoniales y baño privado, permitirán que cualquiera se sienta a gusto, permitiendo una gran sensación de confort y la idealización de un hogar para compartir</span>
                                 </div>
                             </div>
 
