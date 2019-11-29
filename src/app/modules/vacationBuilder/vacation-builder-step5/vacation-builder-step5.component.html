@@ -51,6 +51,14 @@
                                 <div class="form-row">
                                     <div class="col-12  form-group">
                                         <label>
+                                            Fecha
+                                        </label>
+                                        <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker
+                                            [(ngModel)]="vacationDate" [minDate]="minDate" [maxDate]="maxDate"
+                                            [bsConfig]="{dateInputFormat: 'MM/DD/YYYY'}" formControlName="orderClientDate">
+                                    </div>
+                                    <div class="col-12  form-group">
+                                        <label>
                                             Monto
                                         </label>
                                         <input type="text" class="form-control" formControlName="amount" readonly>
@@ -90,7 +98,7 @@
                         </div>
                         <div class="col-12 offset-md-3 col-md-6 mt-4 text-right">
                             <button class="gt-btn gt-btn--secondary" (click)="saveInfo()"
-                                [disabled]="paymentForm.invalid">Confirmar</button> 
+                                [disabled]="paymentForm.invalid">Confirmar</button>
                         </div>
                     </div>
                 </div>
@@ -102,6 +110,7 @@
                     <div class="row">
                         <div class="col-12 successfullPayment">
                             <h2>
+
                                 Pago cargado exitosamente, en un plazo de 72 horas recibirá un correo con la
                                 confirmación de su reserva
                             </h2>

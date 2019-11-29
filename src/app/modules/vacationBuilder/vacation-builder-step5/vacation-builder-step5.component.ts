@@ -20,13 +20,20 @@ export class VacationBuilderStep5Component implements OnInit {
 
   finalAmount = 0;
   clientPayment: payment;
+  minDate: Date;
+  maxDate: Date;
 
   public paymentForm: FormGroup;
 
   constructor(private sideBarSV: SidebarService,
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute, private orderSV: OrderService) { }
+    private route: ActivatedRoute, private orderSV: OrderService) { 
+      this.minDate = new Date();
+    this.maxDate = new Date();
+    this.minDate.setDate(this.minDate.getDate() - 0);
+    this.maxDate.setDate(this.maxDate.getDate() -0);
+    }
 
   ngOnInit() {
     this.createPaymentForm();
@@ -71,6 +78,7 @@ export class VacationBuilderStep5Component implements OnInit {
 
   createPaymentForm() {
     this.paymentForm = this.fb.group({
+      orderClientDate: [''],
       amount: [''],
       originBank: ['', Validators.required],
       destinationBank: ['', Validators.required],
@@ -91,6 +99,7 @@ export class VacationBuilderStep5Component implements OnInit {
 
     const auxOrder = {
       payment: this.clientPayment,
+      orderDate: this.paymentForm.controls.orderClientDate.value,
     }
     this.orderSV.updateOrder(auxOrder);
     this.goToStep(3);
@@ -107,7 +116,7 @@ export class VacationBuilderStep5Component implements OnInit {
           console.log(err);
         });
         this.orderSV.order = null;
-    this.router.navigate(["home"]);
+    // this.router.navigate(["home"]);
   }
 
 }
