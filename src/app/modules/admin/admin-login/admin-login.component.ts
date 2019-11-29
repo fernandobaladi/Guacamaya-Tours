@@ -30,8 +30,8 @@ export class AdminLoginComponent implements OnInit {
   usuarioCampo = '';
   constrasenaCampo = '';
 
-  usuario = "edwardpizzurro@gmail.com"
-  contrasena = "12345";
+  usuario = "guacatours@gmail.com"
+  contrasena = "12345Guaca";
 
   loginButton() {
 

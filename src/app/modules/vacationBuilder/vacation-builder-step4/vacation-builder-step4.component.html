@@ -27,7 +27,8 @@
                                         <div class="input-box">
                                             <img src="../../../assets/img/user-shape.png">
                                             <input type="number" class="form-control form-control--custom"
-                                                formControlName="numberPeople" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                                formControlName="numberPeople" min="1"
+                                                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                                                 title="Numbers only">
                                         </div>
                                     </div>
@@ -38,7 +39,8 @@
                                         <div class="input-box">
                                             <img src="../../../assets/img/hotel.png">
                                             <input type="number" class="form-control form-control--custom"
-                                                formControlName="numberHabs" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                                formControlName="numberHabs" min="1"
+                                                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                                                 title="Numbers only">
                                         </div>
                                     </div>
@@ -52,7 +54,7 @@
                             </form>
                         </div>
                         <div class="col-12 offset-md-3 col-md-6 mt-5 text-right">
-                            <button class="gt-btn gt-btn--secondary" (click)="goToStep(2)" 
+                            <button class="gt-btn gt-btn--secondary" (click)="goToStep(2)"
                                 [disabled]="clientBasicForm.invalid">Siguiente</button>
                         </div>
                     </div>
@@ -152,35 +154,6 @@
                     </div>
 
                     <!-- Cuadro de todos los acompañantes -->
-
-                    <div class="row" *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
-                        <div class="col-12 formTitle">
-                            <h1>
-                                Todos los acompañantes
-                            </h1>
-                        </div>
-                    </div>
-                    <div class="row form mt-4" *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
-                        <div class="col-12 offset-md-3 col-md-6 ">
-                            <div class="multiadd-box">
-                                <!-- <div class="image-additional-box"
-                                    *ngFor='let imageAdditional of imagesAdditionals; let i=index'>
-                                    <img [src]="imageAdditional">
-                                    <div class="close-btn" (click)="deleteImage(i)">
-                                        X
-                                    </div>
-                                </div> -->
-                                <div class="plusOne-info-box" *ngFor='let plusOne of plusOnes'>
-                                    Nombre: {{plusOne.namePlus}}
-                                    <br> Apellido: {{plusOne.lastNamePlus}}
-                                    <br> Edad: {{plusOne.agePlus}}
-                                    <br> Cédula: {{plusOne.IDTypePlus}} {{plusOne.IDPlus}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   
-
                     <!-- Comienzo del formulario de acompañante -->
                     <div class="row" *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
                         <div class="col-12 formTitle">
@@ -238,6 +211,34 @@
                                 [disabled]="plusOneForm.invalid || this.plusOnes.length >= (this.clientBasicForm.controls.numberPeople.value -1)">Agregar</button>
                         </div>
                     </div>
+
+                    <div class="row" *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
+                        <div class="col-12 formTitle">
+                            <h1>
+                                Todos los acompañantes
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row form mt-4" *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
+                        <div class="col-12 offset-md-3 col-md-6 ">
+                            <div class="multiadd-box">
+                                <!-- <div class="image-additional-box"
+                                    *ngFor='let imageAdditional of imagesAdditionals; let i=index'>
+                                    <img [src]="imageAdditional">
+                                    <div class="close-btn" (click)="deleteImage(i)">
+                                        X
+                                    </div>
+                                </div> -->
+                                <div class="plusOne-info-box" *ngFor='let plusOne of plusOnes'>
+                                    Nombre: {{plusOne.namePlus}}
+                                    <br> Apellido: {{plusOne.lastNamePlus}}
+                                    <br> Edad: {{plusOne.agePlus}}
+                                    <br> Cédula: {{plusOne.IDTypePlus}} {{plusOne.IDPlus}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-12 offset-md-3 col-md-6 mt-5 text-right"
                     *ngIf="this.clientBasicForm.controls.numberPeople.value!=1">
@@ -264,8 +265,7 @@
                         </h3>
                         <div class="row form">
                             <div class="col-12 buttons">
-                                <button class="btn gt-btn gt-btn--secondary" type="submit"
-                                (click)="newBooking()">
+                                <button class="btn gt-btn gt-btn--secondary" type="submit" (click)="newBooking()">
                                     Si
                                 </button>
                                 <button class="btn gt-btn gt-btn--secondary" type="button" (click)="lastBooking()">

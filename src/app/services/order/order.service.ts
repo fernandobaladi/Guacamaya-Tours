@@ -39,7 +39,7 @@ export class OrderService {
    }
 
     saveActualBooking(){
-    console.log(this.order); 
+    console.log(this.order);
         this.order.bookings.push(this.actualbooking);
         this.actualbooking = new booking();
     }
@@ -58,8 +58,19 @@ export class OrderService {
     console.log(this.order);
    }
 
-   public create(data) {
-    return this.firestoreSV.create(this.collectionPath, data);
+   public create(data: order) {
+
+    let aux2 = data;
+    aux2.bookings = [];
+     
+     console.log(this.order);
+     data.bookings.map( book => {
+       const aux : any = {};
+       Object.assign(aux, book) 
+       aux2.bookings.push(aux);
+     })
+     console.log(aux2);
+    return this.firestoreSV.create(this.collectionPath, aux2);
   }
 
   

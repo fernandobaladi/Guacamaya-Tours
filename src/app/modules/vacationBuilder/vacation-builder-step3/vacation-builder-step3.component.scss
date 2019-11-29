@@ -683,7 +683,11 @@
     font-size: 15px;
 }
 
-
+.iconos-comodidades{
+    img{
+        filter: invert(1);
+    }
+}
 
 //Modal View
 .modal {
