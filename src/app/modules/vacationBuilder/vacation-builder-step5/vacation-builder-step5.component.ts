@@ -17,10 +17,10 @@ export class VacationBuilderStep5Component implements OnInit {
     step_two: false,
     step_three: false,
   }
-
+  paymentType: string;
   finalAmount = 0;
   clientPayment: payment;
-
+  finalLocator = '';
   public paymentForm: FormGroup;
 
   constructor(private sideBarSV: SidebarService,
@@ -42,7 +42,7 @@ export class VacationBuilderStep5Component implements OnInit {
       console.log(this.finalAmount);
     });
     this.paymentForm.controls.amount.setValue(this.finalAmount);
-
+    this.generateLocator();
   }
 
   goToStep(step) {
@@ -53,6 +53,7 @@ export class VacationBuilderStep5Component implements OnInit {
         break;
       case 2:
         this.steps.step_two = true;
+        this.paymentType = 'Transferencia';
         break;
       case 3:
         this.steps.step_three = true;
@@ -69,12 +70,42 @@ export class VacationBuilderStep5Component implements OnInit {
     this.steps.step_three = false;
   }
 
+  getRandomInt(max){
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+  generateLocator(){
+    let firstLetter = '';
+    let secondLetter = '';
+    if (this.getRandomInt(2) === 0) {
+      firstLetter = 'A';
+    } else {
+      firstLetter = 'B';
+    }
+    if (this.getRandomInt(2) === 0) {
+      secondLetter = 'C';
+    } else {
+      secondLetter = 'D';
+    }
+    this.finalLocator = this.finalLocator.concat(firstLetter);
+    this.finalLocator = this.finalLocator.concat(secondLetter);
+    let firstNumb = this.getRandomInt(10).toString();
+    let secondNumb = this.getRandomInt(10).toString();
+    let thirdNumb = this.getRandomInt(10).toString();
+    let fourthNumb = this.getRandomInt(10).toString();
+    this.finalLocator = this.finalLocator.concat(firstNumb);
+    this.finalLocator = this.finalLocator.concat(secondNumb);
+    this.finalLocator = this.finalLocator.concat(thirdNumb);
+    this.finalLocator = this.finalLocator.concat(fourthNumb);
+    console.log(this.finalLocator);
+    
+  }
   createPaymentForm() {
     this.paymentForm = this.fb.group({
       amount: [''],
       originBank: ['', Validators.required],
       destinationBank: ['', Validators.required],
       transferNumber: ['', Validators.required],
+      type: ['']
     });
   }
 
@@ -87,6 +118,7 @@ export class VacationBuilderStep5Component implements OnInit {
       destinationBank: this.paymentForm.controls.destinationBank.value,
       originBank: this.paymentForm.controls.originBank.value,
       transferNumber: this.paymentForm.controls.transferNumber.value,
+      type: this.paymentType
     }
 
     const auxOrder = {
@@ -95,7 +127,9 @@ export class VacationBuilderStep5Component implements OnInit {
     this.orderSV.updateOrder(auxOrder);
     this.goToStep(3);
     console.log(this.orderSV.order);
-    this.orderSV.order.locator = "AA1248";
+
+
+    this.orderSV.order.locator = this.finalLocator;
 
 
 

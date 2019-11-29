@@ -43,11 +43,11 @@ export class AdminBookingsComponent implements OnInit {
 
   createBookingForm() {
     this.bookingForm = this.fb.group({
-      name: ['', Validators.required],
-      payment: ['', Validators.required],
-      transferNum: ['', Validators.required],
-      date: ['', Validators.required],
-      amount: ['', Validators.required],
+      name: [''],
+      payment: [''],
+      transferNum: [''],
+      date: [''],
+      amount: [''],
       status: ['', Validators.required],
       statusName: ['', Validators.required],
       phoneNumber: [''],
@@ -72,9 +72,10 @@ export class AdminBookingsComponent implements OnInit {
   openModal(booking) {
     if (booking) {
       this.bookingForm.controls.name.setValue(booking.data.name);
-      this.bookingForm.controls.payment.setValue(booking.data.payment);
+      this.bookingForm.controls.payment.setValue(booking.data.payment.type);
       this.bookingForm.controls.transferNum.setValue(booking.data.payment.transferNumber);
-      this.bookingForm.controls.date.setValue(booking.data.date);
+      this.bookingForm.controls.date.setValue(booking.data.orderDate);
+      console.log(booking.data.orderDate);
       this.bookingForm.controls.amount.setValue(booking.data.payment.amount);
       this.bookingForm.controls.status.setValue(booking.data.status);
       this.bookingForm.controls.phoneNumber.setValue(booking.data.phoneNumber);

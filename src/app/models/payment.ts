@@ -4,5 +4,6 @@ export class payment {
     destinationBank?: string;
     originBank?: string;
     transferNumber?: number; 
+    type: string;
   
   }
