@@ -4,6 +4,7 @@ import { room } from 'src/app/models/room';
 import { OrderService } from 'src/app/services/order/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { style } from '@angular/animations';
 // import { HOTELS } from '../../../mock-hotels';
 
 export class facility{
@@ -44,7 +45,7 @@ export class VacationBuilderStep3Component implements OnInit {
       lon: -63.84605099648965,
       adress: 'Av. Costanera, sector el Tirano, Isla de Margarita Carretera Costanera, 6301, Nueva Esparta',
       state: 'Nueva Esparta',
-      city: 'Margarita', images: [
+      city: 'Margarita', images: ["http://www.viajes-solesta.com/viajes/promocion/18188sunsolislacaribe2.jpg",
         './assets/img/hotels/sunsol-1.png', './assets/img/hotels/sunsol-2.png', './assets/img/hotels/sunsol-3.png'
       ], fullday: true, fulldayPrice: 100, rooms: [
         {
