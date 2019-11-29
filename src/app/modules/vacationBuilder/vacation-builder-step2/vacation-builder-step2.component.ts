@@ -16,6 +16,12 @@ export class VacationBuilderStep2Component implements OnInit {
 
   minDate: Date;
   maxDate: Date;
+  minMonth: number;
+  maxMonth: number;
+  maxday: number;
+  minday: number;
+  minyear: number;
+  maxyear: number;
   vacationDate: String[];
   checkIn: String;
   checkOut: String;
@@ -53,7 +59,6 @@ export class VacationBuilderStep2Component implements OnInit {
     console.log(this.checkIn);
     console.log(this.checkOut);
     this.saveInfo();
-
   }
 
   createClientDateForm() {

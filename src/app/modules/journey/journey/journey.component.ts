@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HostListener } from "@angular/core";
+import { BookingsService } from 'src/app/services/bookings/bookings.service';
 
 @Component({
   selector: 'app-journey',
@@ -8,11 +9,12 @@ import { HostListener } from "@angular/core";
 })
 export class JourneyComponent implements OnInit {
 
+  bookings = [];
   locator = '';
   correctLocator=false;
   alphabeticArray = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-  constructor() { }
+  constructor(private bookingsService: BookingsService) { }
 
 
   public screen: string;
@@ -35,33 +37,40 @@ export class JourneyComponent implements OnInit {
 
 
   ngOnInit() {
+    this.bookingsService.getAllBookings().subscribe((bookingsSnapshot) => {
+      this.bookings = [];
+      bookingsSnapshot.forEach(( e: any ) => {
+        this.bookings.push({
+          id: e.payload.doc.id,
+          data: e.payload.doc.data(),
+          realStatus: e.payload.doc.data().status
+        });
+      });
+      console.log(this.bookings);
+    });
+
   }
 
-
-  //este es el array de firebase con todos los localizadores que existen
-  //public array = ["AB1234", "CD4321", "HI6789"];  
-  public array = ["AA1235"];  
-  
-
-  nextPage(){
-    
-    for (var i = 0; i < this.array.length; i++) {
-      if (this.locator == this.array[i]) {
-        this.correctLocator=true;
-        this.mostrarLasEstrellas();
+  nextPage() {
+    for (var i = 0; i < this.bookings.length; i++) {
+      if (this.locator === this.bookings[i].data.locator) {
+        this.correctLocator = true;
       }
+      console.log();
     }
 
-    if (this.correctLocator == false) {
-      alert('Localizador no encontrado, por favor ingresa un localizaodr válido');
-      //alert(this.generaNss);
-      this.locator = "";
+    if (this.correctLocator === false) {
+      alert('Localizador no encontrado, por favor ingresa un localizador válido');
+      this.locator = '';
+    }else{
+      alert('Localizador  encontrado. CRACK');
+      this.locator = '';
     }
   }
 
 
   generaNss(): string {
-    let result = "";
+    let result = '';
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const charactersLength = characters.length;
     for (let i = 0; i < 1; i++) {
