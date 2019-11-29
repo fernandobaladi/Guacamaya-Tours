@@ -133,5 +133,17 @@
   .successfullPayment{
       background-color: $color-terciary;
       color: white;
+      height: calc(100vh - 300px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      img{
+        margin-top: 1rem;
+        height: 80px;
+        width: 80px;
+        filter: invert(1);
+      }
   }
   

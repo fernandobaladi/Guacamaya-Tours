@@ -82,14 +82,17 @@ export class VacationBuilderStep5Component implements OnInit {
     console.log(this.orderSV.order);
     this.orderSV.order.amount = 500;
     this.orderSV.order.locator = "AA1234";
-    this.orderSV.create(this.orderSV.order)
-        .then(res => {
-          alert('¡Se ha agregado exitosamente el hotel!');
-          this.orderSV.order = null;
-        }).catch(err => {
-          alert('Ha habido un error con la información introducida');
-          console.log(err);
-        });
+
+    
+
+    // this.orderSV.create(this.orderSV.order)
+    //     .then(res => {
+    //       alert('¡Se ha agregado exitosamente el hotel!');
+    //       this.orderSV.order = null;
+    //     }).catch(err => {
+    //       alert('Ha habido un error con la información introducida');
+    //       console.log(err);
+    //     });
     // this.router.navigate(["home"]);
   }
 

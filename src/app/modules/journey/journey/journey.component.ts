@@ -40,7 +40,7 @@ export class JourneyComponent implements OnInit {
 
   //este es el array de firebase con todos los localizadores que existen
   //public array = ["AB1234", "CD4321", "HI6789"];  
-  public array = ["A"];  
+  public array = ["AA1235"];  
   
 
   nextPage(){

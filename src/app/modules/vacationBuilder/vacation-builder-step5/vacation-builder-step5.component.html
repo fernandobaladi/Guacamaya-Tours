@@ -53,7 +53,7 @@
                                         <label>
                                             Monto
                                         </label>
-                                        <input type="text" class="form-control" formControlName="amount" readonly>
+                                        <input type="text" class="form-control" formControlName="amount">
                                     </div>
                                     <div class="col-12 form-group">
                                         <label>
@@ -105,9 +105,10 @@
                                 Pago cargado exitosamente, en un plazo de 72 horas recibirá un correo con la
                                 confirmación de su reserva
                             </h2>
+                            <img src="../../../../assets/img/verified (1).png">
                         </div>
-                        <div class="col-12 offset-md-3 col-md-6 mt-4 text-right">
-                            <button class="gt-btn gt-btn--secondary" routerLink="/home"
+                        <div class="col-12  offset-md-3 col-md-6 mt-4 text-right">
+                            <button class="btn-block gt-btn gt-btn--secondary" routerLink="/home"
                                 [disabled]="paymentForm.invalid">Siguiente</button>
                         </div>
                     </div>
