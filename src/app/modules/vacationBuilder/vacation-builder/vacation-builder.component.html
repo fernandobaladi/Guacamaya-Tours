@@ -18,10 +18,10 @@
                     <div class="slider-wrapper">
                         <carousel>
                             <slide *ngFor="let category of categories">
-                                <img [src]="category.img" style="display: block; width: 100%;">
+                                <img [src]="category.data.imageURL" style="display: block; width: 100%;">
                                 <div class="destination-title-wrapper">
                                     <div class="destination-title" (click)="goToStep(2, category)">
-                                        {{category.name}}
+                                        {{category.data.name}}
                                     </div>
                                 </div>
                             </slide>
@@ -40,11 +40,11 @@
                                 <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
                                     [startFromIndex]="6" [interval]="false">
                                     <slide *ngFor="let category of categories; let index=index">
-                                        <img [src]="category.img" alt="image slide" style="display: block; width: 100%;"
+                                        <img [src]="category.data.imageURL" alt="image slide" style="display: block; width: 100%;"
                                             class="miniSlide-img" [ngClass]="{'unselected': !category.selected}">
                                         <div class="destination-title-wrapper" [ngClass]="{'show': category.selected}">
                                             <div class="destination-title" (click)="goToStep(2, category)">
-                                                {{category.name}}
+                                                {{category.data.name}}
                                             </div>
                                         </div>
                                     </slide>
@@ -54,11 +54,11 @@
                                 <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
                                     [startFromIndex]="6" [interval]="false">
                                     <slide *ngFor="let category of categories; let index=index">
-                                        <img [src]="category.img" alt="image slide" style="display: block; width: 100%;"
+                                        <img [src]="category.data.imageURL" alt="image slide" style="display: block; width: 100%;"
                                             class="miniSlide-img" [ngClass]="{'unselected': !category.selected}">
                                         <div class="destination-title-wrapper" [ngClass]="{'show': category.selected}">
                                             <div class="destination-title" (click)="goToStep(2, category)">
-                                                {{category.name}}
+                                                {{category.data.name}}
                                             </div>
                                         </div>
                                     </slide>
@@ -68,11 +68,11 @@
                                 <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
                                     [startFromIndex]="6" [interval]="false">
                                     <slide *ngFor="let category of categories; let index=index">
-                                        <img [src]="category.img" alt="image slide" style="display: block; width: 100%;"
+                                        <img [src]="category.data.imageURL" alt="image slide" style="display: block; width: 100%;"
                                             class="miniSlide-img" [ngClass]="{'unselected': !category.selected}">
                                         <div class="destination-title-wrapper" [ngClass]="{'show': category.selected}">
                                             <div class="destination-title" (click)="goToStep(2, category)">
-                                                {{category.name}}
+                                                {{category.data.name}}
                                             </div>
                                         </div>
                                     </slide>
@@ -92,10 +92,10 @@
                         <div class="container">
                             <div class="row gt-thumbnail-wrapper">
                                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2 gt-thumbnail-box"
-                                    *ngFor="let localState of states">
+                                    *ngFor="let localState of states | filter: categorySelected">
                                     <div class="gt-thumbnail">
                                         <div class="gt-thumbnail-img">
-                                            <img [src]="localState.img">
+                                            <img [src]="localState.imageURL">
                                         </div>
                                         <div class="gt-thumbnail-title" [ngClass]="{'show':localState.selected}">
                                             <span>{{localState.name}}</span>

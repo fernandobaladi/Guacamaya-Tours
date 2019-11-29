@@ -5,5 +5,5 @@ export class room {
     view?: string;
     price: number;
     status?: Boolean;
-
+    id: string;
 }

@@ -10,14 +10,15 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { VacationBuilderStep3Component } from './vacation-builder-step3/vacation-builder-step3.component';
 import { VacationBuilderStep4Component } from './vacation-builder-step4/vacation-builder-step4.component';
 import { VacationBuilderStep5Component } from './vacation-builder-step5/vacation-builder-step5.component';
-
+import { FilterPipe } from 'src/app/pipes/vacation-builder/destination/filter.pipe';
 @NgModule({
   declarations: [
     VacationBuilderComponent,
     VacationBuilderStep2Component,
     VacationBuilderStep3Component,
     VacationBuilderStep4Component,
-    VacationBuilderStep5Component
+    VacationBuilderStep5Component,
+    FilterPipe
   ],
   imports: [
     CommonModule,
