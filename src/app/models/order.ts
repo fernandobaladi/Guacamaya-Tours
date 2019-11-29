@@ -15,7 +15,7 @@ export class order {
     payment: payment;
     status: number;  
     statusName: string;
-    orderDate: number;
+    orderDate?: number;
     
     constructor() {
       this.name = null;
