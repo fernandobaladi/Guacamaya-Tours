@@ -53,7 +53,7 @@ export class JourneyComponent implements OnInit {
     }
 
     if (this.correctLocator == false) {
-      alert('Localizador no encontrado, por favor ingresa un localizaodr válido');
+      alert('Localizador no encontrado, por favor ingresa un localizaDor válido');
       this.locator = "";
     }
   }

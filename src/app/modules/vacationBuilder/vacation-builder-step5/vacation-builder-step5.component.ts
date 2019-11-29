@@ -29,6 +29,7 @@ export class VacationBuilderStep5Component implements OnInit {
 
   ngOnInit() {
     this.createPaymentForm();
+    this.paymentForm.controls.amount.setValue(this.orderSV.order.amount);
   }
 
   goToStep(step) {
@@ -57,7 +58,7 @@ export class VacationBuilderStep5Component implements OnInit {
 
   createPaymentForm() {
     this.paymentForm = this.fb.group({
-      amount: ['', Validators.required],
+      amount: [''],
       originBank: ['', Validators.required],
       destinationBank: ['', Validators.required],
       transferNumber: ['', Validators.required],
@@ -76,9 +77,19 @@ export class VacationBuilderStep5Component implements OnInit {
     const auxOrder = {
       payment: this.clientPayment,
     }
-    
     this.orderSV.updateOrder(auxOrder);
-    this.goToStep(3)
+    this.goToStep(3);
+    console.log(this.orderSV.order);
+    this.orderSV.order.amount = 500;
+    this.orderSV.order.locator = "AA1234";
+    this.orderSV.create(this.orderSV.order)
+        .then(res => {
+          alert('¡Se ha agregado exitosamente el hotel!');
+          this.orderSV.order = null;
+        }).catch(err => {
+          alert('Ha habido un error con la información introducida');
+          console.log(err);
+        });
     // this.router.navigate(["home"]);
   }
 
