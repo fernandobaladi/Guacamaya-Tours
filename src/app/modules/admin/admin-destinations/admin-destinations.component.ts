@@ -120,18 +120,24 @@ export class AdminDestinationsComponent implements OnInit {
       category: {
         name: [''],
         status: [''],
-        id: ['']
+        id: [''],
+        imagePath: [''],
+        imageURL: ['']
       },
       state: {
         name: [''],
         status: [''],
         id: [''],
+        imagePath:[''],
+        imageURL:['']
          // image:['']
       },
       city: {
         name: [''],
         status: [''],
         id :[''],
+        imagePath:[''],
+        imageURL:[''],
         state: {
           name: [''],
           status: [''],
@@ -216,6 +222,7 @@ export class AdminDestinationsComponent implements OnInit {
 
   openModal(destination?) {
     this.activities = [];
+    this.facilities = [];
     if (destination) {
       this.destinationForm.controls.name.setValue(destination.data.name);
       this.destinationForm.controls.status.setValue(destination.data.status);
@@ -263,7 +270,9 @@ export class AdminDestinationsComponent implements OnInit {
       state: {
         name: this.stateSelectedByUser.data.name,
         status: this.stateSelectedByUser.data.status,
-        id: this.stateSelectedByUser.id
+        id: this.stateSelectedByUser.id,
+        imagePath: this.stateSelectedByUser.data.imagePath,
+        imageURL: this.stateSelectedByUser.data.imageURL
       },
       city: {
         name: this.citySelectedByUser.data.name,
@@ -273,12 +282,16 @@ export class AdminDestinationsComponent implements OnInit {
           name: this.citySelectedByUser.data.state.name,
           status: this.citySelectedByUser.data.state.status,
           id: this.citySelectedByUser.data.state.id
-        }
+        },
+        imagePath: this.citySelectedByUser.data.imagePath,
+        imageURL: this.citySelectedByUser.data.imageURL
       },
       category: {
         name: this.categorySelectedByUser.data.name,
         status: this.categorySelectedByUser.data.status,
-        id: this.categorySelectedByUser.id
+        id: this.categorySelectedByUser.id,
+        imagePath: this.categorySelectedByUser.data.imagePath,
+        imageURL: this.categorySelectedByUser.data.imageURL
       },
       activities: this.activities,
       facilities: this.facilities,

@@ -37,85 +37,17 @@ export class DestinationComponent implements OnInit {
     step_one: true,
     step_two: false,
     step_three: false,
-  }
-  enableStep=false;
-  
+  };
+  enableStep = false;
+  stateCounted = false;
   screen: string;
-  states;
-  // states: state[] = [
-  //   {
-  //     img: "https://steemitimages.com/DQmbJA4t1388EhBPCZgRv5svVFp7zHxABt6qQXMSvMMFCkx/image.png",
-  //     name: "Mérida",
-  //     selected: false,
-  //   },
-  //   {
-  //     img: "https://www.el-carabobeno.com/wp-content/uploads/2017/10/trujillo-1.jpg",
-  //     name: "Trujillo",
-  //     selected: false,
-  //   },
-  //   {
-  //     img: "http://mmedia.eluniversal.com/17914/san-cristobal-15703.jpg",
-  //     name: "Táchira",
-  //     selected: false,
-  //   },
-  //   {
-  //     img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Flor_de_venezuela_barquisimeto_lara.jpg",
-  //     name: "Lara",
-  //     selected: false,
-  //   },
-  // ]
-
+  states = [];
+  stateSelect;
   itemsPerSlide: number;
   singleSlideOffset = true;
-
-  categories;
-  // categories: category[] = [
-  //   {
-  //     img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
-  //     name: "Costa",
-  //     selected: false,
-  //   },
-  //   {
-  //     img: "https://viajesblog.net/wp-content/uploads/2018/05/salto-del-angel.jpg",
-  //     name: "Montaña",
-  //     selected: false,
-  //   },
-  //   {
-  //     img: "https://i1.wp.com/diariolavoz.net/wp-content/uploads/2013/07/ubicacion-medanos-de-coro.jpg",
-  //     name: "Selva",
-  //     selected: false,
-  //   },
-  //   {
-  //     img: "https://www.eltelegrafo.com.ec/media/k2/items/cache/0dd63e66c3035bda0f70aa3c277a0c98_XL.jpg",
-  //     name: "Llano",
-  //     selected: false,
-  //   },
-  // ]
-  destinations;
-  // destinations: destination[] = [
-  //   {
-  //     img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
-  //     name: "Pico Bolívar",
-  //     state: "Mérida",
-  //     city: "Mérida",
-  //     info: "Es un lugar impresionante, a veces envuelto en neblina y a veces con un sol radiante que tuesta la piel",
-  //   },
-  //   {
-  //     img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
-  //     name: "Pico Bolívar",
-  //     state: "Mérida",
-  //     city: "Mérida",
-  //     info: "Es un lugar impresionante, a veces envuelto en neblina y a veces con un sol radiante que tuesta la piel",
-  //   },
-  //   {
-  //     img: "http://correiodevenezuela.com/espanol/wp-content/uploads/2016/02/losroques794.jpg",
-  //     name: "Pico Bolívar",
-  //     state: "Mérida",
-  //     city: "Mérida",
-  //     info: "Es un lugar impresionante, a veces envuelto en neblina y a veces con un sol radiante que tuesta la piel",
-  //   },
-  // ]
-
+  categorySelected;
+  categories = [];
+  destinations = [];
   constructor(private categoriesService: DestinationsCategoryService,
               private destinationsService: DestinationsService,
               private statesService: StatesService) {
@@ -132,16 +64,15 @@ export class DestinationComponent implements OnInit {
         });
       });
     });
-
-    this.statesService.getAllStates().subscribe((statesSnapshot) => {
-      this.states = [];
-      statesSnapshot.forEach((e: any) => {
-        this.states.push({
-          id: e.payload.doc.id,
-          data: e.payload.doc.data()
-        });
-      });
-    });
+    // this.statesService.getAllStates().subscribe((statesSnapshot) => {
+    //   this.states = [];
+    //   statesSnapshot.forEach((e: any) => {
+    //     this.states.push({
+    //       id: e.payload.doc.id,
+    //       data: e.payload.doc.data()
+    //     });
+    //   });
+    // });
 
 
     this.destinationsService.getAll().subscribe((destinationsSnapshot) =>{
@@ -153,12 +84,12 @@ export class DestinationComponent implements OnInit {
         });
       });
     });
+
   }
 
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
 
-    console.log(window.innerWidth);
 
     if (window.innerWidth <= 991 && window.innerWidth > 640) {
       this.screen = "medium";
@@ -179,8 +110,6 @@ export class DestinationComponent implements OnInit {
   toggleState(state) {
     state.selected = !state.selected;
     this.enableStep = this.anyStateSelected();
-    console.log(this.enableStep);
-    console.log(this.destinations);
   }
 
   goToStep(step, category?) {
@@ -193,16 +122,41 @@ export class DestinationComponent implements OnInit {
         this.categoriesSelectedToFalse();
         this.steps.step_two = true;
         category.selected = true;
-        console.log(this.categories);
-
+        this.statesSelectedToFalse();
+        this.categorySelected = this.categoriesSelected();
         break;
       case 3:
         this.steps.step_three = true;
+        this.stateSelect = this.statesSelected();
         break;
-
       default:
         break;
     }
+    this.destinations.forEach(e => {
+      if (e.data.status) {
+        if(e.data.state.status) {
+          if(e.data.category.status) {
+            if(e.data.city.status) {
+              this.states.map( ele => {
+                if (ele.name === e.data.state.name) {
+                  this.stateCounted = true;
+                }
+              });
+              if(!this.stateCounted){
+                this.states.push({
+                  categoryState: e.data.category.name,
+                  name: e.data.state.name,
+                  id: e.data.state.id,
+                  imagePath: e.data.state.imagePath,
+                  imageURL: e.data.state.imageURL
+                });
+              }
+              this.stateCounted = false;
+            }
+          }
+        }
+      }
+    });
   }
 
   stepsToFalse() {
@@ -211,11 +165,30 @@ export class DestinationComponent implements OnInit {
     this.steps.step_three = false;
   }
 
-  categoriesSelectedToFalse() {
-    this.categories.map(e => e.selected = false)
+  categoriesSelectedToFalse(): any {
+    this.categories.map(e => e.selected = false);
+  }
+  statesSelectedToFalse(): any {
+    this.states.map(e => e.selected = false);
   }
 
-  anyStateSelected(){
-    return this.states.some(e => { return e.selected });
+  categoriesSelected(): any[] {
+    const catSelect = this.categories.find(e => {if(e.selected){
+      return e;
+    }
+
+  });
+    return catSelect;
+  }
+  statesSelected() {
+    const stateSelect = this.states.map(e => {if(e.selected){
+      return e;
+    }});
+    return stateSelect;
+  }
+
+  anyStateSelected() {
+    return this.states.some(e => {return e.selected;
+    });
   }
 }
