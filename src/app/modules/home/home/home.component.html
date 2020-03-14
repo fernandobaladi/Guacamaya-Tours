@@ -1,0 +1,23 @@
+
+    <app-slider></app-slider>
+    <section class="gt-section">
+        <div class="gt-tag">
+            Más Trending
+        </div>
+        <div class="gt-thumbnail-wrapper">
+            <div class="gt-thumbnail" *ngFor="let trendingHotel of trending ">
+                <div class="gt-thumbnail-img">
+                    <img [src]="trendingHotel.img">
+                </div>
+                <div class="gt-thumbnail-title">
+                    <span>{{trendingHotel.name}}</span>
+                    <div class="gt-thumbnail-title-rating">
+                        <img *ngFor="let rate of getHotelRating(trendingHotel.rate)"
+                        [src]="rate==1?'../../../../assets/img/fullStar.png':'../../../../assets/img/star.png'">
+                        
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </section>

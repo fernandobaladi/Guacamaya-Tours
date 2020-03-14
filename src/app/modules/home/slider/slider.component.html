@@ -1,0 +1,21 @@
+<section class='gt-section gt-section--slider'>
+    <div class="slider-wrapper">
+        <div class="slider-img-wrapper">
+            <img *ngFor="let slide of slider"
+            [ngClass]="{'isActive' : slide.isAct, 'isNext' : slide.isNext, 'isPrev' : slide.isPrev}"
+            [src]="slide.img">
+                
+        </div>
+        <div class="slider-action">
+            <div class="slider-action-left">
+                <img src="../../../../assets/img/arrow-point-to-right.png" (click)="prevSlide()">
+            </div>
+            <div class="slider-action-right">
+                <img src="../../../../assets/img/arrow-point-to-right.png" (click)="nextSlide()">
+            </div>
+            
+        </div>
+    
+    
+    </div>
+</section>

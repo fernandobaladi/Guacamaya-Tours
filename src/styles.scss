@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import './styles/sass/lib/variables';
+@import './styles/sass/layout/layout.scss';
+
+// components
+
+@import './styles/sass/components/button';
+@import './styles/sass/components/header';
+@import './styles/sass/components/tag';
+@import './styles/sass/components/thumbnail';
+
+
+body,ul,ol,html,figure{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-size: 16px;
+}
+
+*{
+    box-sizing: border-box;
+}
